@@ -8,11 +8,16 @@ from api.utils import generate_sitemap, APIException
 api = Blueprint('api', __name__)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
+@api.route('/register', methods=['POST'])
+def Register_user():
+        body_email = request.json.get("email")
+        body_password = request.json.get("password")
+        body_nombre = request.json.get("nombre")
+        body_nacimiento = request.json.get("nacimiento")
+        new_user = User(email=body_email, password=body_password, nombre=body_nombre, nacimiento=body_nacimiento)
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({"User": new_user.serialize()}), 200
 
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
-
-    return jsonify(response_body), 200
+  
+ 
