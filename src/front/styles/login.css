@@ -9,6 +9,12 @@
 .login-btn {
   background-color: rgba(247, 191, 38, 0.877);
   border-radius: 3px;
-  width: 85%;
-  height: 35px;
+  width: 90%;
+  height: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pickateam {
+  margin-top: 50px;
+  margin-bottom: -80px;
 }

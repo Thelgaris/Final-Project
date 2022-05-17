@@ -10,7 +10,7 @@ export const Login = () => {
   return (
     <div className="container">
       <Link to="/">
-        <h1 className="text-center">PICKATEAM</h1>
+        <h1 className="text-center pickateam">PICKATEAM</h1>
       </Link>
       <div className="container login">
         <div className="container-fluid">
@@ -33,16 +33,29 @@ export const Login = () => {
               aria-describedby="basic-addon2"
             />
           </div>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="" />
+              Recordar
+            </label>
+          </div>
         </div>
         <Link to="/userProfile">
-          <div className="container-fluid login-btn">
-            <div className="btn justify-content-center">
-              <button type="button" className="btn text-center text-white">
-                Login
-              </button>
-            </div>
+          <div className="btn login-btn justify-content-center pb-4">
+            <button type="button" className="btn text-center text-white">
+              Login
+            </button>
           </div>
         </Link>
+        <div className="container-fluid text-center mt-3">
+          <span>¿Olvidó su contraseña?</span>
+        </div>
+        <div className="container-fluid text-center mt-3">
+          <span>
+            Al iniciar sesión, aceptas la Politica de privacidad y los Términos
+            de uso de PICKATEAM
+          </span>
+        </div>
       </div>
     </div>
   );
