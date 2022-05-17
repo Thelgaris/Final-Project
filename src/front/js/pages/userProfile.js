@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-export const Register = () => {
+export const UserProfile = () => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="container">
-      <h1>REGISTER</h1>
+      <h1>UserProfile</h1>
     </div>
   );
 };
