@@ -34,5 +34,10 @@
 }
 .pickateamlink {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.986);
+  color: rgba(56, 56, 56, 0.986);
+}
+
+.pickateamlink:hover {
+  text-decoration: none;
+  color: rgba(102, 101, 101, 0.507);
 }

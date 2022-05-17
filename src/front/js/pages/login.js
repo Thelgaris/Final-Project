@@ -8,7 +8,7 @@ export const Login = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container">
+    <div className="container" onClick={()=>{}}>
       <Link to="/" className="pickateamlink">
         <h1 className="text-center pickateam">PICKATEAM</h1>
       </Link>

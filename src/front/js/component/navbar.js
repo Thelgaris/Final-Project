@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../styles/navbar.css";
 
 export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <Link to="/">
+        <Link to="/" className="navbarlink">
           <a className="navbar-brand bt-5" href="#">
             PICKATEAM
           </a>
@@ -30,14 +31,14 @@ export const Navbar = () => {
               aria-label="Search"
             />
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <Link to="/login">
+              <Link to="/login" className="navbarlink">
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="#">
                     Login
                   </a>
                 </li>
               </Link>
-              <Link to="/register">
+              <Link to="/register" className="navbarlink">
                 <li className="nav-item">
                   <a className="nav-link" href="#">
                     Registrate
