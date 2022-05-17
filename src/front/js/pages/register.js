@@ -5,11 +5,16 @@ import { Context } from "../store/appContext";
 
 export const Register = (props) => {
   const { store, actions } = useContext(Context);
-  const params = useParams();
 
-  return <div></div>;
+  return (
+    <div>
+      <div className="card">
+        <div className="card-body">This is some text within a card body.</div>
+      </div>
+    </div>
+  );
 };
 
-Single.propTypes = {
+Register.propTypes = {
   match: PropTypes.object,
 };
