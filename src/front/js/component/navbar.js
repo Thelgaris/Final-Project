@@ -22,13 +22,13 @@ export const Navbar = () => {
           </button>
         </Link>
         <form className="d-flex">
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Buscar ciudad"
-            aria-label="Search"
-          />
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Buscar ciudad"
+              aria-label="Search"
+            />
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <Link to="/login">
                 <li className="nav-item">
