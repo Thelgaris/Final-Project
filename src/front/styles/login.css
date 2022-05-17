@@ -18,3 +18,21 @@
   margin-top: 50px;
   margin-bottom: -80px;
 }
+.sp1 {
+  color: rgba(0, 0, 0, 0.507);
+}
+
+.sp1:hover {
+  text-decoration: underline;
+}
+.sp2 {
+  font-size: 1rem;
+}
+.registerlink {
+  color: rgb(53, 142, 243);
+  text-decoration: none;
+}
+.pickateamlink {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.986);
+}

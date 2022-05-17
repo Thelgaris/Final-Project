@@ -9,7 +9,7 @@ export const Login = () => {
 
   return (
     <div className="container">
-      <Link to="/">
+      <Link to="/" className="pickateamlink">
         <h1 className="text-center pickateam">PICKATEAM</h1>
       </Link>
       <div className="container login">
@@ -48,13 +48,16 @@ export const Login = () => {
           </div>
         </Link>
         <div className="container-fluid text-center mt-3">
-          <span>¿Olvidó su contraseña?</span>
+          <span className="sp1">¿Olvidó su contraseña?</span>
         </div>
         <div className="container-fluid text-center mt-3">
-          <span>
+          <span className="sp1">
             Al iniciar sesión, aceptas la Politica de privacidad y los Términos
             de uso de PICKATEAM
           </span>
+        </div>
+        <div className="container-fluid text-center mt-3">
+          <span className="sp2">¿Nuevo usuario? <Link to="/register" className="registerlink">Registrate</Link></span>
         </div>
       </div>
     </div>
