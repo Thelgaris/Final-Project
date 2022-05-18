@@ -8,7 +8,7 @@ export const Login = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container" onClick={()=>{}}>
+    <div className="container" onClick={() => {}}>
       <Link to="/" className="pickateamlink">
         <h1 className="text-center pickateam">PICKATEAM</h1>
       </Link>
@@ -57,7 +57,12 @@ export const Login = () => {
           </span>
         </div>
         <div className="container-fluid text-center mt-3">
-          <span className="sp2">¿Nuevo usuario? <Link to="/register" className="registerlink">Registrate</Link></span>
+          <span className="sp2">
+            ¿Nuevo usuario?{" "}
+            <Link to="/register" className="registerlink">
+              Registrate
+            </Link>
+          </span>
         </div>
       </div>
     </div>
