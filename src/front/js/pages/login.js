@@ -1,15 +1,48 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/login.css";
 
 import { Context } from "../store/appContext";
 
 export const Login = () => {
-  const { store, actions } = useContext(Context);
+  const [user, setUser] = useState({});
+  const [error, setError] = useState(null);
+  const [username, setUsername] = useState(null);
+
+  const sendUserInfo = async () => {
+    if (user.email != null && user.email.trim() != "") {
+      setError(null);
+      const response = await fetch(
+        "https://3001-thelgaris-finalproject-4i26zyygtq5.ws-eu45.gitpod.io/api/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        }
+      );
+      const data = await response.json();
+      if (data.logged == false) {
+        setError("Rellenar datos");
+      } else if (data.logged == true) {
+        setUsername = data.user.email;
+      }
+    } else {
+      setError("Rellenar datos");
+      setTimeout(() => {
+        setError(null);
+      }, 3000);
+    }
+  };
+  const loginError = (async) => {
+    if (sendUserInfo != True) {
+      setError("Faltan datos o datos incorrectos");
+    }
+  };
 
   return (
-    <div className="container" onClick={() => {}}>
-      <Link to="/" className="pickateamlink">
+    <div className="container">
+      {username}
+      <Link to="/" className="pickateamlink" onClick={() => {}}>
         <h1 className="text-center pickateam">PICKATEAM</h1>
       </Link>
       <div className="container login">
@@ -18,6 +51,7 @@ export const Login = () => {
             <input
               type="text"
               className="form-control text-center mt-5"
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
               placeholder="Email"
               aria-label="Username"
               aria-describedby="basic-addon1"
@@ -31,9 +65,10 @@ export const Login = () => {
               placeholder="Contraseña"
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
           </div>
-          <div class="checkbox mb-3">
+          <div className="checkbox mb-3">
             <label>
               <input type="checkbox" value="" className="me-1" />
               <span>Recordar</span>
@@ -41,7 +76,12 @@ export const Login = () => {
           </div>
         </div>
         <div className="d-grid gap-2 mx-auto">
-          <Link to="/userProfile">
+          <Link
+            to="/userProfile"
+            onClick={() => {
+              sendUserInfo();
+            }}
+          >
             <button
               type="button"
               className="btn login-btn btn-warning text-white"
@@ -68,6 +108,7 @@ export const Login = () => {
           </span>
         </div>
       </div>
+      {error != null ? <h3 className="text-danger">{error}</h3> : null}
     </div>
   );
 };
