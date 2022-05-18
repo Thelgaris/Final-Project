@@ -35,18 +35,21 @@ export const Login = () => {
           </div>
           <div class="checkbox mb-3">
             <label>
-              <input type="checkbox" value="" />
-              Recordar
+              <input type="checkbox" value="" className="me-1" />
+              <span>Recordar</span>
             </label>
           </div>
         </div>
-        <Link to="/userProfile">
-          <div className="btn login-btn justify-content-center pb-4">
-            <button type="button" className="btn text-center text-white">
+        <div className="d-grid gap-2 mx-auto">
+          <Link to="/userProfile">
+            <button
+              type="button"
+              className="btn login-btn btn-warning text-white"
+            >
               Login
             </button>
-          </div>
-        </Link>
+          </Link>
+        </div>
         <div className="container-fluid text-center mt-3">
           <span className="sp1">¿Olvidó su contraseña?</span>
         </div>
