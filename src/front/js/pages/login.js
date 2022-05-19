@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../../styles/login.css";
 
 import { Context } from "../store/appContext";
 
 export const Login = () => {
+  const history = useHistory();
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
   const [username, setUsername] = useState(null);
@@ -13,7 +14,7 @@ export const Login = () => {
     if (user.email != null && user.email.trim() != "") {
       setError(null);
       const response = await fetch(
-        "https://3001-thelgaris-finalproject-4i26zyygtq5.ws-eu45.gitpod.io/api/login",
+        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu45.gitpod.io/api/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -24,7 +25,7 @@ export const Login = () => {
       if (data.logged == false) {
         setError("Rellenar datos");
       } else if (data.logged == true) {
-        setUsername = data.user.email;
+        history.push("/userProfile");
       }
     } else {
       setError("Rellenar datos");
@@ -76,19 +77,15 @@ export const Login = () => {
           </div>
         </div>
         <div className="d-grid gap-2 mx-auto">
-          <Link
-            to="/userProfile"
+          <button
+            type="button"
+            className="btn login-btn btn-warning text-white"
             onClick={() => {
               sendUserInfo();
             }}
           >
-            <button
-              type="button"
-              className="btn login-btn btn-warning text-white"
-            >
-              Login
-            </button>
-          </Link>
+            Login
+          </button>
         </div>
         <div className="container-fluid text-center mt-3">
           <span className="sp1">¿Olvidó su contraseña?</span>

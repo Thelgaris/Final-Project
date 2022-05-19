@@ -24,7 +24,7 @@ def login_user():
     body_email = request.json.get('email')
     body_password = request.json.get('password')
     if body_email and body_password:
-        user = User.query.filter_by(email=body_email).filter_by(password=body_password).first()
+        user = User.query.filter_by(email=body_email).filter_by(password=body_password).filter_by(is_active=True).first()
         if user:
             return jsonify({"logged": True, "user": user.serialize()}),200
         else:

@@ -7,9 +7,9 @@ export const Navbar = () => {
     <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light">
       <div className="container-fluid">
         <Link to="/" className="navbarlink">
-          <a className="navbar-brand bt-5" href="#">
+          <h1 className="navbar-brand bt-5" href="#">
             PICKATEAM
-          </a>
+          </h1>
           <button
             className="navbar-toggler"
             type="button"
@@ -33,16 +33,16 @@ export const Navbar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <Link to="/login" className="navbarlink">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <h1 className="nav-link active" aria-current="page" href="#">
                     Login
-                  </a>
+                  </h1>
                 </li>
               </Link>
               <Link to="/register" className="navbarlink">
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <h1 className="nav-link" href="#">
                     Registrate
-                  </a>
+                  </h1>
                 </li>
               </Link>
             </ul>

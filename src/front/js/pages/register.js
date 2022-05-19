@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "../../styles/login.css";
 
 import { Context } from "../store/appContext";
 
 export const Register = () => {
+  const history = useHistory();
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
 
@@ -12,7 +13,7 @@ export const Register = () => {
     if (user.email != null && user.email.trim() != "") {
       setError(null);
       const response = await fetch(
-        "https://3001-thelgaris-finalproject-4i26zyygtq5.ws-eu45.gitpod.io/api/register",
+        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu45.gitpod.io/api/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -20,6 +21,9 @@ export const Register = () => {
         }
       );
       const data = await response.json();
+      if (data.created) {
+        history.push("/userProfile");
+      }
     } else {
       setError("Faltan datos por ingresar");
       setTimeout(() => {
