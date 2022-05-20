@@ -1,7 +1,15 @@
-/*
-    home.css: This website contains selectors only used in home.css
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 40px;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+#carouselExampleControls {
+  width: 700px;
+  height: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
