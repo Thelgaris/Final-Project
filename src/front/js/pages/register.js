@@ -22,24 +22,23 @@ export const Register = () => {
 
   return (
     <div
-      className="container"
+      className="container p-3 mb-5 rounded d-grid gap-3 bg-secondary  align-middle"
       style={{
         width: "25rem",
-        height: "20em",
-        backgroundColor: "grey",
-        paddingTop: "10px",
       }}
     >
-      <div className="row mx-auto d-flex justify-content-center">
-        <Link to="/">
-          <img
-            src="https://picsum.photos/50/50"
-            className="rounded-circle"
-          ></img>
-        </Link>
+      <div className="row mx-auto mt-1 mb-1">
+        <div className="d-flex justify-content-center ">
+          <Link to="/">
+            <img
+              src="https://picsum.photos/120/120"
+              className="rounded-circle"
+            ></img>
+          </Link>
+        </div>
       </div>
       <div className="row mx-auto">
-        <div className="">
+        <div className="d-grid gap-3">
           <input
             id="email"
             type="text"
@@ -85,9 +84,9 @@ export const Register = () => {
             }}
           />
         </div>
-        <div className="d-grid gap-2  mx-auto">
+        <div className="d-grid gap-2 mx-auto">
           <button
-            className="btn btn-warning"
+            className="btn btn-warning mt-1"
             type="button"
             onClick={() => {
               createUser();
