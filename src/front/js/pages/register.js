@@ -22,12 +22,12 @@ export const Register = () => {
 
   return (
     <div
-      className="container p-3 mb-5 rounded  bg-secondary position-absolute top-50 start-50 translate-middle"
+      className="container p-3 mb-5 rounded bg-secondary h-auto"
       style={{
         width: "25rem",
       }}
     >
-      <div className="row mx-auto mt-1 mb-4">
+      <div className="row mx-auto mt-1 mb-4 ">
         <div className="d-flex justify-content-center ">
           <Link to="/">
             <img
@@ -84,9 +84,9 @@ export const Register = () => {
             }}
           />
         </div>
-        <div className="d-grid gap-2 mx-auto">
+        <div className="d-grid gap-2 mt-4 mx-auto">
           <button
-            className="btn btn-warning mt-1"
+            className="btn btn-warning"
             type="button"
             onClick={() => {
               createUser();
