@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const InfoEvent = () => {
+export const PistaInfo = () => {
   return (
     <div className="container infoevent">
       <div className="row">
@@ -12,7 +12,7 @@ export const InfoEvent = () => {
             data-bs-toggle="modal"
             data-bs-target="#evento"
           >
-            Eventos
+            Nombre pista
           </button>
         </div>
 
