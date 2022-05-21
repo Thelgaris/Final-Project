@@ -22,12 +22,12 @@ export const Register = () => {
 
   return (
     <div
-      className="container p-3 mb-5 rounded d-grid gap-3 bg-secondary  align-middle"
+      className="container p-3 mb-5 rounded  bg-secondary position-absolute top-50 start-50 translate-middle"
       style={{
         width: "25rem",
       }}
     >
-      <div className="row mx-auto mt-1 mb-1">
+      <div className="row mx-auto mt-1 mb-4">
         <div className="d-flex justify-content-center ">
           <Link to="/">
             <img
