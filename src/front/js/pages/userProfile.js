@@ -15,66 +15,65 @@ export const UserProfile = () => {
           </div>
         </div>
       </div>
-      <div className="row justify-content-center">
-        <div className="input-group mb-3 w-50">
-          <input
-            type="text"
-            className="form-control text-center"
-            placeholder="Nombre"
-            aria-label="Name"
-            aria-describedby="basic-addon1"
-          />
-        </div>
 
-        <div className="input-group mb-3 w-25">
-          <input
-            type="text"
-            className="form-control text-center"
-            placeholder="Apellidos"
-            aria-label="Apellidos"
-            aria-describedby="basic-addon1"
-          />
-        </div>
+      <div className="input-group mx-auto mb-3 w-25">
+        <input
+          type="text"
+          className="form-control text-center"
+          placeholder="Nombre"
+          aria-label="Name"
+          aria-describedby="basic-addon1"
+        />
+      </div>
 
-        <div className="input-group mb-3 w-25">
-          <input
-            type="text"
-            className="form-control text-center"
-            placeholder="Fecha de nacimiento"
-            aria-label="Fecha de nacimiento"
-            aria-describedby="basic-addon1"
-          />
-        </div>
+      <div className="input-group mx-auto mb-3 w-25">
+        <input
+          type="text"
+          className="form-control text-center"
+          placeholder="Apellidos"
+          aria-label="Apellidos"
+          aria-describedby="basic-addon1"
+        />
+      </div>
 
-        <div className="input-group mb-3 w-25">
-          <input
-            type="text"
-            className="form-control text-center"
-            placeholder="Género"
-            aria-label="Género"
-            aria-describedby="basic-addon1"
-          />
-        </div>
+      <div className="input-group mx-auto mb-3 w-25">
+        <input
+          type="text"
+          className="form-control text-center"
+          placeholder="Fecha de nacimiento"
+          aria-label="Fecha de nacimiento"
+          aria-describedby="basic-addon1"
+        />
+      </div>
 
-        <div className="input-group mb-3 w-25">
-          <input
-            type="text"
-            className="form-control text-center"
-            placeholder="Ciudad"
-            aria-label="Ciudad"
-            aria-describedby="basic-addon1"
-          />
-        </div>
+      <div className="input-group mx-auto mb-3 w-25">
+        <input
+          type="text"
+          className="form-control text-center"
+          placeholder="Género"
+          aria-label="Género"
+          aria-describedby="basic-addon1"
+        />
+      </div>
 
-        <div className="input-group mb-3 w-25">
-          <input
-            type="text"
-            className="form-control text-center"
-            placeholder="Deportes que practicas"
-            aria-label="Apellidos"
-            aria-describedby="basic-addon1"
-          />
-        </div>
+      <div className="input-group mx-auto mb-3 w-25">
+        <input
+          type="text"
+          className="form-control text-center"
+          placeholder="Ciudad"
+          aria-label="Ciudad"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+
+      <div className="input-group mx-auto mb-3 w-25">
+        <input
+          type="text"
+          className="form-control text-center"
+          placeholder="Deportes que practicas"
+          aria-label="Apellidos"
+          aria-describedby="basic-addon1"
+        />
       </div>
     </div>
   );
