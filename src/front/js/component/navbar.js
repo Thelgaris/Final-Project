@@ -4,7 +4,6 @@ import "../../styles/navbar.css";
 
 export const Navbar = () => {
   const sendToLoginPage = async () => {
-    const data = await response.json();
     if (data.access_token) {
       localStorage.removeItem("userToken", data.access_token);
       history.push("/login");
@@ -50,16 +49,18 @@ export const Navbar = () => {
                   </span>
                 </li>
               </Link>
-              <li className="nav-item">
-                <span
-                  className="nav-link active"
-                  aria-current="page"
-                  href="#"
-                  onClick={() => sendToLoginPage()}
-                >
-                  Logout
-                </span>
-              </li>
+              <Link to="/login" className="navbarlink">
+                <li className="nav-item">
+                  <span
+                    className="nav-link active"
+                    aria-current="page"
+                    href="#"
+                    onClick={() => sendToLoginPage()}
+                  >
+                    Logout
+                  </span>
+                </li>
+              </Link>
               <Link to="/register" className="navbarlink">
                 <li className="nav-item">
                   <span className="nav-link" href="#">

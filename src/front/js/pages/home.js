@@ -19,16 +19,16 @@ export const Home = () => {
       </div>
       <div className="container-fluid d-flex justify-content-center mt-4">
         <div className="row">
-          <div
-            className="card"
-            style={{ width: "300px", marginBottom: "10px" }}
-          >
-            <img
-              className="card-img-top"
-              src="https://placebeard.it/640x360"
-              alt="This is an image"
-            />
-            <div className="container-fluid">
+          <div className="col">
+            <div
+              className="card"
+              style={{ width: "300px", marginBottom: "10px" }}
+            >
+              <img
+                className="card-img-top"
+                src="https://placebeard.it/640x360"
+                alt="This is an image"
+              />
               <div className="card-body">
                 <h5 className="card-title">BUSCA TU CIUDAD</h5>
                 <p className="card-text">
