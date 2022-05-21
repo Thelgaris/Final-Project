@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Context } from "../store/appContext";
 
@@ -22,11 +23,13 @@ export const Register = () => {
 
   return (
     <div
-      className="container p-3 mb-5 rounded bg-secondary h-auto"
+      className="container p-3 mb-5 rounded bg-secondary h-auto Register"
       style={{
         width: "25rem",
       }}
     >
+      <div></div>
+
       <div className="row mx-auto mt-1 mb-4 ">
         <div className="d-flex justify-content-center ">
           <Link to="/">
@@ -94,10 +97,19 @@ export const Register = () => {
           >
             Registrar
           </button>
+
           <button className="btn btn-light" type="button">
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/323_Strava_logo-48.png"
+              style={{ width: "25px", height: "25px ", float: "left" }}
+            />
             Registrar con Strava
           </button>
           <button className="btn btn-light" type="button">
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
+              style={{ width: "20px", height: "20px ", float: "left" }}
+            />
             Registrar con Google
           </button>
         </div>
