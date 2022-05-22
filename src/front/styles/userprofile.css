@@ -1,3 +1,21 @@
-button {
-  background: aqua;
+.avatar {
+  border-radius: 50%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  width: 180px;
+}
+
+.button-container {
+  display: inline-block;
+  position: relative;
+}
+
+.button-container i {
+  position: absolute;
+  bottom: 0.3em;
+  right: 0.8em;
+  color: white;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
 }

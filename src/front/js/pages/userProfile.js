@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import "../../styles/userprofile.css";
 
 export const UserProfile = () => {
   return (
@@ -6,16 +8,21 @@ export const UserProfile = () => {
       <div className="row justify-content-center">
         <div className="jumbotron jumbotron-fluid w-50">
           <div className="container-fluid">
-            <h1 className="display-4">UNETE A LA COMUNIDAD</h1>
-            <h2 style={{ color: "gray" }}>
-              Crea un perfil con PICKATEAM y únete a nuestra comunidad de
-              deportistas. Encuentra y conoce nuevos compañeros de juego. Elige
-              tu ciudad y crea tus eventos
-            </h2>
+            <h1 className="display-4">UNETE</h1>
+            <h2 style={{ color: "gray" }}></h2>
           </div>
         </div>
       </div>
-
+      <div className="button-container">
+        <img
+          className="avatar mt-4 mb-4"
+          src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          alt=""
+        />
+        <Link to="/home">
+          <i class="fas fa-camera fa-2x" style={{ fontsize: "50px" }}></i>
+        </Link>
+      </div>
       <div className="input-group mx-auto mb-3 w-25">
         <input
           type="text"
@@ -68,7 +75,7 @@ export const UserProfile = () => {
 
       <button
         type="button"
-        className="btn btn-light w-25"
+        className="btn btn-light w-25 text-white"
         data-bs-toggle="modal "
         data-bs-target="#exampleModal"
       >
@@ -109,6 +116,11 @@ export const UserProfile = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="d-grid gap-2 mx-auto w-25 mt-2">
+        <button type="button" className="btn login-btn btn-warning text-white">
+          Registrar
+        </button>
       </div>
     </div>
   );
