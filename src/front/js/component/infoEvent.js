@@ -36,22 +36,34 @@ export const InfoEvent = () => {
                   aria-label="Close"
                 ></button>
               </div>
-              <div className="modal-body ">
+              <div className="modal-body text-center ">
                 <div className="card w-100" style={{ width: "18rem" }}>
-                  <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Ciudad</li>
-                    <li className="list-group-item">Deporte</li>
-                    <li className="list-group-item">Lugar</li>
-                    <li className="list-group-item">Fecha</li>
-                    <li className="list-group-item">Hora</li>
-                    <li className="list-group-item">Participantes</li>
+                  <img
+                    src="https://picsum.photos/seed/picsum/300/200"
+                    className="card-img-top"
+                    alt="ImagenPista"
+                  />
+                  <ul className="list-group list-group-flush row">
+                    <div className="col d-flex ">
+                      <li className="list-group-item w-50 border-0">Ciudad</li>
+                      <li className="list-group-item w-50 border-0">Deporte</li>
+                    </div>
+                    <div className="col d-flex ">
+                      <li className="list-group-item w-50 border-0">Fecha</li>
+                      <li className="list-group-item w-50 border-0">Hora</li>
+                    </div>
+                    <div className="col">
+                      <li className="list-group-item border-0">Dirección</li>
+
+                      <li className="list-group-item border-0">
+                        Participantes
+                      </li>
+                      <li className="list-group-item border-0">
+                        Desccripción del evento
+                      </li>
+                    </div>
                   </ul>
                 </div>
-              </div>
-              <div className="modal-footer w-100 d-flex">
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">Desccripción del evento</li>
-                </ul>
               </div>
             </div>
           </div>
