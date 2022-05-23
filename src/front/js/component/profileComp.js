@@ -5,16 +5,20 @@ export const ProfileComp = () => {
   return (
     <div className="container">
       <div className="row">
-        <div>PICKATEAM</div>
+        <img
+          src="https://picsum.photos/seed/picsum/300/200"
+          className="img-fluid rounded-circle col-3"
+          alt="Userprofilepicture"
+        />
       </div>
-      <div className="card" style="width: 18rem;">
-        <img src="..." className="card-img-top" alt="..." />
+      <div className="card col-3 mt-2" style={{ width: "20rem" }}>
         <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+          {/* Link to perfil usuario*/}
+          <h5 className="card-title">Nombre usuario</h5>
+          <div className="card">
+            <i className="far fa-biking"></i>
+            <i className="far fa-running"></i>
+          </div>
         </div>
       </div>
 
