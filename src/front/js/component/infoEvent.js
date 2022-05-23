@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export const InfoEvent = () => {
   return (
-    <div className="container infoevent">
-      <div className="row">
+    <div className="container infoevent justify-content-center">
+      <div className="row ">
         <div className="col-2 d-grid">
           <button
             type="button"

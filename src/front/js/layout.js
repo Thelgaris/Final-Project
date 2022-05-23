@@ -6,10 +6,9 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { EventList } from "./component/eventList";
+
 import { InfoEvent } from "./component/infoEvent";
 import { PistaInfo } from "./component/pistaInfo";
-import { PistasList } from "./component/pistasList";
 
 //create your first component
 const Layout = () => {
@@ -21,9 +20,9 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <Navbar />
-        <EventList />
+
         <InfoEvent />
-        <PistasList />
+
         <PistaInfo />
 
         <Switch>
