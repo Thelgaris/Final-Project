@@ -19,7 +19,8 @@ def register_user():
         return jsonify({"created": True}), 200
     else:
         return jsonify({"created": False, "msg": "No existe información"}), 400
-       
+
+
 @api.route('/login',methods=['POST'])
 def login_user():
     body_email = request.json.get('email')

@@ -1,8 +1,38 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/userprofile.css";
 
 export const UserProfile = () => {
+  const { user, setUser } = useState({});
+  const [error, setError] = useState(null);
+
+  const sendUserInfo = async () => {
+    if (
+      (user.name,
+      user.apellidos,
+      user.birth,
+      user.genero != null && user.name.trim(),
+      user.apellidos.trim(),
+      user.birth.trim(),
+      user.genero.trim() != "")
+    ) {
+      setError(null);
+      const response = await fetch(
+        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu45.gitpod.io/api/userprofile",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        }
+      );
+    } else {
+      setError("faltan datos por ingresar");
+      setTimeout(() => {
+        setError(null);
+      }, 3000);
+    }
+  };
+
   return (
     <div className="container mt-5 text-center">
       <div className="row justify-content-center">
@@ -27,6 +57,7 @@ export const UserProfile = () => {
         <input
           type="text"
           className="form-control text-center"
+          onChange={(e) => setUser({ ...user, name: e.target.value })}
           placeholder="Nombre"
           aria-label="Name"
           aria-describedby="basic-addon1"
@@ -37,6 +68,7 @@ export const UserProfile = () => {
         <input
           type="text"
           className="form-control text-center"
+          onChange={(e) => setUser({ ...user, apellidos: e.target.value })}
           placeholder="Apellidos"
           aria-label="Apellidos"
           aria-describedby="basic-addon1"
@@ -47,6 +79,7 @@ export const UserProfile = () => {
         <input
           type="text"
           className="form-control text-center"
+          onChange={(e) => setUser({ ...user, birth: e.target.value })}
           placeholder="Fecha de nacimiento"
           aria-label="Fecha de nacimiento"
           aria-describedby="basic-addon1"
@@ -57,6 +90,7 @@ export const UserProfile = () => {
         <input
           type="text"
           className="form-control text-center"
+          onChange={(e) => setUser({ ...user, genero: e.target.value })}
           placeholder="Género"
           aria-label="Género"
           aria-describedby="basic-addon1"
@@ -118,7 +152,11 @@ export const UserProfile = () => {
         </div>
       </div>
       <div className="d-grid gap-2 mx-auto w-25 mt-2">
-        <button type="button" className="btn login-btn btn-warning text-white">
+        <button
+          type="button"
+          className="btn login-btn btn-warning text-white"
+          onClick={() => sendUserInfo()}
+        >
           Registrar
         </button>
       </div>
