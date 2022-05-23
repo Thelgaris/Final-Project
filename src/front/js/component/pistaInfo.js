@@ -19,7 +19,7 @@ export const PistaInfo = () => {
         <div
           className="modal fade"
           id="pista"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="pistaLabel"
           aria-hidden="true"
         >

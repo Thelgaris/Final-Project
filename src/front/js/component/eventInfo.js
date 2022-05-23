@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const InfoEvent = () => {
+export const EventInfo = () => {
   return (
     <div className="container infoevent justify-content-center">
       <div className="row ">
@@ -19,7 +19,7 @@ export const InfoEvent = () => {
         <div
           className="modal fade"
           id="evento"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="eventoLabel"
           aria-hidden="true"
         >
