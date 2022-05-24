@@ -1,11 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
+
+import ScrollToTop from "./component/scrollToTop";
 
 //create your first component
 const Layout = () => {
@@ -22,16 +25,12 @@ const Layout = () => {
               <Home />
             </Route>
             <Route exact path="/login">
-              <Home Login />
+              <Login />
             </Route>
 
             <Route exact path="/register">
               <Register />
             </Route>
-            <Route exact path="/userProfile">
-              <UserProfile />
-            </Route>
-
             <Route>
               <h1>Not found!</h1>
             </Route>
