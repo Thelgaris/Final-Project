@@ -64,25 +64,25 @@ export const Register = () => {
             }}
           />
           <input
-            id="nombre"
+            id="name"
             type="text"
             className="form-control"
             placeholder="Nombre"
             aria-label="Nombre"
             aria-describedby="basic-addon1"
             onChange={(e) => {
-              setUserData({ ...userData, nombre: e.target.value });
+              setUserData({ ...userData, name: e.target.value });
             }}
           />
           <input
-            id="nacimiento"
+            id="birth"
             type="text"
             className="form-control"
             placeholder="Fecha de nacimiento"
             aria-label="Fecha de nacimiento"
             aria-describedby="basic-addon1"
             onChange={(e) => {
-              setUserData({ ...userData, nacimiento: e.target.value });
+              setUserData({ ...userData, birth: e.target.value });
             }}
           />
         </div>

@@ -10,12 +10,12 @@ export const UserProfile = () => {
   const sendUserInfo = async () => {
     if (
       (user.name,
-      user.apellidos,
+      user.surname,
       user.birth,
-      user.genero != null && user.name.trim(),
-      user.apellidos.trim(),
+      user.gender != null && user.name.trim(),
+      user.surname.trim(),
       user.birth.trim(),
-      user.genero.trim() != "")
+      user.gender.trim() != "")
     ) {
       setError(null);
       const response = await fetch(
@@ -26,6 +26,8 @@ export const UserProfile = () => {
           body: JSON.stringify(user),
         }
       );
+      const data = await response.json();
+      console.log("@@@@@@@@@@@", data);
     } else {
       setError("faltan datos por ingresar");
       setTimeout(() => {
@@ -56,10 +58,10 @@ export const UserProfile = () => {
       </div>
       <div className="input-group mx-auto mb-3 w-25">
         <input
-          id="nombre"
+          id="name"
           type="text"
           className="form-control text-center"
-          onChange={(e) => setUser({ ...user, nombre: e.target.value })}
+          onChange={(e) => setUser({ ...user, name: e.target.value })}
           placeholder="Nombre"
           aria-label="Name"
           aria-describedby="basic-addon1"
@@ -68,10 +70,10 @@ export const UserProfile = () => {
 
       <div className="input-group mx-auto mb-3 w-25">
         <input
-          id="apellidos"
+          id="surname"
           type="text"
           className="form-control text-center"
-          onChange={(e) => setUser({ ...user, apellidos: e.target.value })}
+          onChange={(e) => setUser({ ...user, surname: e.target.value })}
           placeholder="Apellidos"
           aria-label="Apellidos"
           aria-describedby="basic-addon1"
@@ -92,10 +94,10 @@ export const UserProfile = () => {
 
       <div className="input-group mx-auto mb-3 w-25">
         <input
-          id="genero"
+          id="gender"
           type="text"
           className="form-control text-center"
-          onChange={(e) => setUser({ ...user, genero: e.target.value })}
+          onChange={(e) => setUser({ ...user, gender: e.target.value })}
           placeholder="Género"
           aria-label="Género"
           aria-describedby="basic-addon1"
@@ -104,8 +106,10 @@ export const UserProfile = () => {
 
       <div className="input-group mx-auto mb-3 w-25">
         <input
+          id="city"
           type="text"
           className="form-control text-center"
+          onChange={(e) => setUser({ ...user, city: e.target.value })}
           placeholder="Ciudad"
           aria-label="Ciudad"
           aria-describedby="basic-addon1"

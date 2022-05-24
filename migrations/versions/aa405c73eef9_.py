@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3b293e3f9873
+Revision ID: aa405c73eef9
 Revises: 
-Create Date: 2022-05-24 10:17:18.691724
+Create Date: 2022-05-24 19:17:52.203502
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3b293e3f9873'
+revision = 'aa405c73eef9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,8 +22,13 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
-    sa.Column('nombre', sa.String(length=80), nullable=True),
-    sa.Column('nacimiento', sa.String(length=80), nullable=True),
+    sa.Column('name', sa.String(length=80), nullable=True),
+    sa.Column('surname', sa.String(length=80), nullable=True),
+    sa.Column('birth', sa.String(length=80), nullable=True),
+    sa.Column('gender', sa.String(length=80), nullable=True),
+    sa.Column('city', sa.String(length=80), nullable=True),
+    sa.Column('sports', sa.String(length=80), nullable=True),
+    sa.Column('is_active', sa.Boolean(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )

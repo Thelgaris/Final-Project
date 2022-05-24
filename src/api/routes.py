@@ -26,9 +26,9 @@ def login_user():
 def Register_user():
     body_email = request.json.get("email")
     body_password = request.json.get("password")
-    body_nombre = request.json.get("nombre")
-    body_nacimiento = request.json.get("nacimiento")
-    new_user = User(email=body_email, password=body_password, nombre=body_nombre, nacimiento=body_nacimiento)
+    body_name = request.json.get("name")
+    body_birth = request.json.get("birth")
+    new_user = User(email=body_email, password=body_password, name=body_name, birth=body_birth)
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"User": new_user.serialize()}), 200
