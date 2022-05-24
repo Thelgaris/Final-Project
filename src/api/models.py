@@ -6,8 +6,8 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    nombre = db.Column(db.String(80), unique=False, nullable=True)
-    nacimiento = db.Column(db.String(80), unique=False, nullable=True)
+    name = db.Column(db.String(80), unique=False, nullable=True)
+    birth = db.Column(db.String(80), unique=False, nullable=True)
     
 
 
@@ -18,8 +18,8 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "nombre": self.nombre,
-            "nacimiento": self.nacimiento,
+            "name": self.name,
+            "birth": self.birth,
             
       
             # do not serialize the password, its a security breach
