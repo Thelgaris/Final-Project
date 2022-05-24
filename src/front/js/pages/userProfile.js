@@ -4,7 +4,7 @@ import "../../styles/userprofile.css";
 import { Sportmodal } from "../component/sportmodal";
 
 export const UserProfile = () => {
-  const { user, setUser } = useState({});
+  const [user, setUser] = useState({});
   const [error, setError] = useState(null);
 
   const sendUserInfo = async () => {
@@ -56,10 +56,10 @@ export const UserProfile = () => {
       </div>
       <div className="input-group mx-auto mb-3 w-25">
         <input
-          id="name"
+          id="nombre"
           type="text"
           className="form-control text-center"
-          onChange={(e) => setUser({ ...user, name: e.target.value })}
+          onChange={(e) => setUser({ ...user, nombre: e.target.value })}
           placeholder="Nombre"
           aria-label="Name"
           aria-describedby="basic-addon1"
