@@ -6,6 +6,9 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
+import { UserProfile } from "./pages/userProfile";
+
+import ScrollToTop from "./component/scrollToTop";
 
 //create your first component
 const Layout = () => {
@@ -22,9 +25,8 @@ const Layout = () => {
               <Home />
             </Route>
             <Route exact path="/login">
-              <Home Login />
+              <Login />
             </Route>
-
             <Route exact path="/register">
               <Register />
             </Route>
