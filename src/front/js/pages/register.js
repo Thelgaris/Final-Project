@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Context } from "../store/appContext";
 
@@ -12,7 +11,7 @@ export const Register = () => {
     const response = await fetch(
       "https://3001-thelgaris-finalproject-thgg0srgv96.ws-eu45.gitpod.io/api/register",
       {
-        method: "POST",
+        method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(userData),
       }

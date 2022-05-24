@@ -13,7 +13,7 @@ def login_user():
     body_email = request.json.get('email')
     body_password = request.json.get('password')
     if body_email and body_password:
-        user = User.query.filter_by(email=body_email).filter_by(password=body_password).filter_by(is_active=True).first()
+        user = User.query.filter_by(email=body_email).filter_by(password=body_password).first()
         if user:
             access_token = create_access_token(identity=user.id)
             return jsonify({"logged": True, "user": user.serialize(), "access_token": access_token}),200
@@ -22,7 +22,7 @@ def login_user():
     else: 
         return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
 
-@api.route('/register', methods=['POST'])
+@api.route('/register', methods=['PUT'])
 def Register_user():
     body_email = request.json.get("email")
     body_password = request.json.get("password")

@@ -8,13 +8,12 @@ export const Login = () => {
   const history = useHistory();
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
-  const [username, setUsername] = useState(null);
 
   const sendUserInfo = async () => {
     if (user.email != null && user.email.trim() != "") {
       setError(null);
       const response = await fetch(
-        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu45.gitpod.io/api/login",
+        "https://3001-thelgaris-finalproject-thgg0srgv96.ws-eu45.gitpod.io/api/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -46,7 +45,6 @@ export const Login = () => {
 
   return (
     <div className="container">
-      {username}
       <Link to="/" className="pickateamlink" onClick={() => {}}>
         <h1 className="text-center pickateam">PICKATEAM</h1>
       </Link>
@@ -54,6 +52,7 @@ export const Login = () => {
         <div className="container-fluid">
           <div className="input-group mb-3">
             <input
+              id="email"
               type="text"
               className="form-control text-center mt-5"
               onChange={(e) => setUser({ ...user, email: e.target.value })}
@@ -65,6 +64,7 @@ export const Login = () => {
 
           <div className="input-group mb-3">
             <input
+              id="password"
               type="text"
               className="form-control text-center"
               placeholder="Contraseña"
