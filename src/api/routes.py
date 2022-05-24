@@ -20,6 +20,7 @@ def register_user():
     else:
         return jsonify({"created": False, "msg": "No existe información"}), 400
 
+<<<<<<< HEAD
 
 @api.route('/login',methods=['POST'])
 def login_user():
@@ -34,3 +35,18 @@ def login_user():
              return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
     else: 
         return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
+=======
+@api.route('/register', methods=['POST'])
+def Register_user():
+        body_email = request.json.get("email")
+        body_password = request.json.get("password")
+        body_nombre = request.json.get("nombre")
+        body_nacimiento = request.json.get("nacimiento")
+        new_user = User(email=body_email, password=body_password, nombre=body_nombre, nacimiento=body_nacimiento)
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({"User": new_user.serialize()}), 200
+
+  
+ 
+>>>>>>> develop

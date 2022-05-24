@@ -1,100 +1,121 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import "../../styles/login.css";
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Context } from "../store/appContext";
 
 export const Register = () => {
-  const history = useHistory();
-  const [user, setUser] = useState({});
-  const [error, setError] = useState(null);
+  const { store, actions } = useContext(Context);
+  const [userData, setUserData] = useState({});
 
-  const sendUserInfo = async () => {
-    if (user.email != null && user.email.trim() != "") {
-      setError(null);
-      const response = await fetch(
-        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu45.gitpod.io/api/register",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(user),
-        }
-      );
-      const data = await response.json();
-      if (data.created) {
-        history.push("/userProfile");
+  const createUser = async () => {
+    const response = await fetch(
+      "https://3001-thelgaris-finalproject-thgg0srgv96.ws-eu45.gitpod.io/api/register",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(userData),
       }
-    } else {
-      setError("Faltan datos por ingresar");
-      setTimeout(() => {
-        setError(null);
-      }, 3000);
-    }
+    );
+    const data = await response.json();
+    console.log("@@@@@@@@@@@", data);
   };
 
   return (
-    <div className="container" onClick={() => {}}>
-      <Link to="/" className="pickateamlink">
-        <h1 className="text-center pickateam">NUEVO USUARIO</h1>
-      </Link>
-      <div className="container login">
-        <div className="container-fluid">
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control text-center mt-5"
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
-              placeholder="Email"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-            />
-          </div>
+    <div
+      className="container p-3 mb-5 rounded bg-secondary h-auto Register"
+      style={{
+        width: "25rem",
+      }}
+    >
+      <div></div>
 
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control text-center"
-              placeholder="Contraseña"
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
-            />
-          </div>
-          <div className="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="" className="me-1" />
-              <span>Recordar</span>
-            </label>
-          </div>
+      <div className="row mx-auto mt-1 mb-4 ">
+        <div className="d-flex justify-content-center ">
+          <Link to="/">
+            <img
+              src="https://picsum.photos/120/120"
+              className="rounded-circle"
+            ></img>
+          </Link>
         </div>
-        <div className="d-grid gap-2 mx-auto">
+      </div>
+      <div className="row mx-auto">
+        <div className="d-grid gap-3">
+          <input
+            id="email"
+            type="text"
+            className="form-control"
+            placeholder="Email"
+            aria-label="Email"
+            aria-describedby="basic-addon1"
+            onChange={(e) => {
+              setUserData({ ...userData, email: e.target.value });
+            }}
+          />
+          <input
+            id="password"
+            type="text"
+            className="form-control"
+            placeholder="Password"
+            aria-label="Password"
+            aria-describedby="basic-addon1"
+            onChange={(e) => {
+              setUserData({ ...userData, password: e.target.value });
+            }}
+          />
+          <input
+            id="nombre"
+            type="text"
+            className="form-control"
+            placeholder="Nombre"
+            aria-label="Nombre"
+            aria-describedby="basic-addon1"
+            onChange={(e) => {
+              setUserData({ ...userData, nombre: e.target.value });
+            }}
+          />
+          <input
+            id="nacimiento"
+            type="text"
+            className="form-control"
+            placeholder="Fecha de nacimiento"
+            aria-label="Fecha de nacimiento"
+            aria-describedby="basic-addon1"
+            onChange={(e) => {
+              setUserData({ ...userData, nacimiento: e.target.value });
+            }}
+          />
+        </div>
+        <div className="d-grid gap-2 mt-4 mx-auto">
           <button
+            className="btn btn-warning"
             type="button"
-            className="btn login-btn btn-warning text-white"
-            onClick={() => sendUserInfo()}
+            onClick={() => {
+              createUser();
+            }}
           >
             Registrar
           </button>
-        </div>
-        <div className="container-fluid text-center mt-3">
-          <span className="sp1">¿Olvidó su contraseña?</span>
-        </div>
-        <div className="container-fluid text-center mt-3">
-          <span className="sp1">
-            Al iniciar sesión, aceptas la Politica de privacidad y los Términos
-            de uso de PICKATEAM
-          </span>
-        </div>
-        <div className="container-fluid text-center mt-3">
-          <span className="sp2">
-            ¿Nuevo usuario?{" "}
-            <Link to="/register" className="registerlink">
-              Registrate
-            </Link>
-          </span>
+
+          <button className="btn btn-light" type="button">
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/323_Strava_logo-48.png"
+              style={{ width: "25px", height: "25px ", float: "left" }}
+            />
+            Registrar con Strava
+          </button>
+          <button className="btn btn-light" type="button">
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
+              style={{ width: "20px", height: "20px ", float: "left" }}
+            />
+            Registrar con Google
+          </button>
         </div>
       </div>
-      {error != null ? <h3 className="text-danger">{error}</h3> : null}
     </div>
   );
 };
+
+export default Register;

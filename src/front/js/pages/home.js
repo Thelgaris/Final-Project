@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
+import "../../styles/register.css";
 
 export const Home = () => {
   return (
