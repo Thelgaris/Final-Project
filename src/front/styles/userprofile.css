@@ -1,0 +1,47 @@
+.avatar {
+  border-radius: 50%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  width: 180px;
+}
+
+.button-container {
+  display: inline-block;
+  position: relative;
+}
+
+.button-container i {
+  position: absolute;
+  bottom: 0.3em;
+  right: 0.8em;
+  color: white;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+}
+
+.modalbtn {
+  background-color: rgb(253, 197, 43);
+  width: 8rem;
+  border: none;
+}
+.modalbtn2 {
+  background-color: rgb(136, 136, 136);
+  width: 8rem;
+  border: none;
+}
+.deportesbtn {
+  background-color: white;
+  border-radius: 3px;
+  width: 324px;
+  margin-left: 5%;
+  border-color: rgba(118, 118, 118, 0.295);
+  color: rgba(15, 15, 15, 0.616);
+  border-radius: 4px;
+}
+.save-btn {
+  background-color: rgba(247, 191, 38, 0.74);
+  border-radius: 3px;
+  width: 324px;
+  margin-left: 5%;
+}

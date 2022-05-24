@@ -22,16 +22,20 @@ export const Login = () => {
         }
       );
       const data = await response.json();
-      if (data.logged == false) {
-        setError("Rellenar datos");
-      } else if (data.logged == true) {
+      if (data.access_token) {
+        localStorage.setItem("userToken", data.access_token);
         history.push("/userProfile");
+        if (data.logged == false) {
+          setError("Rellenar datos");
+        } else if (data.logged == true) {
+          history.push("/userProfile");
+        }
+      } else {
+        setError("Rellenar datos");
+        setTimeout(() => {
+          setError(null);
+        }, 3000);
       }
-    } else {
-      setError("Rellenar datos");
-      setTimeout(() => {
-        setError(null);
-      }, 3000);
     }
   };
   const loginError = (async) => {

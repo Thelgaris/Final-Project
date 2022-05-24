@@ -1,7 +1,28 @@
-/*
-    home.css: This website contains selectors only used in home.css
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 40px;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+#carouselExampleControls {
+  width: 700px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+.carousel-item {
+  height: 450px;
+}
+.card1 {
+  width: 400px;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8c/The_whole_Alhambra_Granada_Spain.jpg);
+}
+
+.btn {
+  width: 400px;
+  background-color: rgba(247, 191, 38, 0.877);
+  font-size: large;
+}

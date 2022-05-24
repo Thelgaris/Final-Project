@@ -1,7 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import "../../styles/navbar.css";
 
 export const Navbar = () => {
+  const sendToLoginPage = async () => {
+    if (data.access_token) {
+      localStorage.removeItem("userToken", data.access_token);
+      history.push("/login");
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light">
       <div className="container-fluid">
@@ -32,16 +40,32 @@ export const Navbar = () => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <Link to="/login" className="navbarlink">
                 <li className="nav-item">
-                  <h1 className="nav-link active" aria-current="page" href="#">
+                  <span
+                    className="nav-link active"
+                    aria-current="page"
+                    href="#"
+                  >
                     Login
-                  </h1>
+                  </span>
+                </li>
+              </Link>
+              <Link to="/login" className="navbarlink">
+                <li className="nav-item">
+                  <span
+                    className="nav-link active"
+                    aria-current="page"
+                    href="#"
+                    onClick={() => sendToLoginPage()}
+                  >
+                    Logout
+                  </span>
                 </li>
               </Link>
               <Link to="/register" className="navbarlink">
                 <li className="nav-item">
-                  <h1 className="nav-link" href="#">
+                  <span className="nav-link" href="#">
                     Registrate
-                  </h1>
+                  </span>
                 </li>
               </Link>
             </ul>

@@ -31,7 +31,6 @@ const Layout = () => {
             <Route exact path="/userProfile">
               <UserProfile />
             </Route>
-
             <Route>
               <h1>Not found!</h1>
             </Route>
