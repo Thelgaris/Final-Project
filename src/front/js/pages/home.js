@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 
 import "../../styles/home.css";
+import "../../styles/register.css";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);

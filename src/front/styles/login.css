@@ -1,0 +1,43 @@
+.login {
+  background: linear-gradient(to bottom, rgb(218, 218, 219), white);
+  margin-top: 120px;
+  height: 450px;
+  width: 350px;
+  border-radius: 3px;
+  border: 1px transparent;
+}
+.login-btn {
+  background-color: rgba(247, 191, 38, 0.877);
+  border-radius: 3px;
+  width: 90%;
+  height: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.pickateam {
+  margin-top: 50px;
+  margin-bottom: -80px;
+}
+.sp1 {
+  color: rgba(0, 0, 0, 0.507);
+}
+
+.sp1:hover {
+  text-decoration: underline;
+}
+.sp2 {
+  font-size: 1rem;
+}
+.registerlink {
+  color: rgb(53, 142, 243);
+  text-decoration: none;
+}
+.pickateamlink {
+  text-decoration: none;
+  color: rgba(56, 56, 56, 0.986);
+}
+
+.pickateamlink:hover {
+  text-decoration: none;
+  color: rgba(102, 101, 101, 0.507);
+}
