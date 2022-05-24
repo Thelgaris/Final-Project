@@ -6,18 +6,27 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
-
+       
+@api.route('/login',methods=['POST'])
+def login_user():
+    body_email = request.json.get('email')
+    body_password = request.json.get('password')
+    if body_email and body_password:
+        user = User.query.filter_by(email=body_email).filter_by(password=body_password).filter_by(is_active=True).first()
+        if user:
+            return jsonify({"logged": True, "user": user.serialize()}),200
+        else:
+             return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
+    else: 
+        return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
 
 @api.route('/register', methods=['POST'])
 def Register_user():
-        body_email = request.json.get("email")
-        body_password = request.json.get("password")
-        body_nombre = request.json.get("nombre")
-        body_nacimiento = request.json.get("nacimiento")
-        new_user = User(email=body_email, password=body_password, nombre=body_nombre, nacimiento=body_nacimiento)
-        db.session.add(new_user)
-        db.session.commit()
-        return jsonify({"User": new_user.serialize()}), 200
-
-  
- 
+    body_email = request.json.get("email")
+    body_password = request.json.get("password")
+    body_nombre = request.json.get("nombre")
+    body_nacimiento = request.json.get("nacimiento")
+    new_user = User(email=body_email, password=body_password, nombre=body_nombre, nacimiento=body_nacimiento)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({"User": new_user.serialize()}), 200

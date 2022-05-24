@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./pages/home";
+import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
@@ -20,9 +21,15 @@ const Layout = () => {
             <Route exact path="/">
               <Home />
             </Route>
+            <Route exact path="/login">
+              <Home Login />
+            </Route>
 
             <Route exact path="/register">
               <Register />
+            </Route>
+            <Route exact path="/userProfile">
+              <UserProfile />
             </Route>
 
             <Route>
