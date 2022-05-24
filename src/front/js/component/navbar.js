@@ -34,7 +34,7 @@ export const Navbar = () => {
             <input
               className="form-control me-2"
               type="search"
-              placeholder="Ciudad"
+              placeholder="Buscar ciudad"
               aria-label="Search"
             />
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
