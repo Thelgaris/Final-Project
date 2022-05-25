@@ -102,7 +102,7 @@ export const Home = () => {
         <div className="d-grid gap-2 col-6-sm mx-auto mt-5 mb-5">
           <Link to="/register">
             <button
-              className="btn 1btn btn-warning btn-sm text-white"
+              className="btn btnhome btn-warning btn-sm text-white"
               type="button"
             >
               REGISTRATE
@@ -110,7 +110,7 @@ export const Home = () => {
           </Link>
           <Link to="/login">
             <button
-              className="btn 1btn btn-warning btn-sm text-white"
+              className="btn btnhome btn-warning btn-sm text-white"
               type="button"
             >
               LOGIN

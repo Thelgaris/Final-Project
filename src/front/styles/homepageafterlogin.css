@@ -1,0 +1,24 @@
+.button-container input {
+  position: absolute;
+  bottom: 1.8em;
+  right: 22em;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  width: 249px;
+  height: 20px;
+  font-size: small;
+  border-bottom: none;
+}
+
+.city {
+  border-radius: 3px;
+  height: 300px;
+  width: 800px;
+  object-fit: cover;
+  object-position: center;
+}
+.btnhpal {
+  width: 200px;
+  background-color: rgba(247, 191, 38, 0.877);
+  border: none;
+}
