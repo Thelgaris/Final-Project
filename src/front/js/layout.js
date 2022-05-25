@@ -5,9 +5,11 @@ import { Home } from "./pages/home";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import injectContext from "./store/appContext";
-import { Navbar } from "./component/navbar";
 import { UserProfile } from "./pages/userProfile";
 import { Homepageafterlogin } from "./pages/homepageafterlogin";
+
+import { Navbar } from "./component/navbar";
+import { Footer } from "./component/footer";
 
 import ScrollToTop from "./component/scrollToTop";
 
@@ -41,6 +43,7 @@ const Layout = () => {
               <h1>Not found!</h1>
             </Route>
           </Switch>
+          <Footer />
         </ScrollToTop>
       </BrowserRouter>
     </div>

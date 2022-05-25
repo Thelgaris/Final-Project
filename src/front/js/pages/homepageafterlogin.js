@@ -37,7 +37,7 @@ export const Homepageafterlogin = () => {
       >
         <li className="nav-item bg-white" role="presentation">
           <button
-            className="nav-link active bg-light btnhpal text-black"
+            className="nav-link btnhpal active bg-primary  text-black"
             id="pills-home-tab"
             data-bs-toggle="pill"
             data-bs-target="#pills-home"
@@ -53,7 +53,7 @@ export const Homepageafterlogin = () => {
         <li className="nav-item" role="presentation">
           <button
             type="button "
-            className="nav-link bg-light btnhpal text-black"
+            className="nav-link btnhpal bg-success  text-black"
             id="pills-profile-tab"
             data-bs-toggle="pill"
             data-bs-target="#pills-profile"
@@ -68,7 +68,7 @@ export const Homepageafterlogin = () => {
       </ul>
       <div className="tab-content" id="pills-tabContent">
         <div
-          className="tab-pane fade show active"
+          className="tab-pane fade show active bg-primary"
           id="pills-home"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
@@ -76,7 +76,7 @@ export const Homepageafterlogin = () => {
           aqui va el componente de las pistas
         </div>
         <div
-          class="tab-pane fade"
+          class="tab-pane fade bg-success"
           id="pills-profile"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
