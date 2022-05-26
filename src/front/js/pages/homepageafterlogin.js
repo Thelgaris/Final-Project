@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/homepageafterlogin.css";
-import { EventsComponent } from "./eventsComponent";
+import { EventsComponent } from "../component/eventsComponent";
 
 export const Homepageafterlogin = () => {
   return (
@@ -10,11 +10,14 @@ export const Homepageafterlogin = () => {
         <div className="jumbotron jumbotron-fluid w-50">
           <div className="container-fluid">
             <h1 className="display-4">PICKATEAM</h1>
-            <h2 style={{ color: "gray" }}>
-              En Pickateam queremos crear una comunidad de deportistas, a través
-              de la cual ayudarte a encontrar nuevas personas, nuevos jugadores
-              y, por qué no, nuevos equipos.
-            </h2>
+            <div className="d-flex">
+              <EventsComponent />
+              <h2 style={{ color: "gray" }}>
+                En Pickateam queremos crear una comunidad de deportistas, a
+                través de la cual ayudarte a encontrar nuevas personas, nuevos
+                jugadores y, por qué no, nuevos equipos.
+              </h2>
+            </div>
           </div>
         </div>
       </div>
