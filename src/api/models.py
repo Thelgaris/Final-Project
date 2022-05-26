@@ -14,6 +14,7 @@ class User(db.Model):
     sports = db.Column(db.String(80), unique=False, nullable=True)
     is_active = db.Column(db.Boolean(), unique=False, nullable=True)
     
+    
 
 
     def __repr__(self):
@@ -29,6 +30,7 @@ class User(db.Model):
             "gender": self.gender,
             "city": self.city,
             "sports": self.sports,
+            
             
       
             # do not serialize the password, its a security breach

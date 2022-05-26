@@ -101,12 +101,18 @@ export const Home = () => {
       <div>
         <div className="d-grid gap-2 col-6-sm mx-auto mt-5 mb-5">
           <Link to="/register">
-            <button className="btn btn-warning btn-sm text-white" type="button">
+            <button
+              className="btn 1btn btn-warning btn-sm text-white"
+              type="button"
+            >
               REGISTRATE
             </button>
           </Link>
           <Link to="/login">
-            <button className="btn btn-warning btn-sm text-white" type="button">
+            <button
+              className="btn 1btn btn-warning btn-sm text-white"
+              type="button"
+            >
               LOGIN
             </button>
           </Link>
