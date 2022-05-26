@@ -6,6 +6,10 @@ import { Login } from "./pages/login";
 import { Register } from "./pages/register";
 import injectContext from "./store/appContext";
 import { UserProfile } from "./pages/userProfile";
+import { Homepageafterlogin } from "./pages/homepageafterlogin";
+
+import { Navbar } from "./component/navbar";
+import { Footer } from "./component/footer";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -34,6 +38,9 @@ const Layout = () => {
             </Route>
             <Route exact path="/userProfile">
               <UserProfile />
+            </Route>
+            <Route exact path="/homepageafterlogin">
+              <Homepageafterlogin />
             </Route>
             <Route>
               <h1>Not found!</h1>
