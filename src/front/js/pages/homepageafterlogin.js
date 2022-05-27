@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/homepageafterlogin.css";
-import { EventsComponent } from "./eventsComponent";
-
+import { EventsComponent } from "../component/eventsComponent";
 export const Homepageafterlogin = () => {
   return (
     <div className="text-center mt-5">
@@ -46,7 +45,6 @@ export const Homepageafterlogin = () => {
             role="tab"
             aria-controls="pills-home"
             aria-selected="true"
-            onClick={() => {}}
           >
             Pistas
           </button>
@@ -61,28 +59,35 @@ export const Homepageafterlogin = () => {
             role="tab"
             aria-controls="pills-profile"
             aria-selected="false"
-            onClick={() => {}}
           >
             Eventos
           </button>
         </li>
       </ul>
-      <div className="tab-content" id="pills-tabContent">
-        <div
-          className="tab-pane fade show active bg-primary"
-          id="pills-home"
-          role="tabpanel"
-          aria-labelledby="pills-home-tab"
-        >
-          aqui va el componente de las pistas
-        </div>
-        <div
-          class="tab-pane fade bg-success"
-          id="pills-profile"
-          role="tabpanel"
-          aria-labelledby="pills-profile-tab"
-        >
-          aqui va el componente de los eventos
+      <div className="sm">
+        <div className="row">
+          <div className="col-4"></div>
+          <div className="col-4">
+            <div className="tab-content" id="pills-tabContent">
+              <div
+                className="tab-pane fade show active "
+                id="pills-home"
+                role="tabpanel"
+                aria-labelledby="pills-home-tab"
+              >
+                <EventsComponent />
+              </div>
+              <div
+                className="tab-pane fade bg-success"
+                id="pills-profile"
+                role="tabpanel"
+                aria-labelledby="pills-profile-tab"
+              >
+                aqui va el componente de los eventos
+              </div>
+            </div>
+          </div>
+          <div className="col-4"></div>
         </div>
       </div>
     </div>

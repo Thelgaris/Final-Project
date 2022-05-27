@@ -45,3 +45,17 @@
   width: 324px;
   margin-left: 5%;
 }
+.birth {
+  color: rgba(99, 99, 99, 0.781);
+  display: flex;
+}
+.birth::-webkit-calendar-picker-indicator {
+  display: none;
+}
+select {
+  color: rgba(118, 118, 118, 0.938);
+  width: 328px;
+  height: 38px;
+  border-color: rgba(118, 118, 118, 0.342);
+  border-radius: 5px;
+}

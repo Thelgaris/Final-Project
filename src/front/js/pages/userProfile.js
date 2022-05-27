@@ -71,11 +71,11 @@ export const UserProfile = () => {
       <div className="input-group mx-auto mb-3 w-25">
         <input
           id="surname"
-          type="text"
+          type="select"
           className="form-control text-center"
           onChange={(e) => setUser({ ...user, surname: e.target.value })}
           placeholder="Apellidos"
-          aria-label="Apellidos"
+          aria-label="surname"
           aria-describedby="basic-addon1"
         />
       </div>
@@ -83,25 +83,20 @@ export const UserProfile = () => {
       <div className="input-group mx-auto mb-3 w-25">
         <input
           id="birth"
-          type="text"
-          className="form-control text-center"
+          type="date"
+          className="birth form-control text-center"
           onChange={(e) => setUser({ ...user, birth: e.target.value })}
-          placeholder="Fecha nacimiento"
-          aria-label="Fecha de nacimiento"
+          placeholder="Birth"
+          aria-label="Birth"
           aria-describedby="basic-addon1"
         />
       </div>
 
       <div className="input-group mx-auto mb-3 w-25">
-        <input
-          id="gender"
-          type="text"
-          className="form-control text-center"
-          onChange={(e) => setUser({ ...user, gender: e.target.value })}
-          placeholder="Género"
-          aria-label="Género"
-          aria-describedby="basic-addon1"
-        />
+        <select className="text-center">
+          <option value>Hombre</option>
+          <option value>Mujer</option>
+        </select>
       </div>
 
       <div className="input-group mx-auto mb-3 w-25">
@@ -111,7 +106,7 @@ export const UserProfile = () => {
           className="form-control text-center"
           onChange={(e) => setUser({ ...user, city: e.target.value })}
           placeholder="Ciudad"
-          aria-label="Ciudad"
+          aria-label="City"
           aria-describedby="basic-addon1"
         />
       </div>

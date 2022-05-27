@@ -32,12 +32,18 @@ export const Sportmodal = () => (
             ></button>
           </div>
           <div className="modal-body">
-            <ul className="list-unstyled">
-              <li>baloncesto</li>
-              <li>futbol</li>
-              <li>running</li>
-              <li>bicicleta</li>
-            </ul>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                value=""
+                placeholder="baloncesto"
+                id="flexCheckDefault"
+              />
+              <label className="form-check-label" for="flexCheckDefault">
+                baloncesto
+              </label>
+            </div>
           </div>
           <div className="modal-footer">
             <button
