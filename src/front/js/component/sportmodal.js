@@ -7,7 +7,7 @@ export const Sportmodal = ({ user, setUser }) => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.getSports;
+    actions.getSports();
   }, []);
 
   const getSports = async () => {
@@ -55,7 +55,7 @@ export const Sportmodal = ({ user, setUser }) => {
             <div className="modal-body">
               <div>
                 {store.sports.map((sports) => {
-                  <div>{sports}</div>;
+                  return <div key={sports.id}>{sports.name}</div>;
                 })}
               </div>
               {/* <div className="form-check">

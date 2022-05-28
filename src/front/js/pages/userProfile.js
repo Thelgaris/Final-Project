@@ -9,19 +9,16 @@ export const UserProfile = () => {
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
 
-  useEffect(() => {
-    actions.getSports;
-  }, []);
 
   const sendUserInfo = async () => {
     if (
       (user.name,
-      user.surname,
-      user.birth,
-      user.gender != null && user.name.trim(),
-      user.surname.trim(),
-      user.birth.trim(),
-      user.gender.trim() != "")
+        user.surname,
+        user.birth,
+        user.gender != null && user.name.trim(),
+        user.surname.trim(),
+        user.birth.trim(),
+        user.gender.trim() != "")
     ) {
       setError(null);
       const response = await cfetch(
@@ -64,9 +61,7 @@ export const UserProfile = () => {
       </div>
       <div className="input-group mx-auto mb-3 w-25">
         <div>
-          {store.sports.map((sports) => {
-            <div>{sports}</div>;
-          })}
+
         </div>
         <input
           id="name"

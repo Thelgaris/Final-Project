@@ -25,7 +25,6 @@ class User(db.Model):
             "birth": self.birth,
             "gender": self.gender,
             "city": self.city,
-            "sports": self.sports,
         }
 
 class Sports(db.Model):
@@ -43,9 +42,9 @@ class Sports(db.Model):
 
 class UserSports(db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    sport_id = db.Column(db.Integer, db.ForeignKey('sports.id'), nullable=False)
+    sport_id = db.Column(db.Integer, db.ForeignKey('sports.id'))
     sports = db.relationship('Sports')
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User')
 
     
