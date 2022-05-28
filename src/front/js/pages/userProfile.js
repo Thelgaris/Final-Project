@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/userprofile.css";
+import { Context } from "../store/appContext";
 import { Sportmodal } from "../component/sportmodal";
 
 export const UserProfile = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.getSports;
+  }, []);
 
   const sendUserInfo = async () => {
     if (
@@ -18,7 +24,7 @@ export const UserProfile = () => {
       user.gender.trim() != "")
     ) {
       setError(null);
-      const response = await fetch(
+      const response = await cfetch(
         "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/userprofile",
         {
           method: "POST",
@@ -57,6 +63,11 @@ export const UserProfile = () => {
         </Link>
       </div>
       <div className="input-group mx-auto mb-3 w-25">
+        <div>
+          {store.sports.map((sports) => {
+            <div>{sports}</div>;
+          })}
+        </div>
         <input
           id="name"
           type="text"

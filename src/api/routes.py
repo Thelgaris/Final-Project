@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Sports
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity,jwt_required
 
@@ -36,16 +36,8 @@ def Register_user():
     else:
         return jsonify({"Error": "Error"}), 400
 
-@api.route('/sports',methods=['PUT'])
-def Sports_user():
-    body_basketball = request.json.get("basketball")
-    body_football = request.json.get("football")
-    body_beach_volley = request.json.get("beach_volley")
-    body_running = request.json.get("running")
-    body_cycling = request.json.get("cycling")
-    body_tennis = request.json.get("tennis")
-    body_padel = request.json.get("padel")
-    get_sports = Sports(basketball=body_basketball,football=body_football, beach_volley=body_beach_volley, running=body_running, cycling=body_cycling,tennis=body_tennis,padel=body_padel) 
-    db.session.add(get_sports)
-    db.session.commit()
-
+@api.route('/sports', methods=['GET'])
+def get_all_sports():
+    sports = Sports.query.all()
+    sports_serialized = list(map(lambda x: x.serialize(), sports))
+    return jsonify({"response": sports_serialized}), 200

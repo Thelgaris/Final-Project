@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../../styles/userprofile.css";
+import { Context } from "../store/appContext";
 
 export const Sportmodal = ({ user, setUser }) => {
   const [sportsData, setSportsData] = useState({});
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.getSports;
+  }, []);
 
   const getSports = async () => {
     const response = await fetch(
@@ -47,7 +53,12 @@ export const Sportmodal = ({ user, setUser }) => {
               ></button>
             </div>
             <div className="modal-body">
-              <div className="form-check">
+              <div>
+                {store.sports.map((sports) => {
+                  <div>{sports}</div>;
+                })}
+              </div>
+              {/* <div className="form-check">
                 <input
                   className="form-check-input"
                   type="radio"
@@ -157,7 +168,7 @@ export const Sportmodal = ({ user, setUser }) => {
                 <label className="form-check-label" htmlFor="cygling">
                   Padel
                 </label>
-              </div>
+              </div>*/}
             </div>
             <div className="modal-footer">
               <button
