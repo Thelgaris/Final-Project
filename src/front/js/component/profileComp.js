@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 
 export const ProfileComp = () => {
   return (
-    <div className="container ">
+    <div className="container w-25 ">
       <div
-        className="card-fluid bg-light
+        className="card-fluid bg-light rounded
       "
-        style={{ width: "23rem" }}
       >
         <img
           src="https://picsum.photos/seed/picsum/300/200"
@@ -42,7 +41,9 @@ export const ProfileComp = () => {
               </button>
             </li>
             <li className="nav-item">
-              <button className="nav-link bg-link disabled">Cycling</button>
+              <button className="nav-link btn bg-link text-muted text-decoration-none">
+                Cycling
+              </button>
             </li>
           </ul>
           <div className="card-footer mt-2">
