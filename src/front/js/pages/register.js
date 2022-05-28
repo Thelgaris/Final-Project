@@ -11,7 +11,7 @@ export const Register = () => {
     const response = await fetch(
       "https://3001-thelgaris-finalproject-zo7slnm098z.ws-eu46.gitpod.io/api/register",
       {
-        method: "PUT",
+        method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(userData),
       }
@@ -87,16 +87,17 @@ export const Register = () => {
           />
         </div>
         <div className="d-grid gap-2 mt-4 mx-auto">
-          <button
-            className="btn btn-warning"
-            type="button"
-            onClick={() => {
-              createUser();
-            }}
-          >
-            Registrar
-          </button>
-
+          <Link to="/userProfile" className="text-decoration-none">
+            <button
+              className="btn btn-warning d-grid w-100"
+              type="button"
+              onClick={() => {
+                createUser();
+              }}
+            >
+              Registrar
+            </button>
+          </Link>
           <button className="btn btn-light" type="button">
             <img
               src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/323_Strava_logo-48.png"

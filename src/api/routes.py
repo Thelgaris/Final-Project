@@ -22,7 +22,7 @@ def login_user():
     else: 
         return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
 
-@api.route('/register', methods=['PUT'])
+@api.route('/register', methods=['POST'])
 def Register_user():
     body_email = request.json.get("email")
     body_password = request.json.get("password")
