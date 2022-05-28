@@ -10,13 +10,13 @@
   border-bottom: none;
 }
 
-.city {
+/* .city {
   border-radius: 3px;
   height: 300px;
   width: 800px;
   object-fit: cover;
   object-position: center;
-}
+} */
 .btnhpal {
   width: 200px;
   background-color: rgba(247, 191, 38, 0.877);

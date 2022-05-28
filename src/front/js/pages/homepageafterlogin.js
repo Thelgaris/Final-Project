@@ -11,7 +11,6 @@ export const Homepageafterlogin = () => {
           <div className="container-fluid">
             <h1 className="display-4">PICKATEAM</h1>
             <div className="d-flex">
-              <EventsComponent />
               <h2 style={{ color: "gray" }}>
                 En Pickateam queremos crear una comunidad de deportistas, a
                 través de la cual ayudarte a encontrar nuevas personas, nuevos
@@ -21,18 +20,18 @@ export const Homepageafterlogin = () => {
           </div>
         </div>
       </div>
-      <div className="button-container">
-        <img
-          className="city mt-4 mb-4"
-          src="https://placebeard.it/640x360"
-          alt=""
-        />
-        <input
-          className="form-control input1 mx-auto mt-4 text-center"
-          type="search"
-          placeholder="Buscar ciudad"
-          aria-label="Search"
-        />
+      <div className="button-container row d-flex">
+        <div className="col-3 mt-4"></div>
+        <div className="col-6 ">
+          <img
+            className="city mt-4 mb-4 w-100 rounded"
+            src="https://placebeard.it/640x360"
+            alt=""
+          />
+        </div>
+        <div className="col-3 mt-4">
+          <EventsComponent />
+        </div>
       </div>
       <ul
         className="nav nav-pills mb-3 d-flex justify-content-center"
