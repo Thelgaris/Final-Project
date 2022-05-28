@@ -5,7 +5,7 @@ import { CreateEventBtn } from "./createEventBtn";
 export const EventsComponent = () => {
   return (
     <div className="container">
-      <div className="card" style={{ width: "18rem" }}>
+      <div className="card" style={{ width: "16rem" }}>
         <div className="card-body">
           <h5 className="card-title">Próximos Eventos</h5>
         </div>

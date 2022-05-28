@@ -2,35 +2,44 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/homepageafterlogin.css";
 import { EventsComponent } from "../component/eventsComponent";
+import { ProfileComp } from "../component/profileComp";
+import { StravaData } from "../component/stravaData";
 
 export const Homepageafterlogin = () => {
   return (
     <div className="text-center mt-5">
       <div className="row justify-content-center">
-        <div className="jumbotron jumbotron-fluid w-50">
-          <div className="container-fluid">
-            <h1 className="display-4">PICKATEAM</h1>
-            <div className="d-flex">
-              <h2 style={{ color: "gray" }}>
-                En Pickateam queremos crear una comunidad de deportistas, a
-                través de la cual ayudarte a encontrar nuevas personas, nuevos
-                jugadores y, por qué no, nuevos equipos.
-              </h2>
+        <div className="jumbotron jumbotron-fluid">
+          <div className="container-fluid row">
+            <div className="col-3 d-inline">
+              <ProfileComp />
+            </div>
+            <div className="col-6">
+              <h1 className="">PICKATEAM</h1>
+              <div className="d-flex">
+                <h2 style={{ color: "gray" }}>
+                  En Pickateam queremos crear una comunidad de deportistas, a
+                  través de la cual ayudarte a encontrar nuevas personas, nuevos
+                  jugadores y, por qué no, nuevos equipos.
+                </h2>
+              </div>
+            </div>
+            <div className="col-2 mt-4">
+              <EventsComponent />
             </div>
           </div>
         </div>
       </div>
-      <div className="button-container row d-flex">
-        <div className="col-3 mt-4"></div>
+      <div className="button-container container-fluid row d-flex">
+        <div className="col-3 mt-4 d-grid">
+          <StravaData />
+        </div>
         <div className="col-6 ">
           <img
             className="city mt-4 mb-4 w-100 rounded"
             src="https://placebeard.it/640x360"
             alt=""
           />
-        </div>
-        <div className="col-3 mt-4">
-          <EventsComponent />
         </div>
       </div>
       <ul
