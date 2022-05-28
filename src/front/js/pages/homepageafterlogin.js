@@ -6,6 +6,8 @@ import { ProfileComp } from "../component/profileComp";
 import { StravaData } from "../component/stravaData";
 import { PistaList } from "../component/pistaList";
 import { EventList } from "../component/eventList";
+import { EventInfo } from "../component/eventInfo";
+import { PistaInfo } from "../component/pistaInfo";
 
 export const Homepageafterlogin = () => {
   return (
@@ -51,7 +53,7 @@ export const Homepageafterlogin = () => {
         >
           <li className="nav-item col-2" role="presentation">
             <button
-              className="nav-link btn active btn-bg-light w-100 text-black"
+              className="nav-link btn  btn-bg-light w-100 text-black"
               id="pistas"
               data-bs-toggle="pill"
               data-bs-target="#pistasList"
@@ -80,22 +82,22 @@ export const Homepageafterlogin = () => {
             </button>
           </li>
         </ul>
-        <div className="tab-content row" id="pills-tabContent">
+        <div className="tab-content row " id="pills-tabContent">
           <div
-            className="tab-pane fade show active"
+            className="tab-pane fade show "
             id="pistasList"
             role="tabpanel"
             aria-labelledby="pills-home-tab"
           >
-            <PistaList />
+            <PistaInfo />
           </div>
           <div
-            className="tab-pane fade"
+            className="tab-pane fade "
             id="eventosList"
             role="tabpanel"
             aria-labelledby="pills-profile-tab"
           >
-            <EventList />
+            <EventInfo />
           </div>
         </div>
       </div>

@@ -5,10 +5,10 @@ export const EventInfo = () => {
   return (
     <div className="container infoevent justify-content-center">
       <div className="row ">
-        <div className="col-4 ">
+        <div className="col-4 justify-content-center">
           <button
             type="button"
-            className="btn btn-link"
+            className="btn btn-link text-decoration-none text-dark"
             data-bs-toggle="modal"
             data-bs-target="#evento"
           >

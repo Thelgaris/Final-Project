@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 export const PistaInfo = () => {
   return (
     <div className="container pistaInfo">
-      <div className="row">
+      <div className="row d-flex justfy-content-center">
         <div className="col-4">
           <button
             type="button"
-            className="btn btn-link"
+            className="btn btn-link text-decoration-none text-dark"
             data-bs-toggle="modal"
             data-bs-target="#pista"
           >

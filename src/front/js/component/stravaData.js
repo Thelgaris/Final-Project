@@ -15,7 +15,7 @@ export const StravaData = () => {
         >
           <li className="nav-item " role="presentation">
             <button
-              className="nav-link btn active  text-black"
+              className="nav-link btn active btn-warning text-black"
               id="running"
               data-bs-toggle="pill"
               data-bs-target="#running-data"
@@ -31,7 +31,7 @@ export const StravaData = () => {
           <li className="nav-item" role="presentation">
             <button
               type="button "
-              className="nav-link btn   text-black"
+              className="nav-link btn  btn-warning text-black"
               id="cycling"
               data-bs-toggle="pill"
               data-bs-target="#cycling-data"
