@@ -6,7 +6,7 @@ export const CreateEventBtn = () => {
     <div>
       <button
         type="button"
-        className="btn btn-warning"
+        className="btn btn-warning "
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
