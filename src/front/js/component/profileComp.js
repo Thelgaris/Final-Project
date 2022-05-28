@@ -13,7 +13,7 @@ export const ProfileComp = () => {
           className="card-img-top img-fluid rounded-circle p-4"
           alt="Foto Perfil"
         />
-        <div className="card-body">
+        <div className="card-body rounded">
           <h5 className="card-title">Nombre</h5>
           <p className="card-text">Ciudad</p>
         </div>

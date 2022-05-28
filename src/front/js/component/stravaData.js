@@ -66,6 +66,16 @@ export const StravaData = () => {
             <div>2h 40m 13s</div>
           </div>
         </div>
+        <div className="d-grid col-6 mx-auto">
+          <button
+            type="button "
+            className=" btn  btn-warning text-black"
+            id=""
+            onClick={() => {}}
+          >
+            + Info
+          </button>
+        </div>
       </div>
     </div>
   );

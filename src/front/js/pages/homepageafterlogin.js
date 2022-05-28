@@ -20,7 +20,7 @@ export const Homepageafterlogin = () => {
             </div>
             <div className="col-6">
               <h1 className="">PICKATEAM</h1>
-              <div className="d-flex">
+              <div className="d-flex ">
                 <h2 style={{ color: "gray" }}>
                   En Pickateam queremos crear una comunidad de deportistas, a
                   través de la cual ayudarte a encontrar nuevas personas, nuevos
