@@ -19,7 +19,7 @@ export const UserProfile = () => {
     ) {
       setError(null);
       const response = await fetch(
-        "https://3001-thelgaris-finalproject-zo7slnm098z.ws-eu46.gitpod.io/api/userprofile",
+        "https://3001-thelgaris-finalproject-zo7slnm098z.ws-eu46.gitpod.io/api/userProfile",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -98,8 +98,8 @@ export const UserProfile = () => {
           type="text"
           className="form-control text-center"
           onChange={(e) => setUser({ ...user, gender: e.target.value })}
-          placeholder="Género"
-          aria-label="Género"
+          placeholder="Genero"
+          aria-label="Genero"
           aria-describedby="basic-addon1"
         />
       </div>

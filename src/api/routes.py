@@ -33,3 +33,17 @@ def Register_user():
     db.session.commit()
     return jsonify({"User": new_user.serialize()}), 200
 
+
+@api.route('/userProfile', methods=['POST'])
+def user_details():
+    body_email = request.json.get("email") 
+    body_name = request.json.get("name")
+    body_surname = request.json.get("surname")
+    body_birth = request.json.get("birth")
+    body_gender = request.json.get("gender")
+    body_city = request.json.get("city")
+    
+    new_user = User(email=body_email,  name=body_name, surname=body_surname, birth=body_birth, gender=body_gender, city=body_city)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({"User": new_user.serialize()}), 200
