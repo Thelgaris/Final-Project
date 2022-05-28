@@ -13,12 +13,12 @@ export const StravaData = () => {
           id="pills-tab"
           role="tablist"
         >
-          <li className="nav-item bg-white" role="presentation">
+          <li className="nav-item " role="presentation">
             <button
-              className="nav-link btnhpal active bg-warning  text-black"
-              id="pills-home-tab"
+              className="nav-link btn active  text-black"
+              id="running"
               data-bs-toggle="pill"
-              data-bs-target="#pills-home"
+              data-bs-target="#running-data"
               type="button"
               role="tab"
               aria-controls="pills-home"
@@ -31,10 +31,10 @@ export const StravaData = () => {
           <li className="nav-item" role="presentation">
             <button
               type="button "
-              className="nav-link btnhpal bg-success  text-black"
-              id="pills-profile-tab"
+              className="nav-link btn   text-black"
+              id="cycling"
               data-bs-toggle="pill"
-              data-bs-target="#pills-profile"
+              data-bs-target="#cycling-data"
               role="tab"
               aria-controls="pills-profile"
               aria-selected="false"
@@ -47,7 +47,7 @@ export const StravaData = () => {
         <div className="tab-content" id="pills-tabContent">
           <div
             className="tab-pane fade show active bg-light mt-4 pb-4"
-            id="pills-home"
+            id="running-data"
             role="tabpanel"
             aria-labelledby="pills-home-tab"
           >
@@ -57,7 +57,7 @@ export const StravaData = () => {
           </div>
           <div
             class="tab-pane fade bg-light mt-4 pb-4"
-            id="pills-profile"
+            id="cycling-data"
             role="tabpanel"
             aria-labelledby="pills-profile-tab"
           >

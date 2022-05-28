@@ -4,6 +4,8 @@ import "../../styles/homepageafterlogin.css";
 import { EventsComponent } from "../component/eventsComponent";
 import { ProfileComp } from "../component/profileComp";
 import { StravaData } from "../component/stravaData";
+import { PistaList } from "../component/pistaList";
+import { EventList } from "../component/eventList";
 
 export const Homepageafterlogin = () => {
   return (
@@ -42,58 +44,59 @@ export const Homepageafterlogin = () => {
           />
         </div>
       </div>
-      <ul
-        className="nav nav-pills mb-3 d-flex justify-content-center"
-        id="pills-tab"
-        role="tablist"
-      >
-        <li className="nav-item bg-white" role="presentation">
-          <button
-            className="nav-link btnhpal active bg-primary  text-black"
-            id="pills-home-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-home"
-            type="button"
-            role="tab"
-            aria-controls="pills-home"
-            aria-selected="true"
-            onClick={() => {}}
-          >
-            Pistas
-          </button>
-        </li>
-        <li className="nav-item" role="presentation">
-          <button
-            type="button "
-            className="nav-link btnhpal bg-success  text-black"
-            id="pills-profile-tab"
-            data-bs-toggle="pill"
-            data-bs-target="#pills-profile"
-            role="tab"
-            aria-controls="pills-profile"
-            aria-selected="false"
-            onClick={() => {}}
-          >
-            Eventos
-          </button>
-        </li>
-      </ul>
-      <div className="tab-content" id="pills-tabContent">
-        <div
-          className="tab-pane fade show active bg-primary"
-          id="pills-home"
-          role="tabpanel"
-          aria-labelledby="pills-home-tab"
+      <div className="row">
+        <ul
+          className="nav nav-pills  d-flex justify-content-center "
+          role="tablist"
         >
-          aqui va el componente de las pistas
-        </div>
-        <div
-          class="tab-pane fade bg-success"
-          id="pills-profile"
-          role="tabpanel"
-          aria-labelledby="pills-profile-tab"
-        >
-          aqui va el componente de los eventos
+          <li className="nav-item col-2" role="presentation">
+            <button
+              className="nav-link btn active btn-bg-light w-100 text-black"
+              id="pistas"
+              data-bs-toggle="pill"
+              data-bs-target="#pistasList"
+              type="button"
+              role="tab"
+              aria-controls="pills-home"
+              aria-selected="true"
+              onClick={() => {}}
+            >
+              Pistas
+            </button>
+          </li>
+          <li className="nav-item col-2 " role="presentation">
+            <button
+              type="button "
+              className="nav-link btn btn-bg-light w-100 text-black"
+              id="eventos"
+              data-bs-toggle="pill"
+              data-bs-target="#eventosList"
+              role="tab"
+              aria-controls="pills-profile"
+              aria-selected="false"
+              onClick={() => {}}
+            >
+              Eventos
+            </button>
+          </li>
+        </ul>
+        <div className="tab-content row" id="pills-tabContent">
+          <div
+            className="tab-pane fade show active"
+            id="pistasList"
+            role="tabpanel"
+            aria-labelledby="pills-home-tab"
+          >
+            <PistaList />
+          </div>
+          <div
+            className="tab-pane fade"
+            id="eventosList"
+            role="tabpanel"
+            aria-labelledby="pills-profile-tab"
+          >
+            <EventList />
+          </div>
         </div>
       </div>
     </div>

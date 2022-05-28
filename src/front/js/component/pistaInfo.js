@@ -5,7 +5,7 @@ export const PistaInfo = () => {
   return (
     <div className="container pistaInfo">
       <div className="row">
-        <div className="col-2 d-grid">
+        <div className="col-4">
           <button
             type="button"
             className="btn btn-link"

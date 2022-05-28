@@ -5,7 +5,7 @@ export const EventInfo = () => {
   return (
     <div className="container infoevent justify-content-center">
       <div className="row ">
-        <div className="col-2 d-grid">
+        <div className="col-4 ">
           <button
             type="button"
             className="btn btn-link"
