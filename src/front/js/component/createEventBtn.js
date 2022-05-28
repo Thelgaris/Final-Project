@@ -91,7 +91,7 @@ export const CreateEventBtn = () => {
                   Fecha
                 </label>
                 <input
-                  className="w-75 border-1 border border-light rounded"
+                  className="w-75 border-1 border border-light rounded ps-2 pe-2"
                   type="date"
                   id="date"
                 />
@@ -105,7 +105,7 @@ export const CreateEventBtn = () => {
                 </label>
 
                 <input
-                  className="w-75 border-1 border border-light rounded "
+                  className="w-75 border-1 border border-light rounded ps-2 pe-2"
                   type="time"
                   id="time"
                 />
