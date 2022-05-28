@@ -8,7 +8,11 @@ export const StravaData = () => {
         className="card-fluid bg-light
       "
       >
-        <ul className="nav nav-pills mb-3 d-flex" id="pills-tab" role="tablist">
+        <ul
+          className="nav nav-pills mb-3 d-flex rounded"
+          id="pills-tab"
+          role="tablist"
+        >
           <li className="nav-item bg-white" role="presentation">
             <button
               className="nav-link btnhpal active bg-warning  text-black"
@@ -52,7 +56,7 @@ export const StravaData = () => {
             <div>2h 40m 13s</div>
           </div>
           <div
-            class="tab-pane fade bg-light"
+            class="tab-pane fade bg-light mt-4 pb-4"
             id="pills-profile"
             role="tabpanel"
             aria-labelledby="pills-profile-tab"
