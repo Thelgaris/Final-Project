@@ -90,24 +90,25 @@ export const CreateEventBtn = () => {
                 >
                   Fecha
                 </label>
-                <select className="form-select" id="Fecha">
-                  <option selected></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                </select>
+                <input
+                  className="w-75 border-1 border border-light rounded"
+                  type="date"
+                  id="date"
+                />
               </div>
               <div className="input-group mb-3">
                 <label
                   className="input-group-text w-25"
-                  htmlFor="inputGroupSelect01"
+                  htmlFor="inputGroupSelect01 time"
                 >
                   Hora
                 </label>
-                <select className="form-select" id="Hora">
-                  <option selected></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                </select>
+
+                <input
+                  className="w-75 border-1 border border-light rounded "
+                  type="time"
+                  id="time"
+                />
               </div>
               <div className="input-group mb-3">
                 <input

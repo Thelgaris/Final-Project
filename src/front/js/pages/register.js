@@ -52,9 +52,10 @@ export const Register = () => {
               setUserData({ ...userData, email: e.target.value });
             }}
           />
+
           <input
             id="password"
-            type="text"
+            type="password"
             className="form-control"
             placeholder="Password"
             aria-label="Password"
