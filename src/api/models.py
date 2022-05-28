@@ -11,12 +11,8 @@ class User(db.Model):
     birth = db.Column(db.String(80), unique=False, nullable=True)
     gender = db.Column(db.String(80), unique=False, nullable=True)
     city = db.Column(db.String(80), unique=False, nullable=True)
-    sports = db.Column(db.String(80), unique=False, nullable=True)
     is_active = db.Column(db.Boolean(), unique=False, nullable=True)
     
-    
-
-
     def __repr__(self):
         return f'<User {self.email}>'
 
@@ -30,8 +26,26 @@ class User(db.Model):
             "gender": self.gender,
             "city": self.city,
             "sports": self.sports,
-            
-            
-      
-            # do not serialize the password, its a security breach
         }
+
+class Sports(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=True)
+
+    def __repr__(self):
+        return f'<Sports {self.name}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }
+
+class UserSports(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    sport_id = db.Column(db.Integer, db.ForeignKey('sports.id'), nullable=False)
+    sports = db.relationship('Sports')
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User')
+
+    

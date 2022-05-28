@@ -1,23 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-
-import { Context } from "../store/appContext";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 export const Register = () => {
-  const { store, actions } = useContext(Context);
+  const history = useHistory();
   const [userData, setUserData] = useState({});
 
   const createUser = async () => {
     const response = await fetch(
-      "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu45.gitpod.io/api/register",
+      "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/register",
       {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(userData),
       }
     );
-    const data = await response.json();
-    console.log("@@@@@@@@@@@", data);
+    if (response.status == 200) {
+      history.push("/userProfile");
+    }
   };
 
   return (

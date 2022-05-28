@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/login.css";
 
-import { Context } from "../store/appContext";
-
 export const Login = () => {
   const history = useHistory();
   const [user, setUser] = useState({});
@@ -13,7 +11,7 @@ export const Login = () => {
     if (user.email != null && user.email.trim() != "") {
       setError(null);
       const response = await fetch(
-        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu45.gitpod.io/api/login",
+        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

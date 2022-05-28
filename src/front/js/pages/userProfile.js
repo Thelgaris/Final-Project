@@ -19,7 +19,7 @@ export const UserProfile = () => {
     ) {
       setError(null);
       const response = await fetch(
-        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu45.gitpod.io/api/userprofile",
+        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/userprofile",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -112,8 +112,14 @@ export const UserProfile = () => {
       </div>
 
       <div>
-        <Sportmodal />
+        <Sportmodal
+          user={user}
+          setUser={(e) => {
+            setUser({ ...user, sports: e });
+          }}
+        />
       </div>
+
       <div>
         <button
           type="button"
