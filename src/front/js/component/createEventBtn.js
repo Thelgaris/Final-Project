@@ -62,8 +62,6 @@ export const CreateEventBtn = () => {
                 <select className="form-select" id="Pistas">
                   <option selected></option>
                   <option value="1">Pista 1</option>
-                  <option value="2">Pista 2</option>
-                  <option value="3">Pista 3</option>
                   <option value="3">...</option>
                   <option value="3">Punto de encuentro</option>
                 </select>
