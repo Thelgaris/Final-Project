@@ -28,9 +28,7 @@ export const Homepageafterlogin = () => {
                 </h2>
               </div>
             </div>
-            <div className="col-3 mt-4">
-              <EventsComponent />
-            </div>
+            <div className="col-3 mt-4"></div>
           </div>
         </div>
       </div>
@@ -45,7 +43,9 @@ export const Homepageafterlogin = () => {
             alt=""
           />
         </div>
-        <div className="col-3 mt-4 w-100"></div>
+        <div className="col-2 mt-4">
+          <EventsComponent />
+        </div>
       </div>
       <div className="row">
         <ul
