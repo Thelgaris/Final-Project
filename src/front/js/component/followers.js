@@ -46,44 +46,20 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-          <div className="d-flex card-group">
-            <div class="card" style={{ width: "18rem" }}>
+          <div className="row mt-5 d-flex justify-content-center">
+            <div class="card ms-2 me-2 col-2 border-0">
               <img
                 src="https://picsum.photos/300/200"
-                class="card-img-top"
+                class="card-img-top rounded-circle "
                 alt="..."
               />
               <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-            <div class="card" style={{ width: "18rem" }}>
-              <img
-                src="https://picsum.photos/300/200"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-            <div class="card" style={{ width: "18rem" }}>
-              <img
-                src="https://picsum.photos/300/200"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+                <h5 class="card-title">Nombre</h5>
+                <h4 class="card-title">Ciudad</h4>
+
+                <button href="#" class="btn btn-warning w-100">
+                  Seguir
+                </button>
               </div>
             </div>
           </div>
@@ -94,44 +70,20 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="d-flex card-group mt-5">
-            <div class="card ">
+          <div className="row mt-5 d-flex justify-content-center">
+            <div class="card col-2 ms-2 me-2 border-0">
               <img
                 src="https://picsum.photos/300/200"
-                class="card-img-top"
+                class="card-img-top rounded-circle"
                 alt="..."
               />
               <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-            <div class="card ">
-              <img
-                src="https://picsum.photos/300/200"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-              </div>
-            </div>
-            <div class="card ">
-              <img
-                src="https://picsum.photos/300/200"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+                <h5 class="card-title">Nombre</h5>
+                <h4 class="card-title">Ciudad</h4>
+
+                <button href="#" class="btn btn-warning w-100">
+                  Dejar de seguir
+                </button>
               </div>
             </div>
           </div>
