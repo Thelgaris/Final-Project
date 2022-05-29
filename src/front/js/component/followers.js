@@ -5,10 +5,10 @@ export const Followers = () => {
   return (
     <div className="row">
       <ul
-        className="nav nav-pills  d-flex justify-content-center "
+        className="nav nav-pills justify-content-center d-flex"
         role="tablist"
       >
-        <li className="nav-item col-2" role="presentation">
+        <li className="nav-item col-4" role="presentation">
           <button
             className="nav-link btn active btn-bg-light w-100 text-black"
             id="followers"
@@ -23,7 +23,7 @@ export const Followers = () => {
             Seguidores
           </button>
         </li>
-        <li className="nav-item col-2 " role="presentation">
+        <li className="nav-item col-4 " role="presentation">
           <button
             type="button "
             className="nav-link btn btn-bg-light w-100 text-black"
@@ -38,7 +38,7 @@ export const Followers = () => {
             Siguiendo
           </button>
         </li>
-        <li className="nav-item col-2" role="presentation">
+        <li className="nav-item col-4" role="presentation">
           <button
             className="nav-link btn btn-bg-light w-100 text-black"
             id="suggestions"
@@ -62,7 +62,7 @@ export const Followers = () => {
           aria-labelledby="pills-home-tab"
         >
           <div className="row mt-5 d-flex justify-content-center">
-            <div class="card ms-2 me-2 col-2 border-0">
+            <div class="card ms-2 me-2 border-0" style={{ width: "14rem" }}>
               <img
                 src="https://picsum.photos/300/200"
                 class="card-img-top rounded-circle "
@@ -86,7 +86,7 @@ export const Followers = () => {
           aria-labelledby="pills-profile-tab"
         >
           <div className="row mt-5 d-flex justify-content-center">
-            <div class="card col-2 ms-2 me-2 border-0">
+            <div class="card ms-2 me-2 border-0 " style={{ width: "14rem" }}>
               <img
                 src="https://picsum.photos/300/200"
                 class="card-img-top rounded-circle"
@@ -110,7 +110,7 @@ export const Followers = () => {
           aria-labelledby="pills-profile-tab"
         >
           <div className="row mt-5 d-flex justify-content-center">
-            <div class="card col-2 ms-2 me-2 border-0">
+            <div class="card ms-2 me-2 border-0" style={{ width: "14rem" }}>
               <img
                 src="https://picsum.photos/300/200"
                 class="card-img-top rounded-circle"

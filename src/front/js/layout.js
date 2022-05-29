@@ -2,15 +2,12 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./pages/home";
+import { Homepageafterlogin } from "./pages/homepageafterlogin";
 import { Profile } from "./pages/profile";
 import injectContext from "./store/appContext";
-import { UserProfile } from "./pages/userProfile";
-import { Homepageafterlogin } from "./pages/homepageafterlogin";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-
-import ScrollToTop from "./component/scrollToTop";
 
 //create your first component
 const Layout = () => {
@@ -27,6 +24,9 @@ const Layout = () => {
           </Route>
           <Route exact path="/profile">
             <Profile />
+          </Route>
+          <Route exact path="/homepageafterlogin">
+            <Homepageafterlogin />
           </Route>
 
           <Route>

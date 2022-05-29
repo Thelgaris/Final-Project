@@ -4,10 +4,10 @@ import "../../styles/homepageafterlogin.css";
 import { EventsComponent } from "../component/eventsComponent";
 import { ProfileComp } from "../component/profileComp";
 import { StravaData } from "../component/stravaData";
-import { PistaList } from "../component/pistaList";
-import { EventList } from "../component/eventList";
+
 import { EventInfo } from "../component/eventInfo";
 import { PistaInfo } from "../component/pistaInfo";
+import { Followers } from "../component/followers";
 
 export const Homepageafterlogin = () => {
   return (
@@ -20,7 +20,7 @@ export const Homepageafterlogin = () => {
             </div>
             <div className="col-6">
               <h1 className="">PICKATEAM</h1>
-              <div className="d-flex ">
+              <div className="d-flex mt-5">
                 <h2 style={{ color: "gray" }}>
                   En Pickateam queremos crear una comunidad de deportistas, a
                   través de la cual ayudarte a encontrar nuevas personas, nuevos
@@ -28,7 +28,7 @@ export const Homepageafterlogin = () => {
                 </h2>
               </div>
             </div>
-            <div className="col-2 mt-4">
+            <div className="col-3 mt-4">
               <EventsComponent />
             </div>
           </div>
@@ -40,11 +40,12 @@ export const Homepageafterlogin = () => {
         </div>
         <div className="col-6 ">
           <img
-            className="city mt-4 mb-4 w-100 rounded"
+            className=" mt-4 mb-4 w-100 rounded"
             src="https://placebeard.it/640x360"
             alt=""
           />
         </div>
+        <div className="col-3 mt-4 w-100"></div>
       </div>
       <div className="row">
         <ul
