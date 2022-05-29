@@ -10,7 +10,7 @@ export const Followers = () => {
       >
         <li className="nav-item col-2" role="presentation">
           <button
-            className="nav-link btn  btn-bg-light w-100 text-black"
+            className="nav-link btn active btn-bg-light w-100 text-black"
             id="followers"
             data-bs-toggle="pill"
             data-bs-target="#followersList"
@@ -38,6 +38,21 @@ export const Followers = () => {
             Siguiendo
           </button>
         </li>
+        <li className="nav-item col-2" role="presentation">
+          <button
+            className="nav-link btn btn-bg-light w-100 text-black"
+            id="suggestions"
+            data-bs-toggle="pill"
+            data-bs-target="#suggestionsList"
+            type="button"
+            role="tab"
+            aria-controls="pills-home"
+            aria-selected="true"
+            onClick={() => {}}
+          >
+            Sugeridos
+          </button>
+        </li>
       </ul>
       <div className="tab-content row " id="pills-tabContent">
         <div
@@ -54,8 +69,8 @@ export const Followers = () => {
                 alt="..."
               />
               <div class="card-body">
-                <h5 class="card-title">Nombre</h5>
-                <h4 class="card-title">Ciudad</h4>
+                <h4 class="card-title">Nombre</h4>
+                <h5 class="card-title">Ciudad</h5>
 
                 <button href="#" class="btn btn-warning w-100">
                   Seguir
@@ -78,11 +93,35 @@ export const Followers = () => {
                 alt="..."
               />
               <div class="card-body">
-                <h5 class="card-title">Nombre</h5>
-                <h4 class="card-title">Ciudad</h4>
+                <h4 class="card-title">Nombre</h4>
+                <h5 class="card-title">Ciudad</h5>
 
                 <button href="#" class="btn btn-warning w-100">
                   Dejar de seguir
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="tab-pane fade "
+          id="suggestionsList"
+          role="tabpanel"
+          aria-labelledby="pills-profile-tab"
+        >
+          <div className="row mt-5 d-flex justify-content-center">
+            <div class="card col-2 ms-2 me-2 border-0">
+              <img
+                src="https://picsum.photos/300/200"
+                class="card-img-top rounded-circle"
+                alt="..."
+              />
+              <div class="card-body">
+                <h4 class="card-title">Nombre</h4>
+                <h5 class="card-title">Ciudad</h5>
+
+                <button href="#" class="btn btn-warning w-100">
+                  Seguir
                 </button>
               </div>
             </div>
