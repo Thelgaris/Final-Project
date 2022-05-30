@@ -14,9 +14,9 @@ export const Register = () => {
         body: JSON.stringify(userData),
       }
     );
-    if (response.status == 200) {
-      history.push("/userProfile");
-    }
+    const data = await response.json();
+    localStorage.setItem("userToken", data.access_token);
+    history.push("/userProfile");
   };
 
   return (

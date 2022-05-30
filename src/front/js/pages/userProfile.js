@@ -25,9 +25,9 @@ export const UserProfile = () => {
     ) {
       setError(null);
       const response = await fetch(
-        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/sapi/userprofile",
+        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/register",
         {
-          method: "POST",
+          method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
         }

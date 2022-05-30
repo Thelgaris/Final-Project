@@ -7,7 +7,7 @@ export const Sportmodal = ({ user, setUser }) => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.getSports;
+    actions.getSports();
   }, []);
 
   const getSports = async () => {
@@ -54,121 +54,27 @@ export const Sportmodal = ({ user, setUser }) => {
             </div>
             <div className="modal-body">
               <div>
-                {store.sports.map((sports) => {
-                  <div>{sports}</div>;
+                {store.sports.map((sport) => {
+                  return (
+                    <div key={sport.id}>
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value={sport.id}
+                        placeholder={sport.name}
+                        id="basketball"
+                        onClick={(e) => {
+                          setSportsData({
+                            ...sportsData,
+                            sport: e.target.value,
+                          });
+                        }}
+                      />
+                      <label className="form-check-label">{sport.name}</label>
+                    </div>
+                  );
                 })}
               </div>
-              {/* <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value=""
-                  placeholder="baloncesto"
-                  id="basketball"
-                  onClick={(e) => {
-                    setSportsData({
-                      ...sportsData,
-                      basketball: e.target.value,
-                    });
-                  }}
-                />
-                <label className="form-check-label" htmlFor="basketball">
-                  Baloncesto
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value=""
-                  placeholder="futbol"
-                  id="football"
-                  onClick={(e) => {
-                    setSportsData({ ...sportsData, football: e.target.value });
-                  }}
-                />
-                <label className="form-check-label" htmlFor="football">
-                  Futbol
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value=""
-                  placeholder="running"
-                  id="running"
-                  onClick={(e) => {
-                    setSportsData({ ...sportsData, running: e.target.value });
-                  }}
-                />
-                <label className="form-check-label" htmlFor="running">
-                  Running
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value=""
-                  placeholder="cycling"
-                  id="cycling"
-                  onClick={(e) => {
-                    setSportsData({ ...sportsData, cycling: e.target.value });
-                  }}
-                />
-                <label className="form-check-label" htmlFor="cygling">
-                  Cycling
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value=""
-                  placeholder="beach_volley"
-                  id="beach_volley"
-                  onClick={(e) => {
-                    setSportsData({
-                      ...sportsData,
-                      beach_volley: e.target.value,
-                    });
-                  }}
-                />
-                <label className="form-check-label" htmlFor="cygling">
-                  Beach Volley
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value=""
-                  placeholder="tennis"
-                  id="tennis"
-                  onClick={(e) => {
-                    setSportsData({ ...sportsData, tennis: e.target.value });
-                  }}
-                />
-                <label className="form-check-label" htmlFor="cygling">
-                  Tennis
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  value=""
-                  placeholder="padel"
-                  id="padel"
-                  onClick={(e) => {
-                    setSportsData({ ...sportsData, padel: e.target.value });
-                  }}
-                />
-                <label className="form-check-label" htmlFor="cygling">
-                  Padel
-                </label>
-              </div>*/}
             </div>
             <div className="modal-footer">
               <button
