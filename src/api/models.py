@@ -26,7 +26,6 @@ class User(db.Model):
             "birth": self.birth,
             "gender": self.gender,
             "city": self.city,
-            "sports": self.sports,
         }
 
 class Sports(db.Model):

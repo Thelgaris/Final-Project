@@ -74,25 +74,25 @@ export const Sportmodal = ({ user, setUser }) => {
                     </div>
                   );
                 })}
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn modalbtn2 btn-secondary "
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    className="btn modalbtn btn-primary"
+                    onClick={() => {
+                      getSports();
+                    }}
+                  >
+                    Guardar
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn modalbtn2 btn-secondary "
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                className="btn modalbtn btn-primary"
-                onClick={() => {
-                  getSports();
-                }}
-              >
-                Guardar
-              </button>
             </div>
           </div>
         </div>

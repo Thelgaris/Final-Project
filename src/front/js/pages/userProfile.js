@@ -9,10 +9,6 @@ export const UserProfile = () => {
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
 
-  useEffect(() => {
-    actions.getSports;
-  }, []);
-
   const sendUserInfo = async () => {
     if (
       (user.name,

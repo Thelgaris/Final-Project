@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       sports: [],
-      url: "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api",
+      url: "https://3001-thelgaris-finalproject-g440izfeetj.ws-eu46.gitpod.io/api",
     },
     actions: {
       getSports: async () => {
@@ -16,8 +16,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(data, " @@@@@@@@@@");
         setStore({ sports: data.response });
       },
-
-      get,
     },
   };
 };
