@@ -62,8 +62,6 @@ export const CreateEventBtn = () => {
                 <select className="form-select" id="Pistas">
                   <option selected></option>
                   <option value="1">Pista 1</option>
-                  <option value="2">Pista 2</option>
-                  <option value="3">Pista 3</option>
                   <option value="3">...</option>
                   <option value="3">Punto de encuentro</option>
                 </select>
@@ -92,24 +90,25 @@ export const CreateEventBtn = () => {
                 >
                   Fecha
                 </label>
-                <select className="form-select" id="Fecha">
-                  <option selected></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                </select>
+                <input
+                  className="w-75 border-1 border border-light rounded ps-2 pe-2"
+                  type="date"
+                  id="date"
+                />
               </div>
               <div className="input-group mb-3">
                 <label
                   className="input-group-text w-25"
-                  htmlFor="inputGroupSelect01"
+                  htmlFor="inputGroupSelect01 time"
                 >
                   Hora
                 </label>
-                <select className="form-select" id="Hora">
-                  <option selected></option>
-                  <option value="1"></option>
-                  <option value="2"></option>
-                </select>
+
+                <input
+                  className="w-75 border-1 border border-light rounded ps-2 pe-2"
+                  type="time"
+                  id="time"
+                />
               </div>
               <div className="input-group mb-3">
                 <input
