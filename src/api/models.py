@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     name = db.Column(db.String(80), unique=False, nullable=True)
@@ -11,6 +11,7 @@ class User(db.Model):
     birth = db.Column(db.String(80), unique=False, nullable=True)
     gender = db.Column(db.String(80), unique=False, nullable=True)
     city = db.Column(db.String(80), unique=False, nullable=True)
+    sports = db.relationship('UserSports')
     is_active = db.Column(db.Boolean(), unique=False, nullable=True)
     
     def __repr__(self):
@@ -31,6 +32,7 @@ class User(db.Model):
 class Sports(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True)
+    user_sports = db.relationship('UserSports')
 
     def __repr__(self):
         return f'<Sports {self.name}>'
@@ -43,9 +45,9 @@ class Sports(db.Model):
 
 class UserSports(db.Model):
     id=db.Column(db.Integer, primary_key=True)
-    sport_id = db.Column(db.Integer, db.ForeignKey('sports.id'), nullable=False)
+    sport_id = db.Column(db.Integer, db.ForeignKey('sports.id'))
     sports = db.relationship('Sports')
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User')
 
     
