@@ -59,3 +59,20 @@ select {
   border-color: rgba(118, 118, 118, 0.342);
   border-radius: 5px;
 }
+
+.sportcheck label {
+  color: #0774d9;
+  padding: 0px 5px 5px 20px;
+  display: inline-block;
+  position: relative;
+  font-size: 1em;
+  border-radius: 3px;
+}
+.sportcheck label:hover {
+  background: rgba(0, 116, 217, 0.2);
+}
+
+.sportcheck input[type="checkbox"]:checked + label {
+  background: rgba(0, 116, 217, 0.2);
+  border-radius: 2px;
+}
