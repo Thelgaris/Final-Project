@@ -56,13 +56,13 @@ export const Sportmodal = ({ user, setUser }) => {
               <div>
                 {store.sports.map((sport) => {
                   return (
-                    <div key={sport.id}>
+                    <div key={sport.id} className="sportcheck">
                       <input
                         className="form-check-input"
                         type="checkbox"
                         value={sport.id}
                         placeholder={sport.name}
-                        id="basketball"
+                        id={sport.name}
                         onClick={(e) => {
                           setSportsData({
                             ...sportsData,
