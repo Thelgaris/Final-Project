@@ -51,5 +51,3 @@ def get_all_sports():
     sports_serialized = list(map(lambda x: x.serialize(), sports))
     return jsonify({"response": sports_serialized}), 200
 
-@api.route('/user', methods=['GET'])
-def get_data_user():

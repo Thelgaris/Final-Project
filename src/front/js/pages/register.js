@@ -53,7 +53,7 @@ export const Register = () => {
           />
           <input
             id="password"
-            type="text"
+            type="password"
             className="form-control"
             placeholder="Password"
             aria-label="Password"
@@ -75,7 +75,7 @@ export const Register = () => {
           />
           <input
             id="birth"
-            type="text"
+            type="date"
             className="form-control"
             placeholder="Fecha de nacimiento"
             aria-label="Fecha de nacimiento"

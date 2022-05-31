@@ -63,7 +63,7 @@ export const Login = () => {
           <div className="input-group mb-3">
             <input
               id="password"
-              type="text"
+              type="password"
               className="form-control text-center"
               placeholder="Contraseña"
               aria-label="Recipient's username"
