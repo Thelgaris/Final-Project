@@ -22,23 +22,23 @@ def login_user():
     else: 
         return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
 
-@api.route('/register', methods=['PUT'])
-def Register_user():
+@api.route('/register', methods=['POST'])
+def register_user():
+    print ('@@@@@@@@@@@@@@@@@@@@@')
     body_email = request.json.get("email")
     body_password = request.json.get("password")
     body_name = request.json.get("name")
     body_birth = request.json.get("birth")
-    body_surname = request.json.get("surname")
+    """ body_surname = request.json.get("surname")
     body_sports =request.json.get("sports")
     body_city =request.json.get("city")
-    body_gender =request.json.get("gender")
+    body_gender =request.json.get("gender") """
     if body_email and body_password and body_name and body_birth:
-        new_user = User(email=body_email, password=body_password, name=body_name, birth=body_birth, surname=body_surname, sports=body_sports, city=body_city, gender=body_gender)
-        user = User.query.filter_by(email=body_email).filter_by(password=body_password).first()
-        access_token = create_access_token(identity=user.id)
+        new_user = User(email=body_email, password=body_password, name=body_name, birth=body_birth)
+        """ user = User.query.filter_by(email=body_email).filter_by(password=body_password).first() """
         db.session.add(new_user)
         db.session.commit()
-        
+        access_token = create_access_token(identity=new_user.id)
         return jsonify({"access_token": access_token, "User": new_user.serialize(), "registered": True}), 200
     else:
         return jsonify({"Error": "Error"}), 400
