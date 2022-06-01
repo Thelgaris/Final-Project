@@ -10,7 +10,7 @@ export const UserProfile = () => {
   const { store, actions } = useContext(Context);
 
   const sendUserInfo = async () => {
-    if (
+    /*     if (
       (user.name,
       user.surname,
       user.birth,
@@ -18,24 +18,24 @@ export const UserProfile = () => {
       user.surname.trim(),
       user.birth.trim(),
       user.gender.trim() != "")
-    ) {
-      setError(null);
-      const response = await fetch(
-        "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/register",
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(user),
-        }
-      );
-      const data = await response.json();
-      console.log("@@@@@@@@@@@", data);
-    } else {
+    ) { */
+    setError(null);
+    const response = await fetch(
+      "https://3000-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/userprofile",
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      }
+    );
+    const data = await response.json();
+    console.log("@@@@@@@@@@@", data);
+    /*     } else {
       setError("faltan datos por ingresar");
       setTimeout(() => {
         setError(null);
       }, 3000);
-    }
+    } */
   };
 
   return (

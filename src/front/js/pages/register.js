@@ -63,26 +63,12 @@ export const Register = () => {
             }}
           />
           <input
-            id="name"
-            type="text"
+            id="passwordvalidation"
+            type="password"
             className="form-control"
-            placeholder="Nombre"
-            aria-label="Nombre"
+            placeholder="Confirm password"
+            aria-label="Confirm password"
             aria-describedby="basic-addon1"
-            onChange={(e) => {
-              setUserData({ ...userData, name: e.target.value });
-            }}
-          />
-          <input
-            id="birth"
-            type="date"
-            className="form-control"
-            placeholder="Fecha de nacimiento"
-            aria-label="Fecha de nacimiento"
-            aria-describedby="basic-addon1"
-            onChange={(e) => {
-              setUserData({ ...userData, birth: e.target.value });
-            }}
           />
         </div>
         <div className="d-grid gap-2 mt-4 mx-auto">
