@@ -42,13 +42,13 @@ def update_details():
     body_name = request.json.get("name")
     body_surname = request.json.get("surname")
     body_city =request.json.get("city")
-    body_gender =request.json.get("gender")
-    if body_name and body_birth and body_surname and body_city and body_gender:
-        user_details = User(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender)
+    
+    if body_name and body_birth and body_surname and body_city:
+        user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city)
         db.session.add(user_details)
         db.session.commit()
         current_user = get_jwt_identity()
-        return jsonify(logged_in_as=current_user), ({"User": new_details.serialize(), "Update": True}), 200
+        return jsonify(logged_in_as=current_user), ({"details": user_details.serialize(), "Update": True}), 200
     else:
         return jsonify({"Error": "Error"}), 400
 
