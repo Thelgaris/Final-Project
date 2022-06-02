@@ -10,32 +10,20 @@ export const UserProfile = () => {
   const { store, actions } = useContext(Context);
 
   const sendUserInfo = async () => {
-    /*     if (
-      (user.name,
-      user.surname,
-      user.birth,
-      user.gender != null && user.name.trim(),
-      user.surname.trim(),
-      user.birth.trim(),
-      user.gender.trim() != "")
-    ) { */
     setError(null);
     const response = await fetch(
       "https://3001-thelgaris-finalproject-zo7slnm098z.ws-eu46.gitpod.io/api/userprofile",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("userToken"),
+        },
         body: JSON.stringify(user),
       }
     );
     const data = await response.json();
     console.log("@@@@@@@@@@@", data);
-    /*     } else {
-      setError("faltan datos por ingresar");
-      setTimeout(() => {
-        setError(null);
-      }, 3000);
-    } */
   };
 
   return (
