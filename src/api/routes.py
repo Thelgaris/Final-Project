@@ -36,7 +36,8 @@ def register_user():
     else:
         return jsonify({"Error": "Error"}), 400
 
-@api.route('/userprofile', methods=['PUT'])
+@api.route('/userprofile', methods=['POST'])
+@jwt_required()
 def update_details():
     body_birth = request.json.get("birth")
     body_name = request.json.get("name")
@@ -62,12 +63,20 @@ def protected():
     return jsonify(logged_in_as=current_user), 200 """
 
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+#     app.run()
 
 @api.route('/sports', methods=['GET'])
 def get_all_sports():
     sports = Sports.query.all()
     sports_serialized = list(map(lambda x: x.serialize(), sports))
     return jsonify({"response": sports_serialized}), 200
+
+
+@api.route('/user', methods=['GET'])
+@jwt_required()
+def get_all_users():
+    user = User.query.all()
+    user_serialized = list(map(lambda x: x.serialize(), user))
+    return jsonify({"response": user_serialized}), 200
 

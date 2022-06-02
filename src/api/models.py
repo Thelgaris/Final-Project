@@ -27,6 +27,7 @@ class Details(db.Model):
     gender = db.Column(db.String(80), unique=False, nullable=True)
     city = db.Column(db.String(80), unique=False, nullable=True)
     user_details = db.relationship('Userdata')
+    
  
     def __rper__(self):
         return f'<Userdata {self.name}>'

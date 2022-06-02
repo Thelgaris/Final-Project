@@ -23,7 +23,7 @@ export const UserProfile = () => {
     const response = await fetch(
       "https://3001-thelgaris-finalproject-zo7slnm098z.ws-eu46.gitpod.io/api/userprofile",
       {
-        method: "PUT",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
       }
