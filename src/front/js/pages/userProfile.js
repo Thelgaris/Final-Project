@@ -11,15 +11,6 @@ export const UserProfile = () => {
   const [userDetails, setUserDetails] = useState();
 
   const sendUserInfo = async () => {
-    /*     if (
-      (user.name,
-      user.surname,
-      user.birth,
-      user.gender != null && user.name.trim(),
-      user.surname.trim(),
-      user.birth.trim(),
-      user.gender.trim() != "")
-    ) { */
     setError(null);
     const response = await fetch(
       "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/userprofile",
@@ -34,12 +25,6 @@ export const UserProfile = () => {
     );
     const data = await response.json();
     console.log("@@@@@@@@@@@", data);
-    /*     } else {
-      setError("faltan datos por ingresar");
-      setTimeout(() => {
-        setError(null);
-      }, 3000);
-    } */
   };
 
   return (
@@ -118,14 +103,14 @@ export const UserProfile = () => {
           />
         </div>
 
-        <div>
+        {/* <div>
           <Sportmodal
             user={user}
             setUser={(e) => {
               setUser({ ...user, sports: e });
             }}
           />
-        </div>
+        </div> */}
 
         <div>
           <button
