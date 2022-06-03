@@ -12,10 +12,9 @@ export const Sportmodal = ({ user, setUser }) => {
 
   const getSports = async () => {
     const response = await fetch(
-      "https://3000-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/sports",
+      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/sports",
       {
         method: "GET",
-        headers: { "content-type": "application/json" },
         body: JSON.stringify(sportsData),
       }
     );

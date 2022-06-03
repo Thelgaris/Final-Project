@@ -11,7 +11,7 @@ export const Login = () => {
     if (user.email != null && user.email.trim() != "") {
       setError(null);
       const response = await fetch(
-        "https://3000-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/login",
+        "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -21,11 +21,11 @@ export const Login = () => {
       const data = await response.json();
       if (data.access_token) {
         localStorage.setItem("userToken", data.access_token);
-        history.push("/userProfile");
+        history.push("/homepageafterlogin");
         if (data.logged == false) {
           setError("Rellenar datos");
         } else if (data.logged == true) {
-          history.push("/userProfile");
+          history.push("/homepageafterlogin");
         }
       } else {
         setError("Rellenar datos");
@@ -37,7 +37,7 @@ export const Login = () => {
   };
   const loginError = (async) => {
     if (sendUserInfo != True) {
-      setError("Faltan datos o datos incorrectos");
+      setError("Datos incorrectos");
     }
   };
 

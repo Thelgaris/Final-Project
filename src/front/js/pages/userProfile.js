@@ -8,6 +8,7 @@ export const UserProfile = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
+  const [userDetails, setUserDetails] = useState();
 
   const sendUserInfo = async () => {
     /*     if (
@@ -21,10 +22,13 @@ export const UserProfile = () => {
     ) { */
     setError(null);
     const response = await fetch(
-      "https://3000-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/userprofile",
+      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/userprofile",
       {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "bearer " + localStorage.getItem("access_token"),
+        },
         body: JSON.stringify(user),
       }
     );

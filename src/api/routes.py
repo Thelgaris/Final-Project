@@ -16,7 +16,7 @@ def login_user():
         user = User.query.filter_by(email=body_email).filter_by(password=body_password).first()
         if user:
             access_token = create_access_token(identity=user.id)
-            return jsonify({"logged": True, "user": user.serialize(), "access_token": access_token}),200
+            return jsonify({"logged": True, "access_token": access_token}),200
         else:
              return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
     else: 
@@ -31,12 +31,12 @@ def register_user():
         new_user = User(email=body_email, password=body_password)
         db.session.add(new_user)
         db.session.commit()
-        access_token = create_access_token(identity=new_user.id)
-        return jsonify({"access_token": access_token, "User": new_user.serialize(), "registered": True}), 200
+        return jsonify({"User": new_user.serialize(), "registered": True}), 200
     else:
-        return jsonify({"Error": "Error"}), 400
+        return jsonify({"registered": False, "msg": "Informacion incompleta"}), 400
 
 @api.route('/userprofile', methods=['PUT'])
+@jwt_required()
 def update_details():
     body_birth = request.json.get("birth")
     body_name = request.json.get("name")
@@ -48,7 +48,8 @@ def update_details():
         db.session.add(user_details)
         db.session.commit()
         current_user = get_jwt_identity()
-        return jsonify(logged_in_as=current_user), ({"User": new_details.serialize(), "Update": True}), 200
+        user = User.query.get(current_user)
+        return jsonify(logged_in_as=current_user), ({"User": new_details.serialize(), "Update": True}), 200 
     else:
         return jsonify({"Error": "Error"}), 400
 
