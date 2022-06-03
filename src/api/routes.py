@@ -71,17 +71,12 @@ def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200 """
 
-
-
-
 # @app.route("/protected", methods=["GET"])
 # @jwt_required()
 # def protected():
 #     # Access the identity of the current user with get_jwt_identity
 #     current_user = get_jwt_identity()
 #     return jsonify(logged_in_as=current_user), 200
-
-     
 
 @api.route('/sports', methods=['GET'])
 def get_all_sports():
@@ -96,4 +91,14 @@ def get_all_users():
     user = User.query.all()
     user_serialized = list(map(lambda x: x.serialize(), user))
     return jsonify({"response": user_serialized}), 200
+
+@api.route("/protected", methods=["GET"])
+@jwt_required()
+def protected():
+    current_id = get_jwt_identity()
+    user = User.query.get(current_id)
+    if user:
+        return jsonify({"logged_in": True, "user_id": current_id}), 200
+    else:
+        return jsonify({"logged_in": False}), 400
 

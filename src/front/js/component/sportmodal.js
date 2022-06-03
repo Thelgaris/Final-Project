@@ -10,17 +10,6 @@ export const Sportmodal = ({ user, setUser }) => {
     actions.getSports();
   }, []);
 
-  const getSports = async () => {
-    const response = await fetch(
-      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/sports",
-      {
-        method: "GET",
-        body: JSON.stringify(sportsData),
-      }
-    );
-    const data = await response.json();
-    console.log(data);
-  };
   return (
     <div className="mx-auto">
       <button

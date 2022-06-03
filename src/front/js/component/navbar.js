@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/navbar.css";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
+  const history = useHistory();
   const sendToLoginPage = async () => {
-    if (data.access_token) {
-      localStorage.removeItem("userToken", data.access_token);
+    if (store.logged) {
+      localStorage.removeItem("userToken");
       history.push("/login");
     }
   };
