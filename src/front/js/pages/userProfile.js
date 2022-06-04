@@ -13,7 +13,15 @@ export const UserProfile = () => {
   const sendUserInfo = async () => {
     setError(null);
     const response = await fetch(
+<<<<<<< Updated upstream
       "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api/userprofile",
+=======
+<<<<<<< HEAD
+      "https://3001-thelgaris-finalproject-0i2j77n8lh5.ws-eu46.gitpod.io/api/userprofile",
+=======
+      "https://3001-thelgaris-finalproject-p2qlm0qjunw.ws-eu46.gitpod.io/api/userprofile",
+>>>>>>> origin/2
+>>>>>>> Stashed changes
       {
         method: "POST",
         headers: {

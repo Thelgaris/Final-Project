@@ -7,7 +7,15 @@ export const Register = () => {
 
   const createUser = async () => {
     const response = await fetch(
+<<<<<<< Updated upstream
       "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api/register",
+=======
+<<<<<<< HEAD
+      "https://3001-thelgaris-finalproject-0i2j77n8lh5.ws-eu46.gitpod.io/api/register",
+=======
+      "https://3001-thelgaris-finalproject-p2qlm0qjunw.ws-eu46.gitpod.io/api/register",
+>>>>>>> origin/2
+>>>>>>> Stashed changes
       {
         method: "POST",
         headers: { "content-type": "application/json" },
