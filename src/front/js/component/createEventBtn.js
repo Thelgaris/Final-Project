@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const CreateEventBtn = () => {
-  const [userEvent, setUserEvent] = useState({});
+  const [userEvents, setUserEvents] = useState({});
+  const [events, setEvents] = useState({});
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export const CreateEventBtn = () => {
                 placeholder="Nombre del Evento"
                 className="input-group mb-3 border-0"
                 onChange={(e) => {
-                  setUserEvent({ ...userEvent, name: e.target.value });
+                  setUserEvents({ ...userEvents, name: e.target.value });
                 }}
               />
 
@@ -141,6 +142,10 @@ export const CreateEventBtn = () => {
               <button
                 type="button"
                 className="btn btn-warning w-50 content-center"
+                onClick={() => {
+                  actions.setEvents(events.name);
+                  actions.setUserEvents(userEvents.id);
+                }}
               >
                 Crear
               </button>

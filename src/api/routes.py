@@ -86,6 +86,32 @@ def get_all_pistas():
 
 
 
+@api.route('/createEvent', methods=['POST'])
+@jwt_required()
+def create_event():
+    print(1)
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    if user:
+        print(2)
+        body_name = request.json.get("name")
+        body_description = request.json.get("description")     
+        print(3)
+        if body_name and body_description:
+            print(4)
+            user_events = UserEvent(name=body_name, description=body_description, user_id=user_id, )
+            db.session.add(user_events)
+            db.session.commit()
+            print(5)
+            
+            return jsonify({"details": user_events.serialize(), "Event_Created": True}), 200
+        else:
+            return jsonify({"Error": "Error"}), 400
+    else:
+        return jsonify({"Error": "Error"}), 400
+
+
+
 
 
 

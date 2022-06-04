@@ -8,6 +8,7 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     detail = db.relationship('Details', backref='user', lazy=True)
     sports = db.relationship('UserSports')
+    events = db.relationship('UserEvents')
     is_active = db.Column(db.Boolean(), unique=False, nullable=True)
     
     def __repr__(self):
@@ -66,7 +67,7 @@ class UserSports(db.Model):
 class Pistas(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=False, nullable=True)
-    addres = db.Column(db.String(80), unique=False, nullable=True)
+    address = db.Column(db.String(80), unique=False, nullable=True)
     description = db.Column(db.String(240), unique=False, nullable=True)
     photo = db.Column(db.String(140), unique=False, nullable=True)
 
@@ -77,13 +78,41 @@ class Pistas(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "addres": self.addres,
+            "address": self.address,
             "description": self.description,
             "photo": self.photo,
         }
 
+class Events(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=False, nullable=False)  
+    address = db.Column(db.String(80), unique=False, nullable=False)
+    date = db.Column(db.String(80), unique=False, nullable=False)
+    time = db.Column(db.String(80), unique=False, nullable=False)
+    description = db.Column(db.String(240), unique=False, nullable=False)
+    photo = db.Column(db.String(140), unique=False, nullable=True)
+    user_events = db.relationship('UserEvents')
 
+    def __repr__(self):
+        return f'<Events {self.name}>'
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "address": self.address,
+            "date": self.date,
+            "time": self.time,
+            "description": self.description,
+            "photo": self.photo,
+        }
+
+class UserEvents(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    events = db.relationship('Events')
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User')
 
 
 # One to many
