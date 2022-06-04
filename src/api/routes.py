@@ -23,8 +23,12 @@ def login_user():
         return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
 
 @api.route('/register', methods=['POST'])
+<<<<<<< HEAD
 def register_user():
     print ('@@@@@@@@@@@@@@@@@@@@@')
+=======
+def Register_user():
+>>>>>>> origin/historyView
     body_email = request.json.get("email")
     body_password = request.json.get("password")
     if body_email and body_password:
@@ -97,3 +101,17 @@ def get_all_users():
     users_serialized = list(map(lambda x: x.serialize(), users))
     return jsonify({"response": users_serialized}), 200
 
+
+@api.route('/userProfile', methods=['POST'])
+def user_details():
+    body_email = request.json.get("email") 
+    body_name = request.json.get("name")
+    body_surname = request.json.get("surname")
+    body_birth = request.json.get("birth")
+    body_gender = request.json.get("gender")
+    body_city = request.json.get("city")
+    
+    new_user = User(email=body_email,  name=body_name, surname=body_surname, birth=body_birth, gender=body_gender, city=body_city)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({"User": new_user.serialize()}), 200

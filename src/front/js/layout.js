@@ -2,16 +2,12 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { Home } from "./pages/home";
-import { Login } from "./pages/login";
-import { Register } from "./pages/register";
-import injectContext from "./store/appContext";
-import { UserProfile } from "./pages/userProfile";
 import { Homepageafterlogin } from "./pages/homepageafterlogin";
+import { Profile } from "./pages/profile";
+import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-
-import ScrollToTop from "./component/scrollToTop";
 
 //create your first component
 const Layout = () => {
@@ -21,30 +17,23 @@ const Layout = () => {
   return (
     <div>
       <BrowserRouter basename={basename}>
-        <ScrollToTop>
-          <Navbar />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/register">
-              <Register />
-            </Route>
-            <Route exact path="/userProfile">
-              <UserProfile />
-            </Route>
-            <Route exact path="/homepageafterlogin">
-              <Homepageafterlogin />
-            </Route>
-            <Route>
-              <h1>Not found!</h1>
-            </Route>
-          </Switch>
-          <Footer />
-        </ScrollToTop>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
+          <Route exact path="/homepageafterlogin">
+            <Homepageafterlogin />
+          </Route>
+
+          <Route>
+            <h1>Not found!</h1>
+          </Route>
+        </Switch>
+        <Footer />
       </BrowserRouter>
     </div>
   );
