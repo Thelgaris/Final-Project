@@ -92,9 +92,8 @@ def get_all_sports():
 
 
 @api.route('/user', methods=['GET'])
-@jwt_required()
 def get_all_users():
-    user = User.query.all()
-    user_serialized = list(map(lambda x: x.serialize(), user))
-    return jsonify({"response": user_serialized}), 200
+    users = User.query.all()
+    users_serialized = list(map(lambda x: x.serialize(), users))
+    return jsonify({"response": users_serialized}), 200
 
