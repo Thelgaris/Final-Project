@@ -103,14 +103,14 @@ export const UserProfile = () => {
           />
         </div>
 
-        {/* <div>
+        <div>
           <Sportmodal
             user={user}
             setUser={(e) => {
               setUser({ ...user, sports: e });
             }}
           />
-        </div> */}
+        </div>
 
         <div>
           <button
