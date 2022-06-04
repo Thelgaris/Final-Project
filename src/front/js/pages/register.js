@@ -15,7 +15,7 @@ export const Register = () => {
       }
     );
     const data = await response.json();
-    localStorage.setItem("userToken", data.access_token);
+    localStorage.setItem("access_token", data.access_token);
     history.push("/userProfile");
   };
 

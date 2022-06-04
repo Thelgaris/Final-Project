@@ -4,10 +4,12 @@ import { Context } from "../store/appContext";
 
 export const Sportmodal = ({ user, setUser }) => {
   const [sportsData, setSportsData] = useState({});
+  const [userSport, setUserSport] = useState({});
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
     actions.getSports();
+    actions.setUserSports();
   }, []);
 
   return (
@@ -74,7 +76,7 @@ export const Sportmodal = ({ user, setUser }) => {
                     type="button"
                     className="btn modalbtn btn-primary"
                     onClick={() => {
-                      getSports();
+                      setUserSports;
                     }}
                   >
                     Guardar
@@ -85,6 +87,25 @@ export const Sportmodal = ({ user, setUser }) => {
           </div>
         </div>
       </div>
+      {store.userSports.map((sport) => {
+        return (
+          <div key={sport.id} className="usersport">
+            <ul className="list-group list-group-horizontal">
+              <li
+                className="list-group-item"
+                onChange={(e) => {
+                  setUserSport({
+                    ...userSport,
+                    sport: e.target.value,
+                  });
+                }}
+              >
+                {sport.name}
+              </li>
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 };

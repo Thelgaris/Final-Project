@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       sports: [],
+      userSports: [],
       user_id: null,
       logged: null,
       url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api",
@@ -15,6 +16,17 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(data, " @@@@@@@@@@");
         setStore({ sports: data.response });
       },
+
+      setUserSports: async () => {
+        const arraySports = [...this.state.userSports, i.target.id];
+        if (this.state.UserSports.includes(i.target.id)) {
+          newArray = newArray.filter((sport) => sport !== i.target.id);
+        }
+        this.setState({
+          userSports: newArray,
+        });
+      },
+
       verify: async () => {
         try {
           const resp = await fetch(
