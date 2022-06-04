@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const PistaInfo = () => {
+  const { store, actions } = useContext(Context);
+  useEffect(() => {
+    actions.getPistas();
+  }, []);
+
   return (
     <div className="container pistaInfo">
       <div className="row d-flex justfy-content-center">

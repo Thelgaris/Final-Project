@@ -63,7 +63,24 @@ class UserSports(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User')
 
+class Pistas(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), unique=False, nullable=True)
+    addres = db.Column(db.String(80), unique=False, nullable=True)
+    description = db.Column(db.String(240), unique=False, nullable=True)
+    photo = db.Column(db.String(140), unique=False, nullable=True)
 
+    def __repr__(self):
+        return f'<Pistas {self.name}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "addres": self.addres,
+            "description": self.description,
+            "photo": self.photo,
+        }
 
 
 

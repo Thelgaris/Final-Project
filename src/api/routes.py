@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Sports, Details
+from api.models import db, User, Sports, Details, Pistas
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
@@ -62,6 +62,37 @@ def update_details():
             return jsonify({"Error": "Error"}), 400
     else:
         return jsonify({"Error": "Error"}), 400
+
+
+@api.route('/sports', methods=['GET'])
+def get_all_sports():
+    sports = Sports.query.all()
+    sports_serialized = list(map(lambda x: x.serialize(), sports))
+    return jsonify({"response": sports_serialized}), 200
+
+
+@api.route('/user', methods=['GET'])
+def get_all_users():
+    users = User.query.all()
+    users_serialized = list(map(lambda x: x.serialize(), users))
+    return jsonify({"response": users_serialized}), 200
+
+@api.route('/pistas', methods=['GET'])
+def get_all_pistas():
+    pistas = Pistas.query.all()
+    pistas_serialized = list(map(lambda x: x.serialize(), pistas))
+    return jsonify({"response": pistas_serialized}), 200
+
+
+
+
+
+
+
+
+
+
+
 """     # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
 @app.route("/protected", methods=["GET"])
@@ -78,18 +109,7 @@ def protected():
 #     current_user = get_jwt_identity()
 #     return jsonify(logged_in_as=current_user), 200
 
-@api.route('/sports', methods=['GET'])
-def get_all_sports():
-    sports = Sports.query.all()
-    sports_serialized = list(map(lambda x: x.serialize(), sports))
-    return jsonify({"response": sports_serialized}), 200
 
-
-@api.route('/user', methods=['GET'])
-def get_all_users():
-    users = User.query.all()
-    users_serialized = list(map(lambda x: x.serialize(), users))
-    return jsonify({"response": users_serialized}), 200
 
 
 
