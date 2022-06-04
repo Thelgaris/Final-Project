@@ -11,7 +11,7 @@ export const Login = () => {
     if (user.email != null && user.email.trim() != "") {
       setError(null);
       const response = await fetch(
-        "hhttps://3001-thelgaris-finalproject-p2qlm0qjunw.ws-eu46.gitpod.io/api/login",
+        "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io//api/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
