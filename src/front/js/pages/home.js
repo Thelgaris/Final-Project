@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/home.css";
-import "../../styles/register.css";
 
 export const Home = () => {
   return (
@@ -101,18 +99,12 @@ export const Home = () => {
       <div>
         <div className="d-grid gap-2 col-6-sm mx-auto mt-5 mb-5">
           <Link to="/register">
-            <button
-              className="btn btnhome btn-warning btn-sm text-white"
-              type="button"
-            >
+            <button className="btn btn-warning btn-sm text-white" type="button">
               REGISTRATE
             </button>
           </Link>
           <Link to="/login">
-            <button
-              className="btn btnhome btn-warning btn-sm text-white"
-              type="button"
-            >
+            <button className="btn btn-warning btn-sm text-white" type="button">
               LOGIN
             </button>
           </Link>

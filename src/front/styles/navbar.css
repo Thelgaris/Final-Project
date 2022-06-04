@@ -1,6 +1,7 @@
 .navbarlink {
   text-decoration: none;
 }
+
 span:hover {
   text-decoration: underline;
 }

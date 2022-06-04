@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import "../../styles/register.css";
 
 export const Register = () => {
   const history = useHistory();

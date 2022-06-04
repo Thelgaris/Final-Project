@@ -16,7 +16,7 @@ def login_user():
         user = User.query.filter_by(email=body_email).filter_by(password=body_password).first()
         if user:
             access_token = create_access_token(identity=user.id)
-            return jsonify({"logged": True, "access_token": access_token}),200
+            return jsonify({"logged": True, "user": user.serialize(), "access_token": access_token}),200
         else:
              return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
     else: 
@@ -31,9 +31,10 @@ def register_user():
         new_user = User(email=body_email, password=body_password)
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({"User": new_user.serialize(), "registered": True}), 200
+        access_token = create_access_token(identity=new_user.id)
+        return jsonify({"access_token": access_token, "User": new_user.serialize(), "registered": True}), 200
     else:
-        return jsonify({"registered": False, "msg": "Informacion incompleta"}), 400
+        return jsonify({"Error": "Error"}), 400
 
 @api.route('/userprofile', methods=['POST'])
 @jwt_required()
@@ -61,7 +62,6 @@ def update_details():
             return jsonify({"Error": "Error"}), 400
     else:
         return jsonify({"Error": "Error"}), 400
-
 """     # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
 @app.route("/protected", methods=["GET"])
@@ -86,19 +86,10 @@ def get_all_sports():
 
 
 @api.route('/user', methods=['GET'])
-@jwt_required()
 def get_all_users():
-    user = User.query.all()
-    user_serialized = list(map(lambda x: x.serialize(), user))
-    return jsonify({"response": user_serialized}), 200
+    users = User.query.all()
+    users_serialized = list(map(lambda x: x.serialize(), users))
+    return jsonify({"response": users_serialized}), 200
 
-@api.route("/protected", methods=["GET"])
-@jwt_required()
-def protected():
-    current_id = get_jwt_identity()
-    user = User.query.get(current_id)
-    if user:
-        return jsonify({"logged_in": True, "user_id": current_id}), 200
-    else:
-        return jsonify({"logged_in": False}), 400
+
 

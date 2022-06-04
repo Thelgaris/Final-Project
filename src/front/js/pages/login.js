@@ -21,11 +21,11 @@ export const Login = () => {
       const data = await response.json();
       if (data.access_token) {
         localStorage.setItem("userToken", data.access_token);
-        history.push("/homepageafterlogin");
+        history.push("/userProfile");
         if (data.logged == false) {
           setError("Rellenar datos");
         } else if (data.logged == true) {
-          history.push("/homepageafterlogin");
+          history.push("/userProfile");
         }
       } else {
         setError("Rellenar datos");
@@ -37,7 +37,7 @@ export const Login = () => {
   };
   const loginError = (async) => {
     if (sendUserInfo != True) {
-      setError("Datos incorrectos");
+      setError("Faltan datos o datos incorrectos");
     }
   };
 
