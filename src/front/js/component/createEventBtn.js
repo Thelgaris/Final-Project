@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const CreateEventBtn = () => {
+  const [userEvent, setUserEvent] = useState({});
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.getPistas();
+    actions.getSports();
+  }, []);
+
   return (
     <div>
       <button
@@ -24,10 +33,14 @@ export const CreateEventBtn = () => {
           <div className="modal-content">
             <div className="modal-header">
               <input
+                id="name"
                 type="text"
                 aria-label="Nombre"
                 placeholder="Nombre del Evento"
                 className="input-group mb-3 border-0"
+                onChange={(e) => {
+                  setUserEvent({ ...userEvent, name: e.target.value });
+                }}
               />
 
               <button
@@ -52,6 +65,7 @@ export const CreateEventBtn = () => {
                   <option value="3">Granada</option>
                 </select>
               </div>
+
               <div className="input-group mb-3">
                 <label
                   className="input-group-text w-25"
@@ -59,11 +73,11 @@ export const CreateEventBtn = () => {
                 >
                   Pistas
                 </label>
+
                 <select className="form-select" id="Pistas">
-                  <option>Pista</option>
-                  <option value="1">Pista 1</option>
-                  <option value="3">...</option>
-                  <option value="3">Punto de encuentro</option>
+                  {store.pistas.map((pista) => {
+                    return <option key={pista.id}>{pista.name}</option>;
+                  })}
                 </select>
               </div>
 
@@ -74,13 +88,10 @@ export const CreateEventBtn = () => {
                 >
                   Deporte
                 </label>
-                <select className="form-select" id="Deporte">
-                  <option>Deporte</option>
-                  <option value="1">Running</option>
-                  <option value="2">Ciclismo</option>
-                  <option value="3">Futbol</option>
-                  <option value="3">Basket</option>
-                  <option value="3">Otro</option>
+                <select className="form-select" id="Pistas">
+                  {store.sports.map((sport) => {
+                    return <option key={sport.id}>{sport.name}</option>;
+                  })}
                 </select>
               </div>
               <div className="input-group mb-3">

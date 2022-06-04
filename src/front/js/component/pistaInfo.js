@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const PistaInfo = () => {
   const { store, actions } = useContext(Context);
+  const { id } = useParams();
 
   useEffect(() => {
     actions.getPistas();
@@ -33,7 +34,7 @@ export const PistaInfo = () => {
                 <div className="modal-dialog">
                   <div className="modal-content">
                     <div className="modal-header bg-light bg-gradient">
-                      <h5 className="modal-title">{pista.name}</h5>
+                      <h5 className="modal-title">{store.OnePista.name}</h5>
                       <button
                         type="button"
                         className="btn-close"
@@ -52,10 +53,12 @@ export const PistaInfo = () => {
                           <ul className="list-group list-group-flush">
                             <li className="list-group-item">Ciudad</li>
 
-                            <li className="list-group-item">{pista.addres}</li>
+                            <li className="list-group-item">
+                              {store.pistas.addres}
+                            </li>
 
                             <li className="list-group-item">
-                              {pista.description}
+                              {store.pistas.description}
                             </li>
                           </ul>
                         </div>
