@@ -21,7 +21,9 @@ const injectContext = (PassedComponent) => {
       })
     );
 
-    useEffect(() => {}, []);
+    // useEffect(() => {
+    //   state.actions.verify();
+    // }, []);
 
     return (
       <Context.Provider value={state}>

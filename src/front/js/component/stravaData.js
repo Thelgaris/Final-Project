@@ -72,7 +72,7 @@ export const StravaData = () => {
             <div>2h 40m 13s</div>
           </div>
           <div
-            class="tab-pane fade  mt-4 pb-4"
+            className="tab-pane fade  mt-4 pb-4"
             id="cycling-data"
             role="tabpanel"
             aria-labelledby="pills-profile-tab"
@@ -82,7 +82,7 @@ export const StravaData = () => {
             <div>2h 40m 13s</div>
           </div>
           <div
-            class="tab-pane fade  mt-4 pb-4"
+            className="tab-pane fade  mt-4 pb-4"
             id="activites-data"
             role="tabpanel"
             aria-labelledby="pills-profile-tab"

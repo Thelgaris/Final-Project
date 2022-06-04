@@ -41,6 +41,34 @@ class Details(db.Model):
             "city": self.city,
         }
 
+
+class Sports(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=True)
+    user_sports = db.relationship('UserSports')
+
+    def __repr__(self):
+        return f'<Sports {self.name}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }
+
+class UserSports(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    sport_id = db.Column(db.Integer, db.ForeignKey('sports.id'))
+    sports = db.relationship('Sports')
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User')
+
+
+
+
+
+
+
 # One to many
 #   class Parent(Base):
 #     __tablename__ = "parent"
@@ -73,25 +101,6 @@ class Details(db.Model):
 #     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 #     user = db.relationship('User')
 
-class Sports(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True)
-    user_sports = db.relationship('UserSports')
 
-    def __repr__(self):
-        return f'<Sports {self.name}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-        }
-
-class UserSports(db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    sport_id = db.Column(db.Integer, db.ForeignKey('sports.id'))
-    sports = db.relationship('Sports')
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User')
 
     

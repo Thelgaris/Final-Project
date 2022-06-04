@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import "../../styles/userprofile.css";
+
 import { Context } from "../store/appContext";
 
 export const Sportmodal = ({ user, setUser }) => {
@@ -10,18 +10,6 @@ export const Sportmodal = ({ user, setUser }) => {
     actions.getSports();
   }, []);
 
-  const getSports = async () => {
-    const response = await fetch(
-      "https://3000-thelgaris-finalproject-jj1n5tchp6y.ws-eu46.gitpod.io/api/sports",
-      {
-        method: "GET",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(sportsData),
-      }
-    );
-    const data = await response.json();
-    console.log(data);
-  };
   return (
     <div className="mx-auto">
       <button

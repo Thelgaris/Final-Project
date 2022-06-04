@@ -4,10 +4,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "./pages/home";
 import { Homepageafterlogin } from "./pages/homepageafterlogin";
 import { Profile } from "./pages/profile";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { UserProfile } from "./pages/userProfile";
 
 //create your first component
 const Layout = () => {
@@ -22,11 +25,20 @@ const Layout = () => {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/register">
+            <Register />
+          </Route>
           <Route exact path="/profile">
             <Profile />
           </Route>
           <Route exact path="/homepageafterlogin">
             <Homepageafterlogin />
+          </Route>
+          <Route exact path="/userProfile">
+            <UserProfile />
           </Route>
 
           <Route>

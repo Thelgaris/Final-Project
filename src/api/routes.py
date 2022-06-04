@@ -62,7 +62,6 @@ def update_details():
             return jsonify({"Error": "Error"}), 400
     else:
         return jsonify({"Error": "Error"}), 400
-
 """     # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
 @app.route("/protected", methods=["GET"])
@@ -72,17 +71,12 @@ def protected():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user), 200 """
 
-
-
-
 # @app.route("/protected", methods=["GET"])
 # @jwt_required()
 # def protected():
 #     # Access the identity of the current user with get_jwt_identity
 #     current_user = get_jwt_identity()
 #     return jsonify(logged_in_as=current_user), 200
-
-     
 
 @api.route('/sports', methods=['GET'])
 def get_all_sports():
@@ -98,16 +92,4 @@ def get_all_users():
     return jsonify({"response": users_serialized}), 200
 
 
-@api.route('/userProfile', methods=['POST'])
-def user_details():
-    body_email = request.json.get("email") 
-    body_name = request.json.get("name")
-    body_surname = request.json.get("surname")
-    body_birth = request.json.get("birth")
-    body_gender = request.json.get("gender")
-    body_city = request.json.get("city")
-    
-    new_user = User(email=body_email,  name=body_name, surname=body_surname, birth=body_birth, gender=body_gender, city=body_city)
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify({"User": new_user.serialize()}), 200
+

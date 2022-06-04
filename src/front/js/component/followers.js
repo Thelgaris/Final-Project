@@ -62,17 +62,17 @@ export const Followers = () => {
           aria-labelledby="pills-home-tab"
         >
           <div className="row mt-5 d-flex justify-content-center">
-            <div class="card ms-2 me-2 border-0" style={{ width: "14rem" }}>
+            <div className="card ms-2 me-2 border-0" style={{ width: "14rem" }}>
               <img
                 src="https://picsum.photos/300/200"
-                class="card-img-top rounded-circle "
+                className="card-img-top rounded-circle "
                 alt="..."
               />
-              <div class="card-body">
-                <h4 class="card-title">Nombre</h4>
-                <h5 class="card-title">Ciudad</h5>
+              <div className="card-body">
+                <h4 className="card-title">Nombre</h4>
+                <h5 className="card-title">Ciudad</h5>
 
-                <button href="#" class="btn btn-warning w-100">
+                <button href="#" className="btn btn-warning w-100">
                   Seguir
                 </button>
               </div>
@@ -86,17 +86,20 @@ export const Followers = () => {
           aria-labelledby="pills-profile-tab"
         >
           <div className="row mt-5 d-flex justify-content-center">
-            <div class="card ms-2 me-2 border-0 " style={{ width: "14rem" }}>
+            <div
+              className="card ms-2 me-2 border-0 "
+              style={{ width: "14rem" }}
+            >
               <img
                 src="https://picsum.photos/300/200"
-                class="card-img-top rounded-circle"
+                className="card-img-top rounded-circle"
                 alt="..."
               />
-              <div class="card-body">
-                <h4 class="card-title">Nombre</h4>
-                <h5 class="card-title">Ciudad</h5>
+              <div className="card-body">
+                <h4 className="card-title">Nombre</h4>
+                <h5 className="card-title">Ciudad</h5>
 
-                <button href="#" class="btn btn-warning w-100">
+                <button href="#" className="btn btn-warning w-100">
                   Dejar de seguir
                 </button>
               </div>
@@ -110,17 +113,17 @@ export const Followers = () => {
           aria-labelledby="pills-profile-tab"
         >
           <div className="row mt-5 d-flex justify-content-center">
-            <div class="card ms-2 me-2 border-0" style={{ width: "14rem" }}>
+            <div className="card ms-2 me-2 border-0" style={{ width: "14rem" }}>
               <img
                 src="https://picsum.photos/300/200"
-                class="card-img-top rounded-circle"
+                className="card-img-top rounded-circle"
                 alt="..."
               />
-              <div class="card-body">
-                <h4 class="card-title">Nombre</h4>
-                <h5 class="card-title">Ciudad</h5>
+              <div className="card-body">
+                <h4 className="card-title">Nombre</h4>
+                <h5 className="card-title">Ciudad</h5>
 
-                <button href="#" class="btn btn-warning w-100">
+                <button href="#" className="btn btn-warning w-100">
                   Seguir
                 </button>
               </div>

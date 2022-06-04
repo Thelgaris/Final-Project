@@ -46,7 +46,7 @@ export const CreateEventBtn = () => {
                   Ciudad
                 </label>
                 <select className="form-select" id="Ciudad">
-                  <option selected></option>
+                  <option>Ciudad</option>
                   <option value="1">Barcelona</option>
                   <option value="2">Cadiz</option>
                   <option value="3">Granada</option>
@@ -60,7 +60,7 @@ export const CreateEventBtn = () => {
                   Pistas
                 </label>
                 <select className="form-select" id="Pistas">
-                  <option selected></option>
+                  <option>Pista</option>
                   <option value="1">Pista 1</option>
                   <option value="3">...</option>
                   <option value="3">Punto de encuentro</option>
@@ -75,7 +75,7 @@ export const CreateEventBtn = () => {
                   Deporte
                 </label>
                 <select className="form-select" id="Deporte">
-                  <option selected></option>
+                  <option>Deporte</option>
                   <option value="1">Running</option>
                   <option value="2">Ciclismo</option>
                   <option value="3">Futbol</option>

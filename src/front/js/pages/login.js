@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import "../../styles/login.css";
 
 export const Login = () => {
   const history = useHistory();
@@ -11,7 +10,7 @@ export const Login = () => {
     if (user.email != null && user.email.trim() != "") {
       setError(null);
       const response = await fetch(
-        "https://3001-thelgaris-finalproject-0i2j77n8lh5.ws-eu46.gitpod.io/api/login",
+        "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api/login",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -21,11 +20,11 @@ export const Login = () => {
       const data = await response.json();
       if (data.access_token) {
         localStorage.setItem("userToken", data.access_token);
-        history.push("/userProfile");
+        history.push("/homepageafterlogin");
         if (data.logged == false) {
           setError("Rellenar datos");
         } else if (data.logged == true) {
-          history.push("/userProfile");
+          history.push("/homepageafterlogin");
         }
       } else {
         setError("Rellenar datos");
@@ -37,7 +36,7 @@ export const Login = () => {
   };
   const loginError = (async) => {
     if (sendUserInfo != True) {
-      setError("Faltan datos o datos incorrectos");
+      setError("Datos incorrectos");
     }
   };
 
