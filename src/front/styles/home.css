@@ -6,7 +6,7 @@ body {
   margin: 0;
   margin-bottom: 40px;
 }
-g #carouselExampleControls {
+#carouselExampleControls {
   width: 700px;
 
   margin-left: auto;

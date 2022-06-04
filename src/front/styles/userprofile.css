@@ -11,7 +11,7 @@
   position: relative;
 }
 
-g .button-container i {
+.button-container i {
   position: absolute;
   bottom: 0.3em;
   right: 0.8em;
