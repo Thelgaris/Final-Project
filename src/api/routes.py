@@ -23,12 +23,8 @@ def login_user():
         return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
 
 @api.route('/register', methods=['POST'])
-<<<<<<< HEAD
 def register_user():
     print ('@@@@@@@@@@@@@@@@@@@@@')
-=======
-def Register_user():
->>>>>>> origin/historyView
     body_email = request.json.get("email")
     body_password = request.json.get("password")
     if body_email and body_password:

@@ -17,11 +17,7 @@ export const HistoryCard = () => {
             This is a wider card with supporting text below as a natural lead-in
             to additional content. This content is a little bit longer.
           </p>
-<<<<<<< HEAD
           <p class="card-text text-end">
-=======
-          <p class="card-text">
->>>>>>> origin/historyView
             <small class="text-muted">Last updated 3 mins ago</small>
           </p>
         </div>

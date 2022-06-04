@@ -6,15 +6,10 @@ class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-<<<<<<< HEAD
     detail = db.relationship('Details', backref='user', lazy=True)
     sports = db.relationship('UserSports')
     is_active = db.Column(db.Boolean(), unique=False, nullable=True)
     
-=======
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-
->>>>>>> origin/historyView
     def __repr__(self):
         return f'<User {self.email}>'
 
@@ -22,7 +17,6 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-<<<<<<< HEAD
         }
 
 class Details(db.Model):
@@ -101,7 +95,3 @@ class UserSports(db.Model):
     user = db.relationship('User')
 
     
-=======
-            # do not serialize the password, its a security breach
-        }
->>>>>>> origin/historyView
