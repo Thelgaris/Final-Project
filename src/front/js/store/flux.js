@@ -2,12 +2,9 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       sports: [],
-<<<<<<< HEAD
       userSports: [],
       user_id: null,
       logged: null,
-=======
->>>>>>> da9d1dc2e0aab9f2b3fd5ac58ba83234c790de56
       url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api",
     },
     actions: {
