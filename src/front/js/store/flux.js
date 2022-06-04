@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       sports: [],
       pistas: [],
       events: [],
-      UserEvent: [],
+      userEvent: [],
       OnePista: [],
       url: "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api",
     },
@@ -49,6 +49,20 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(data);
         setStore({ onePista: data.result.properties });
         console.log(getStore().onePista);
+      },
+
+      setUserEvents: async (item) => {
+        const store = getStore();
+        if (!store.userEvents.includes(item)) {
+          setStore({ userEvents: [...store.userEvents, item] });
+        } else {
+          // let remove = []
+          // for (let index = 0; index < store.favourites.length; index++) {
+          // 	const favourite = store.favourites[index];
+          // 	if(item != favourite){remove.push(favourite)}
+          // }
+          setStore({ userEvents: store.userEvents.filter((E) => E != item) });
+        }
       },
     },
   };
