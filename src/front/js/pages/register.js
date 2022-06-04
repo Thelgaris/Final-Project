@@ -1,23 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
-
-import { Context } from "../store/appContext";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 export const Register = () => {
-  const { store, actions } = useContext(Context);
+  const history = useHistory();
   const [userData, setUserData] = useState({});
 
   const createUser = async () => {
     const response = await fetch(
-      "https://3001-thelgaris-finalproject-jj1n5tchp6y.ws-eu45.gitpod.io/api/register",
+      "https://3001-thelgaris-finalproject-0i2j77n8lh5.ws-eu46.gitpod.io/api/register",
       {
-        method: "PUT",
+        method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(userData),
       }
     );
     const data = await response.json();
-    console.log("@@@@@@@@@@@", data);
+    localStorage.setItem("userToken", data.access_token);
+    history.push("/userProfile");
   };
 
   return (
@@ -54,7 +53,7 @@ export const Register = () => {
           />
           <input
             id="password"
-            type="text"
+            type="password"
             className="form-control"
             placeholder="Password"
             aria-label="Password"
@@ -64,26 +63,12 @@ export const Register = () => {
             }}
           />
           <input
-            id="name"
-            type="text"
+            id="passwordvalidation"
+            type="password"
             className="form-control"
-            placeholder="Nombre"
-            aria-label="Nombre"
+            placeholder="Confirm password"
+            aria-label="Confirm password"
             aria-describedby="basic-addon1"
-            onChange={(e) => {
-              setUserData({ ...userData, name: e.target.value });
-            }}
-          />
-          <input
-            id="birth"
-            type="text"
-            className="form-control"
-            placeholder="Fecha de nacimiento"
-            aria-label="Fecha de nacimiento"
-            aria-describedby="basic-addon1"
-            onChange={(e) => {
-              setUserData({ ...userData, birth: e.target.value });
-            }}
           />
         </div>
         <div className="d-grid gap-2 mt-4 mx-auto">
