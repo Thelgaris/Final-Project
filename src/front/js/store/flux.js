@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       sports: [],
       pistas: [],
       events: [],
-      userEvent: [],
+      userEvents: [],
       OnePista: [],
       url: "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api",
     },
@@ -33,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       getEvents: async () => {
-        const resp = await fetch(getStore().url + "/CreateEvent", {
+        const resp = await fetch(getStore().url + "/events", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -43,27 +43,27 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(data, " @@@@@@@@@@");
         setStore({ events: data.response });
       },
-      getOnePista: async (id) => {
-        const response = await fetch(getStore().url + "/pistas/");
-        const data = await response.json();
-        console.log(data);
-        setStore({ onePista: data.result.properties });
-        console.log(getStore().onePista);
-      },
+      // getOnePista: async (id) => {
+      //   const response = await fetch(getStore().url + "/pistas/");
+      //   const data = await response.json();
+      //   console.log(data);
+      //   setStore({ onePista: data.result.properties });
+      //   console.log(getStore().onePista);
+      // },
 
-      setUserEvents: async (item) => {
-        const store = getStore();
-        if (!store.userEvents.includes(item)) {
-          setStore({ userEvents: [...store.userEvents, item] });
-        } else {
-          // let remove = []
-          // for (let index = 0; index < store.favourites.length; index++) {
-          // 	const favourite = store.favourites[index];
-          // 	if(item != favourite){remove.push(favourite)}
-          // }
-          setStore({ userEvents: store.userEvents.filter((E) => E != item) });
-        }
-      },
+      // setUserEvents: async (item) => {
+      //   const store = getStore(Events);
+      //   if (!store.userEvents.includes(item)) {
+      //     setStore({ userEvents: [...store.userEvents, item] });
+      //   } else {
+      //     // let remove = []
+      //     // for (let index = 0; index < store.favourites.length; index++) {
+      //     // 	const favourite = store.favourites[index];
+      //     // 	if(item != favourite){remove.push(favourite)}
+      //     // }
+      //     setStore({ userEvents: store.userEvents.filter((E) => E != item) });
+      //   }
+      // },
     },
   };
 };

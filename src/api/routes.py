@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Sports, Details, Pistas
+from api.models import db, User, Sports, Details, Pistas, Events, UserEvents, UserSports
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
@@ -83,12 +83,16 @@ def get_all_pistas():
     pistas_serialized = list(map(lambda x: x.serialize(), pistas))
     return jsonify({"response": pistas_serialized}), 200
 
-
+@api.route('/events', methods=['GET'])
+def get_all_events():
+    events = Events.query.all()
+    events_serialized = list(map(lambda x: x.serialize(), events))
+    return jsonify({"response": events_serialized}), 200
 
 
 @api.route('/createEvent', methods=['POST'])
 @jwt_required()
-def create_event():
+def create_userEvent():
     print(6)
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
@@ -100,12 +104,12 @@ def create_event():
         print(8)
         if body_name and body_description:
             print(9)
-            user_events = UserEvent(name=body_name, description=body_description, user_id=user_id, event_name=event_id)
+            user_events = UserEvents(name=body_name, description=body_description, user_id=user_id, event_name=event_id)
             db.session.add(user_events)
             db.session.commit()
             print(5)
             
-            return jsonify({"details": user_events.serialize(), "Event_Created": True}), 200
+            return jsonify({"events": user_events.serialize(), "Event_Created": True}), 200
         else:
             return jsonify({"Error": "Error"}), 400
     else:

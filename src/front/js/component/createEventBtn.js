@@ -10,6 +10,7 @@ export const CreateEventBtn = () => {
   useEffect(() => {
     actions.getPistas();
     actions.getSports();
+    actions.getEvents();
   }, []);
 
   return (
