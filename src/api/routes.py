@@ -89,31 +89,40 @@ def get_all_events():
     events_serialized = list(map(lambda x: x.serialize(), events))
     return jsonify({"response": events_serialized}), 200
 
+@api.route('/userEvents', methods=['GET'])
+def get_userEvents():
+    userEvents = UserEvents.query.all()
+    userEvents_serialized = list(map(lambda x: x.serialize(), userEvents))
+    return jsonify({"response": userEvents_serialized}), 200
 
-@api.route('/createEvent', methods=['POST'])
+
+@api.route('/events', methods=['POST'])
 @jwt_required()
-def create_userEvent():
+def create_Events():
     print(6)
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
-    event = Events.query.get(event_id)
+    events_id = get_jwt_identity()
+    events = Events.query.get(events_id)
     if user:
         print(7)
         body_name = request.json.get("name")
-        body_description = request.json.get("description")     
+             
         print(8)
-        if body_name and body_description:
+        if body_name:
             print(9)
-            user_events = UserEvents(name=body_name, description=body_description, user_id=user_id, event_name=event_id)
-            db.session.add(user_events)
+            events = Events(name=body_name, description=body_description)
+            user_events = userEvents(user_id=user_id, events_id=events_id)
+            db.session.add(user_events, events)
             db.session.commit()
             print(5)
             
-            return jsonify({"events": user_events.serialize(), "Event_Created": True}), 200
+            return jsonify({"events": events.serialize(), "user_events": user_events.serialize(), "Event_Created": True}), 200
         else:
             return jsonify({"Error": "Error"}), 400
     else:
         return jsonify({"Error": "Error"}), 400
+
 
 
 

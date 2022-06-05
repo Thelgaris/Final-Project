@@ -4,13 +4,13 @@ import { Context } from "../store/appContext";
 
 export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
-  const [events, setEvents] = useState({});
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
     actions.getPistas();
     actions.getSports();
     actions.getEvents();
+    actions.setEvents();
   }, []);
 
   return (
@@ -34,16 +34,18 @@ export const CreateEventBtn = () => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <input
-                id="name"
-                type="text"
-                aria-label="Nombre"
-                placeholder="Nombre del Evento"
-                className="input-group mb-3 border-0"
-                onChange={(e) => {
-                  setUserEvents({ ...userEvents, name: e.target.value });
-                }}
-              />
+              <h3 className="d-flex align-content-center">
+                <input
+                  id="name"
+                  type="text"
+                  aria-label="Nombre"
+                  placeholder="Nombre del Evento"
+                  className="input-group mb-3 border-0 d-flex align-content-center"
+                  onChange={(e) => {
+                    setUserEvents({ ...userEvents, name: e.target.value });
+                  }}
+                />
+              </h3>
 
               <button
                 type="button"
@@ -60,7 +62,13 @@ export const CreateEventBtn = () => {
                 >
                   Ciudad
                 </label>
-                <select className="form-select" id="Ciudad">
+                <select
+                  className="form-select "
+                  id="Ciudad"
+                  onChange={(e) => {
+                    setUserEvents({ ...userEvents, city: e.target.value });
+                  }}
+                >
                   <option>Ciudad</option>
                   <option value="1">Barcelona</option>
                   <option value="2">Cadiz</option>
@@ -101,12 +109,31 @@ export const CreateEventBtn = () => {
                   className="input-group-text w-25"
                   htmlFor="inputGroupSelect01"
                 >
+                  Dirección
+                </label>
+                <input
+                  className="w-75 border border-light rounded ps-2 pe-2"
+                  type="address"
+                  id="address"
+                  onChange={(e) => {
+                    setUserEvents({ ...userEvents, address: e.target.value });
+                  }}
+                />
+              </div>
+              <div className="input-group mb-3">
+                <label
+                  className="input-group-text w-25"
+                  htmlFor="inputGroupSelect01"
+                >
                   Fecha
                 </label>
                 <input
                   className="w-75 border-1 border border-light rounded ps-2 pe-2"
                   type="date"
                   id="date"
+                  onChange={(e) => {
+                    setUserEvents({ ...userEvents, date: e.target.value });
+                  }}
                 />
               </div>
               <div className="input-group mb-3">
@@ -121,6 +148,9 @@ export const CreateEventBtn = () => {
                   className="w-75 border-1 border border-light rounded ps-2 pe-2"
                   type="time"
                   id="time"
+                  onChange={(e) => {
+                    setUserEvents({ ...userEvents, time: e.target.value });
+                  }}
                 />
               </div>
               <div className="input-group mb-3">
@@ -133,9 +163,15 @@ export const CreateEventBtn = () => {
               <div className="mb-3">
                 <textarea
                   className="form-control"
-                  id="descripcion"
+                  id="description"
                   rows="3"
                   placeholder="Describe tu evento"
+                  onChange={(e) => {
+                    setUserEvents({
+                      ...userEvents,
+                      description: e.target.value,
+                    });
+                  }}
                 ></textarea>
               </div>
             </div>
@@ -144,8 +180,7 @@ export const CreateEventBtn = () => {
                 type="button"
                 className="btn btn-warning w-50 content-center"
                 onClick={() => {
-                  actions.setEvents(events.name);
-                  actions.setUserEvents(userEvents.id);
+                  actions.setEvents();
                 }}
               >
                 Crear

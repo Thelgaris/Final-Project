@@ -16,7 +16,7 @@ export const PistaInfo = () => {
       <div className="row d-flex justfy-content-center">
         {store.pistas.map((pista) => {
           return (
-            <div className="col-4 " key={pista.id}>
+            <div className="col-12 " key={pista.id}>
               <button
                 type="button"
                 className="btn btn-link text-decoration-none text-dark"
@@ -28,9 +28,9 @@ export const PistaInfo = () => {
               </button>
 
               {showModal == pista.id ? (
-                <div>
+                <div className="row">
                   <div
-                    className="position-absolute top-100 start-50 translate-middle mt-5"
+                    className="position-absolute top-100 start-50 translate-middle mt-5 align-middle"
                     tabIndex="-1"
                     aria-labelledby="pistaLabel"
                     aria-hidden="true"
@@ -41,7 +41,7 @@ export const PistaInfo = () => {
                           <h5 className="modal-title">{pista.name}</h5>
                           <button
                             type="button"
-                            className="btn-close"
+                            className="btn-close btn-sm"
                             onClick={() => {
                               setShowModal(null);
                             }}
@@ -49,10 +49,7 @@ export const PistaInfo = () => {
                           ></button>
                         </div>
                         <div className="modal-body">
-                          <div
-                            className="card w-100"
-                            style={{ width: "10rem" }}
-                          >
+                          <div className="card w-100">
                             <img
                               src="https://picsum.photos/seed/picsum/300/200"
                               className="card-img-top"
