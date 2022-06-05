@@ -1,15 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
-
+import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 
-export const Sportmodal = ({ user, setUser }) => {
-  const [sportsData, setSportsData] = useState({});
-  const [userSport, setUserSport] = useState({});
+export const Sportmodal = ({ setSport }) => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
     actions.getSports();
-    actions.setUserSports();
+    /* actions.setUserSport(); */
   }, []);
 
   return (
@@ -18,21 +16,21 @@ export const Sportmodal = ({ user, setUser }) => {
         type="button"
         className="btn deportesbtn btn-white mx-auto"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        data-bs-target="#exampleModalToggle1"
       >
         Deportes
       </button>
       <div
         className="modal fade "
-        id="exampleModal"
+        id="exampleModalToggle1"
         tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby="exampleModalToggleLabel1"
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered ">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
+              <h5 className="modal-title" id="exampleModalLabel1">
                 Deportes que practico
               </h5>
               <button
@@ -54,58 +52,81 @@ export const Sportmodal = ({ user, setUser }) => {
                         placeholder={sport.name}
                         id={sport.name}
                         onClick={(e) => {
-                          setSportsData({
-                            ...sportsData,
-                            sport: e.target.value,
-                          });
+                          console.log("onclick");
+                          setSport(sport.id);
                         }}
                       />
                       <label className="form-check-label">{sport.name}</label>
                     </div>
                   );
                 })}
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn modalbtn2 btn-secondary "
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    className="btn modalbtn btn-primary"
-                    onClick={() => {
-                      setUserSports;
-                    }}
-                  >
-                    Guardar
-                  </button>
-                </div>
               </div>
+            </div>
+            <div className="modal-footer">
+              <button
+                className="btn modalbtn2 btn-secondary "
+                data-bs-dismiss="modal"
+                onClick={() => {
+                  /* actions.setUserSport(sport.name); */
+                }}
+              >
+                Guardar
+              </button>
+              <button
+                className="btn modalbtn btn-primary"
+                data-bs-target="#exampleModalToggle22"
+                data-bs-toggle="modal"
+                data-bs-dismiss="modal"
+              >
+                Mis deportes
+              </button>
             </div>
           </div>
         </div>
       </div>
-      {store.userSports.map((sport) => {
-        return (
-          <div key={sport.id} className="usersport">
-            <ul className="list-group list-group-horizontal">
-              <li
-                className="list-group-item"
-                onChange={(e) => {
-                  setUserSport({
-                    ...userSport,
-                    sport: e.target.value,
-                  });
-                }}
+      <div
+        className="modal fade "
+        id="exampleModalToggle22"
+        tabIndex="-1"
+        aria-labelledby="exampleModalToggleLabel22"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered ">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalToggleLabel22">
+                Deportes que practico
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">Segundo Modal</div>
+
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn modalbtn2 btn-secondary "
+                data-bs-dismiss="modal"
+                onClick={() => {}}
               >
-                {sport.name}
-              </li>
-            </ul>
+                Guardar
+              </button>
+              <button
+                type="button"
+                className="btn modalbtn btn-primary"
+                data-bs-target="#exampleModalToggle1"
+                data-bs-toggle="modal"
+              >
+                Deportes
+              </button>
+            </div>
           </div>
-        );
-      })}
+        </div>
+      </div>
     </div>
   );
 };

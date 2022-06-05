@@ -20,13 +20,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ sports: data.response });
       },
 
-      setUserSports: async () => {
-        const arraySports = [...this.state.userSports, i.target.id];
-        if (this.state.UserSports.includes(i.target.id)) {
-          newArray = newArray.filter((sport) => sport !== i.target.id);
-        }
-        this.setState({
-          userSports: newArray,
+      setUserSports: async (sports) => {
+        const store = getStore();
+        setStore({
+          userSports: store.usersport.filter((sport) => {
+            sport != sports;
+          }),
         });
       },
 

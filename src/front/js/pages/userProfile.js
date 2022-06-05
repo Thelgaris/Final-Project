@@ -7,13 +7,14 @@ import { Sportmodal } from "../component/sportmodal";
 export const UserProfile = () => {
   const history = useHistory();
   const [user, setUser] = useState({});
+  const [sport, setSport] = useState([]);
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
 
   const sendUserInfo = async () => {
     setError(null);
     const response = await fetch(
-      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/userprofile",
+      "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api/userprofile",
       {
         method: "POST",
         headers: {
@@ -104,14 +105,17 @@ export const UserProfile = () => {
           />
         </div>
 
-        {/* <div>
+        <div>
           <Sportmodal
-            user={user}
-            setUser={(e) => {
-              setUser({ ...user, sports: e });
+            setSport={(e) => {
+              if (!sport.includes(e)) {
+                setSport([...sport, e]);
+              } else {
+                setSport(sport.filter((i) => e != i));
+              }
             }}
           />
-        </div> */}
+        </div>
 
         <div>
           <button
