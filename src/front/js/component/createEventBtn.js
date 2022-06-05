@@ -6,12 +6,12 @@ export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
   const { store, actions } = useContext(Context);
 
-  useEffect(() => {
-    actions.getPistas();
-    actions.getSports();
-    actions.getEvents();
-    actions.setEvents();
-  }, []);
+  // useEffect(() => {
+  //   actions.getPistas();
+  //   actions.getSports();
+  //   actions.getEvents();
+  //   actions.setEvents();
+  // }, []);
 
   return (
     <div>
@@ -106,13 +106,13 @@ export const CreateEventBtn = () => {
               </div>
               <div className="input-group mb-3">
                 <label
-                  className="input-group-text w-25"
+                  className="input-group-text w-25 border-3 border-light"
                   htmlFor="inputGroupSelect01"
                 >
                   Dirección
                 </label>
                 <input
-                  className="w-75 border border-light rounded ps-2 pe-2"
+                  className="w-75 border-3 border-light rounded ps-2 pe-2"
                   type="address"
                   id="address"
                   onChange={(e) => {
@@ -122,13 +122,13 @@ export const CreateEventBtn = () => {
               </div>
               <div className="input-group mb-3">
                 <label
-                  className="input-group-text w-25"
+                  className="input-group-text w-25 border-2 border-light"
                   htmlFor="inputGroupSelect01"
                 >
                   Fecha
                 </label>
                 <input
-                  className="w-75 border-1 border border-light rounded ps-2 pe-2"
+                  className="w-75 border-2 border border-light rounded ps-2 pe-2"
                   type="date"
                   id="date"
                   onChange={(e) => {
@@ -138,14 +138,14 @@ export const CreateEventBtn = () => {
               </div>
               <div className="input-group mb-3">
                 <label
-                  className="input-group-text w-25"
+                  className="input-group-text w-25 border-2 border-light"
                   htmlFor="inputGroupSelect01 time"
                 >
                   Hora
                 </label>
 
                 <input
-                  className="w-75 border-1 border border-light rounded ps-2 pe-2"
+                  className="w-75 border-2 border border-light rounded ps-2 pe-2"
                   type="time"
                   id="time"
                   onChange={(e) => {

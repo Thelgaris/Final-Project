@@ -47,7 +47,7 @@ class Sports(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True)
     user_sports = db.relationship('UserSports')
-    events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    # events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
     def __repr__(self):
         return f'<Sports {self.name}>'
@@ -71,7 +71,7 @@ class Pistas(db.Model):
     address = db.Column(db.String(80), unique=False, nullable=True)
     description = db.Column(db.String(240), unique=False, nullable=True)
     photo = db.Column(db.String(140), unique=False, nullable=True)
-    events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    # events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
     def __repr__(self):
         return f'<Pistas {self.name}>'
@@ -94,8 +94,8 @@ class Events(db.Model):
     description = db.Column(db.String(240), unique=False, nullable=False)
     photo = db.Column(db.String(140), unique=False, nullable=True)
     user_events = db.relationship('UserEvents')
-    sport = db.relationship('Sports', backref='events', lazy=True)
-    pista = db.relationship('Pistas', backref='pistas', lazy=True)
+    # sport = db.relationship('Sports', backref='events', lazy=True)
+    # pista = db.relationship('Pistas', backref='pistas', lazy=True)
 
     def __repr__(self):
         return f'<Events {self.name}>'
