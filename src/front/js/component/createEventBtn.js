@@ -6,12 +6,9 @@ export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
   const { store, actions } = useContext(Context);
 
-  // useEffect(() => {
-  //   actions.getPistas();
-  //   actions.getSports();
-  //   actions.getEvents();
-  //   actions.setEvents();
-  // }, []);
+  useEffect(() => {
+    actions.getSports();
+  }, []);
 
   return (
     <div>
