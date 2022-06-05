@@ -16,7 +16,7 @@ def login_user():
         user = User.query.filter_by(email=body_email).filter_by(password=body_password).first()
         if user:
             access_token = create_access_token(identity=user.id)
-            return jsonify({"logged": True, "user": user.serialize(), "access_token": access_token}),200
+            return jsonify({"logged": True, "User": user.serialize(), "access_token": access_token}),200
         else:
              return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
     else: 
@@ -90,7 +90,10 @@ def get_all_events():
     return jsonify({"response": events_serialized}), 200
 
 @api.route('/userEvents', methods=['GET'])
+@jwt_required()
 def get_userEvents():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
     userEvents = UserEvents.query.all()
     userEvents_serialized = list(map(lambda x: x.serialize(), userEvents))
     return jsonify({"response": userEvents_serialized}), 200

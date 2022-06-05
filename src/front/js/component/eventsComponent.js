@@ -1,8 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
 import { CreateEventBtn } from "./createEventBtn";
 
 export const EventsComponent = () => {
+  const { store, actions } = useContext(Context);
+  const { id } = useParams();
+
+  useEffect(() => {
+    actions.getUserEvents();
+  }, []);
+
   return (
     <div className="container">
       <div className="justify-content-center">

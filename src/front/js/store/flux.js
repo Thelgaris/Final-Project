@@ -45,7 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       getUserEvents: async () => {
-        const resp = await fetch(getStore().url + "/events", {
+        const resp = await fetch(getStore().url + "/userEvents", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

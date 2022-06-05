@@ -35,7 +35,10 @@ export const PistaInfo = () => {
                     aria-labelledby="pistaLabel"
                     aria-hidden="true"
                   >
-                    <div className="modal-dialog">
+                    <div
+                      className="modal-dialog"
+                      style={{ width: "50%", height: "500%" }}
+                    >
                       <div className="modal-content">
                         <div className="modal-header bg-light bg-gradient ">
                           <h5 className="modal-title">{pista.name}</h5>
