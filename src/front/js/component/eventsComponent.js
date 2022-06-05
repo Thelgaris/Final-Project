@@ -18,11 +18,13 @@ export const EventsComponent = () => {
           <div className="card-body">
             <h5 className="card-title">Próximos Eventos</h5>
           </div>
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">Evento 1</li>
-            <li className="list-group-item">Evento 2</li>
-            <li className="list-group-item">Evento 3</li>
-          </ul>
+          {store.userEvents.map((event) => {
+            <div key={event}>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">{event.name}</li>
+              </ul>
+            </div>;
+          })}
           <div className="card-footer justify-content-center">
             <div href="#" className="card-link ">
               <CreateEventBtn />

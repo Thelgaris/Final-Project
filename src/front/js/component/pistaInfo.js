@@ -7,9 +7,9 @@ export const PistaInfo = () => {
   const [showModal, setShowModal] = useState(null);
   const { id } = useParams();
 
-  useEffect(() => {
-    actions.getPistas();
-  }, []);
+  // useEffect(() => {
+  //   actions.getPistas();
+  // }, []);
 
   return (
     <div className="container">

@@ -6,9 +6,9 @@ export const Sportmodal = ({ user, setUser }) => {
   const [sportsData, setSportsData] = useState({});
   const { store, actions } = useContext(Context);
 
-  useEffect(() => {
-    actions.getSports();
-  }, []);
+  // useEffect(() => {
+  //   actions.getSports();
+  // }, []);
 
   return (
     <div className="mx-auto">

@@ -8,19 +8,18 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 
 api = Blueprint('api', __name__)
 
-@api.route('/login',methods=['POST'])
-def login_user():
-    body_email = request.json.get('email')
-    body_password = request.json.get('password')
-    if body_email and body_password:
+@api.route('/login', methods=['POST'])
+def login_in():
+        body_email = request.json.get("email")
+        body_password = request.json.get("password")
         user = User.query.filter_by(email=body_email).filter_by(password=body_password).first()
-        if user:
-            access_token = create_access_token(identity=user.id)
-            return jsonify({"logged": True, "User": user.serialize(), "access_token": access_token}),200
-        else:
-             return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
-    else: 
-        return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
+        if user: 
+                token = create_access_token(identity = user.id)
+                return jsonify({"msg" : "User logged in", "token":token}), 200
+        
+        else: 
+                return jsonify({"msg" : "User does not exist"}), 400
+       
 
 @api.route('/register', methods=['POST'])
 def register_user():
