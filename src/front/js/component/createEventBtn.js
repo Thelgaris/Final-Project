@@ -9,7 +9,6 @@ export const CreateEventBtn = () => {
   useEffect(() => {
     actions.getSports();
     actions.getEvents();
-    actions.setEvents();
   }, []);
 
   return (
@@ -68,10 +67,10 @@ export const CreateEventBtn = () => {
                     setUserEvents({ ...userEvents, city: e.target.value });
                   }}
                 >
-                  <option>Ciudad</option>
-                  <option value="1">Barcelona</option>
-                  <option value="2">Cadiz</option>
-                  <option value="3">Granada</option>
+                  <option></option>
+                  <option>Barcelona</option>
+                  <option>Cadiz</option>
+                  <option>Granada</option>
                 </select>
               </div>
 
@@ -187,7 +186,7 @@ export const CreateEventBtn = () => {
                 type="button"
                 className="btn btn-warning w-50 content-center"
                 onClick={() => {
-                  actions.setEvents();
+                  actions.setEvents(userEvents);
                 }}
               >
                 Crear

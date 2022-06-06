@@ -8,17 +8,19 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 
 api = Blueprint('api', __name__)
 
-@api.route('/login', methods=['POST'])
-def login_in():
-        body_email = request.json.get("email")
-        body_password = request.json.get("password")
+@api.route('/login',methods=['POST'])
+def login_user():
+    body_email = request.json.get('email')
+    body_password = request.json.get('password')
+    if body_email and body_password:
         user = User.query.filter_by(email=body_email).filter_by(password=body_password).first()
-        if user: 
-                token = create_access_token(identity = user.id)
-                return jsonify({"msg" : "User logged in", "token":token}), 200
-        
-        else: 
-                return jsonify({"msg" : "User does not exist"}), 400
+        if user:
+            access_token = create_access_token(identity=user.id)
+            return jsonify({"logged": True, "user": user.serialize(), "access_token": access_token}),200
+        else:
+             return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
+    else: 
+        return jsonify({"logged": False, "msg": "Información incorrecta"}), 400
        
 
 @api.route('/register', methods=['POST'])
@@ -116,8 +118,10 @@ def create_Events():
         print(8)
         if body_name and body_address and body_date and body_time and body_description and body_city:
             print(9)
-            events = Events(name=body_name, city=body_city, address=body_address, date=body_date, time=body_time, description=body_description, user_id=user_id)
+            events = Events(name=body_name, city=body_city, address=body_address, date=body_date, time=body_time, description=body_description)           
             db.session.add(events)
+            user_events = UserEvents(user=user, events=events)
+            db.session.add(user_events)
             db.session.commit()
             print(5)
             

@@ -4,25 +4,40 @@ import "../../styles/login.css";
 
 export const Login = () => {
   const history = useHistory();
+  const [user, setUser] = useState({});
   const [error, setError] = useState(null);
-  const [user, setUser] = useState("");
 
-  const Login = async () => {
-    try {
+  const sendUserInfo = async () => {
+    if (user.email != null && user.email.trim() != "") {
+      setError(null);
       const response = await fetch(
-        "https://3001-thelgaris-jwtathentific-zpl9m4yaiwv.ws-eu45.gitpod.io/api/login",
+        "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api/login",
         {
           method: "POST",
-          headers: { "content-type": "application/json" },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
         }
       );
       const data = await response.json();
-      localStorage.setItem("access_token", data.token);
-      console.log("@@@@@@@@@@@", data);
-      history.push("/homepageafterlogin");
-    } catch (e) {
-      alert("Error");
+      if (data.access_token) {
+        localStorage.setItem("access_token", data.access_token);
+        history.push("/homepageafterlogin");
+        if (data.logged == false) {
+          setError("Rellenar datos");
+        } else if (data.logged == true) {
+          history.push("/homepageafterlogin");
+        }
+      } else {
+        setError("Rellenar datos");
+        setTimeout(() => {
+          setError(null);
+        }, 3000);
+      }
+    }
+  };
+  const loginError = (async) => {
+    if (sendUserInfo != True) {
+      setError("Faltan datos o datos incorrectos");
     }
   };
 
@@ -68,7 +83,7 @@ export const Login = () => {
             type="button"
             className="btn login-btn btn-warning text-white"
             onClick={() => {
-              Login();
+              sendUserInfo();
             }}
           >
             Login

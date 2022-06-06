@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Followers = () => {
+  const { store, actions } = useContext(Context);
   return (
     <div className="row">
       <ul
@@ -72,7 +74,13 @@ export const Followers = () => {
                 <h4 className="card-title">Nombre</h4>
                 <h5 className="card-title">Ciudad</h5>
 
-                <button href="#" className="btn btn-warning w-100">
+                <button
+                  href="#"
+                  className="btn btn-warning w-100"
+                  onClick={(e) => {
+                    actions.setFollowers(e.name);
+                  }}
+                >
                   Seguir
                 </button>
               </div>

@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       pistas: [],
       events: [],
       userEvents: [],
+      followers: [],
 
       url: "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api",
     },
@@ -57,17 +58,28 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ userEvents: data.response });
       },
 
-      setEvents: async () => {
+      setEvents: async (event) => {
         const resp = await fetch(getStore().url + "/events", {
           method: "POST",
-          body: JSON.stringify(),
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("userToken"),
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
+          body: JSON.stringify(event),
         });
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@");
+      },
+
+      setFollowers: async (item) => {
+        const store = getStore();
+        if (!store.followers.includes(item)) {
+          setStore({ followers: [...store.followers, item] });
+        } else {
+          setStore({
+            followers: store.followers.filter((fav) => fav != item),
+          });
+        }
       },
     },
   };
