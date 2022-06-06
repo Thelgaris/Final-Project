@@ -107,11 +107,16 @@ def create_Events():
     if user:
         print(7)
         body_name = request.json.get("name")
+        body_city = request.json.get("city")
+        body_address = request.json.get("address")
+        body_date = request.json.get("date")
+        body_time = request.json.get("time")
+        body_description = request.json.get("description")
              
         print(8)
-        if body_name:
+        if body_name and body_address and body_date and body_time and body_description and body_city:
             print(9)
-            events = Events(name=body_name, description=body_description, user_id=user_id)
+            events = Events(name=body_name, city=body_city, address=body_address, date=body_date, time=body_time, description=body_description, user_id=user_id)
             db.session.add(events)
             db.session.commit()
             print(5)

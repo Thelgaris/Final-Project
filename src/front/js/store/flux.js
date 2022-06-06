@@ -62,11 +62,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(),
           headers: {
             "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("userToken"),
           },
         });
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@");
-        setStore({ events: data.response });
       },
     },
   };

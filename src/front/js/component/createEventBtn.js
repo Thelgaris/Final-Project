@@ -8,6 +8,8 @@ export const CreateEventBtn = () => {
 
   useEffect(() => {
     actions.getSports();
+    actions.getEvents();
+    actions.setEvents();
   }, []);
 
   return (
@@ -81,7 +83,13 @@ export const CreateEventBtn = () => {
                   Pistas
                 </label>
 
-                <select className="form-select" id="Pistas">
+                <select
+                  className="form-select"
+                  onChange={(e) => {
+                    setUserEvents({ ...userEvents, pista: e.target.value });
+                  }}
+                >
+                  <option></option>;
                   {store.pistas.map((pista) => {
                     return <option key={pista.id}>{pista.name}</option>;
                   })}
@@ -95,7 +103,13 @@ export const CreateEventBtn = () => {
                 >
                   Deporte
                 </label>
-                <select className="form-select" id="Pistas">
+                <select
+                  className="form-select"
+                  onChange={(e) => {
+                    setUserEvents({ ...userEvents, sport: e.target.value });
+                  }}
+                >
+                  <option></option>;
                   {store.sports.map((sport) => {
                     return <option key={sport.id}>{sport.name}</option>;
                   })}
@@ -111,7 +125,6 @@ export const CreateEventBtn = () => {
                 <input
                   className="w-75 border-3 border-light rounded ps-2 pe-2"
                   type="address"
-                  id="address"
                   onChange={(e) => {
                     setUserEvents({ ...userEvents, address: e.target.value });
                   }}
@@ -127,7 +140,6 @@ export const CreateEventBtn = () => {
                 <input
                   className="w-75 border-2 border border-light rounded ps-2 pe-2"
                   type="date"
-                  id="date"
                   onChange={(e) => {
                     setUserEvents({ ...userEvents, date: e.target.value });
                   }}
@@ -144,7 +156,6 @@ export const CreateEventBtn = () => {
                 <input
                   className="w-75 border-2 border border-light rounded ps-2 pe-2"
                   type="time"
-                  id="time"
                   onChange={(e) => {
                     setUserEvents({ ...userEvents, time: e.target.value });
                   }}
@@ -160,7 +171,6 @@ export const CreateEventBtn = () => {
               <div className="mb-3">
                 <textarea
                   className="form-control"
-                  id="description"
                   rows="3"
                   placeholder="Describe tu evento"
                   onChange={(e) => {

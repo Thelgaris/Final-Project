@@ -7,9 +7,9 @@ export const EventsComponent = () => {
   const { store, actions } = useContext(Context);
   const { id } = useParams();
 
-  useEffect(() => {
-    actions.getUserEvents();
-  }, []);
+  // useEffect(() => {
+  //   actions.getUserEvents();
+  // }, []);
 
   return (
     <div className="container">
