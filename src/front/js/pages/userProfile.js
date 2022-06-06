@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
@@ -9,7 +9,6 @@ export const UserProfile = () => {
   const [user, setUser] = useState({});
   const [sport, setSport] = useState([]);
   const [error, setError] = useState(null);
-  const { store, actions } = useContext(Context);
 
   const sendUserInfo = async () => {
     setError(null);
@@ -87,9 +86,13 @@ export const UserProfile = () => {
         </div>
 
         <div className="input-group mx-auto mb-3 w-25">
-          <select className="text-center">
-            <option value>Hombre</option>
-            <option value>Mujer</option>
+          <select
+            className="text-center"
+            onChange={(e) => setUser({ ...user, gender: e.target.value })}
+          >
+            <option></option>
+            <option>Hombre</option>
+            <option>Mujer</option>
           </select>
         </div>
 
