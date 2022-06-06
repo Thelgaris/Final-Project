@@ -104,8 +104,6 @@ def create_Events():
     print(6)
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
-    events_id = get_jwt_identity()
-    events = Events.query.get(events_id)
     if user:
         print(7)
         body_name = request.json.get("name")
@@ -113,13 +111,12 @@ def create_Events():
         print(8)
         if body_name:
             print(9)
-            events = Events(name=body_name, description=body_description)
-            user_events = userEvents(user_id=user_id, events_id=events_id)
-            db.session.add(user_events, events)
+            events = Events(name=body_name, description=body_description, user_id=user_id)
+            db.session.add(events)
             db.session.commit()
             print(5)
             
-            return jsonify({"events": events.serialize(), "user_events": user_events.serialize(), "Event_Created": True}), 200
+            return jsonify({"events": events.serialize(), "Event_Created": True}), 200
         else:
             return jsonify({"Error": "Error"}), 400
     else:
