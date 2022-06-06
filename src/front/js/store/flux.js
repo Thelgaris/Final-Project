@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       sports: [],
       getUserSports: [],
+      setUserSports: [],
       user_id: null,
       logged: null,
       url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api",
@@ -38,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             {
               method: "GET",
               headers: {
-                Authorization: "Bearer " + localStorage.getItem("userToken"),
+                Authorization: "Bearer " + localStorage.getItem("access_token"),
               },
             }
           );

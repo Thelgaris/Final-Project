@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
@@ -9,16 +9,23 @@ export const UserProfile = () => {
   const [user, setUser] = useState({});
   const [sport, setSport] = useState([]);
   const [error, setError] = useState(null);
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.getSports();
+  }, []);
 
   const sendUserInfo = async () => {
     setError(null);
+    user["sports"] = store.getUserSport;
+    console.log(store.userSports);
     const response = await fetch(
       "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/userprofile",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("userToken"),
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
         body: JSON.stringify(user),
       }

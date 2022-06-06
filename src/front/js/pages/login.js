@@ -20,7 +20,7 @@ export const Login = () => {
       );
       const data = await response.json();
       if (data.access_token) {
-        localStorage.setItem("userToken", data.access_token);
+        localStorage.setItem("accsess_token", data.access_token);
         history.push("/homepageafterlogin");
         if (data.logged == false) {
           setError("Rellenar datos");

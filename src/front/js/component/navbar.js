@@ -9,7 +9,7 @@ export const Navbar = () => {
   const history = useHistory();
   const sendToLoginPage = async () => {
     if (store.logged) {
-      localStorage.removeItem("userToken");
+      localStorage.removeItem("access_token");
       history.push("/login");
     }
   };
