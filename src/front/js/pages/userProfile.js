@@ -14,7 +14,7 @@ export const UserProfile = () => {
   const sendUserInfo = async () => {
     setError(null);
     const response = await fetch(
-      "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api/userprofile",
+      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/userprofile",
       {
         method: "POST",
         headers: {

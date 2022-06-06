@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       sports: [],
-      userSports: [],
+      getUserSports: [],
       user_id: null,
       logged: null,
       url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api",
@@ -20,13 +20,15 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ sports: data.response });
       },
 
-      setUserSports: async (sports) => {
+      getUserSports: (a) => {
         const store = getStore();
-        setStore({
-          userSports: store.usersport.filter((sport) => {
-            sport != sports;
-          }),
-        });
+        if (!store.getUserSports.includes(a)) {
+          setStore({ getUserSports: [...store.getUserSports, a] });
+        } else {
+          setStore({
+            getUserSports: store.getUserSports.filter((b) => b != a),
+          });
+        }
       },
 
       verify: async () => {

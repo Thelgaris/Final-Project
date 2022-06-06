@@ -7,7 +7,6 @@ export const Sportmodal = ({ setSport }) => {
 
   useEffect(() => {
     actions.getSports();
-    /* actions.setUserSport(); */
   }, []);
 
   return (
@@ -52,8 +51,7 @@ export const Sportmodal = ({ setSport }) => {
                         placeholder={sport.name}
                         id={sport.name}
                         onClick={(e) => {
-                          console.log("onclick");
-                          setSport(sport.id);
+                          actions.getUserSports(sport.name);
                         }}
                       />
                       <label className="form-check-label">{sport.name}</label>
@@ -66,9 +64,7 @@ export const Sportmodal = ({ setSport }) => {
               <button
                 className="btn modalbtn2 btn-secondary "
                 data-bs-dismiss="modal"
-                onClick={() => {
-                  /* actions.setUserSport(sport.name); */
-                }}
+                type="submit"
               >
                 Guardar
               </button>
@@ -104,7 +100,15 @@ export const Sportmodal = ({ setSport }) => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">Segundo Modal</div>
+            <div className="modal-body">
+              {store.getUserSports.map((sports, index) => {
+                return (
+                  <li key={index} style={{}}>
+                    {sports}
+                  </li>
+                );
+              })}
+            </div>
 
             <div className="modal-footer">
               <button
