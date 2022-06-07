@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import "../../styles/navbar.css";
 
 import { Context } from "../store/appContext";
 
@@ -8,15 +9,15 @@ export const Navbar = () => {
   const history = useHistory();
   const sendToLoginPage = async () => {
     if (store.logged) {
-      localStorage.removeItem("userToken");
+      localStorage.removeItem("access_token");
       history.push("/login");
     }
   };
 
   return (
     <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-      <div className="container-fluid">
-        <Link to="/" className="navbarlink">
+      <div className="container-fluid ">
+        <Link to="/" className="navbarlink text-decoration-none">
           <h1 className="navbar-brand bt-5" href="#">
             PICKATEAM
           </h1>
@@ -41,7 +42,7 @@ export const Navbar = () => {
               aria-label="Search"
             />
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <Link to="/login" className="navbarlink">
+              <Link to="/login" className="navbarlink  text-decoration-none">
                 <li className="nav-item">
                   <span
                     className="nav-link active"
@@ -52,7 +53,7 @@ export const Navbar = () => {
                   </span>
                 </li>
               </Link>
-              <Link to="/login" className="navbarlink">
+              <Link to="/login" className="navbarlink  text-decoration-none">
                 <li className="nav-item">
                   <span
                     className="nav-link active"
@@ -64,7 +65,7 @@ export const Navbar = () => {
                   </span>
                 </li>
               </Link>
-              <Link to="/register" className="navbarlink">
+              <Link to="/register" className="navbarlink  text-decoration-none">
                 <li className="nav-item">
                   <span className="nav-link" href="#">
                     Registrate

@@ -63,12 +63,6 @@ class UserSports(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User')
 
-
-
-
-
-
-
 # One to many
 #   class Parent(Base):
 #     __tablename__ = "parent"

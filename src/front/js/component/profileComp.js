@@ -8,11 +8,13 @@ export const ProfileComp = () => {
         className="card bg-white border-0
       "
       >
-        <img
-          src="https://picsum.photos/seed/picsum/50/50"
-          className="card-img-top  rounded-circle p-5"
-          alt="Foto Perfil"
-        />
+        <Link to="/userprofile">
+          <img
+            src="https://picsum.photos/seed/picsum/50/50"
+            className="card-img-top  rounded-circle p-5"
+            alt="Foto Perfil"
+          />
+        </Link>
         <div className="card-body rounded ">
           <h4 className="card-title">Nombre</h4>
           <h5 className="card-text">Ciudad</h5>
