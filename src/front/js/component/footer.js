@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import "../styles/footer.css";
 export const Footer = () => (
   <footer className="bg-light">
     <div className="container p-2">
