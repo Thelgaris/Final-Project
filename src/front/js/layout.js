@@ -6,11 +6,12 @@ import { Homepageafterlogin } from "./pages/homepageafterlogin";
 import { Profile } from "./pages/profile";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
+import { UserProfile } from "./pages/userProfile";
+import { NuestraWeb } from "./pages/nuestraWeb";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { UserProfile } from "./pages/userProfile";
 
 //create your first component
 const Layout = () => {
@@ -39,6 +40,9 @@ const Layout = () => {
           </Route>
           <Route exact path="/userProfile">
             <UserProfile />
+          </Route>
+          <Route exact path="/nuestraWeb">
+            <NuestraWeb />
           </Route>
 
           <Route>
