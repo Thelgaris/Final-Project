@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "../../styles/login.css";
 
 export const Login = () => {
   const history = useHistory();
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
+  const { store, actions } = useContext(Context);
 
   const sendUserInfo = async () => {
     if (user.email != null && user.email.trim() != "") {
       setError(null);
-      const response = await fetch(
-        "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(user),
-        }
-      );
+      const response = await fetch(store.url + "/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      });
       const data = await response.json();
       if (data.access_token) {
         localStorage.setItem("accsess_token", data.access_token);

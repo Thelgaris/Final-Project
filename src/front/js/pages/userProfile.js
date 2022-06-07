@@ -19,17 +19,14 @@ export const UserProfile = () => {
     setError(null);
     user["sports"] = store.getUserSports;
     console.log(store.getUserSports);
-    const response = await fetch(
-      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api/userprofile",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("access_token"),
-        },
-        body: JSON.stringify(user),
-      }
-    );
+    const response = await fetch(store.url + "/userprofile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      },
+      body: JSON.stringify(user),
+    });
     const data = await response.json();
     console.log("@@@@@@@@@@@", data);
     history.push("/homepageafterlogin");
