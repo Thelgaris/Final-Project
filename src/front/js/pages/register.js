@@ -8,7 +8,7 @@ export const Register = () => {
 
   const createUser = async () => {
     const response = await fetch(
-      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/register",
+      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api/register",
       {
         method: "POST",
         headers: { "content-type": "application/json" },
