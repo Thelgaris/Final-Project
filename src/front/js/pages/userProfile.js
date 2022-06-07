@@ -7,18 +7,25 @@ import { Sportmodal } from "../component/sportmodal";
 export const UserProfile = () => {
   const history = useHistory();
   const [user, setUser] = useState({});
+  const [sport, setSport] = useState([]);
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
 
+  useEffect(() => {
+    actions.getSports();
+  }, []);
+
   const sendUserInfo = async () => {
     setError(null);
+    user["sports"] = store.getUserSports;
+    console.log(store.getUserSports);
     const response = await fetch(
-      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/userprofile",
+      "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api/userprofile",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("userToken"),
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
         },
         body: JSON.stringify(user),
       }
@@ -86,9 +93,13 @@ export const UserProfile = () => {
         </div>
 
         <div className="input-group mx-auto mb-3 w-25">
-          <select className="text-center">
-            <option value>Hombre</option>
-            <option value>Mujer</option>
+          <select
+            className="text-center"
+            onChange={(e) => setUser({ ...user, gender: e.target.value })}
+          >
+            <option></option>
+            <option>Hombre</option>
+            <option>Mujer</option>
           </select>
         </div>
 
@@ -104,14 +115,17 @@ export const UserProfile = () => {
           />
         </div>
 
-        {/* <div>
+        <div>
           <Sportmodal
-            user={user}
-            setUser={(e) => {
-              setUser({ ...user, sports: e });
+            setSport={(e) => {
+              if (!sport.includes(e)) {
+                setSport([...sport, e]);
+              } else {
+                setSport(sport.filter((i) => e != i));
+              }
             }}
           />
-        </div> */}
+        </div>
 
         <div>
           <button
