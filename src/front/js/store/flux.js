@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       verify: async () => {
         try {
           const resp = await fetch(
-            "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu46.gitpod.io/api/protected",
+            "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api/protected",
             {
               method: "GET",
               headers: {
