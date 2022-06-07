@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Sports, Details
+from api.models import db, User, Sports, Details, UserSports
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
@@ -39,23 +39,31 @@ def register_user():
 @api.route('/userprofile', methods=['POST'])
 @jwt_required()
 def update_details():
-    print(1)
+    print(request.json)
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
     if user:
-        print(2)
+        print("@@@@@@@@@@@@@@@@@@2")
         body_birth = request.json.get("birth")
         body_name = request.json.get("name")
         body_surname = request.json.get("surname")
         body_city =request.json.get("city")
         body_gender =request.json.get("gender")
-        print(3)
-        if body_name and body_birth and body_surname and body_city:
-            print(4)
+        body_sports = request.json.get("sports")
+        print("@@@@@@@@@@@@@@@@@@3")
+        print(body_sports)
+        print(body_birth, body_city, body_name, body_surname)
+        if body_name and body_birth and body_surname and body_city and body_gender:
+            print("@@@@@@@@@@@@@@@@4")
             user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender,user_id=user_id)
             db.session.add(user_details)
             db.session.commit()
-            print(5)
+            for sport_name in body_sports:
+                sport = Sports.query.filter_by(name = sport_name).first()
+                user_sports = UserSports(user=user, sports=sport)
+                db.session.add(user_sports)
+                db.session.commit()
+            print("@@@@@@@@@@@@@@@@@5")
             
             return jsonify({"details": user_details.serialize(), "Update": True}), 200
         else:
@@ -90,6 +98,8 @@ def get_all_users():
     users = User.query.all()
     users_serialized = list(map(lambda x: x.serialize(), users))
     return jsonify({"response": users_serialized}), 200
+
+
 
 
 
