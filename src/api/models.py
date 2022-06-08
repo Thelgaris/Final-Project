@@ -24,8 +24,8 @@ class User(db.Model):
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=True)   
-    # user_followers = db.relationship('UserFollowers')
+    email = db.Column(db.String(120), unique=True)   
+    user_followers = db.relationship('UserFollowers')
     user_following = db.relationship('UserFollowing')
 
     def __repr__(self):
