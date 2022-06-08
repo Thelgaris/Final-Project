@@ -1,15 +1,27 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      users: [],
       sports: [],
       pistas: [],
       events: [],
       userEvents: [],
       followers: [],
-
+      following: [],
       url: "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api",
     },
     actions: {
+      getUsers: async () => {
+        const resp = await fetch(getStore().url + "/user", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@");
+        setStore({ Users: data.response });
+      },
       getSports: async () => {
         const resp = await fetch(getStore().url + "/sports", {
           method: "GET",
@@ -71,15 +83,49 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(data, " @@@@@@@@@@");
       },
 
-      setFollowers: async (item) => {
+      getFollowing: async () => {
+        const resp = await fetch(getStore().url + "/userFollowing", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@");
+        setStore({ following: data.response });
+      },
+
+      getFollowers: async () => {
+        const resp = await fetch(getStore().url + "/userFollowers", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@");
+        setStore({ followers: data.response });
+      },
+
+      setFollowing: async (user) => {
         const store = getStore();
-        if (!store.followers.includes(item)) {
-          setStore({ followers: [...store.followers, item] });
+        if (!store.following.includes(user)) {
+          setStore({ following: [...store.following, user] });
         } else {
           setStore({
-            followers: store.followers.filter((fav) => fav != item),
+            following: store.following.filter((all) => all != user),
           });
         }
+        const resp = await fetch(getStore().url + "/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+          body: JSON.stringify(user),
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@");
       },
     },
   };
