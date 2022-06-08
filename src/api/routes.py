@@ -70,21 +70,13 @@ def update_details():
             return jsonify({"Error": "Error"}), 400
     else:
         return jsonify({"Error": "Error"}), 400
-"""     # Protect a route with jwt_required, which will kick out requests
-# without a valid JWT present.
-@app.route("/protected", methods=["GET"])
+
+
+@api.route("/protected", methods=["GET"])
 @jwt_required()
 def protected():
-    # Access the identity of the current user with get_jwt_identity
     current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200 """
-
-# @app.route("/protected", methods=["GET"])
-# @jwt_required()
-# def protected():
-#     # Access the identity of the current user with get_jwt_identity
-#     current_user = get_jwt_identity()
-#     return jsonify(logged_in_as=current_user), 200
+    return jsonify({"user_id": current_user, "logged_in": True}), 200
 
 @api.route('/sports', methods=['GET'])
 def get_all_sports():
