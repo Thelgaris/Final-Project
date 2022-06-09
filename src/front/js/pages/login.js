@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/login.css";
@@ -8,6 +8,10 @@ export const Login = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
+
+  /*   useEffect(() => {
+    actions.showPassword();
+  }, []); */
 
   const sendUserInfo = async () => {
     if (user.email != null && user.email.trim() != "") {
@@ -63,6 +67,7 @@ export const Login = () => {
             <input
               id="password"
               type="password"
+              name="password"
               className="form-control text-center"
               placeholder="Contraseña"
               aria-label="Recipient's username"
@@ -78,7 +83,14 @@ export const Login = () => {
           </div>
           <div className="checkbox mb-3">
             <label>
-              <input type="checkbox" value="" className="me-1" />
+              <button
+                type="button"
+                value=""
+                className="btn btn-primary"
+                /*                onClick={() => {
+                  showPassword();
+                }} */
+              ></button>
               <span>Mostrar contraseña</span>
             </label>
           </div>
