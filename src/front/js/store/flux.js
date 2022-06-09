@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserSports: [],
       setUserSports: [],
       user_id: null,
-      logged: null,
+      logged: false,
       url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api",
     },
     actions: {
