@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/login.css";
+import { Context } from "../store/appContext";
 
 export const Login = () => {
+  const { store, actions } = useContext(Context);
   const history = useHistory();
   const [error, setError] = useState(null);
   const [user, setUser] = useState("");
 
   const Login = async () => {
     try {
-      const response = await fetch(
-        "https://3001-thelgaris-jwtathentific-zpl9m4yaiwv.ws-eu45.gitpod.io/api/login",
-        {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(user),
-        }
-      );
+      const response = await fetch(store.url + "/login", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(user),
+      });
       const data = await response.json();
       localStorage.setItem("access_token", data.token);
       console.log("@@@@@@@@@@@", data);

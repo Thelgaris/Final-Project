@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       events: [],
       userEvents: [],
 
-      url: "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api",
+      url: "https://3001-thelgaris-finalproject-0axunc42525.ws-eu47.gitpod.io/api",
     },
     actions: {
       getSports: async () => {
