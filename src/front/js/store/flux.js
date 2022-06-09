@@ -3,12 +3,13 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       users: [],
       sports: [],
+
       pistas: [],
       events: [],
       userEvents: [],
       followers: [],
       following: [],
-      url: "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api",
+      url: "https://3001-thelgaris-finalproject-0axunc42525.ws-eu47.gitpod.io/api",
     },
     actions: {
       getUsers: async () => {
@@ -20,7 +21,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@");
-        setStore({ Users: data.response });
+        setStore({ users: data.response });
+      },
+
+      getDetails: async (id) => {
+        const resp = await fetch(getStore().url + "/details", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@");
+        setStore({ details: data.response });
       },
       getSports: async () => {
         const resp = await fetch(getStore().url + "/sports", {

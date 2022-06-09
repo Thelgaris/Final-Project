@@ -53,8 +53,10 @@ def update_details():
         print(3)
         if body_name and body_birth and body_surname and body_city:
             print(4)
-            user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender,user_id=user_id)
+            user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender)
             db.session.add(user_details)
+            user.detail = user_details
+            user.detail_id=user_details.id
             db.session.commit()
             print(5)
             
@@ -70,6 +72,12 @@ def get_all_sports():
     sports = Sports.query.all()
     sports_serialized = list(map(lambda x: x.serialize(), sports))
     return jsonify({"response": sports_serialized}), 200
+
+@api.route('/details', methods=['GET'])
+def get_details():
+    details = Details.query.all()
+    details_serialized = list(map(lambda x: x.serialize(), details))
+    return jsonify({"response": details_serialized}), 200
 
 
 @api.route('/user', methods=['GET'])

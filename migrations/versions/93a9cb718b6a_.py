@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 21b9ff1a3c8a
+Revision ID: 93a9cb718b6a
 Revises: 
-Create Date: 2022-06-06 12:45:49.770938
+Create Date: 2022-06-09 20:14:54.442150
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '21b9ff1a3c8a'
+revision = '93a9cb718b6a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,6 +23,15 @@ def upgrade():
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
+    )
+    op.create_table('details',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=80), nullable=True),
+    sa.Column('surname', sa.String(length=80), nullable=True),
+    sa.Column('birth', sa.String(length=80), nullable=True),
+    sa.Column('gender', sa.String(length=80), nullable=True),
+    sa.Column('city', sa.String(length=80), nullable=True),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('events',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -49,30 +58,21 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
+    op.create_table('users',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('email', sa.String(length=120), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email')
+    )
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
+    sa.Column('detail_id', sa.Integer(), nullable=True),
     sa.Column('is_active', sa.Boolean(), nullable=True),
+    sa.ForeignKeyConstraint(['detail_id'], ['details.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
-    )
-    op.create_table('users',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=True),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name')
-    )
-    op.create_table('details',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('name', sa.String(length=80), nullable=True),
-    sa.Column('surname', sa.String(length=80), nullable=True),
-    sa.Column('birth', sa.String(length=80), nullable=True),
-    sa.Column('gender', sa.String(length=80), nullable=True),
-    sa.Column('city', sa.String(length=80), nullable=True),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
-    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user_events',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -115,11 +115,11 @@ def downgrade():
     op.drop_table('user_following')
     op.drop_table('user_followers')
     op.drop_table('user_events')
-    op.drop_table('details')
-    op.drop_table('users')
     op.drop_table('user')
+    op.drop_table('users')
     op.drop_table('sports')
     op.drop_table('pistas')
     op.drop_table('events')
+    op.drop_table('details')
     op.drop_table('cities')
     # ### end Alembic commands ###
