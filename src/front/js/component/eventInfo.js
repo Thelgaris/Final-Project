@@ -41,6 +41,15 @@ export const EventInfo = () => {
                           <h5 className="modal-title">{event.name}</h5>
                           <button
                             type="button"
+                            className="btn btn-warning btn-sm"
+                            onClick={() => {
+                              setShowModal(null);
+                            }}
+                          >
+                            Join
+                          </button>
+                          <button
+                            type="button"
                             className="btn-close btn-sm"
                             onClick={() => {
                               setShowModal(null);

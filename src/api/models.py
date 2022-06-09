@@ -37,7 +37,7 @@ class Users(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
+           
         }
 
 class UserFollowers(db.Model):
@@ -132,6 +132,7 @@ class Events(db.Model):
     date = db.Column(db.String(80), unique=False, nullable=False)
     time = db.Column(db.String(80), unique=False, nullable=False)
     description = db.Column(db.String(240), unique=False, nullable=False)
+    participants = db.Column(db.String(240), unique=False, nullable=True)
     photo = db.Column(db.String(140), unique=False, nullable=True)
     user_events = db.relationship('UserEvents')
     # sport = db.relationship('Sports', backref='events', lazy=True)
@@ -149,6 +150,7 @@ class Events(db.Model):
             "date": self.date,
             "time": self.time,
             "description": self.description,
+            "participants": self.participants,
             "photo": self.photo,
         }
 

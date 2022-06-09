@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       users: [],
       sports: [],
-
+      participants: [],
       pistas: [],
       events: [],
       userEvents: [],
@@ -81,6 +81,18 @@ const getState = ({ getStore, getActions, setStore }) => {
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@");
         setStore({ userEvents: data.response });
+      },
+
+      getFollowers: async (id) => {
+        const resp = await fetch(getStore().url + "/followers", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@");
+        setStore({ followers: data.response });
       },
 
       setEvents: async (event) => {
