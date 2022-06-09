@@ -76,6 +76,12 @@ export const Login = () => {
               <span>Recordar</span>
             </label>
           </div>
+          <div className="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="" className="me-1" />
+              <span>Mostrar contraseña</span>
+            </label>
+          </div>
         </div>
         <div className="d-grid gap-2 mx-auto">
           <button
