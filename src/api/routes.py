@@ -71,6 +71,33 @@ def update_details():
     else:
         return jsonify({"Error": "Error"}), 400
 
+@api.route('/editprofile', methods=['PUT'])
+@jwt_required()
+def update_user():
+    print(request.json)
+    user_id = get_jwt_identity()
+    user = Details.query.get(user_id)
+    if user:
+        print("@@@@@@@@@@@@@@@@@@2")
+        body_birth = request.json.get("birth")
+        body_name = request.json.get("name")
+        body_surname = request.json.get("surname")
+        body_city =request.json.get("city")
+        body_gender =request.json.get("gender")
+        print("@@@@@@@@@@@@@@@@@@3")
+        
+        print(body_birth, body_city, body_name, body_surname)
+
+        user.name=body_name
+        user.birth=body_birth
+        user.surname=body_surname
+        user.city=body_city
+        user.gender=body_gender
+        db.session.commit()
+        return jsonify({"user": details.serialize()})
+    else:
+        return jsonify({"Error": "Error"}), 400
+
 
 @api.route("/protected", methods=["GET"])
 @jwt_required()

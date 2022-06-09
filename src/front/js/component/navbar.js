@@ -8,7 +8,7 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const history = useHistory();
   const sendToLoginPage = async () => {
-    if (store.logged) {
+    if (store.logged == true) {
       localStorage.removeItem("access_token");
       history.push("/login");
     }

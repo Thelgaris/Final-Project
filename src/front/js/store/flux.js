@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       getUserSports: [],
       setUserSports: [],
       user_id: null,
-      logged: false,
+      logged: null,
       url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api",
     },
     actions: {
@@ -34,15 +34,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       verify: async () => {
         try {
-          const resp = await fetch(
-            "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api/protected",
-            {
-              method: "GET",
-              headers: {
-                Authorization: "Bearer " + localStorage.getItem("access_token"),
-              },
-            }
-          );
+          const resp = await fetch(getStore().url + "/protected", {
+            method: "GET",
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("access_token"),
+            },
+          });
 
           const data = await resp.json();
           if (data.user_id) {
