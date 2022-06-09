@@ -9,14 +9,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api",
     },
     actions: {
-      /*       showPassword: () => {
-        const tipo = document.querySelector("#password");
-        if (tipo.type == "password") {
-          tipo.type = "text";
-        } else {
-          tipo.type = "password";
-        }
-      }, */
       getSports: async () => {
         const resp = await fetch(getStore().url + "/sports", {
           method: "GET",

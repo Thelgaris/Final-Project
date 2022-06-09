@@ -8,10 +8,7 @@ export const Login = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
-
-  /*   useEffect(() => {
-    actions.showPassword();
-  }, []); */
+  const [showPassword, setShowPassword] = useState(false);
 
   const sendUserInfo = async () => {
     if (user.email != null && user.email.trim() != "") {
@@ -66,7 +63,7 @@ export const Login = () => {
           <div className="input-group mb-3">
             <input
               id="password"
-              type="password"
+              type={!showPassword ? "password" : "text"}
               name="password"
               className="form-control text-center"
               placeholder="Contraseña"
@@ -87,9 +84,9 @@ export const Login = () => {
                 type="button"
                 value=""
                 className="btn btn-primary"
-                /*                onClick={() => {
-                  showPassword();
-                }} */
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
               ></button>
               <span>Mostrar contraseña</span>
             </label>
