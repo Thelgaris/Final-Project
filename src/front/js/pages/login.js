@@ -80,14 +80,14 @@ export const Login = () => {
           </div>
           <div className="checkbox mb-3">
             <label>
-              <button
-                type="button"
+              <input
+                type="checkbox"
                 value=""
-                className="btn btn-primary"
+                className="me-1"
                 onClick={() => {
                   setShowPassword(!showPassword);
                 }}
-              ></button>
+              />
               <span>Mostrar contraseña</span>
             </label>
           </div>
