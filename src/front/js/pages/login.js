@@ -48,23 +48,20 @@ export const Login = () => {
       </Link>
       <div className="container login">
         <div className="container-fluid">
-          <form className="needs-validation" noValidate>
-            <div className="input-group mb-3">
-              <label for="email" class="form-label"></label>
-              <input
-                id="email"
-                type="text"
-                className="form-control text-center mt-5"
-                onChange={(e) => setUser({ ...user, email: e.target.value })}
-                placeholder="Email"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                required
-              />
-              <div className="valid-feedback">Looks good!</div>
-            </div>
-          </form>
-
+          <div className="input-group mb-3">
+            <label for="email" class="form-label"></label>
+            <input
+              id="email"
+              type="text"
+              className="form-control text-center mt-5"
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              placeholder="Email"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              required
+            />
+            <div className="invalid-feedback">Rellenar datos</div>
+          </div>
           <div className="input-group mb-3">
             <input
               id="password"
@@ -99,7 +96,7 @@ export const Login = () => {
         </div>
         <div className="d-grid gap-2 mx-auto">
           <button
-            type="button"
+            type="submit"
             className="btn login-btn btn-warning text-white"
             onClick={() => {
               sendUserInfo();
