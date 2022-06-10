@@ -11,7 +11,7 @@ export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const sendUserInfo = async () => {
-    if (user.email != null && user.email.trim() != "") {
+    if (user.email != null || user.email.trim() != "") {
       setError(null);
       const response = await fetch(store.url + "/login", {
         method: "POST",
@@ -20,7 +20,7 @@ export const Login = () => {
       });
       const data = await response.json();
       if (data.access_token) {
-        localStorage.setItem("accsess_token", data.access_token);
+        localStorage.setItem("access_token", data.access_token);
         history.push("/homepageafterlogin");
         if (data.logged == false) {
           setError("Rellenar datos");
@@ -28,7 +28,7 @@ export const Login = () => {
           history.push("/homepageafterlogin");
         }
       } else {
-        setError("Rellenar datos");
+        setError("");
         setTimeout(() => {
           setError(null);
         }, 3000);
@@ -48,17 +48,22 @@ export const Login = () => {
       </Link>
       <div className="container login">
         <div className="container-fluid">
-          <div className="input-group mb-3">
-            <input
-              id="email"
-              type="text"
-              className="form-control text-center mt-5"
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
-              placeholder="Email"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-            />
-          </div>
+          <form className="needs-validation" noValidate>
+            <div className="input-group mb-3">
+              <label for="email" class="form-label"></label>
+              <input
+                id="email"
+                type="text"
+                className="form-control text-center mt-5"
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                placeholder="Email"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                required
+              />
+              <div className="valid-feedback">Looks good!</div>
+            </div>
+          </form>
 
           <div className="input-group mb-3">
             <input
