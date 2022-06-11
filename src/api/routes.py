@@ -5,6 +5,8 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Sports, Details, UserSports
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+import cloudinary
+import cloudinary.uploader
 
 api = Blueprint('api', __name__)
 
@@ -117,6 +119,21 @@ def get_all_users():
     users = User.query.all()
     users_serialized = list(map(lambda x: x.serialize(), users))
     return jsonify({"response": users_serialized}), 200
+
+@api.route('/user/<int:user_id>/image', methods=['PUT'])
+def handle_upload(user_id):
+    if 'profile_image' in request.files:
+        result = cloudinary.uploader.upload(request.files['profile_image'])
+
+        user1= User.query.get(user_id)
+        user1.profile_image_url = result['secure_url']
+
+        db.session.add(user1)
+        db.session.commit()
+
+        return jsonify(user1.serialize()), 200
+    else:
+        raise APIException('Missing profile_image on the FormData')
 
 
 
