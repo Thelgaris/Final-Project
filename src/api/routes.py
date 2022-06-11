@@ -102,11 +102,16 @@ def get_all_events():
 @jwt_required()
 def get_userEvents():
     user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    userEvents = UserEvents.query.all()
+    userEvents = User.query.get(user_id).events
     userEvents_serialized = list(map(lambda x: x.serialize(), userEvents))
     return jsonify({"response": userEvents_serialized}), 200
 
+@api.route('/currentUser', methods=['GET'])
+@jwt_required()
+def get_currentUser():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    return jsonify({"response": user.serialize()}), 200
 
 @api.route('/events', methods=['POST'])
 @jwt_required()

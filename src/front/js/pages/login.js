@@ -34,11 +34,11 @@ export const Login = () => {
       }
     }
   };
-  const loginError = (async) => {
-    if (sendUserInfo != True) {
-      setError("Faltan datos o datos incorrectos");
-    }
-  };
+  // const loginError = (async) => {
+  //   if (sendUserInfo != True) {
+  //     setError("Faltan datos o datos incorrectos");
+  //   }
+  // };
 
   return (
     <div className="container">

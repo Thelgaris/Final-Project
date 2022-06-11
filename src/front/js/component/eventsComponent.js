@@ -7,9 +7,9 @@ export const EventsComponent = () => {
   const { store, actions } = useContext(Context);
   const { id } = useParams();
 
-  // useEffect(() => {
-  //   actions.getUserEvents();
-  // }, []);
+  useEffect(() => {
+    actions.getCurrentUser();
+  }, []);
 
   return (
     <div className="container">
@@ -18,13 +18,15 @@ export const EventsComponent = () => {
           <div className="card-body">
             <h5 className="card-title">Próximos Eventos</h5>
           </div>
-          {store.userEvents.map((event) => {
-            <div key={event}>
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">{event.name}</li>
-              </ul>
-            </div>;
-          })}
+          <div>
+            {store.userEvents.map((event) => {
+              return (
+                <div key={event.id}>
+                  <li className="list-group-item">{event.name}</li>
+                </div>
+              );
+            })}
+          </div>
           <div className="card-footer justify-content-center">
             <div href="#" className="card-link ">
               <CreateEventBtn />

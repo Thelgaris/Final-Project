@@ -37,25 +37,28 @@ export const EventInfo = () => {
                   >
                     <div className="modal-dialog">
                       <div className="modal-content">
-                        <div className="modal-header bg-light bg-gradient ">
-                          <h5 className="modal-title">{event.name}</h5>
-                          <button
-                            type="button"
-                            className="btn btn-warning btn-sm"
-                            onClick={() => {
-                              setShowModal(null);
-                            }}
-                          >
-                            Join
-                          </button>
-                          <button
-                            type="button"
-                            className="btn-close btn-sm"
-                            onClick={() => {
-                              setShowModal(null);
-                            }}
-                            aria-label="Close"
-                          ></button>
+                        <div className="modal-header bg-light bg-gradient d-flex">
+                          <h5 className="modal-title ">{event.name}</h5>
+                          <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button
+                              type="button"
+                              className="btn btn-warning btn-sm"
+                              onClick={() => {
+                                setShowModal(null);
+                              }}
+                            >
+                              Join
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-light btn-sm"
+                              onClick={() => {
+                                setShowModal(null);
+                              }}
+                            >
+                              X
+                            </button>
+                          </div>
                         </div>
                         <div className="modal-body">
                           <div className="card w-100">
@@ -65,14 +68,14 @@ export const EventInfo = () => {
                               alt="Imagenevent"
                             />
                             <div className="card-body text-center">
-                              <ul className="list-group list-group-flush">
+                              <ul className="list-group list-group-flush d-inline">
                                 <li className="list-group-item">Ciudad</li>
 
                                 <li className="list-group-item">
                                   {event.date}
                                 </li>
 
-                                <li className="list-group-item">
+                                <li className="list-group-item ">
                                   {event.description}
                                 </li>
                               </ul>

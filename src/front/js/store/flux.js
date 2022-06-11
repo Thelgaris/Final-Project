@@ -3,10 +3,10 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       users: [],
       sports: [],
-      participants: [],
       pistas: [],
       events: [],
       userEvents: [],
+      currentUser: {},
       followers: [],
       following: [],
       url: "https://3001-thelgaris-finalproject-0axunc42525.ws-eu47.gitpod.io/api",
@@ -70,8 +70,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ events: data.response });
       },
 
-      getUserEvents: async () => {
-        const resp = await fetch(getStore().url + "/userEvents", {
+      getCurrentUser: async () => {
+        const resp = await fetch(getStore().url + "/currentUser", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -80,7 +80,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@");
-        setStore({ userEvents: data.response });
+        setStore({
+          currentUser: data.response,
+          userEvents: data.response.events,
+        });
       },
 
       getFollowers: async (id) => {
@@ -106,6 +109,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@");
+        if (resp.ok) {
+          return true;
+        } else {
+          return false;
+        }
       },
 
       getFollowing: async () => {

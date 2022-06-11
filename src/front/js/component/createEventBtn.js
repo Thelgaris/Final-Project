@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
+  const [showModal, setShowModal] = useState([]);
   const { store, actions } = useContext(Context);
-
+  let history = useHistory();
   useEffect(() => {
     actions.getSports();
     actions.getEvents();
@@ -31,14 +32,14 @@ export const CreateEventBtn = () => {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
-              <h3 className="d-flex align-content-center">
+            <div className="modal-header  d-flex ">
+              <h3 className="d-flex col-10 ">
                 <input
                   id="name"
-                  type="text"
+                  type=""
                   aria-label="Nombre"
                   placeholder="Nombre del Evento"
-                  className="input-group mb-3 border-0 d-flex align-content-center"
+                  className="input-group border-0 d-flex  align-middle form-floating"
                   onChange={(e) => {
                     setUserEvents({ ...userEvents, name: e.target.value });
                   }}
@@ -47,7 +48,7 @@ export const CreateEventBtn = () => {
 
               <button
                 type="button"
-                className="btn-close"
+                className="btn-close col-1"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
@@ -186,7 +187,9 @@ export const CreateEventBtn = () => {
                 type="button"
                 className="btn btn-warning w-50 content-center"
                 onClick={() => {
-                  actions.setEvents(userEvents);
+                  if (actions.setEvents(userEvents)) {
+                    history.push("/homepageafterlogin");
+                  } else alert("asdf");
                 }}
               >
                 Crear
