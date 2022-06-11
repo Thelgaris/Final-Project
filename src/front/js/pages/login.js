@@ -10,7 +10,12 @@ export const Login = () => {
   const { store, actions } = useContext(Context);
 
   const sendUserInfo = async () => {
-    if (user.email != null && user.email.trim() != "") {
+    if (
+      user.email &&
+      user.password != null &&
+      user.email.trim() != "" &&
+      user.password.trim() != ""
+    ) {
       setError(null);
       const response = await fetch(store.url + "/login", {
         method: "POST",
@@ -22,16 +27,18 @@ export const Login = () => {
         localStorage.setItem("access_token", data.access_token);
         history.push("/homepageafterlogin");
         if (data.logged == false) {
-          setError("Rellenar datos");
+          setError(data.msg);
         } else if (data.logged == true) {
           history.push("/homepageafterlogin");
         }
       } else {
-        setError("Rellenar datos");
+        setError(data.msg);
         setTimeout(() => {
           setError(null);
         }, 3000);
       }
+    } else {
+      setError("Campos vacios");
     }
   };
   const loginError = (async) => {
@@ -57,6 +64,9 @@ export const Login = () => {
               aria-label="Username"
               aria-describedby="basic-addon1"
             />
+            {error != null ? (
+              <span className="text-danger">{error}</span>
+            ) : null}
           </div>
 
           <div className="input-group mb-3">
@@ -106,7 +116,6 @@ export const Login = () => {
           </span>
         </div>
       </div>
-      {error != null ? <h3 className="text-danger">{error}</h3> : null}
     </div>
   );
 };
