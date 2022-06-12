@@ -9,7 +9,9 @@ export const Followers = () => {
   const [showModal, setShowModal] = useState(null);
   const { id } = useParams();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    actions.getUsers();
+  }, []);
 
   return (
     <div className="row">
@@ -64,33 +66,31 @@ export const Followers = () => {
           aria-labelledby="pills-home-tab"
         >
           <div className="row mt-5 d-flex justify-content-center">
-            {store.user.map((U) => {
+            {store.users.map((U) => {
               return (
-                <div className="row d-flex">
-                  <div
-                    className="card ms-2 me-2 border-0"
-                    style={{ width: "14rem" }}
-                    key={U.id}
-                  >
-                    <img
-                      src="https://picsum.photos/300/200"
-                      className="card-img-top rounded-circle "
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h4 className="card-title">{U.email}</h4>
-                      <h5 className="card-title"></h5>
+                <div
+                  className="card ms-2 me-2 border-0"
+                  style={{ width: "14rem" }}
+                  key={U.id}
+                >
+                  <img
+                    src="https://picsum.photos/300/200"
+                    className="card-img-top rounded-circle "
+                    alt="..."
+                  />
+                  <div className="card-body">
+                    <h4 className="card-title">{U.email}</h4>
+                    <h5 className="card-title"></h5>
 
-                      <button
-                        href="#"
-                        className="btn btn-warning w-100"
-                        onClick={(e) => {
-                          actions.setFollowers(e.name);
-                        }}
-                      >
-                        Seguir
-                      </button>
-                    </div>
+                    <button
+                      href="#"
+                      className="btn btn-warning w-100"
+                      onClick={(e) => {
+                        actions.setFollowers(e.id);
+                      }}
+                    >
+                      Seguir
+                    </button>
                   </div>
                 </div>
               );
@@ -104,27 +104,25 @@ export const Followers = () => {
           aria-labelledby="pills-profile-tab"
         >
           <div className="row mt-5 d-flex justify-content-center ">
-            {store.user.map((F) => {
+            {store.users.map((F) => {
               return (
-                <div className="  d-flex flex-row bd-highlight mb-3">
-                  <div
-                    className=" ms-2 me-2 border-0 card-group pt-2"
-                    style={{ width: "14rem" }}
-                    key={F.id}
-                  >
-                    <img
-                      src="https://picsum.photos/300/200"
-                      className="card-img-top rounded-circle"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h4 className="card-title">{F.email}</h4>
-                      <h5 className="card-title"></h5>
+                <div
+                  className=" ms-2 me-2 border-0 card-group pt-2"
+                  style={{ width: "14rem" }}
+                  key={F.id}
+                >
+                  <img
+                    src="https://picsum.photos/300/200"
+                    className="card-img-top rounded-circle"
+                    alt="..."
+                  />
+                  <div className="card-body">
+                    <h4 className="card-title">{F.email}</h4>
+                    <h5 className="card-title"></h5>
 
-                      <button href="#" className="btn btn-warning w-100">
-                        Dejar de seguir
-                      </button>
-                    </div>
+                    <button href="#" className="btn btn-warning w-100">
+                      Dejar de seguir
+                    </button>
                   </div>
                 </div>
               );
@@ -138,7 +136,7 @@ export const Followers = () => {
           aria-labelledby="pills-profile-tab"
         >
           <div className="row mt-5 d-flex justify-content-center">
-            {store.user.map((P) => {
+            {store.users.map((P) => {
               return (
                 <div
                   className="card ms-2 me-2 border-0"

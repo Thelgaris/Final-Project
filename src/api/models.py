@@ -23,7 +23,7 @@ class User(db.Model):
             "email": self.email,
             "detail": self.detail.serialize() if self.detail is not None else None,
             "sports": list(map(lambda sport:sport.sports.serialize(), self.sports)),
-            "events": list(map(lambda event:event.events.serialize(), self.events))
+            "events": list(map(lambda event:event.serialize(), self.events))
         }
 
 class Users(db.Model):
