@@ -116,6 +116,24 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      setJoinEvents: async (join) => {
+        const resp = await fetch(getStore().url + "/events", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+          body: JSON.stringify(join),
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@");
+        if (resp.ok) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+
       getFollowing: async () => {
         const resp = await fetch(getStore().url + "/userFollowing", {
           method: "GET",

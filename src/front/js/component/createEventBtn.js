@@ -32,14 +32,13 @@ export const CreateEventBtn = () => {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header  d-flex ">
-              <h3 className="d-flex col-10 ">
+            <div className="modal-header  d-flex d-inline row">
+              <h3 className="d-flex col-10">
                 <input
-                  id="name"
-                  type=""
+                  type="form-control"
                   aria-label="Nombre"
                   placeholder="Nombre del Evento"
-                  className="input-group border-0 d-flex  align-middle form-floating"
+                  className=" border-0"
                   onChange={(e) => {
                     setUserEvents({ ...userEvents, name: e.target.value });
                   }}
@@ -48,10 +47,12 @@ export const CreateEventBtn = () => {
 
               <button
                 type="button"
-                className="btn-close col-1"
+                className="btn btn-light btn-sm col-1"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              ></button>
+              >
+                X
+              </button>
             </div>
             <div className="modal-body">
               <div className="input-group mb-3">
@@ -187,9 +188,7 @@ export const CreateEventBtn = () => {
                 type="button"
                 className="btn btn-warning w-50 content-center"
                 onClick={() => {
-                  if (actions.setEvents(userEvents)) {
-                    history.push("/homepageafterlogin");
-                  } else alert("asdf");
+                  actions.setEvents(userEvents);
                 }}
               >
                 Crear

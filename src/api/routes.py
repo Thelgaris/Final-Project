@@ -145,6 +145,22 @@ def create_Events():
         return jsonify({"Error": "Error"}), 400
 
 
+@api.route('/events', methods=['POST'])
+@jwt_required()
+def join_Events():
+    print("@@@@1")
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    print("@@@@2")           
+    user_events = UserEvents(user=user, events=events)
+    db.session.add(user_events)
+    db.session.commit()
+    print("@@@@3")
+    return jsonify({"events": events.serialize(), "Joined_to_Event": True}), 200
+   
+   
+
+
 
 
 

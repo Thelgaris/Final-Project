@@ -44,7 +44,8 @@ export const EventInfo = () => {
                               type="button"
                               className="btn btn-warning btn-sm"
                               onClick={() => {
-                                setShowModal(null);
+                                actions.setJoinEvents(event),
+                                  setShowModal(null);
                               }}
                             >
                               Join
@@ -70,11 +71,14 @@ export const EventInfo = () => {
                             <div className="card-body text-center">
                               <ul className="list-group list-group-flush d-inline">
                                 <li className="list-group-item">Ciudad</li>
-
-                                <li className="list-group-item">
-                                  {event.date}
-                                </li>
-
+                                <div className="row d-flex">
+                                  <li className="list-group-item">
+                                    {event.date}
+                                  </li>
+                                  <li className="list-group-item">
+                                    {event.time}
+                                  </li>
+                                </div>
                                 <li className="list-group-item ">
                                   {event.description}
                                 </li>
