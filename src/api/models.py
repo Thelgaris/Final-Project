@@ -29,8 +29,7 @@ class User(db.Model):
         }
 
 class Users(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-  
+    id = db.Column(db.Integer, primary_key=True)  
     user_followers = db.relationship('UserFollowers')
     user_following = db.relationship('UserFollowing')
 
@@ -44,8 +43,7 @@ class Users(db.Model):
         }
 
 class UserFollowers(db.Model):
-   id=db.Column(db.Integer, primary_key=True)
- 
+   id=db.Column(db.Integer, primary_key=True) 
    followers_id = db.Column(db.Integer, db.ForeignKey('users.id'))
    followers = db.relationship('Users')
    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -53,15 +51,13 @@ class UserFollowers(db.Model):
 
 class UserFollowing(db.Model):
     id=db.Column(db.Integer, primary_key=True)
-
     following_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     following = db.relationship('Users')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User')
 
 class Details(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    
+    id = db.Column(db.Integer, primary_key=True)   
     name = db.Column(db.String(80), unique=False, nullable=True)
     surname = db.Column(db.String(80), unique=False, nullable=True)
     birth = db.Column(db.String(80), unique=False, nullable=True)

@@ -113,6 +113,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(data, " @@@@@@@@@@");
         if (resp.ok) {
           getActions().getCurrentUser();
+          getActions().getEvents();
           return true;
         } else {
           return false;
@@ -131,6 +132,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@");
         if (resp.ok) {
+          getActions().getCurrentUser();
+
           return true;
         } else {
           return false;
