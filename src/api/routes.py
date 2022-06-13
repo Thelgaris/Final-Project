@@ -131,7 +131,7 @@ def create_Events():
         print(8)
         if body_name and body_address and body_date and body_time and body_description and body_city:
             print(9)
-            events = Events(name=body_name, city=body_city, address=body_address, date=body_date, time=body_time, description=body_description)           
+            events = Events(name=body_name, city=body_city, address=body_address, date=body_date, time=body_time, description=body_description, user_id=user_id)           
             db.session.add(events)
             user_events = UserEvents(user=user, events=events)
             db.session.add(user_events)
@@ -145,18 +145,20 @@ def create_Events():
         return jsonify({"Error": "Error"}), 400
 
 
-@api.route('/events', methods=['POST'])
+@api.route('/joinEvent', methods=['POST'])
 @jwt_required()
 def join_Events():
     print("@@@@1")
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
-    print("@@@@2")           
-    user_events = UserEvents(user=user, events=events)
+    print("@@@@2")   
+    body_event_id = request.json.get("id")    
+    event = Events.query.get(body_event_id)    
+    user_events = UserEvents(user=user, events=event)
     db.session.add(user_events)
     db.session.commit()
     print("@@@@3")
-    return jsonify({"events": events.serialize(), "Joined_to_Event": True}), 200
+    return jsonify({"events": user_events.serialize(), "Joined_to_Event": True}), 200
    
    
 

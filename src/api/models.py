@@ -18,12 +18,14 @@ class User(db.Model):
         return f'<User {self.email}>'
 
     def serialize(self):
+        print(self.events)
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         return {
             "id": self.id,
             "email": self.email,
             "detail": self.detail.serialize() if self.detail is not None else None,
-            "sports": list(map(lambda sport:sport.sports.serialize(), self.sports)),
-            "events": list(map(lambda event:event.serialize(), self.events))
+            "sports": list(map(lambda sport:sport.sports.serialize(), self.sports)) if self.sports is not None else [],
+            "events": list(map(lambda event:event.events.serialize(), self.events)) if self.events is not None else [],
         }
 
 class Users(db.Model):
@@ -127,6 +129,8 @@ class Pistas(db.Model):
 
 class Events(db.Model):
     id=db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User')
     name = db.Column(db.String(80), unique=False, nullable=False)
     city = db.Column(db.String(80), unique=False, nullable=False)  
     address = db.Column(db.String(80), unique=False, nullable=False)
@@ -150,7 +154,7 @@ class Events(db.Model):
             "date": self.date,
             "time": self.time,
             "description": self.description,
-     
+            "participants": len(self.user_events), #lista de userevents que nos trae los usuarios y con el len los contamos
             "photo": self.photo,
         }
 
@@ -163,10 +167,7 @@ class UserEvents(db.Model):
     
     def serialize(self):
         return {
-            "id": self.id,
-            
-          
-           
+            "id": self.id,                
         }
 
 

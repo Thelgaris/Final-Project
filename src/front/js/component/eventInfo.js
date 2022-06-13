@@ -43,8 +43,8 @@ export const EventInfo = () => {
                             <button
                               type="button"
                               className="btn btn-warning btn-sm"
-                              onClick={() => {
-                                actions.setJoinEvents(event),
+                              onClick={async () => {
+                                await actions.setJoinEvents(event),
                                   setShowModal(null);
                               }}
                             >

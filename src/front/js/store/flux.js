@@ -4,12 +4,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       users: [],
       sports: [],
       pistas: [],
+      strava: [],
       events: [],
       userEvents: [],
       currentUser: {},
       followers: [],
       following: [],
-      url: "https://3001-thelgaris-finalproject-0axunc42525.ws-eu47.gitpod.io/api",
+      url: "https://3001-thelgaris-finalproject-cyt5877bom8.ws-eu47.gitpod.io/api",
+      stravaUrl: "https://www.strava.com/oauth/authorize",
     },
     actions: {
       getUsers: async () => {
@@ -110,6 +112,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@");
         if (resp.ok) {
+          getActions().getCurrentUser();
           return true;
         } else {
           return false;
@@ -117,7 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       setJoinEvents: async (join) => {
-        const resp = await fetch(getStore().url + "/events", {
+        const resp = await fetch(getStore().url + "/joinEvent", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

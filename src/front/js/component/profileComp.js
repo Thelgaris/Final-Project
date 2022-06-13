@@ -1,7 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const ProfileComp = () => {
+  const { store, actions } = useContext(Context);
   return (
     <div className="container d-inline h-auto d-inline-block">
       <div
@@ -14,8 +16,12 @@ export const ProfileComp = () => {
           alt="Foto Perfil"
         />
         <div className="card-body rounded ">
-          <h4 className="card-title">Nombre</h4>
-          <h5 className="card-text">Ciudad</h5>
+          <h4 className="card-title">
+            {store.currentUser.detail ? store.currentUser.detail.name : "N/A"}
+          </h4>
+          <h5 className="card-text">
+            {store.currentUser.detail ? store.currentUser.detail.city : "N/A"}
+          </h5>
         </div>
 
         <ul className="list-group list-group-flush d-flex flex-row border-0">
