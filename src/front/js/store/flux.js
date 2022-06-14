@@ -68,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({ events: data.response });
       },
 
@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({
           currentUser: data.response,
           userEvents: data.response.events,
@@ -96,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({ followers: data.response });
       },
 
@@ -110,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(event),
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         if (resp.ok) {
           getActions().getCurrentUser();
           getActions().getEvents();
@@ -130,7 +130,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(join),
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         if (resp.ok) {
           getActions().getCurrentUser();
 
@@ -148,7 +148,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({ following: data.response });
       },
 
@@ -160,7 +160,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({ followers: data.response });
       },
 
@@ -182,7 +182,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(user),
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
       },
     },
   };

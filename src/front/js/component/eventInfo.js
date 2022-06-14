@@ -25,6 +25,7 @@ export const EventInfo = () => {
                 }}
               >
                 {event.name}
+                {event.participants}
               </button>
 
               {showModal == event.id ? (
@@ -70,17 +71,34 @@ export const EventInfo = () => {
                             />
                             <div className="card-body text-center">
                               <ul className="list-group list-group-flush d-inline">
-                                <li className="list-group-item">Ciudad</li>
-                                <div className="row d-flex">
-                                  <li className="list-group-item">
+                                <li className="list-group-item">
+                                  <i class="fas fa-globe-africa">
+                                    {event.city}
+                                  </i>
+                                </li>
+
+                                <li className="list-group-item border-0 ">
+                                  <i class="fas fa-map-marker-alt">
+                                    {event.address}
+                                  </i>
+                                </li>
+
+                                <li className="list-group-item">
+                                  <i className="fas fa-calendar-alt me-2 col-4 text-start">
                                     {event.date}
-                                  </li>
-                                  <li className="list-group-item">
+                                  </i>
+                                  <i className="fas fa-clock me-2 col-3 text-center">
                                     {event.time}
-                                  </li>
-                                </div>
+                                  </i>
+                                  <i className="fas fa-users p-2 col-3 text-end">
+                                    {event.participants}
+                                  </i>
+                                </li>
+
                                 <li className="list-group-item ">
-                                  {event.description}
+                                  <i class="fas fa-newspaper">
+                                    {event.description}
+                                  </i>
                                 </li>
                               </ul>
                             </div>

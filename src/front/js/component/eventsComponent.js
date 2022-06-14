@@ -14,15 +14,24 @@ export const EventsComponent = () => {
   return (
     <div className="container">
       <div className="justify-content-center">
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card row d-flex" style={{ width: "18rem" }}>
           <div className="card-body">
             <h5 className="card-title">Próximos Eventos</h5>
           </div>
           <div>
             {store.userEvents.map((event) => {
               return (
-                <div key={event.id}>
-                  <li className="list-group-item">{event.name}</li>
+                <div key={event.id} className=" ">
+                  <div className="d-flex flex-row ">
+                    <p className=" p-2 mb-0 text-start border-0 col-8">
+                      {event.name}
+                    </p>
+                    <i class="far fa-user"></i>
+
+                    <p className=" p-2 mb-0 border-0 col-1 offset-2">
+                      {event.participants}
+                    </p>
+                  </div>
                 </div>
               );
             })}
