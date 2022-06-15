@@ -44,21 +44,21 @@ def update_details():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
     if user:
-        print(2)
+      
         body_birth = request.json.get("birth")
         body_name = request.json.get("name")
         body_surname = request.json.get("surname")
         body_city =request.json.get("city")
         body_gender =request.json.get("gender")
-        print(3)
+       
         if body_name and body_birth and body_surname and body_city:
-            print(4)
+            
             user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender)
             db.session.add(user_details)
             user.detail = user_details
             user.detail_id=user_details.id
             db.session.commit()
-            print(5)
+         
             
             return jsonify({"details": user_details.serialize(), "Update": True}), 200
         else:
@@ -113,14 +113,24 @@ def get_currentUser():
     user = User.query.get(user_id)
     return jsonify({"response": user.serialize()}), 200
 
+
+@api.route('/userCity', methods=['GET'])
+@jwt_required()
+def get_userCity():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    city = Details.query.filter_by(city=user.detail.city)
+    city_serialized = list(map(lambda x: x.serialize(), city))
+    return jsonify({"response": city_serialized}), 200
+
 @api.route('/events', methods=['POST'])
 @jwt_required()
 def create_Events():
-    print(6)
+
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
     if user:
-        print(7)
+     
         body_name = request.json.get("name")
         body_city = request.json.get("city")
         body_address = request.json.get("address")
@@ -128,15 +138,15 @@ def create_Events():
         body_time = request.json.get("time")
         body_description = request.json.get("description")
              
-        print(8)
+   
         if body_name and body_address and body_date and body_time and body_description and body_city:
-            print(9)
+        
             events = Events(name=body_name, city=body_city, address=body_address, date=body_date, time=body_time, description=body_description, user_id=user_id)           
             db.session.add(events)
             user_events = UserEvents(user=user, events=events)
             db.session.add(user_events)
             db.session.commit()
-            print(5)
+           
             
             return jsonify({"events": events.serialize(), "Event_Created": True}), 200
         else:
@@ -148,16 +158,16 @@ def create_Events():
 @api.route('/joinEvent', methods=['POST'])
 @jwt_required()
 def join_Events():
-    print("@@@@1")
+   
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
-    print("@@@@2")   
+      
     body_event_id = request.json.get("id")    
     event = Events.query.get(body_event_id)    
     user_events = UserEvents(user=user, events=event)
     db.session.add(user_events)
     db.session.commit()
-    print("@@@@3")
+  
     return jsonify({"events": user_events.serialize(), "Joined_to_Event": True}), 200
    
    

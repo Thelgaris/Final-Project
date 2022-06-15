@@ -26,8 +26,7 @@ export const EventsComponent = () => {
                     <p className=" p-2 mb-0 text-start border-0 col-8">
                       {event.name}
                     </p>
-                    <i class="far fa-user"></i>
-
+                    <i className="fas fa-users p-2 col-3 text-end"></i>
                     <p className=" p-2 mb-0 border-0 col-1 offset-2">
                       {event.participants}
                     </p>

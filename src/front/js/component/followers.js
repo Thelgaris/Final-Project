@@ -80,6 +80,9 @@ export const Followers = () => {
                   />
                   <div className="card-body">
                     <h4 className="card-title">{U.email}</h4>
+                    {store.currentUser.detail
+                      ? store.currentUser.detail.name
+                      : "N/A"}
                     <h5 className="card-title"></h5>
 
                     <button
@@ -117,7 +120,9 @@ export const Followers = () => {
                     alt="..."
                   />
                   <div className="card-body">
-                    <h4 className="card-title">{F.email}</h4>
+                    <h4 className="card-title">
+                      {store.users.detail ? store.users.detail.name : "N/A"}
+                    </h4>
                     <h5 className="card-title"></h5>
 
                     <button href="#" className="btn btn-warning w-100">
