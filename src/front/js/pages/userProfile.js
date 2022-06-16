@@ -10,7 +10,7 @@ export const UserProfile = () => {
   const [sport, setSport] = useState([]);
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
-  const [files, setFiles] = useState(null);
+  // const [files, setFiles] = useState(null);
 
   useEffect(() => {
     actions.getSports();
@@ -33,7 +33,7 @@ export const UserProfile = () => {
     history.push("/homepageafterlogin");
   };
 
-  const uploadImage = (evt) => {
+  /*   const uploadImage = (evt) => {
     evt.preventDefault();
     console.log("This are the files", files);
     let body = new FormData();
@@ -47,7 +47,7 @@ export const UserProfile = () => {
       .then((resp) => resp.json())
       .then((data) => console.log("Success!", data))
       .catch((error) => console.Console.error("Error!", error));
-  };
+  }; */
 
   return (
     <div className="container mt-5 text-center">
@@ -65,94 +65,96 @@ export const UserProfile = () => {
           src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt=""
         />
-        <form onSubmit={uploadImage}>
+        {/*    <form onSubmit={uploadImage}>
           <input type="file" onChange={(ec) => setFiles(e.target.files)} />
           <button>
-            Upload
-            {/* <i className="fas fa-camera fa-2x" style={{ fontsize: "50px" }}></i> */}
+            <i className="fas fa-camera fa-2x" style={{ fontsize: "50px" }}></i>
           </button>
-        </form>
+        </form> */}
       </div>
-      <div className="input-group mx-auto mb-3 w-25">
-        <div>
-          <input
-            id="name"
-            type="text"
-            className="form-control text-center"
-            onChange={(e) => setUser({ ...user, name: e.target.value })}
-            placeholder="Nombre"
-            aria-label="Name"
-            aria-describedby="basic-addon1"
-          />
-        </div>
+      <div className="row ">
+        <div className="col-lg-4 col-lg-offset-4">
+          <div className="input-group  mb-3 w-50">
+            <div>
+              <input
+                id="name"
+                type="text"
+                className="form-control text-center"
+                onChange={(e) => setUser({ ...user, name: e.target.value })}
+                placeholder="Nombre"
+                aria-label="Name"
+                aria-describedby="basic-addon1"
+              />
+            </div>
 
-        <div className="input-group mx-auto mb-3 w-25">
-          <input
-            id="surname"
-            type="select"
-            className="form-control text-center"
-            onChange={(e) => setUser({ ...user, surname: e.target.value })}
-            placeholder="Apellidos"
-            aria-label="surname"
-            aria-describedby="basic-addon1"
-          />
-        </div>
+            <div className="input-group  mb-3 w-50">
+              <input
+                id="surname"
+                type="select"
+                className="form-control text-center"
+                onChange={(e) => setUser({ ...user, surname: e.target.value })}
+                placeholder="Apellidos"
+                aria-label="surname"
+                aria-describedby="basic-addon1"
+              />
+            </div>
 
-        <div className="input-group mx-auto mb-3 w-25">
-          <input
-            id="birth"
-            type="date"
-            className="birth form-control text-center"
-            onChange={(e) => setUser({ ...user, birth: e.target.value })}
-            placeholder="Birth"
-            aria-label="Birth"
-            aria-describedby="basic-addon1"
-          />
-        </div>
+            <div className="input-group  mb-3 w-50">
+              <input
+                id="birth"
+                type="date"
+                className="birth form-control text-center"
+                onChange={(e) => setUser({ ...user, birth: e.target.value })}
+                placeholder="Birth"
+                aria-label="Birth"
+                aria-describedby="basic-addon1"
+              />
+            </div>
 
-        <div className="input-group mx-auto mb-3 w-25">
-          <select
-            className="text-center"
-            onChange={(e) => setUser({ ...user, gender: e.target.value })}
-          >
-            <option></option>
-            <option>Hombre</option>
-            <option>Mujer</option>
-          </select>
-        </div>
+            <div className="input-group  mb-3 w-50">
+              <select
+                className="text-center"
+                onChange={(e) => setUser({ ...user, gender: e.target.value })}
+              >
+                <option>Hombre</option>
+                <option>Mujer</option>
+              </select>
+            </div>
 
-        <div className="input-group mx-auto mb-3 w-25">
-          <input
-            id="city"
-            type="text"
-            className="form-control text-center"
-            onChange={(e) => setUser({ ...user, city: e.target.value })}
-            placeholder="Ciudad"
-            aria-label="City"
-            aria-describedby="basic-addon1"
-          />
-        </div>
+            <div className="input-group  mb-3 w-50">
+              <input
+                id="city"
+                type="text"
+                className="form-control text-center"
+                onChange={(e) => setUser({ ...user, city: e.target.value })}
+                placeholder="Ciudad"
+                aria-label="City"
+                aria-describedby="basic-addon1"
+              />
+            </div>
 
-        <div>
-          <Sportmodal
-            setSport={(e) => {
-              if (!sport.includes(e)) {
-                setSport([...sport, e]);
-              } else {
-                setSport(sport.filter((i) => e != i));
-              }
-            }}
-          />
-        </div>
+            <div>
+              <Sportmodal
+                setSport={(e) => {
+                  if (!sport.includes(e)) {
+                    setSport([...sport, e]);
+                  } else {
+                    setSport(sport.filter((i) => e != i));
+                  }
+                }}
+              />
+            </div>
 
-        <div>
-          <button
-            type="button"
-            className="btn save-btn btn-warning text-white mx-auto mt-2"
-            onClick={() => sendUserInfo()}
-          >
-            Guardar
-          </button>
+            <div>
+              <button
+                type="button"
+                className="btn save-btn btn-warning text-white  mt-2"
+                onClick={() => sendUserInfo()}
+              >
+                Guardar
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

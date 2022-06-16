@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/login.css";
@@ -8,6 +8,7 @@ export const Login = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
+  const [showPassword, setShowPassword] = useState(false);
 
   const sendUserInfo = async () => {
     if (
@@ -55,6 +56,7 @@ export const Login = () => {
       <div className="container login">
         <div className="container-fluid">
           <div className="input-group mb-3">
+            <label for="email" class="form-label"></label>
             <input
               id="email"
               type="text"
@@ -63,16 +65,14 @@ export const Login = () => {
               placeholder="Email"
               aria-label="Username"
               aria-describedby="basic-addon1"
+              required
             />
-            {error != null ? (
-              <span className="text-danger">{error}</span>
-            ) : null}
           </div>
-
           <div className="input-group mb-3">
             <input
               id="password"
-              type="password"
+              type={!showPassword ? "password" : "text"}
+              name="password"
               className="form-control text-center"
               placeholder="Contraseña"
               aria-label="Recipient's username"
@@ -80,16 +80,32 @@ export const Login = () => {
               onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
           </div>
+          {error != null ? (
+            <span className="text-danger fs-6">{error}</span>
+          ) : null}
           <div className="checkbox mb-3">
             <label>
               <input type="checkbox" value="" className="me-1" />
               <span>Recordar</span>
             </label>
           </div>
+          <div className="checkbox mb-3">
+            <label>
+              <input
+                type="checkbox"
+                value=""
+                className="me-1"
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
+              />
+              <span>Mostrar contraseña</span>
+            </label>
+          </div>
         </div>
         <div className="d-grid gap-2 mx-auto">
           <button
-            type="button"
+            type="submit"
             className="btn login-btn btn-warning text-white"
             onClick={() => {
               sendUserInfo();
@@ -99,7 +115,47 @@ export const Login = () => {
           </button>
         </div>
         <div className="container-fluid text-center mt-3">
-          <span className="sp1">¿Olvidó su contraseña?</span>
+          <span
+            className="sp1 btn"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            ¿Olvidó su contraseña?
+          </span>
+        </div>
+        <div
+          className="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body"></div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" className="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="container-fluid text-center mt-3">
           <span className="sp1">
