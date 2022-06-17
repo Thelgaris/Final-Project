@@ -67,9 +67,6 @@ export const Login = () => {
               aria-describedby="basic-addon1"
               required
             />
-            {error != null ? (
-              <span className="text-danger">{error}</span>
-            ) : null}
           </div>
           <div className="input-group mb-3">
             <input

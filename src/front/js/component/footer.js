@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/footer.css";
 export const Footer = () => (
+
   <footer className="bg-light sticky-bottom">
     <div className="container p-2">
       <ul className="nav justify-content-center border-bottom pb-3 mb-3">
