@@ -11,4 +11,6 @@ footer {
 .linkfooter {
   text-decoration: none;
   color: black;
+  padding-top: 60px;
+  height: 30px;
 }
