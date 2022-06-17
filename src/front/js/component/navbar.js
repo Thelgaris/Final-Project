@@ -15,7 +15,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg sticky-top navbar-light ">
       <div className="container-fluid ">
         <Link to="/" className="navbarlink text-decoration-none">
           <h1 className="navbar-brand bt-5" href="#">
