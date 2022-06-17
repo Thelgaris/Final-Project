@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
-    <div className="text-center mt-5">
+    <div className="container text-center mt-5">
       <div className="row justify-content-center">
         <div className="jumbotron jumbotron-fluid w-50">
           <div className="container-fluid">
             <h1 className="display-4">PICKATEAM</h1>
-            <h2 style={{ color: "gray" }}>
+            <h2 className="" style={{ color: "gray" }}>
               En Pickateam queremos crear una comunidad de deportistas, a través
               de la cual ayudarte a encontrar nuevas personas, nuevos jugadores
               y, por qué no, nuevos equipos.
@@ -22,15 +22,13 @@ export const Home = () => {
             <div
               className="card"
               style={{
-                width: "300px",
-                height: "380px",
                 marginBottom: "10px",
                 border: "none",
               }}
             >
               <div className="imgCard">
                 <img
-                  className="card-img-top img-fluid"
+                  className="card-img-top imgcard2 img-fluid rounded-circle"
                   src="https://static.vecteezy.com/system/resources/previews/000/265/199/non_2x/vector-magnifying-glass-on-world-map.jpg"
                   alt="This is an image"
                 />
@@ -49,15 +47,13 @@ export const Home = () => {
             <div
               className="card"
               style={{
-                width: "300px",
-                height: "380px",
                 marginBottom: "10px",
                 border: "none",
               }}
             >
               <div className="imgCard">
                 <img
-                  className="card-img-top img-fluid"
+                  className="card-img-top img-fluid rounded-circle"
                   src="https://play-lh.googleusercontent.com/Kf8WTct65hFJxBUDm5E-EpYsiDoLQiGGbnuyP6HBNax43YShXti9THPon1YKB6zPYpA"
                   alt="This is an image"
                 />
@@ -77,15 +73,13 @@ export const Home = () => {
             <div
               className="card"
               style={{
-                width: "300px",
-                height: "380px",
                 marginBottom: "10px",
                 border: "none",
               }}
             >
               <div className="imgCard">
                 <img
-                  className="card-img-top img-fluid"
+                  className="card-img-top imgcard2 img-fluid rounded-circle"
                   src="http://alcalalarealesdeporte.com/wp-content/uploads/2014/09/valores-1.jpg"
                   alt="This is an image"
                 />
@@ -104,15 +98,13 @@ export const Home = () => {
             <div
               className="card"
               style={{
-                width: "300px",
-                height: "380px",
                 marginBottom: "10px",
                 border: "none",
               }}
             >
               <div className="imgCard">
                 <img
-                  className="card-img-top img-fluid"
+                  className="card-img-top imgcard2 img-fluid rounded-circle"
                   src="https://www.imdsg.es/wp-content/uploads/fondo.jpg"
                   alt="This is an image"
                 />
@@ -132,18 +124,12 @@ export const Home = () => {
 
       <div className="d-grid gap-2 col-6-sm mx-auto mt-5 mb-5">
         <Link to="/register">
-          <button
-            className="btn btn-warning btn-sm text-white w-25"
-            type="button"
-          >
+          <button className="btn btnhome btn-sm text-white w-25" type="button">
             REGISTRATE
           </button>
         </Link>
         <Link to="/login">
-          <button
-            className="btn btn-warning btn-sm text-white w-25"
-            type="button"
-          >
+          <button className="btn btnhome btn-sm text-white w-25" type="button">
             LOGIN
           </button>
         </Link>
