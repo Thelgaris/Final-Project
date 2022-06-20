@@ -18,9 +18,14 @@ export const Navbar = () => {
     <nav className="navbar navbar-expand-lg sticky-top navbar-light ">
       <div className="container-fluid ">
         <Link to="/" className="navbarlink text-decoration-none">
-          <h1 className="navbar-brand bt-5" href="#">
-            PICKATEAM
-          </h1>
+          <div>
+            {" "}
+            <img
+              src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_login_design/docs/assets/Logo1.PNG?raw=true"
+              style={{ height: "70px", width: "70px" }}
+            />
+          </div>
+
           <button
             className="navbar-toggler"
             type="button"
