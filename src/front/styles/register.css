@@ -2,3 +2,9 @@
   background: linear-gradient(to bottom, rgb(218, 218, 219), white);
   margin-top: 50px;
 }
+.register-btn {
+  background-color: #0295a9;
+  border-radius: 3px;
+  width: 290px;
+  margin-left: 12%;
+}
