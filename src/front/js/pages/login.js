@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/login.css";
+import Logo1 from "/workspace/Final-Project/docs/assets/Logo1.PNG";
 
 export const Login = () => {
   const history = useHistory();
@@ -50,10 +51,18 @@ export const Login = () => {
 
   return (
     <div className="container">
-      <Link to="/" className="pickateamlink" onClick={() => {}}>
-        <h1 className="text-center pickateam">PICKATEAM</h1>
-      </Link>
-      <div className="container login">
+      <div className="containge-fluid">
+        <Link to="/" className="pickateamlink" onClick={() => {}}>
+          <img
+            className="d-flex justify-content-center mx-auto"
+            src={Logo1}
+            alt="Logo web"
+            style={{ height: "160px", width: "160px" }}
+          />
+        </Link>
+      </div>
+
+      <div className="container login mb-5">
         <div className="container-fluid">
           <div className="input-group mb-3">
             <label for="email" class="form-label"></label>
@@ -103,10 +112,10 @@ export const Login = () => {
             </label>
           </div>
         </div>
-        <div className="d-grid gap-2 mx-auto">
+        <div className="d-grid gap-2 col-6-sm mx-auto">
           <button
             type="submit"
-            className="btn login-btn btn-warning text-white"
+            className="btn login-btn btn-sm text-white w-75"
             onClick={() => {
               sendUserInfo();
             }}
