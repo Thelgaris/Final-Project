@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/login.css";
-import Logo1 from "/workspace/Final-Project/docs/assets/Logo1.PNG";
 
 export const Login = () => {
   const history = useHistory();
@@ -51,11 +50,11 @@ export const Login = () => {
 
   return (
     <div className="container">
-      <div className="containge-fluid">
+      <div className="containge-fluid mb-2">
         <Link to="/" className="pickateamlink" onClick={() => {}}>
           <img
             className="d-flex justify-content-center mx-auto"
-            src={Logo1}
+            src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_login_design/docs/assets/Logo1.PNG?raw=true"
             alt="Logo web"
             style={{ height: "160px", width: "160px" }}
           />
