@@ -13,7 +13,7 @@ export const Sportmodal = ({ setSport }) => {
     <div className="mx-auto">
       <button
         type="button"
-        className="btn deportesbtn btn-white mx-auto"
+        className="btn deportesbtn btn-white mx-auto w-25"
         data-bs-toggle="modal"
         data-bs-target="#exampleModalToggle1"
       >

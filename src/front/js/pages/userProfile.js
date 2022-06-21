@@ -72,67 +72,52 @@ export const UserProfile = () => {
           </button>
         </form> */}
       </div>
-      <div className="row ">
-        <div className="col-lg-4 col-lg-offset-4">
-          <div className="input-group  mb-3 w-50">
-            <div>
-              <input
-                id="name"
-                type="text"
-                className="form-control text-center"
-                onChange={(e) => setUser({ ...user, name: e.target.value })}
-                placeholder="Nombre"
-                aria-label="Name"
-                aria-describedby="basic-addon1"
-              />
-            </div>
-
-            <div className="input-group  mb-3 w-50">
-              <input
-                id="surname"
-                type="select"
-                className="form-control text-center"
-                onChange={(e) => setUser({ ...user, surname: e.target.value })}
-                placeholder="Apellidos"
-                aria-label="surname"
-                aria-describedby="basic-addon1"
-              />
-            </div>
-
-            <div className="input-group  mb-3 w-50">
-              <input
-                id="birth"
-                type="date"
-                className="birth form-control text-center"
-                onChange={(e) => setUser({ ...user, birth: e.target.value })}
-                placeholder="Birth"
-                aria-label="Birth"
-                aria-describedby="basic-addon1"
-              />
-            </div>
-
-            <div className="input-group  mb-3 w-50">
-              <select
-                className="text-center"
-                onChange={(e) => setUser({ ...user, gender: e.target.value })}
-              >
-                <option>Hombre</option>
-                <option>Mujer</option>
-              </select>
-            </div>
-
-            <div className="input-group  mb-3 w-50">
-              <input
-                id="city"
-                type="text"
-                className="form-control text-center"
-                onChange={(e) => setUser({ ...user, city: e.target.value })}
-                placeholder="Ciudad"
-                aria-label="City"
-                aria-describedby="basic-addon1"
-              />
-            </div>
-
+      <div className="container">
+        <div className="row mx-auto">
+          <div className="d-grid gap-3">
+            <input
+              id="name"
+              type="text"
+              className="form-control text-center w-25 mx-auto"
+              onChange={(e) => setUser({ ...user, name: e.target.value })}
+              placeholder="Nombre"
+              aria-label="Name"
+              aria-describedby="basic-addon1"
+            />
+            <input
+              id="surname"
+              type="select"
+              className="form-control text-center w-25 mx-auto"
+              onChange={(e) => setUser({ ...user, surname: e.target.value })}
+              placeholder="Apellidos"
+              aria-label="surname"
+              aria-describedby="basic-addon1"
+            />
+            <input
+              id="birth"
+              type="date"
+              className="birth form-control text-center w-25 mx-auto"
+              onChange={(e) => setUser({ ...user, birth: e.target.value })}
+              placeholder="Birth"
+              aria-label="Birth"
+              aria-describedby="basic-addon1"
+            />
+            <select
+              className="text-center w-25 mx-auto"
+              onChange={(e) => setUser({ ...user, gender: e.target.value })}
+            >
+              <option>Hombre</option>
+              <option>Mujer</option>
+            </select>
+            <input
+              id="city"
+              type="text"
+              className="form-control text-center w-25 mx-auto"
+              onChange={(e) => setUser({ ...user, city: e.target.value })}
+              placeholder="Ciudad"
+              aria-label="City"
+              aria-describedby="basic-addon1"
+            />
             <div>
               <Sportmodal
                 setSport={(e) => {
@@ -144,16 +129,13 @@ export const UserProfile = () => {
                 }}
               />
             </div>
-
-            <div>
-              <button
-                type="button"
-                className="btn save-btn btn-warning text-white  mt-2"
-                onClick={() => sendUserInfo()}
-              >
-                Guardar
-              </button>
-            </div>
+            <button
+              type="button"
+              className="btn save-btn text-white mb-5 mt-2 w-25 mx-auto"
+              onClick={() => sendUserInfo()}
+            >
+              Guardar
+            </button>
           </div>
         </div>
       </div>
