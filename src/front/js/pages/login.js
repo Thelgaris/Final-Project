@@ -51,24 +51,24 @@ export const Login = () => {
   return (
     <div className="container">
       <div className="containge-fluid mb-2">
-        <Link to="/" className="pickateamlink" onClick={() => {}}>
+        <Link to="/" className="pickateamlink">
           <img
             className="d-flex justify-content-center mx-auto"
-            src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_login_design/docs/assets/Logo1.PNG?raw=true"
+            src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_register_design/docs/assets/logo2.png?raw=true"
             alt="Logo web"
-            style={{ height: "160px", width: "160px" }}
+            style={{ height: "210px", width: "210px" }}
           />
         </Link>
       </div>
 
-      <div className="container login mb-5">
+      <div className="container login mb-3" style={{ marginTop: "-18px" }}>
         <div className="container-fluid">
           <div className="input-group mb-3">
             <label for="email" class="form-label"></label>
             <input
               id="email"
               type="text"
-              className="form-control text-center mt-5"
+              className="form-control text-center text-muted mt-5"
               onChange={(e) => setUser({ ...user, email: e.target.value })}
               placeholder="Email"
               aria-label="Username"
@@ -91,12 +91,6 @@ export const Login = () => {
           {error != null ? (
             <span className="text-danger fs-6">{error}</span>
           ) : null}
-          <div className="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="" className="me-1" />
-              <span>Recordar</span>
-            </label>
-          </div>
           <div className="checkbox mb-3">
             <label>
               <input

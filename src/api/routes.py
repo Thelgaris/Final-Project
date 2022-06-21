@@ -36,7 +36,7 @@ def register_user():
         access_token = create_access_token(identity=new_user.id)
         return jsonify({"access_token": access_token, "User": new_user.serialize(), "registered": True}), 200
     else:
-        return jsonify({"Error": "Error"}), 400
+        return jsonify({"registered": False, "msg": "Campo vacio"}), 400
 
 @api.route('/userprofile', methods=['POST'])
 @jwt_required()

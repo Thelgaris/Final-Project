@@ -37,8 +37,7 @@ export const Home = () => {
                 <h5 className="card-title">BUSCA TU CIUDAD</h5>
                 <p className="card-text">
                   ¿Dónde quieres practicar deporte? Entérate de qué eventos
-                  deportivos se van a celebrar en tu ciudad o en aquella a la
-                  que vas a viajar.
+                  deportivos se van a celebrar allá donde te quieras mover.
                 </p>
               </div>
             </div>
@@ -63,8 +62,7 @@ export const Home = () => {
                 <h5 className="card-title">ENCUENTRA TU LUGAR</h5>
                 <p className="card-text">
                   Recorre la ciudad en busca de instalaciones y zonas donde
-                  quieras practicar deporte y visualiza los eventos que hay en
-                  tu ciudad.
+                  quieras practicar deporte y visualiza los eventos que existen.
                 </p>
               </div>
             </div>
