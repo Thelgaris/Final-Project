@@ -6,44 +6,62 @@ import "../../styles/register.css";
 export const Register = () => {
   const history = useHistory();
   const [userData, setUserData] = useState({});
+  const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
   const [showPassword, setShowPassword] = useState(false);
 
   const createUser = async () => {
-    const response = await fetch(store.url + "/register", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(userData),
-    });
-    const data = await response.json();
-    localStorage.setItem("access_token", data.access_token);
-    history.push("/userProfile");
+    if (
+      user.email &&
+      user.password != null &&
+      user.email.trim() != "" &&
+      user.password.trim() != ""
+    ) {
+      setError(null);
+      const response = await fetch(store.url + "/register", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+      const data = await response.json();
+      if (data.access_token) {
+        localStorage.setItem("access_token", data.access_token);
+        history.push("/userProfile");
+        if (data.registered == false) {
+          setError(data.msg);
+        } else if (data.registered == true) {
+          history.push("/userProfile");
+        }
+      } else {
+        setError(data.msg);
+        setTimeout(() => {
+          setError(null);
+        }, 3000);
+      }
+    } else {
+      setError("Campos vacios");
+    }
   };
 
   return (
     <div className="container">
-      <div className="containge-fluid mb-2">
+      <div className="container-fluid">
         <Link to="/" className="pickateamlink" onClick={() => {}}>
           <img
             className="d-flex justify-content-center mx-auto"
-            src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_login_design/docs/assets/Logo1.PNG?raw=true"
+            src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_register_design/docs/assets/logo2.png?raw=true"
             alt="Logo web"
-            style={{ height: "160px", width: "160px" }}
+            style={{ height: "210px", width: "210px" }}
           />
         </Link>
       </div>
-      <div
-        className="container p-3 mb-5 rounded bg-secondary h-auto Register"
-        style={{
-          width: "25rem",
-        }}
-      >
+      <div className="container mb-3 Register" style={{ marginTop: "-10px" }}>
         <div className="row mx-auto">
           <div className="d-grid gap-3">
             <input
               id="email"
               type="text"
-              className="form-control"
+              className="form-control text-center mt-5"
               placeholder="Email"
               aria-label="Email"
               aria-describedby="basic-addon1"
@@ -54,8 +72,8 @@ export const Register = () => {
             <input
               id="password"
               type={!showPassword ? "password" : "text"}
-              className="form-control"
-              placeholder="Password"
+              className="form-control text-center"
+              placeholder="Contraseña"
               aria-label="Password"
               aria-describedby="basic-addon1"
               onChange={(e) => {
@@ -65,13 +83,16 @@ export const Register = () => {
             <input
               id="passwordvalidation"
               type={!showPassword ? "password" : "text"}
-              className="form-control"
-              placeholder="Confirm password"
+              className="form-control text-center"
+              placeholder="Confirmar contraseña"
               aria-label="Confirm password"
               aria-describedby="basic-addon1"
             />
           </div>
-          <div className="checkbox mb-3 mt-4">
+          {error != null ? (
+            <span className="text-danger fs-6">{error}</span>
+          ) : null}
+          <div className="checkbox mb-3 mt-3">
             <label>
               <input
                 type="checkbox"
@@ -86,7 +107,7 @@ export const Register = () => {
           </div>
           <div className="d-grid gap-2 col-6-sm mx-auto">
             <button
-              className="btn register-btn btn-sm text-white w-75 mt-3"
+              className="btn register-btn btn-sm text-white w-75"
               type="button"
               onClick={() => {
                 createUser();
@@ -94,21 +115,31 @@ export const Register = () => {
             >
               Registrar
             </button>
-
-            <button className="btn btn-light" type="button">
-              <img
-                src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/323_Strava_logo-48.png"
-                style={{ width: "25px", height: "25px ", float: "left" }}
-              />
-              Registrar con Strava
-            </button>
-            <button className="btn btn-light" type="button">
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
-                style={{ width: "20px", height: "20px ", float: "left" }}
-              />
-              Registrar con Google
-            </button>
+            <div className="container-fluid text-center mt-3">
+              <button className="btn btn-light w-75" type="button">
+                <img
+                  src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/323_Strava_logo-48.png"
+                  style={{
+                    width: "25px",
+                    height: "25px ",
+                    float: "left",
+                  }}
+                />
+                <span className="text-center">Registrar con Strava</span>
+              </button>
+              <button className="btn btn-light w-75" type="button">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
+                  style={{
+                    width: "20px",
+                    height: "20px ",
+                    float: "left",
+                    marginLeft: "3px",
+                  }}
+                />
+                <span className="text-center">Registrar con Google</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

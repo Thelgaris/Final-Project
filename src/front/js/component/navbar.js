@@ -21,8 +21,8 @@ export const Navbar = () => {
           <div>
             {" "}
             <img
-              src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_login_design/docs/assets/Logo1.PNG?raw=true"
-              style={{ height: "70px", width: "70px" }}
+              src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_register_design/docs/assets/logo2.png?raw=true"
+              style={{ height: "80px", width: "80px" }}
             />
           </div>
 

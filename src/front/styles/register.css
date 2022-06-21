@@ -1,10 +1,19 @@
 .Register {
   background: linear-gradient(to bottom, rgb(218, 218, 219), white);
-  margin-top: 50px;
+  margin-top: 30px;
+  height: 450px;
+  width: 350px;
+  border-radius: 3px;
+  border: 1px transparent;
 }
 .register-btn {
   background-color: #0295a9;
   border-radius: 3px;
   width: 290px;
   margin-left: 12%;
+}
+.btn-light {
+  color: #000;
+  background-color: #f8f9fa00;
+  border-color: #f8f9fa00;
 }
