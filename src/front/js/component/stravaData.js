@@ -1,8 +1,8 @@
-import React from "react";
-
-import { Link } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 export const StravaData = () => {
+  const history = useHistory();
   return (
     <div className="container">
       <div
@@ -93,9 +93,11 @@ export const StravaData = () => {
           </div>
         </div>
         <div className="d-grid col-6 mx-auto mb-2">
-          <button type="button " className=" btn  btn-warning text-black">
-            + Info
-          </button>
+          <Link to="/profile">
+            <button type="button " className=" btn  btn-warning text-black">
+              + Info
+            </button>
+          </Link>
         </div>
       </div>
     </div>
