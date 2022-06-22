@@ -24,6 +24,8 @@ function Map() {
         height: "400px",
         width: "600px",
         marginBottom: "10px",
+        marginLeft: "auto",
+        marginRight: "auto",
       }}
     >
       <Marker position={{ lat: 44, lng: -80 }} />

@@ -20,8 +20,17 @@ export const Homepageafterlogin = () => {
               <ProfileComp />
             </div>
             <div className="col-6">
-              <h1 className="">PICKATEAM</h1>
-              <div className="d-flex mt-5">
+              <div className="container-fluid">
+                <Link to="/" className="pickateamlink">
+                  <img
+                    className="d-flex justify-content-center mx-auto"
+                    src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_register_design/docs/assets/logo2.png?raw=true"
+                    alt="Logo web"
+                    style={{ height: "210px", width: "210px" }}
+                  />
+                </Link>
+              </div>
+              <div className="d-flex mt-2">
                 <h2 style={{ color: "gray" }}>
                   En Pickateam queremos crear una comunidad de deportistas, a
                   través de la cual ayudarte a encontrar nuevas personas, nuevos
