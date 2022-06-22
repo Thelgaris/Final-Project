@@ -16,18 +16,17 @@ function Map() {
   const [lat, setLat] = useState(40.4303759999059);
   const [lng, setLng] = useState(-3.7049425337888837);
   return (
-    <div className="container maps mt-2 mb-5 border border-dark border-5">
-      <GoogleMap
-        zoom={10}
-        center={{ lat, lng }}
-        mapContainerClassName={{ width: "100%", height: "550px" }}
-        mapContainerStyle={{
-          height: "400px",
-          width: "400px",
-        }}
-      >
-        <Marker position={{ lat: 44, lng: -80 }} />
-      </GoogleMap>
-    </div>
+    <GoogleMap
+      zoom={10}
+      center={{ lat, lng }}
+      mapContainerClassName={{ width: "100%", height: "500px" }}
+      mapContainerStyle={{
+        height: "400px",
+        width: "600px",
+        marginBottom: "10px",
+      }}
+    >
+      <Marker position={{ lat: 44, lng: -80 }} />
+    </GoogleMap>
   );
 }

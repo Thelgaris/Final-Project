@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 import { Sportmodal } from "../component/sportmodal";
-import { Maps } from "../component/maps";
 
 export const UserProfile = () => {
   const history = useHistory();
@@ -158,7 +157,6 @@ export const UserProfile = () => {
           </div>
         </div>
       </div>
-      <Maps />
     </div>
   );
 };
