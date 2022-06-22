@@ -8,7 +8,7 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     detail = db.relationship('Details', backref='user', lazy=True)
     sports = db.relationship('UserSports')
-    profile_image_url = db.Column(db.String(255), unique=False, nullable=False)
+    """ profile_image_url = db.Column(db.String(255), unique=False, nullable=False) """
     is_active = db.Column(db.Boolean(), unique=False, nullable=True)
     
     def __repr__(self):
@@ -18,7 +18,6 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "profile_image_url": self.profile_image_url,
         }
 
 class Details(db.Model):
