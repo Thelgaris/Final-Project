@@ -10,7 +10,7 @@ export const UserProfile = () => {
   const [sport, setSport] = useState([]);
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
-  // const [files, setFiles] = useState(null);
+  const [files, setFiles] = useState(null);
 
   useEffect(() => {
     actions.getSports();
@@ -33,21 +33,21 @@ export const UserProfile = () => {
     history.push("/homepageafterlogin");
   };
 
-  /*   const uploadImage = (evt) => {
+  const uploadImage = (evt) => {
     evt.preventDefault();
     console.log("This are the files", files);
     let body = new FormData();
     body.append("profile_image", files[0]);
     const options = {
       body,
-      methos: "POST",
+      method: "POST",
     };
     const currentUserId = localStorage.getItem("user_id");
-    fetch(`${process.env.BACKEND_URL}/user/${currentUserId}/image`, options)
+    fetch(process.env.BACKEND_URL + "/userprofile", options)
       .then((resp) => resp.json())
       .then((data) => console.log("Success!", data))
-      .catch((error) => console.Console.error("Error!", error));
-  }; */
+      .catch((error) => console.error("Error!", error));
+  };
 
   return (
     <div className="container mt-5 text-center">
@@ -65,16 +65,17 @@ export const UserProfile = () => {
           src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt=""
         />
-        {/*    <form onSubmit={uploadImage}>
-          <input type="file" onChange={(ec) => setFiles(e.target.files)} />
+        <form onSubmit={uploadImage}>
+          <input type="file" onChange={(e) => setFiles(e.target.files)} />
           <button>
-            <i className="fas fa-camera fa-2x" style={{ fontsize: "50px" }}></i>
+            {/* <i className="fas fa-camera fa-2x" style={{ fontsize: "50px" }}></i> */}
+            Upload
           </button>
-        </form> */}
+        </form>
       </div>
       <div className="container">
         <div className="row mx-auto">
-          <div className="d-grid gap-3">
+          <div className="d-grid gap-4 col-lg-12 col-sm align-self-center mb-3">
             <input
               id="name"
               type="text"
@@ -131,7 +132,7 @@ export const UserProfile = () => {
             </div>
             <button
               type="button"
-              className="btn save-btn text-white mb-5 mt-2 w-25 mx-auto"
+              className="btn save-btn text-white mt-2 w-25 mx-auto"
               onClick={() => sendUserInfo()}
             >
               Guardar
