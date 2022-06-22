@@ -21,9 +21,12 @@ const injectContext = (PassedComponent) => {
       })
     );
 
-    // useEffect(() => {
-    //   state.actions.verify();
-    // }, []);
+    useEffect(() => {
+      // state.actions.verify();
+      state.actions.getDetails();
+      state.actions.getSports();
+      state.actions.getUsers();
+    }, []);
 
     return (
       <Context.Provider value={state}>

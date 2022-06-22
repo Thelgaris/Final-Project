@@ -1,7 +1,17 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const CreateEventBtn = () => {
+  const [userEvents, setUserEvents] = useState({});
+  const [showModal, setShowModal] = useState([null]);
+  const { store, actions } = useContext(Context);
+  let history = useHistory();
+  useEffect(() => {
+    actions.getSports();
+    actions.getEvents();
+  }, []);
+
   return (
     <div>
       <button
@@ -9,134 +19,184 @@ export const CreateEventBtn = () => {
         className="btn btn-warning"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
+        onClick={() => {
+          setShowModal != null;
+        }}
       >
         Crear evento
       </button>
 
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <input
-                type="text"
-                aria-label="Nombre"
-                placeholder="Nombre del Evento"
-                className="input-group mb-3 border-0"
-              />
+      {showModal != null ? (
+        <div className="modal fade" id="exampleModal" tabIndex="-1">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header  d-flex d-inline row">
+                <h3 className="d-flex col-10">
+                  <input
+                    type="form-control"
+                    aria-label="Nombre"
+                    placeholder="Nombre del Evento"
+                    className=" border-0"
+                    onChange={(e) => {
+                      setUserEvents({ ...userEvents, name: e.target.value });
+                    }}
+                  />
+                </h3>
 
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <div className="input-group mb-3">
-                <label
-                  className="input-group-text w-25"
-                  htmlFor="inputGroupSelect01"
+                <button
+                  type="button"
+                  className="btn btn-light btn-sm col-1"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
                 >
-                  Ciudad
-                </label>
-                <select className="form-select" id="Ciudad">
-                  <option>Ciudad</option>
-                  <option value="1">Barcelona</option>
-                  <option value="2">Cadiz</option>
-                  <option value="3">Granada</option>
-                </select>
+                  X
+                </button>
               </div>
-              <div className="input-group mb-3">
-                <label
-                  className="input-group-text w-25"
-                  htmlFor="inputGroupSelect01"
-                >
-                  Pistas
-                </label>
-                <select className="form-select" id="Pistas">
-                  <option>Pista</option>
-                  <option value="1">Pista 1</option>
-                  <option value="3">...</option>
-                  <option value="3">Punto de encuentro</option>
-                </select>
-              </div>
+              <div className="modal-body">
+                <div className="input-group mb-3">
+                  <label
+                    className="input-group-text w-25"
+                    htmlFor="inputGroupSelect01"
+                  >
+                    Ciudad
+                  </label>
+                  <select
+                    className="form-select "
+                    id="Ciudad"
+                    onChange={(e) => {
+                      setUserEvents({ ...userEvents, city: e.target.value });
+                    }}
+                  >
+                    <option></option>
+                    <option>Barcelona</option>
+                    <option>Cadiz</option>
+                    <option>Granada</option>
+                  </select>
+                </div>
 
-              <div className="input-group mb-3">
-                <label
-                  className="input-group-text w-25"
-                  htmlFor="inputGroupSelect01"
-                >
-                  Deporte
-                </label>
-                <select className="form-select" id="Deporte">
-                  <option>Deporte</option>
-                  <option value="1">Running</option>
-                  <option value="2">Ciclismo</option>
-                  <option value="3">Futbol</option>
-                  <option value="3">Basket</option>
-                  <option value="3">Otro</option>
-                </select>
-              </div>
-              <div className="input-group mb-3">
-                <label
-                  className="input-group-text w-25"
-                  htmlFor="inputGroupSelect01"
-                >
-                  Fecha
-                </label>
-                <input
-                  className="w-75 border-1 border border-light rounded ps-2 pe-2"
-                  type="date"
-                  id="date"
-                />
-              </div>
-              <div className="input-group mb-3">
-                <label
-                  className="input-group-text w-25"
-                  htmlFor="inputGroupSelect01 time"
-                >
-                  Hora
-                </label>
+                <div className="input-group mb-3">
+                  <label
+                    className="input-group-text w-25"
+                    htmlFor="inputGroupSelect01"
+                  >
+                    Pistas
+                  </label>
 
-                <input
-                  className="w-75 border-1 border border-light rounded ps-2 pe-2"
-                  type="time"
-                  id="time"
-                />
+                  <select
+                    className="form-select"
+                    onChange={(e) => {
+                      setUserEvents({ ...userEvents, pista: e.target.value });
+                    }}
+                  >
+                    <option></option>;
+                    {store.pistas.map((pista) => {
+                      return <option key={pista.id}>{pista.name}</option>;
+                    })}
+                  </select>
+                </div>
+
+                <div className="input-group mb-3">
+                  <label
+                    className="input-group-text w-25"
+                    htmlFor="inputGroupSelect01"
+                  >
+                    Deporte
+                  </label>
+                  <select
+                    className="form-select"
+                    onChange={(e) => {
+                      setUserEvents({ ...userEvents, sport: e.target.value });
+                    }}
+                  >
+                    <option></option>;
+                    {store.sports.map((sport) => {
+                      return <option key={sport.id}>{sport.name}</option>;
+                    })}
+                  </select>
+                </div>
+                <div className="input-group mb-3">
+                  <label
+                    className="input-group-text w-25 border-3 border-light"
+                    htmlFor="inputGroupSelect01"
+                  >
+                    Dirección
+                  </label>
+                  <input
+                    className="w-75 border-3 border-light rounded ps-2 pe-2"
+                    type="address"
+                    onChange={(e) => {
+                      setUserEvents({ ...userEvents, address: e.target.value });
+                    }}
+                  />
+                </div>
+                <div className="input-group mb-3">
+                  <label
+                    className="input-group-text w-25 border-2 border-light"
+                    htmlFor="inputGroupSelect01"
+                  >
+                    Fecha
+                  </label>
+                  <input
+                    className="w-75 border-2 border border-light rounded ps-2 pe-2"
+                    type="date"
+                    onChange={(e) => {
+                      setUserEvents({ ...userEvents, date: e.target.value });
+                    }}
+                  />
+                </div>
+                <div className="input-group mb-3">
+                  <label
+                    className="input-group-text w-25 border-2 border-light"
+                    htmlFor="inputGroupSelect01 time"
+                  >
+                    Hora
+                  </label>
+
+                  <input
+                    className="w-75 border-2 border border-light rounded ps-2 pe-2"
+                    type="time"
+                    onChange={(e) => {
+                      setUserEvents({ ...userEvents, time: e.target.value });
+                    }}
+                  />
+                </div>
+                <div className="input-group mb-3">
+                  <input
+                    type="file"
+                    className="form-control w-25"
+                    id="inputGroupFile01"
+                  />
+                </div>
+                <div className="mb-3">
+                  <textarea
+                    className="form-control"
+                    rows="3"
+                    placeholder="Describe tu evento"
+                    onChange={(e) => {
+                      setUserEvents({
+                        ...userEvents,
+                        description: e.target.value,
+                      });
+                    }}
+                  ></textarea>
+                </div>
               </div>
-              <div className="input-group mb-3">
-                <input
-                  type="file"
-                  className="form-control w-25"
-                  id="inputGroupFile01"
-                />
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-warning w-50 content-center"
+                  onClick={() => {
+                    actions.setEvents(userEvents);
+                    setShowModal(null);
+                  }}
+                >
+                  Crear
+                </button>
               </div>
-              <div className="mb-3">
-                <textarea
-                  className="form-control"
-                  id="descripcion"
-                  rows="3"
-                  placeholder="Describe tu evento"
-                ></textarea>
-              </div>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-warning w-50 content-center"
-              >
-                Crear
-              </button>
             </div>
           </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 };

@@ -12,17 +12,14 @@ export const UserProfile = () => {
 
   const sendUserInfo = async () => {
     setError(null);
-    const response = await fetch(
-      "https://3001-thelgaris-finalproject-3did2fyusc4.ws-eu46.gitpod.io/api/userprofile",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("userToken"),
-        },
-        body: JSON.stringify(user),
-      }
-    );
+    const response = await fetch(store.url + "/userprofile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
+      },
+      body: JSON.stringify(user),
+    });
     const data = await response.json();
     console.log("@@@@@@@@@@@", data);
     history.push("/homepageafterlogin");

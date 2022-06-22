@@ -6,9 +6,10 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const history = useHistory();
+
   const sendToLoginPage = async () => {
-    if (store.logged) {
-      localStorage.removeItem("userToken");
+    if (store.logged == true) {
+      localStorage.removeItem("access_token");
       history.push("/login");
     }
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/homepageafterlogin.css";
 import { EventsComponent } from "../component/eventsComponent";

@@ -1,73 +1,117 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const EventInfo = () => {
+  const { store, actions } = useContext(Context);
+  const [showModal, setShowModal] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    actions.getEvents();
+  }, []);
+
   return (
-    <div className="container infoevent justify-content-center">
-      <div className="row ">
-        <div className="col-4 justify-content-center">
-          <button
-            type="button"
-            className="btn btn-link text-decoration-none text-dark"
-            data-bs-toggle="modal"
-            data-bs-target="#evento"
-          >
-            Eventos
-          </button>
-        </div>
+    <div className="container">
+      <div className="row d-flex justfy-content-center">
+        {store.events.map((event) => {
+          return (
+            <div className="col-12 " key={event.id}>
+              <button
+                type="button"
+                className="btn btn-link text-decoration-none text-dark"
+                onClick={() => {
+                  setShowModal(event.id);
+                }}
+              >
+                {event.name}
+                {event.participants}
+              </button>
 
-        <div
-          className="modal fade"
-          id="evento"
-          tabIndex="-1"
-          aria-labelledby="eventoLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header bg-light bg-gradient">
-                <h5 className="modal-title" id="eventoLabel">
-                  Nombre del evento
-                </h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div className="modal-body text-center ">
-                <div className="card w-100" style={{ width: "18rem" }}>
-                  <img
-                    src="https://picsum.photos/seed/picsum/300/200"
-                    className="card-img-top"
-                    alt="ImagenPista"
-                  />
-                  <ul className="list-group list-group-flush row">
-                    <div className="col d-flex ">
-                      <li className="list-group-item w-50 border-0">Ciudad</li>
-                      <li className="list-group-item w-50 border-0">Deporte</li>
-                    </div>
-                    <div className="col d-flex ">
-                      <li className="list-group-item w-50 border-0">Fecha</li>
-                      <li className="list-group-item w-50 border-0">Hora</li>
-                    </div>
-                    <div className="col">
-                      <li className="list-group-item border-0">Dirección</li>
+              {showModal == event.id ? (
+                <div className="row">
+                  <div
+                    className="position-absolute top-100 start-50 translate-middle mt-5 align-middle"
+                    tabIndex="-1"
+                    aria-labelledby="eventLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog">
+                      <div className="modal-content">
+                        <div className="modal-header bg-light bg-gradient d-flex">
+                          <h5 className="modal-title ">{event.name}</h5>
+                          <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button
+                              type="button"
+                              className="btn btn-warning btn-sm"
+                              onClick={async () => {
+                                await actions.setJoinEvents(event),
+                                  setShowModal(null);
+                              }}
+                            >
+                              Join
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-light btn-sm"
+                              onClick={() => {
+                                setShowModal(null);
+                              }}
+                            >
+                              X
+                            </button>
+                          </div>
+                        </div>
+                        <div className="modal-body">
+                          <div className="card w-100">
+                            <img
+                              src="https://picsum.photos/seed/picsum/300/200"
+                              className="card-img-top"
+                              alt="Imagenevent"
+                            />
+                            <div className="card-body text-center">
+                              <ul className="list-group list-group-flush d-inline">
+                                <li className="list-group-item">
+                                  <i class="fas fa-globe-africa">
+                                    {event.city}
+                                  </i>
+                                </li>
 
-                      <li className="list-group-item border-0">
-                        Participantes
-                      </li>
-                      <li className="list-group-item border-0">
-                        Desccripción del evento
-                      </li>
+                                <li className="list-group-item border-0 ">
+                                  <i class="fas fa-map-marker-alt">
+                                    {event.address}
+                                  </i>
+                                </li>
+
+                                <li className="list-group-item">
+                                  <i className="fas fa-calendar-alt me-2 col-4 text-start">
+                                    {event.date}
+                                  </i>
+                                  <i className="fas fa-clock me-2 col-3 text-center">
+                                    {event.time}
+                                  </i>
+                                  <i className="fas fa-users p-2 col-3 text-end">
+                                    {event.participants}
+                                  </i>
+                                </li>
+
+                                <li className="list-group-item ">
+                                  <i class="fas fa-newspaper">
+                                    {event.description}
+                                  </i>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </ul>
+                  </div>
                 </div>
-              </div>
+              ) : null}
             </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </div>
   );
