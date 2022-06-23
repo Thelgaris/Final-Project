@@ -4,7 +4,6 @@ import { Context } from "../store/appContext";
 import "../../styles/login.css";
 
 export const Login = () => {
-  const { store, actions } = useContext(Context);
   const history = useHistory();
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
