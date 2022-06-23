@@ -179,7 +179,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             following: store.following.filter((all) => all != user),
           });
-        }
+        };
         const resp = await fetch(getStore().url + "/users", {
           method: "POST",
           headers: {
@@ -221,7 +221,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
     },
-  };
+  
+};
 };
 
 export default getState;
