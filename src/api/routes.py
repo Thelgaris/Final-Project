@@ -57,7 +57,7 @@ def update_details():
         print(body_birth, body_city, body_name, body_surname)
         if body_name and body_birth and body_surname and body_city and body_gender:
             print("@@@@@@@@@@@@@@@@4")
-            user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender,user_id=user_id)
+            user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender, user_id=user_id)
             db.session.add(user_details)
             db.session.commit()
             for sport_name in body_sports:
@@ -69,9 +69,9 @@ def update_details():
             
             return jsonify({"details": user_details.serialize(), "Update": True}), 200
         else:
-            return jsonify({"Error": "Error"}), 400
+            return jsonify({"Error": "Error en userprofile1"}), 400
     else:
-        return jsonify({"Error": "Error"}), 400
+        return jsonify({"Error": "Error en userprofile2"}), 400
 
 @api.route('/editprofile', methods=['PUT'])
 @jwt_required()
@@ -98,7 +98,7 @@ def update_user():
         db.session.commit()
         return jsonify({"user": details.serialize()})
     else:
-        return jsonify({"Error": "Error"}), 400
+        return jsonify({"Error": "Error en update-user"}), 400
 
 
 @api.route("/protected", methods=["GET"])

@@ -64,7 +64,7 @@ export const Login = () => {
       <div className="container login mb-3" style={{ marginTop: "-18px" }}>
         <div className="container-fluid">
           <div className="input-group mb-3">
-            <label for="email" class="form-label"></label>
+            <label for="email" className="form-label"></label>
             <input
               id="email"
               type="text"
@@ -129,7 +129,7 @@ export const Login = () => {
         <div
           className="modal fade"
           id="exampleModal"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >

@@ -12,10 +12,10 @@ export const Register = () => {
 
   const createUser = async () => {
     if (
-      user.email &&
-      user.password != null &&
-      user.email.trim() != "" &&
-      user.password.trim() != ""
+      userData.email &&
+      userData.password != null &&
+      userData.email.trim() != "" &&
+      userData.password.trim() != ""
     ) {
       setError(null);
       const response = await fetch(store.url + "/register", {
