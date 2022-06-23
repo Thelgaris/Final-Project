@@ -14,11 +14,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       following: [],
       url: "https://3001-thelgaris-finalproject-l3tabcufz52.ws-eu47.gitpod.io/api",
       stravaUrl: "https://www.strava.com/oauth/authorize",
-      getUserSports: [],
-      setUserSports: [],
+
+      UserSports: [],
       user_id: null,
       logged: false,
-      url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api",
     },
     actions: {
       getUsers: async () => {
@@ -106,6 +105,40 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         setStore({ followers: data.response });
       },
+      setUserDetails: async (detail) => {
+        const resp = await fetch(getStore().url + "/details", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+          body: JSON.stringify(detail),
+        });
+        const data = await resp.json();
+
+        if (resp.ok) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      setUserSports: async (sport) => {
+        const resp = await fetch(getStore().url + "/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+          body: JSON.stringify(sport),
+        });
+        const data = await resp.json();
+
+        if (resp.ok) {
+          return true;
+        } else {
+          return false;
+        }
+      },
 
       setEvents: async (event) => {
         const resp = await fetch(getStore().url + "/events", {
@@ -179,7 +212,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             following: store.following.filter((all) => all != user),
           });
-        };
+        }
         const resp = await fetch(getStore().url + "/users", {
           method: "POST",
           headers: {
@@ -189,16 +222,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(user),
         });
         const data = await resp.json();
-
-      getUserSports: (a) => {
-        const store = getStore();
-        if (!store.getUserSports.includes(a)) {
-          setStore({ getUserSports: [...store.getUserSports, a] });
-        } else {
-          setStore({
-            getUserSports: store.getUserSports.filter((b) => b != a),
-          });
-        }
       },
 
       verify: async () => {
@@ -221,8 +244,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
     },
-  
-};
+  };
 };
 
 export default getState;

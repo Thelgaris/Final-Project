@@ -12,26 +12,7 @@ export const UserProfile = () => {
   const { store, actions } = useContext(Context);
   /* const [files, setFiles] = useState(null); */
 
-  useEffect(() => {
-    actions.getSports();
-  }, []);
-
-  const sendUserInfo = async () => {
-    setError(null);
-    user["sports"] = store.getUserSports;
-    console.log(store.getUserSports);
-    const response = await fetch(store.url + "/userprofile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
-      },
-      body: JSON.stringify(user),
-    });
-    const data = await response.json();
-    console.log("@@@@@@@@@@@", data);
-    history.push("/homepageafterlogin");
-  };
+  useEffect(() => {}, []);
 
   /*   const uploadImage = (evt) => {
     evt.preventDefault();
@@ -133,7 +114,9 @@ export const UserProfile = () => {
             <button
               type="button"
               className="btn save-btn text-white mt-2 w-25 mx-auto"
-              onClick={() => sendUserInfo()}
+              onClick={() => {
+                actions.setUserDetails(user), actions.setUserSports(sport);
+              }}
             >
               Guardar
             </button>

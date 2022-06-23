@@ -53,15 +53,11 @@ def update_details():
         body_city =request.json.get("city")
         body_gender =request.json.get("gender")
 
-        if body_name and body_birth and body_surname and body_city:
-            user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender)
-            body_sports = request.json.get("sports")
-            print("@@@@@@@@@@@@@@@@@@3")
-            print(body_sports)
-            print(body_birth, body_city, body_name, body_surname)
+     
         if body_name and body_birth and body_surname and body_city and body_gender:
             print("@@@@@@@@@@@@@@@@4")
             user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender, user_id=user_id)
+            body_sports = request.json.get("sports")
             db.session.add(user_details)
             user.detail = user_details
             user.detail_id=user_details.id
@@ -168,6 +164,22 @@ def create_Events():
         return jsonify({"Error": "Error"}), 400
 
 
+@api.route('/userSports', methods=['POST'])
+@jwt_required()
+def add_UserSports():
+   
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+      
+    body_sport_id = request.json.get("id")    
+    sport = Sports.query.get(body_event_id)    
+    user_sports = UserSports(user=user, events=sport)
+    db.session.add(user_sports)
+    db.session.commit()
+  
+    return jsonify({"events": user_events.serialize(), "Joined_to_Event": True}), 200
+
+
 @api.route('/joinEvent', methods=['POST'])
 @jwt_required()
 def join_Events():
@@ -177,7 +189,7 @@ def join_Events():
       
     body_event_id = request.json.get("id")    
     event = Events.query.get(body_event_id)    
-    user_events = UserEvents(user=user, events=event)
+    user_events = UserEvents(user=user, sports=event)
     db.session.add(user_events)
     db.session.commit()
   
@@ -191,69 +203,3 @@ def join_Events():
 
 
 
-
-
-
-
-"""     # Protect a route with jwt_required, which will kick out requests
-# without a valid JWT present.
-@app.route("/protected", methods=["GET"])
-        return jsonify({"Error": "Error en userprofile2"}), 400
-
-@api.route('/editprofile', methods=['PUT'])
-@jwt_required()
-def update_user():
-    print(request.json)
-    user_id = get_jwt_identity()
-    user = Details.query.get(user_id)
-    if user:
-        print("@@@@@@@@@@@@@@@@@@2")
-        body_birth = request.json.get("birth")
-        body_name = request.json.get("name")
-        body_surname = request.json.get("surname")
-        body_city =request.json.get("city")
-        body_gender =request.json.get("gender")
-        print("@@@@@@@@@@@@@@@@@@3")
-        
-        print(body_birth, body_city, body_name, body_surname)
-
-        user.name=body_name
-        user.birth=body_birth
-        user.surname=body_surname
-        user.city=body_city
-        user.gender=body_gender
-        db.session.commit()
-        return jsonify({"user": details.serialize()})
-    else:
-        return jsonify({"Error": "Error en update-user"}), 400
-
-
-@api.route("/protected", methods=["GET"])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    return jsonify({"user_id": current_user, "logged_in": True}), 200
-
-
-
-@api.route('/user', methods=['GET'])
-def get_all_users():
-    users = User.query.all()
-    users_serialized = list(map(lambda x: x.serialize(), users))
-    return jsonify({"response": users_serialized}), 200
-
-""" @api.route('/user/<int:user_id>/image', methods=['POST'])
-def handle_upload(user_id):
-    if 'profile_image' in request.files:
-        result = cloudinary.uploader.upload(request.files['profile_image'])
-
-        user1= User.query.get(user_id)
-        user1.profile_image_url = result['secure_url']
-
-        db.session.add(user1)
-        db.session.commit()
-
-        return jsonify(user1.serialize()), 200
-    else:
-        raise APIException('Missing profile_image on the FormData')
- """

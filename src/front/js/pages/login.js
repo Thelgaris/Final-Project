@@ -8,7 +8,7 @@ export const Login = () => {
   const history = useHistory();
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
-  const { store, actions } = useContext(Context);
+
   const [showPassword, setShowPassword] = useState(false);
 
   const sendUserInfo = async () => {
@@ -65,7 +65,7 @@ export const Login = () => {
       <div className="container login mb-3" style={{ marginTop: "-18px" }}>
         <div className="container-fluid">
           <div className="input-group mb-3">
-            <label for="email" className="form-label"></label>
+            <label htmlFor="email" className="form-label"></label>
             <input
               id="email"
               type="text"
