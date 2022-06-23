@@ -12,7 +12,7 @@ export const EventsComponent = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container-sm">
       <div className="justify-content-center">
         <div className="card row d-flex" style={{ width: "18rem" }}>
           <div className="card-body">
@@ -26,7 +26,7 @@ export const EventsComponent = () => {
                     <p className=" p-2 mb-0 text-start border-0 col-8">
                       {event.name}
                     </p>
-                    <i className="fas fa-users p-2 col-3 text-end"></i>
+
                     <p className=" p-2 mb-0 border-0 col-1 offset-2">
                       {event.participants}
                     </p>

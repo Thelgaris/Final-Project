@@ -140,7 +140,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         if (resp.ok) {
           getActions().getCurrentUser();
-
+          getActions().getEvents();
           return true;
         } else {
           return false;

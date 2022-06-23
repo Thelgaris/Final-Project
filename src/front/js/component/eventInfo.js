@@ -12,20 +12,20 @@ export const EventInfo = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row d-flex justfy-content-center">
         {store.events.map((event) => {
           return (
             <div className="col-12 " key={event.id}>
               <button
                 type="button"
-                className="btn btn-link text-decoration-none text-dark"
+                className="btn btn-link text-decoration-none text-dark d-grid  mx-auto d-flex"
                 onClick={() => {
                   setShowModal(event.id);
                 }}
               >
-                {event.name}
-                {event.participants}
+                <p className="mx-auto">{event.name}</p>
+                <p className="mx-auto ms-2">{event.participants}</p>
               </button>
 
               {showModal == event.id ? (

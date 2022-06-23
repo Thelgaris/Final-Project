@@ -14,32 +14,21 @@ export const Homepageafterlogin = () => {
   return (
     <div className="text-center mt-5">
       <div className="row justify-content-center">
-        <div className="jumbotron jumbotron-fluid">
-          <div className="container-fluid row">
-            <div className="col-3 d-inline">
-              <ProfileComp />
-            </div>
-            <div className="col-6">
-              <div className="container-fluid">
-                <Link to="/" className="pickateamlink">
-                  <img
-                    className="d-flex justify-content-center mx-auto"
-                    src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_register_design/docs/assets/logo2.png?raw=true"
-                    alt="Logo web"
-                    style={{ height: "210px", width: "210px" }}
-                  />
-                </Link>
-              </div>
-              <div className="d-flex mt-2">
-                <h2 style={{ color: "gray" }}>
-                  En Pickateam queremos crear una comunidad de deportistas, a
-                  través de la cual ayudarte a encontrar nuevas personas, nuevos
-                  jugadores y, por qué no, nuevos equipos.
-                </h2>
-              </div>
-            </div>
-            <div className="col-3 mt-4"></div>
+        <div className="container-fluid row">
+          <div className="col-3 d-inline">
+            <ProfileComp />
           </div>
+          <div className="col-6">
+            <h1 className="">PICKATEAM</h1>
+            <div className="d-flex mt-5">
+              <h2 style={{ color: "gray" }}>
+                En Pickateam queremos crear una comunidad de deportistas, a
+                través de la cual ayudarte a encontrar nuevas personas, nuevos
+                jugadores y, por qué no, nuevos equipos.
+              </h2>
+            </div>
+          </div>
+          <div className="col-3 mt-4"></div>
         </div>
       </div>
       <div className="button-container container-fluid row d-flex">
