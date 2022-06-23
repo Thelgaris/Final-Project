@@ -4,24 +4,16 @@ html {
 }
 body {
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
 }
-#carouselExampleControls {
-  width: 700px;
-
-  margin-left: auto;
-  margin-right: auto;
+.card-img-top {
+  height: 146px;
+  width: 146px;
 }
-.carousel-item {
-  height: 450px;
+.imgcard2 {
+  height: 146px;
+  width: 250px;
 }
-.card1 {
-  width: 400px;
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/8/8c/The_whole_Alhambra_Granada_Spain.jpg);
+.btnhome {
+  background-color: #0295a9;
 }
-
-/* .btnhome {
-  width: 400px;
-  background-color: rgba(247, 191, 38, 0.877);
-  font-size: large;
-} */

@@ -5,3 +5,20 @@
 span:hover {
   text-decoration: underline;
 }
+nav {
+  background: linear-gradient(to bottom, rgb(218, 218, 219), white);
+}
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  border: none;
+}
+.navbar-light .navbar-toggler {
+  color: rgba(0, 0, 0, 0.55);
+  border: none;
+}

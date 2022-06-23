@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
+import "../../styles/navbar.css";
 
 import { Context } from "../store/appContext";
 
@@ -8,19 +9,28 @@ export const Navbar = () => {
   const history = useHistory();
 
   const sendToLoginPage = async () => {
+<<<<<<< HEAD
     if (store.logged == true) {
+=======
+    if (store.logged) {
+>>>>>>> 9e683946ec74b539c1ff6f753354324925336d90
       localStorage.removeItem("access_token");
       history.push("/login");
     }
   };
 
   return (
-    <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-      <div className="container-fluid">
-        <Link to="/" className="navbarlink">
-          <h1 className="navbar-brand bt-5" href="#">
-            PICKATEAM
-          </h1>
+    <nav className="navbar navbar-expand-lg sticky-top navbar-light ">
+      <div className="container-fluid ">
+        <Link to="/" className="navbarlink text-decoration-none">
+          <div>
+            {" "}
+            <img
+              src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_register_design/docs/assets/logo2.png?raw=true"
+              style={{ height: "80px", width: "80px" }}
+            />
+          </div>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -42,7 +52,7 @@ export const Navbar = () => {
               aria-label="Search"
             />
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <Link to="/login" className="navbarlink">
+              <Link to="/login" className="navbarlink  text-decoration-none">
                 <li className="nav-item">
                   <span
                     className="nav-link active"
@@ -53,7 +63,7 @@ export const Navbar = () => {
                   </span>
                 </li>
               </Link>
-              <Link to="/login" className="navbarlink">
+              <Link to="/login" className="navbarlink  text-decoration-none">
                 <li className="nav-item">
                   <span
                     className="nav-link active"
@@ -65,7 +75,7 @@ export const Navbar = () => {
                   </span>
                 </li>
               </Link>
-              <Link to="/register" className="navbarlink">
+              <Link to="/register" className="navbarlink  text-decoration-none">
                 <li className="nav-item">
                   <span className="nav-link" href="#">
                     Registrate

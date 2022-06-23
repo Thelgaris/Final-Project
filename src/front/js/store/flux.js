@@ -1,3 +1,5 @@
+import { array } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -12,6 +14,11 @@ const getState = ({ getStore, getActions, setStore }) => {
       following: [],
       url: "https://3001-thelgaris-finalproject-l3tabcufz52.ws-eu47.gitpod.io/api",
       stravaUrl: "https://www.strava.com/oauth/authorize",
+      getUserSports: [],
+      setUserSports: [],
+      user_id: null,
+      logged: false,
+      url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu47.gitpod.io/api",
     },
     actions: {
       getUsers: async () => {
@@ -182,6 +189,36 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(user),
         });
         const data = await resp.json();
+
+      getUserSports: (a) => {
+        const store = getStore();
+        if (!store.getUserSports.includes(a)) {
+          setStore({ getUserSports: [...store.getUserSports, a] });
+        } else {
+          setStore({
+            getUserSports: store.getUserSports.filter((b) => b != a),
+          });
+        }
+      },
+
+      verify: async () => {
+        try {
+          const resp = await fetch(getStore().url + "/protected", {
+            method: "GET",
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("access_token"),
+            },
+          });
+
+          const data = await resp.json();
+          if (data.user_id) {
+            setStore({ user_id: data.user_id });
+          }
+          console.log(data);
+          setStore({ logged: data.logged_in || false });
+        } catch (e) {
+          setStore({ logged: false });
+        }
       },
     },
   };

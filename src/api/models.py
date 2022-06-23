@@ -227,7 +227,3 @@ class Cities(db.Model):
 #     details = db.relationship('Details')
 #     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 #     user = db.relationship('User')
-
-
-
-    
