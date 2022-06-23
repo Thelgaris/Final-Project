@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 
 export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
-  const [showModal, setShowModal] = useState([null]);
+  const [showModal, setShowModal] = useState([]);
   const { store, actions } = useContext(Context);
   let history = useHistory();
   useEffect(() => {
