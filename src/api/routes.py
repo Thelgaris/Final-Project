@@ -2,11 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-<<<<<<< HEAD
 from api.models import db, User, Sports, Details, Pistas, Events, UserEvents, UserSports
-=======
-from api.models import db, User, Sports, Details, UserSports
->>>>>>> 9e683946ec74b539c1ff6f753354324925336d90
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 """ import cloudinary
@@ -50,50 +46,37 @@ def update_details():
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
     if user:
-<<<<<<< HEAD
-      
-=======
         print("@@@@@@@@@@@@@@@@@@2")
->>>>>>> 9e683946ec74b539c1ff6f753354324925336d90
         body_birth = request.json.get("birth")
         body_name = request.json.get("name")
         body_surname = request.json.get("surname")
         body_city =request.json.get("city")
         body_gender =request.json.get("gender")
-<<<<<<< HEAD
-       
+
         if body_name and body_birth and body_surname and body_city:
-            
             user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender)
-=======
-        body_sports = request.json.get("sports")
-        print("@@@@@@@@@@@@@@@@@@3")
-        print(body_sports)
-        print(body_birth, body_city, body_name, body_surname)
+            body_sports = request.json.get("sports")
+            print("@@@@@@@@@@@@@@@@@@3")
+            print(body_sports)
+            print(body_birth, body_city, body_name, body_surname)
         if body_name and body_birth and body_surname and body_city and body_gender:
             print("@@@@@@@@@@@@@@@@4")
             user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender, user_id=user_id)
->>>>>>> 9e683946ec74b539c1ff6f753354324925336d90
             db.session.add(user_details)
             user.detail = user_details
             user.detail_id=user_details.id
             db.session.commit()
-<<<<<<< HEAD
-         
-=======
             for sport_name in body_sports:
                 sport = Sports.query.filter_by(name = sport_name).first()
                 user_sports = UserSports(user=user, sports=sport)
                 db.session.add(user_sports)
                 db.session.commit()
             print("@@@@@@@@@@@@@@@@@5")
->>>>>>> 9e683946ec74b539c1ff6f753354324925336d90
             
             return jsonify({"details": user_details.serialize(), "Update": True}), 200
         else:
             return jsonify({"Error": "Error en userprofile1"}), 400
     else:
-<<<<<<< HEAD
         return jsonify({"Error": "Error"}), 400
 
 
@@ -215,7 +198,6 @@ def join_Events():
 """     # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
 @app.route("/protected", methods=["GET"])
-=======
         return jsonify({"Error": "Error en userprofile2"}), 400
 
 @api.route('/editprofile', methods=['PUT'])
@@ -247,7 +229,6 @@ def update_user():
 
 
 @api.route("/protected", methods=["GET"])
->>>>>>> 9e683946ec74b539c1ff6f753354324925336d90
 @jwt_required()
 def protected():
     current_user = get_jwt_identity()
@@ -255,8 +236,6 @@ def protected():
 
 
 
-<<<<<<< HEAD
-=======
 @api.route('/user', methods=['GET'])
 def get_all_users():
     users = User.query.all()
@@ -270,7 +249,6 @@ def handle_upload(user_id):
 
         user1= User.query.get(user_id)
         user1.profile_image_url = result['secure_url']
->>>>>>> 9e683946ec74b539c1ff6f753354324925336d90
 
         db.session.add(user1)
         db.session.commit()

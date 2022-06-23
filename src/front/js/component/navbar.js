@@ -9,11 +9,7 @@ export const Navbar = () => {
   const history = useHistory();
 
   const sendToLoginPage = async () => {
-<<<<<<< HEAD
-    if (store.logged == true) {
-=======
     if (store.logged) {
->>>>>>> 9e683946ec74b539c1ff6f753354324925336d90
       localStorage.removeItem("access_token");
       history.push("/login");
     }
