@@ -189,6 +189,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(user),
         });
         const data = await resp.json();
+      },
 
       getUserSports: (a) => {
         const store = getStore();
