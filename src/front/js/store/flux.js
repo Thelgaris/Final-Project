@@ -123,7 +123,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
       setUserSports: async (sport) => {
-        const resp = await fetch(getStore().url + "/", {
+        const resp = await fetch(getStore().url + "/userSports", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
