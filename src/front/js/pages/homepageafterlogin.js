@@ -12,20 +12,20 @@ import { Followers } from "../component/followers";
 export const Homepageafterlogin = () => {
   return (
     <div className="text-center mt-5">
-      <div className="row d-flex justify-content-center container-fluid">
-        <div className="d-flex col">
+      <div className="row d-flex container-fluid w-auto">
+        <div className="d-inline w-auto">
           <ProfileComp />
         </div>
 
-        <div className=" d-flex col">
+        <div className=" d-inline w-auto justify-content-center">
           <StravaData />
         </div>
       </div>
-      <div className=" row d-flex container-fluid">
-        <div className="col-3 mt-4">
+      <div className="row d-flex container-fluid w-auto">
+        <div className="d-inline w-auto mt-4">
           <EventsComponent />
         </div>
-        <div className="col-8 d-inline">
+        <div className="col d-inline">
           <img
             className=" mt-4 mb-4 rounded"
             src="https://placebeard.it/640x360"

@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const ProfileComp = () => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="container-fluid d-inline h-auto d-inline-block w-auto">
+    <div className="container-fluid h-auto w-auto ">
       <div
         className="card bg-white border-0
       "
