@@ -23,7 +23,7 @@ export const Navbar = () => {
           </h1>
         </Link>
         <button
-          className="navbar-toggler float-end"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"

@@ -16,24 +16,24 @@ export const Homepageafterlogin = () => {
         <div className="d-inline w-auto justify-content-center">
           <ProfileComp />
         </div>
-        <div className="w-auto d-inline ">
+        <div className="w-auto d-inline h-auto justify-content-center">
           <img
-            className=" mt-4 mb-4 rounded mt-5 "
+            className=" rounded mt-5 "
             src="https://placebeard.it/640x360"
             alt=""
           />
         </div>
       </div>
-      <div className="row d-flex container-fluid w-auto mt-5">
-        <div className="d-inline w-auto">
+      <div className="row d-flex container-fluid mt-5">
+        <div className="d-inline w-auto col-3">
           <EventsComponent />
         </div>
-        <div className=" d-inline w-75 justify-content-center">
-          <StravaData />
-        </div>
-        <div>
+        <div className="col d-inline">
           <PistaYeventTab />
         </div>
+      </div>
+      <div className=" d-inline col-3 justify-content-center">
+        <StravaData />
       </div>
     </div>
   );

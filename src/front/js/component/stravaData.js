@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 export const StravaData = () => {
   return (
     <div className="container-fluid mt-5 ">
-      <div
-        className="card bg-white
-      "
-      >
+      <div className="card bg-white">
         <ul
           className="nav nav-pills mb-3 d-flex rounded"
           id="pills-tab"
