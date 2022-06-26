@@ -11,26 +11,25 @@ import { Followers } from "../component/followers";
 
 export const Homepageafterlogin = () => {
   return (
-    <div className="text-center mt-5">
-      <div className="row d-flex container-fluid w-auto">
-        <div className="d-inline w-auto">
+    <div className="text-center">
+      <div className="row d-flex container-fluid mt-5">
+        <div className="d-inline w-auto justify-content-center">
           <ProfileComp />
         </div>
-
-        <div className=" d-inline w-auto justify-content-center">
-          <StravaData />
-        </div>
-      </div>
-      <div className="row d-flex container-fluid w-auto">
-        <div className="d-inline w-auto mt-4">
-          <EventsComponent />
-        </div>
-        <div className="col d-inline">
+        <div className="w-auto d-inline ">
           <img
-            className=" mt-4 mb-4 rounded"
+            className=" mt-4 mb-4 rounded mt-5 "
             src="https://placebeard.it/640x360"
             alt=""
           />
+        </div>
+      </div>
+      <div className="row d-flex container-fluid w-auto mt-5">
+        <div className="d-inline w-auto">
+          <EventsComponent />
+        </div>
+        <div className=" d-inline w-75 justify-content-center">
+          <StravaData />
         </div>
         <div>
           <PistaYeventTab />
