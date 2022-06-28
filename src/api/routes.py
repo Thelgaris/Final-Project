@@ -7,6 +7,7 @@ from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 """ import cloudinary
 import cloudinary.uploader """
+""" /*hola uapa*/s """
 
 api = Blueprint('api', __name__)
 
