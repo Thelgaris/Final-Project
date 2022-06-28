@@ -83,7 +83,11 @@ export const UserProfile = () => {
         </div>
 
         <div className="input-group mx-auto mb-3 w-25">
-          <select className="text-center">
+          <select
+            className="text-center"
+            onChange={(e) => setUser({ ...user, gender: e.target.value })}
+          >
+            <option value></option>
             <option value>Hombre</option>
             <option value>Mujer</option>
           </select>
@@ -101,14 +105,9 @@ export const UserProfile = () => {
           />
         </div>
 
-        {/* <div>
-          <Sportmodal
-            user={user}
-            setUser={(e) => {
-              setUser({ ...user, sports: e });
-            }}
-          />
-        </div> */}
+        <div>
+          <Sportmodal />
+        </div>
 
         <div>
           <button

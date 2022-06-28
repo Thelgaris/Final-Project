@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       strava: [],
       events: [],
       userEvents: [],
+      userSports: [],
       currentUser: {},
       followers: [],
       following: [],
@@ -37,6 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log(data, " @@@@@@@@@@");
         setStore({ details: data.response });
       },
+
       getSports: async () => {
         const resp = await fetch(getStore().url + "/sports", {
           method: "GET",
@@ -85,19 +87,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({
           currentUser: data.response,
           userEvents: data.response.events,
+          userSports: data.response.sports,
         });
-      },
-
-      getFollowers: async (id) => {
-        const resp = await fetch(getStore().url + "/followers", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await resp.json();
-
-        setStore({ followers: data.response });
       },
 
       setEvents: async (event) => {
@@ -130,6 +121,27 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(join),
         });
         const data = await resp.json();
+
+        if (resp.ok) {
+          getActions().getCurrentUser();
+
+          return true;
+        } else {
+          return false;
+        }
+      },
+
+      setUserSports: async (sport) => {
+        const resp = await fetch(getStore().url + "/userSports", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+          body: JSON.stringify(sport),
+        });
+        const data = await resp.json();
+        setStore({ userSports: data.response });
 
         if (resp.ok) {
           getActions().getCurrentUser();

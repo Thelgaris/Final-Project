@@ -3,11 +3,11 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 
 export const Sportmodal = ({ user, setUser }) => {
-  const [sportsData, setSportsData] = useState({});
+  const [sports, setSports] = useState({});
   const { store, actions } = useContext(Context);
 
   // useEffect(() => {
-  //   actions.getSports();
+  //   actions.getUserSports();
   // }, []);
 
   return (
@@ -52,10 +52,11 @@ export const Sportmodal = ({ user, setUser }) => {
                         placeholder={sport.name}
                         id={sport.name}
                         onClick={(e) => {
-                          setSportsData({
-                            ...sportsData,
+                          setSports({
+                            ...sports,
                             sport: e.target.value,
                           });
+                          console.log(e.target.value);
                         }}
                       />
                       <label className="form-check-label">{sport.name}</label>
@@ -73,8 +74,8 @@ export const Sportmodal = ({ user, setUser }) => {
                   <button
                     type="button"
                     className="btn modalbtn btn-primary"
-                    onClick={() => {
-                      getSports();
+                    onClick={(sports) => {
+                      store.setStore.UserSports(sports);
                     }}
                   >
                     Guardar

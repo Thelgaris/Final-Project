@@ -12,11 +12,11 @@ import { Followers } from "../component/followers";
 export const Homepageafterlogin = () => {
   return (
     <div className="text-center">
-      <div className="row d-flex container-fluid mt-5">
+      <div className="row d-flex container-fluid">
         <div className="d-inline w-auto justify-content-center">
           <ProfileComp />
         </div>
-        <div className="w-auto d-inline h-auto justify-content-center">
+        <div className="w-auto d-inline h-auto justify-content-center mt-5">
           <img
             className=" rounded mt-5 "
             src="https://placebeard.it/640x360"
@@ -32,7 +32,7 @@ export const Homepageafterlogin = () => {
           <PistaYeventTab />
         </div>
       </div>
-      <div className=" d-inline col-3 justify-content-center">
+      <div className=" d-inline-block col-3 ">
         <StravaData />
       </div>
     </div>
