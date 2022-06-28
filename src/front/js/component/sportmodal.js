@@ -50,8 +50,8 @@ export const Sportmodal = ({ setSport }) => {
                         value={sport.id}
                         placeholder={sport.name}
                         id={sport.name}
-                        onClick={(e) => {
-                          actions.getUserSports(sport.name);
+                        onClick={() => {
+                          setSport(sport.name);
                         }}
                       />
                       <label className="form-check-label">{sport.name}</label>

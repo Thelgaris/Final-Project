@@ -44,6 +44,7 @@ def register_user():
 def update_details():
     print(request.json)
     user_id = get_jwt_identity()
+    print(user_id)
     user = User.query.get(user_id)
     if user:
         print("@@@@@@@@@@@@@@@@@@2")
@@ -58,14 +59,14 @@ def update_details():
         print(body_birth, body_city, body_name, body_surname)
         if body_name and body_birth and body_surname and body_city and body_gender:
             print("@@@@@@@@@@@@@@@@4")
-            user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender, user_id=user_id)
+            user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender)
             db.session.add(user_details)
             db.session.commit()
             for sport_name in body_sports:
                 sport = Sports.query.filter_by(name = sport_name).first()
                 user_sports = UserSports(user=user, sports=sport)
                 db.session.add(user_sports)
-                db.session.commit()
+            db.session.commit()
             print("@@@@@@@@@@@@@@@@@5")
             
             return jsonify({"details": user_details.serialize(), "Update": True}), 200
