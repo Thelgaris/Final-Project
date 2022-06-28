@@ -6,7 +6,7 @@ export const Sportmodal = ({ setSport }) => {
   const { store, actions } = useContext(Context);
 
   // useEffect(() => {
-  //   actions.getSports();
+  //   actions.getUserSports();
   // }, []);
 
   return (

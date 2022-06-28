@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const ProfileComp = () => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="container d-inline h-auto d-inline-block">
+    <div className="container-fluid h-auto w-auto ">
       <div
         className="card bg-white border-0
       "
@@ -27,12 +27,12 @@ export const ProfileComp = () => {
         </div>
 
         <ul className="list-group list-group-flush d-flex flex-row border-0">
-          <li className="list-group-item col-6 border-0">Siguiendo</li>
-          <li className="list-group-item col-6 border-0">Seguidores</li>
+          <li className="list-group-item  border-0">Siguiendo</li>
+          <li className="list-group-item  border-0">Seguidores</li>
         </ul>
         <ul className="list-group list-group-flush d-flex flex-row border-0">
-          <li className="list-group-item col-6 border-0">15</li>
-          <li className="list-group-item col-6 border-0 ">24</li>
+          <li className="list-group-item  border-0">15</li>
+          <li className="list-group-item  border-0 ">24</li>
         </ul>
       </div>
     </div>
