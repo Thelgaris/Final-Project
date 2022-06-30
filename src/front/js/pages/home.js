@@ -132,6 +132,7 @@ export const Home = () => {
           </button>
         </Link>
       </div>
+      <div className=""></div>
     </div>
   );
 };
