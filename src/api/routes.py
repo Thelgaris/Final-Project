@@ -5,9 +5,9 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Sports, Details, Pistas, Events, UserEvents, UserSports
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-""" import cloudinary
-import cloudinary.uploader """
-""" /*hola uapa*/s """
+import cloudinary
+import cloudinary.uploader 
+
 
 api = Blueprint('api', __name__)
 
@@ -49,12 +49,15 @@ def update_details():
     user = User.query.get(user_id)
     if user:
         print("@@@@@@@@@@@@@@@@@@2")
-        body_birth = request.json.get("birth")
-        body_name = request.json.get("name")
-        body_surname = request.json.get("surname")
-        body_city =request.json.get("city")
-        body_gender =request.json.get("gender")
-        body_sports = request.json.get("sports")
+        body_birth = request.form.get("birth")
+        body_name = request.form.get("name")
+        body_surname = request.form.get("surname")
+        body_city =request.form.get("city")
+        body_gender =request.form.get("gender")
+        body_sports = request.form.get("sports")
+        if 'profile_image_url' in request.files:
+            result = cloudinary.uploader.upload(request.files['profile_image_url'])
+            body_profile_image_url = result['secure_url']
         print("@@@@@@@@@@@@@@@@@@3")
         print(body_sports)
         print(body_birth, body_city, body_name, body_surname)
@@ -214,20 +217,3 @@ def update_user():
 def protected():
     current_user = get_jwt_identity()
     return jsonify({"user_id": current_user, "logged_in": True}), 200
-    
-
-""" @api.route('/user/<int:user_id>/image', methods=['POST'])
-def handle_upload(user_id):
-    if 'profile_image' in request.files:
-        result = cloudinary.uploader.upload(request.files['profile_image'])
-
-        user1= User.query.get(user_id)
-        user1.profile_image_url = result['secure_url']
-
-        db.session.add(user1)
-        db.session.commit()
-
-        return jsonify(user1.serialize()), 200
-    else:
-        raise APIException('Missing profile_image on the FormData')
-  """

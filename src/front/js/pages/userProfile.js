@@ -9,8 +9,8 @@ export const UserProfile = () => {
   const [user, setUser] = useState({ gender: "Hombre", sports: [] });
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
-  /* const [files, setFiles] = useState(null); */
-  /*hola uapa*/
+  const [files, setFiles] = useState(null);
+
   useEffect(() => {
     actions.getSports();
   }, []);
@@ -19,20 +19,23 @@ export const UserProfile = () => {
     setError(null);
     user["sports"] = store.getUserSports;
     console.log(store.getUserSports);
+    let body = new FormData();
+    for (let key in user) {
+      body.append(key, user[key]);
+    }
     const response = await fetch(store.url + "/userprofile", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("access_token"),
       },
-      body: JSON.stringify(user),
+      body: body,
     });
     const data = await response.json();
     console.log("@@@@@@@@@@@", data);
     history.push("/homepageafterlogin");
   };
 
-  /*   const uploadImage = (evt) => {
+  const uploadImage = (evt) => {
     evt.preventDefault();
     console.log("This are the files", files);
     let body = new FormData();
@@ -46,7 +49,7 @@ export const UserProfile = () => {
       .then((resp) => resp.json())
       .then((data) => console.log("Success!", data))
       .catch((error) => console.error("Error!", error));
-  }; */
+  };
 
   return (
     <div className="container mt-5 text-center">
@@ -64,13 +67,18 @@ export const UserProfile = () => {
           src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt=""
         />
-        {/*         <form onSubmit={uploadImage}>
-          <input type="file" onChange={(e) => setFiles(e.target.files)} />
-          <button>
+        <form>
+          <input
+            type="file"
+            onChange={(e) =>
+              setUser({ ...user, profile_image_url: e.target.files[0] })
+            }
+          />
+          {/* <button>
             <i className="fas fa-camera fa-2x" style={{ fontsize: "50px" }}></i>
             Upload
-          </button>
-        </form> */}
+          </button> */}
+        </form>
       </div>
       <div className="container">
         <div className="row mx-auto">
