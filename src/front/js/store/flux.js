@@ -137,24 +137,34 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      setUserSports: async (sport) => {
+      setUsports: async (userSports) => {
         const resp = await fetch(getStore().url + "/userSports", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
-          body: JSON.stringify(sport),
+          body: JSON.stringify(userSports),
         });
         const data = await resp.json();
-        setStore({ userSports: data.response });
 
         if (resp.ok) {
           getActions().getCurrentUser();
-          getActions().getEvents();
+
           return true;
         } else {
           return false;
+        }
+      },
+
+      setUserSports: async (item) => {
+        const store = getStore();
+        if (!store.userSports.includes(item)) {
+          setStore({ userSports: [...store.userSports, item] });
+        } else {
+          setStore({
+            userSports: store.userSports.filter((fav) => fav != item),
+          });
         }
       },
 
@@ -200,17 +210,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(user),
         });
         const data = await resp.json();
-      },
-
-      getUserSports: (a) => {
-        const store = getStore();
-        if (!store.getUserSports.includes(a)) {
-          setStore({ getUserSports: [...store.getUserSports, a] });
-        } else {
-          setStore({
-            getUserSports: store.getUserSports.filter((b) => b != a),
-          });
-        }
       },
 
       verify: async () => {

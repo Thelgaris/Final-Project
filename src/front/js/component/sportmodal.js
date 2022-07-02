@@ -51,7 +51,7 @@ export const Sportmodal = ({ setSport }) => {
                         placeholder={sport.name}
                         id={sport.name}
                         onClick={(e) => {
-                          actions.getUserSports(sport.name);
+                          actions.setUserSports(sport.id);
                         }}
                       />
                       <label className="form-check-label">{sport.name}</label>
@@ -67,14 +67,6 @@ export const Sportmodal = ({ setSport }) => {
                 type="submit"
               >
                 Guardar
-              </button>
-              <button
-                className="btn modalbtn btn-primary"
-                data-bs-target="#exampleModalToggle22"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Mis deportes
               </button>
             </div>
           </div>
@@ -99,15 +91,6 @@ export const Sportmodal = ({ setSport }) => {
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
-            </div>
-            <div className="modal-body">
-              {store.getUserSports.map((sports, index) => {
-                return (
-                  <li key={index} style={{}}>
-                    {sports}
-                  </li>
-                );
-              })}
             </div>
 
             <div className="modal-footer">

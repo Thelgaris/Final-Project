@@ -12,7 +12,7 @@ export const EventsComponent = () => {
   }, []);
 
   return (
-    <div className="container-fluid h-auto w-auto">
+    <div className="container-fluid w-100">
       <div className="justify-content-center">
         <div className="card row d-flex">
           <div className="card-body">

@@ -133,7 +133,9 @@ export const UserProfile = () => {
             <button
               type="button"
               className="btn save-btn text-white mt-2 w-25 mx-auto"
-              onClick={() => sendUserInfo()}
+              onClick={(user, Usport) => {
+                sendUserInfo(user), actions.setUserSports(Usport);
+              }}
             >
               Guardar
             </button>

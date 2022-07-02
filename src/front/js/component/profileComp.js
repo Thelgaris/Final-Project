@@ -6,10 +6,7 @@ export const ProfileComp = () => {
   const { store, actions } = useContext(Context);
   return (
     <div className="container-fluid h-auto w-auto ">
-      <div
-        className="card bg-white border-0
-      "
-      >
+      <div className="card bg-white border-0">
         <Link to="/userprofile">
           <img
             src="https://picsum.photos/seed/picsum/50/50"
