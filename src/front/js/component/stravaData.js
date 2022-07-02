@@ -4,8 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 export const StravaData = () => {
   const history = useHistory();
   return (
-    <div className="container-fluid mt-5 border-0 row">
-      <div className="card bg-white border-0 col-4">
+    <div className="container-fluid border-0 row">
+      <div className="card bg-white border-0 ">
         <ul
           className="nav nav-pills mb-3 d-flex rounded"
           id="pills-tab"
@@ -27,7 +27,7 @@ export const StravaData = () => {
           </li>
           <li className="nav-item" role="presentation">
             <i
-              className="fas fa-biking nav-link btn  btn-warning text-black"
+              className="fas fa-biking nav-link btn   text-black"
               type="button "
               id="cycling"
               data-bs-toggle="pill"
@@ -40,7 +40,7 @@ export const StravaData = () => {
           </li>
           <li className="nav-item" role="presentation">
             <i
-              className="fas fa-swimmer nav-link btn  btn-warning text-black"
+              className="fas fa-swimmer nav-link btn   text-black"
               type="button "
               id="activities"
               data-bs-toggle="pill"
@@ -53,7 +53,7 @@ export const StravaData = () => {
           </li>
           <li className="nav-item" role="presentation">
             <i
-              className="fas fa-futbol nav-link btn  btn-warning text-black"
+              className="fas fa-futbol nav-link btn   text-black"
               type="button "
               id="activities"
               data-bs-toggle="pill"

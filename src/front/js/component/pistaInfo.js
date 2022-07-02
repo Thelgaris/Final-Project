@@ -12,7 +12,7 @@ export const PistaInfo = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row d-flex justfy-content-center">
         {store.pistas.map((pista) => {
           return (
