@@ -19,7 +19,7 @@ export const PistaInfo = () => {
             <div className="col-12 " key={pista.id}>
               <button
                 type="button"
-                className="btn btn-link text-decoration-none text-dark rounded"
+                className="btn btn-link text-decoration-none text-dark rounded "
                 onClick={() => {
                   setShowModal(pista.id);
                 }}

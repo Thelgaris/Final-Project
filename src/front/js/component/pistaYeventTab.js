@@ -6,14 +6,14 @@ import { PistaInfo } from "./pistaInfo";
 
 export const PistaYeventTab = () => {
   return (
-    <div className="row container-fluid h-auto w-auto">
+    <div className="row container-fluid">
       <ul
         className="nav nav-pills  d-flex justify-content-center "
         role="tablist"
       >
         <li className="nav-item " role="presentation">
           <button
-            className="nav-link btn  btn-bg-light w-100 text-black"
+            className="nav-link btn-sm  btn-bg-light w-100 text-black genbuttons"
             id="pistas"
             data-bs-toggle="pill"
             data-bs-target="#pistasList"
@@ -29,7 +29,7 @@ export const PistaYeventTab = () => {
         <li className="nav-item " role="presentation">
           <button
             type="button "
-            className="nav-link btn btn-bg-light w-100 text-black"
+            className="nav-link btn-sm btn-bg-light w-100 text-black genbuttons"
             id="eventos"
             data-bs-toggle="pill"
             data-bs-target="#eventosList"
@@ -44,7 +44,7 @@ export const PistaYeventTab = () => {
       </ul>
       <div className="tab-content row " id="pills-tabContent">
         <div
-          className="tab-pane fade show "
+          className="tab-pane fade show  "
           id="pistasList"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
