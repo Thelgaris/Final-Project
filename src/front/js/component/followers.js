@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import "../../styles/followers.css";
 import { Context } from "../store/appContext";
+import "../../styles/followers.css";
 
 export const Followers = () => {
   const { store, actions } = useContext(Context);
@@ -64,7 +65,7 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-          <div className="row d-flex justify-content-center mt-5">
+          <div className="d-followers">
             {store.users.map((U) => {
               return (
                 <div
@@ -107,11 +108,11 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="row d-flex justify-content-center mt-5">
+          <div className="d-followers">
             {store.users.map((F) => {
               return (
                 <div
-                  className="card ms-2 me-2 border-0 mt-5 mb-5"
+                  className="card ms-2 me-2 border-0 mt-5 "
                   style={{ width: "10rem", height: "10rem" }}
                   key={F.id}
                 >
@@ -143,11 +144,11 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="row d-flex justify-content-center mt-5">
+          <div className="d-followers">
             {store.users.map((P) => {
               return (
                 <div
-                  className="card ms-2 me-2 border-0  h-100 mt-5 mb-5"
+                  className="card ms-2 me-2 border-0  h-100 mt-5 mb-5 "
                   style={{ width: "10rem", height: "10rem" }}
                   key={P.id}
                 >
