@@ -13,18 +13,18 @@ export const Profile = () => {
   return (
     <div className="container text-center mt-5 ">
       <div className="row">
-        <div className="col-3 ">
+        <div className="w-auto justify-content-center text-center ">
           <ProfileComp />
         </div>
-        <div className="col-6 mt-5 ">
+        <div className="w-auto d-grid  h-auto d-flex justify-content-between mt-5 ms-3">
           <StravaData />
         </div>
       </div>
-      <div className="col-6 mt-5 offset-3">
+      <div className="d-inline w-auto justify-content-center text-center">
         <Followers />
       </div>
       <div className="row">
-        <div className="col-6 offset-3">
+        <div className="d-inline w-auto justify-content-center text-center">
           <HistoryCard />
         </div>
       </div>

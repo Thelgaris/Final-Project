@@ -177,6 +177,21 @@ def join_Events():
   
     return jsonify({"events": user_events.serialize(), "Joined_to_Event": True}), 200
 
+@api.route('/unjoinEvent', methods=['PUT'])
+@jwt_required()
+def unjoin_Events():
+   
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+      
+    body_event_id = request.json.get("id")    
+    event = Events.remove(body_event_id)    
+    user_events = UserEvents(user=user, events=event)
+    db.session.add(user_events)
+    db.session.commit()
+  
+    return jsonify({"events": user_events.serialize(), "Unjoined_to_Event": True}), 200
+
 @api.route('/userSports', methods=['POST'])
 @jwt_required()
 def set_userSports():

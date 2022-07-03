@@ -137,6 +137,31 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      setUnJoinEvents: async (unjoin) => {
+        const store = getStore();
+        setStore({
+          userEvents: store.userEvents.filter((fav) => fav != unjoin),
+        });
+
+        const resp = await fetch(getStore().url + "/unjoinEvent", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+          body: JSON.stringify(unjoin),
+        });
+        const data = await resp.json();
+
+        if (resp.ok) {
+          getActions().getCurrentUser();
+
+          return true;
+        } else {
+          return false;
+        }
+      },
+
       setUsports: async (userSports) => {
         const resp = await fetch(getStore().url + "/userSports", {
           method: "POST",
@@ -164,6 +189,17 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           setStore({
             userSports: store.userSports.filter((fav) => fav != item),
+          });
+        }
+      },
+
+      setUnJoin: async (item) => {
+        const store = getStore();
+        if (!store.userEvents.includes(item)) {
+          setStore({ userEvents: [...store.userEvents, item] });
+        } else {
+          setStore({
+            userEvents: store.userEvents.filter((fav) => fav != item),
           });
         }
       },

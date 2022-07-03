@@ -4,14 +4,14 @@ import { Link, useHistory } from "react-router-dom";
 export const StravaData = () => {
   const history = useHistory();
   return (
-    <div className="container-fluid border-0 row">
+    <div className="container-fluid border-0 w-auto ms-3">
       <div className="card bg-white border-0 ">
         <ul
-          className="nav nav-pills mb-3 d-flex rounded"
+          className="nav nav-pills rounded d-flex"
           id="pills-tab"
           role="tablist"
         >
-          <li className="nav-item " role="presentation">
+          <li className="nav-item" role="presentation">
             <i
               className="fas fa-running nav-link btn active btn-warning text-black"
               style={{}}
@@ -27,7 +27,7 @@ export const StravaData = () => {
           </li>
           <li className="nav-item" role="presentation">
             <i
-              className="fas fa-biking nav-link btn   text-black"
+              className="fas fa-biking nav-link btn text-black"
               type="button "
               id="cycling"
               data-bs-toggle="pill"
@@ -53,72 +53,7 @@ export const StravaData = () => {
           </li>
           <li className="nav-item" role="presentation">
             <i
-              className="fas fa-futbol nav-link btn   text-black"
-              type="button "
-              id="activities"
-              data-bs-toggle="pill"
-              data-bs-target="#swimming-data"
-              role="tab"
-              aria-controls="pills-profile"
-              aria-selected="false"
-              onClick={() => {}}
-            ></i>
-          </li>
-          <li className="nav-item" role="presentation">
-            <i
-              className="fas fa-volleyball-ball nav-link btn  btn-warning text-black"
-              type="button "
-              id="activities"
-              data-bs-toggle="pill"
-              data-bs-target="#swimming-data"
-              role="tab"
-              aria-controls="pills-profile"
-              aria-selected="false"
-              onClick={() => {}}
-            ></i>
-          </li>
-          <li className="nav-item" role="presentation">
-            <i
-              className="fas fa-dumbbell nav-link btn  btn-warning text-black"
-              type="button "
-              id="activities"
-              data-bs-toggle="pill"
-              data-bs-target="#swimming-data"
-              role="tab"
-              aria-controls="pills-profile"
-              aria-selected="false"
-              onClick={() => {}}
-            ></i>
-          </li>
-          <li className="nav-item" role="presentation">
-            <i
-              className="fas fa-snowboarding nav-link btn  btn-warning text-black"
-              type="button "
-              id="activities"
-              data-bs-toggle="pill"
-              data-bs-target="#swimming-data"
-              role="tab"
-              aria-controls="pills-profile"
-              aria-selected="false"
-              onClick={() => {}}
-            ></i>
-          </li>
-          <li className="nav-item" role="presentation">
-            <i
-              className="fas fa-quidditch nav-link btn  btn-warning text-black"
-              type="button "
-              id="activities"
-              data-bs-toggle="pill"
-              data-bs-target="#swimming-data"
-              role="tab"
-              aria-controls="pills-profile"
-              aria-selected="false"
-              onClick={() => {}}
-            ></i>
-          </li>
-          <li className="nav-item" role="presentation">
-            <i
-              className="far fa-star nav-link btn  btn-warning text-black"
+              className="far fa-star nav-link btn text-black"
               type="button "
               id="activities"
               data-bs-toggle="pill"
@@ -129,17 +64,8 @@ export const StravaData = () => {
               onClick={() => {}}
             ></i>
           </li>
-          <li className="nav-item" role="presentation">
-            <i
-              className="far fa-edit nav-link btn  btn-warning text-black float-end"
-              type="button"
-              role="tab"
-              aria-controls="pills-profile"
-              aria-selected="false"
-              onClick={() => {}}
-            ></i>
-          </li>
         </ul>
+
         <div className="tab-content" id="pills-tabContent">
           <div
             className="tab-pane fade show active t mt-4 pb-4"
@@ -184,10 +110,7 @@ export const StravaData = () => {
         </div>
         <div className="d-grid col-6 mx-auto mb-2">
           <Link to="/profile">
-            <button
-              type="button "
-              className="genbuttons btn  btn-warning text-black"
-            >
+            <button type="button " className="genbuttons btn btn text-black">
               + Info
             </button>
           </Link>

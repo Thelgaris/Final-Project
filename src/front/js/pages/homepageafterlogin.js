@@ -14,19 +14,19 @@ export const Homepageafterlogin = () => {
   return (
     <div className="justify-content-center">
       <div className="row d-flex container-fluid w-100 position-relative">
-        <div className="d-inline w-auto justify-content-center text-center ms-3  ">
+        <div className=" w-auto justify-content-center text-center ">
           <ProfileComp />
         </div>
 
-        <div className="w-auto  d-inline h-auto justify-content-center mt-5 ms-5">
+        <div className="w-auto d-grid  h-auto d-flex justify-content-between mt-5 ms-3">
           <Maps />
         </div>
-        <div className="d-grid w-auto justify-content-end text-center  mt-5  ms-5">
+        <div className="d-grid w-auto  text-center mt-5  ">
           <EventsComponent />
         </div>
       </div>
       <div className="row d-flex container-fluid">
-        <div className=" d-inline w-auto justify-content-center text-center">
+        <div className=" d-inline w-auto justify-content-center text-center mt-5">
           <StravaData />
         </div>
         <div className="w-auto  d-inline h-auto justify-content-center mt-5 ms-5">

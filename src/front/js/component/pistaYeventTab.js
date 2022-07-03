@@ -6,14 +6,14 @@ import { PistaInfo } from "./pistaInfo";
 
 export const PistaYeventTab = () => {
   return (
-    <div className="row container-fluid">
+    <div className=" container-fluid">
       <ul
-        className="nav nav-pills  d-flex justify-content-center "
+        className="nav nav-pills  d-flex justify-content-center row "
         role="tablist"
       >
-        <li className="nav-item " role="presentation">
+        <li className="nav-item col-6 d-flex" role="presentation">
           <button
-            className="nav-link btn-sm  btn-bg-light w-100 text-black genbuttons"
+            className="nav-link btn  btn-bg-light  text-black "
             id="pistas"
             data-bs-toggle="pill"
             data-bs-target="#pistasList"
@@ -26,10 +26,10 @@ export const PistaYeventTab = () => {
             Pistas
           </button>
         </li>
-        <li className="nav-item " role="presentation">
+        <li className="nav-item col-6 d-flex" role="presentation">
           <button
             type="button "
-            className="nav-link btn-sm btn-bg-light w-100 text-black genbuttons"
+            className="nav-link btn btn-bg-light text-black "
             id="eventos"
             data-bs-toggle="pill"
             data-bs-target="#eventosList"

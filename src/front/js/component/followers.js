@@ -14,28 +14,25 @@ export const Followers = () => {
   }, []);
 
   return (
-    <div className="row">
-      <ul
-        className="nav nav-pills justify-content-center d-flex"
-        role="tablist"
-      >
-        <li className="nav-item col-4" role="presentation">
+    <div className="container-fluid">
+      <ul className="nav nav-pills justify-content-center row" role="tablist">
+        <li className="nav-item col-3 " role="presentation">
           <button
-            className="nav-link btn btn-bg-light w-100 text-black"
+            type="button "
+            className="nav-link btn-sm btn-bg-light w-100 text-black genbuttons"
             data-bs-toggle="pill"
             data-bs-target="#followersList"
-            type="button"
             role="tab"
-            aria-controls="pills-home"
+            aria-controls="pills-profile"
             onClick={() => {}}
           >
             Seguidores
           </button>
         </li>
-        <li className="nav-item col-4 " role="presentation">
+        <li className="nav-item col-3 " role="presentation">
           <button
             type="button "
-            className="nav-link btn btn-bg-light w-100 text-black"
+            className="nav-link btn-sm btn-bg-light btn-success w-100 text-black genbuttons"
             data-bs-toggle="pill"
             data-bs-target="#followingList"
             role="tab"
@@ -45,9 +42,9 @@ export const Followers = () => {
             Siguiendo
           </button>
         </li>
-        <li className="nav-item col-4" role="presentation">
+        <li className="nav-item col-3" role="presentation">
           <button
-            className="nav-link btn btn-bg-light w-100 text-black"
+            className="nav-link btn-sm btn-bg-light btn-success w-100 text-black genbuttons"
             data-bs-toggle="pill"
             data-bs-target="#suggestionsList"
             type="button"
@@ -65,12 +62,13 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-          <div className="row mt-5 d-flex justify-content-center">
+          <div className="row d-flex justify-content-center mt-5">
             {store.users.map((U) => {
               return (
                 <div
-                  className="card ms-2 me-2 border-0"
-                  style={{ width: "14rem" }}
+                  id="followersList"
+                  className="card ms-2 me-2 border-0 mt-5 mb-5"
+                  style={{ width: "10rem", height: "10rem" }}
                   key={U.id}
                 >
                   <img
@@ -79,20 +77,21 @@ export const Followers = () => {
                     alt="..."
                   />
                   <div className="card-body">
-                    <h4 className="card-title">{U.email}</h4>
+                    <p className="card-title" style={{ height: "4rem" }}>
+                      {U.email}
+                    </p>
                     {store.currentUser.detail
                       ? store.currentUser.detail.name
                       : "N/A"}
-                    <h5 className="card-title"></h5>
 
                     <button
                       href="#"
-                      className="btn btn-warning w-100"
+                      className="btn btn-success genbuttons w-100"
                       onClick={(e) => {
                         actions.setFollowers(e.id);
                       }}
                     >
-                      Seguir
+                      Follow
                     </button>
                   </div>
                 </div>
@@ -106,12 +105,12 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="row mt-5 d-flex justify-content-center ">
+          <div className="row d-flex justify-content-center mt-5">
             {store.users.map((F) => {
               return (
                 <div
-                  className=" ms-2 me-2 border-0 card-group pt-2"
-                  style={{ width: "14rem" }}
+                  className="card ms-2 me-2 border-0 mt-5 mb-5"
+                  style={{ width: "10rem", height: "10rem" }}
                   key={F.id}
                 >
                   <img
@@ -120,13 +119,15 @@ export const Followers = () => {
                     alt="..."
                   />
                   <div className="card-body">
-                    <h4 className="card-title">
+                    <p className="card-title" style={{ height: "4rem" }}>
                       {store.users.detail ? store.users.detail.name : "N/A"}
-                    </h4>
-                    <h5 className="card-title"></h5>
+                    </p>
 
-                    <button href="#" className="btn btn-warning w-100">
-                      Dejar de seguir
+                    <button
+                      href="#"
+                      className="btn btn-success genbuttons w-100"
+                    >
+                      Unfollow
                     </button>
                   </div>
                 </div>
@@ -140,12 +141,12 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="row mt-5 d-flex justify-content-center">
+          <div className="row d-flex justify-content-center mt-5">
             {store.users.map((P) => {
               return (
                 <div
-                  className="card ms-2 me-2 border-0"
-                  style={{ width: "14rem" }}
+                  className="card ms-2 me-2 border-0  h-100 mt-5 mb-5"
+                  style={{ width: "10rem", height: "10rem" }}
                   key={P.id}
                 >
                   <img
@@ -154,11 +155,15 @@ export const Followers = () => {
                     alt="..."
                   />
                   <div className="card-body">
-                    <h4 className="card-title">{P.email}</h4>
-                    <h5 className="card-title"></h5>
+                    <p className="card-title" style={{ height: "4rem" }}>
+                      {P.email}
+                    </p>
 
-                    <button href="#" className="btn btn-warning w-100">
-                      Seguir
+                    <button
+                      href="#"
+                      className="btn btn-success genbuttons w-100"
+                    >
+                      Follow
                     </button>
                   </div>
                 </div>

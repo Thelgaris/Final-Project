@@ -12,31 +12,39 @@ export const EventsComponent = () => {
   }, []);
 
   return (
-    <div className="container-fluid">
-      <div className="justify-content-center">
-        <div className="card row d-flex">
-          <div className="card-body">
-            <h5 className="card-title">Próximos Eventos</h5>
+    <div
+      className="container-fluid d-inline-block h-auto mt-5"
+      style={{ width: "300px" }}
+    >
+      <div className="justify-content-center border-0 ">
+        <div className="card row  border-0">
+          <div className="card-body col">
+            <h5 className="card-title ">Próximos Eventos</h5>
           </div>
           <div>
-            {store.userEvents.map((event) => {
+            {store.userEvents.map((uevent) => {
               return (
-                <div key={event.id} className=" ">
-                  <div className="d-flex flex-row ">
-                    <p className=" p-2 mb-0 text-start border-0 col-8">
-                      {event.name}
+                <div key={uevent.id} className=" ">
+                  <div className="d-flex ">
+                    <p className=" p-2 mb-0 text-start w-75 d-inline col-6">
+                      {uevent.name}
                     </p>
-
-                    <p className=" p-2 mb-0 border-0 col-1 offset-2">
-                      {event.participants}
-                    </p>
+                    <i className="fas fa-users p-2 mb-0 border-0 d-inline">
+                      {uevent.participants}
+                    </i>
+                    <i
+                      className="fas fa-trash-alt p-2 mb-0 border-0d-inline"
+                      onClick={() => {
+                        actions.setUnJoinEvents(uevent.id);
+                      }}
+                    ></i>
                   </div>
                 </div>
               );
             })}
           </div>
-          <div className="card-footer justify-content-center">
-            <div href="#" className="card-link ">
+          <div className="card-footer justify-content-center d-inline-block">
+            <div href="#" className="card-link d-inline-block">
               <CreateEventBtn />
             </div>
           </div>
