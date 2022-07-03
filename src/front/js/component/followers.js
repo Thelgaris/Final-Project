@@ -16,23 +16,25 @@ export const Followers = () => {
   return (
     <div className="container-fluid">
       <ul className="nav nav-pills justify-content-center row" role="tablist">
-        <li className="nav-item col-3 " role="presentation">
+        <li className="nav-item w-auto " role="presentation">
           <button
             type="button "
-            className="nav-link btn-sm btn-bg-light w-100 text-black genbuttons"
+            className="nav-link btn-sm btn-bg-light text-black genbuttons"
+            id="followers"
             data-bs-toggle="pill"
             data-bs-target="#followersList"
             role="tab"
-            aria-controls="pills-profile"
+            aria-controls="pills-home"
+            aria-selected="true"
             onClick={() => {}}
           >
             Seguidores
           </button>
         </li>
-        <li className="nav-item col-3 " role="presentation">
+        <li className="nav-item w-auto" role="presentation">
           <button
             type="button "
-            className="nav-link btn-sm btn-bg-light btn-success w-100 text-black genbuttons"
+            className="nav-link btn-sm btn-bg-light btn-success  text-black genbuttons"
             data-bs-toggle="pill"
             data-bs-target="#followingList"
             role="tab"
@@ -42,9 +44,9 @@ export const Followers = () => {
             Siguiendo
           </button>
         </li>
-        <li className="nav-item col-3" role="presentation">
+        <li className="nav-item w-auto" role="presentation">
           <button
-            className="nav-link btn-sm btn-bg-light btn-success w-100 text-black genbuttons"
+            className="nav-link btn-sm btn-bg-light btn-success text-black genbuttons"
             data-bs-toggle="pill"
             data-bs-target="#suggestionsList"
             type="button"
