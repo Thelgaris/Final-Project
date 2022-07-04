@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const HistoryCard = () => {
   return (
     <div
-      className="container mt-5 d-flex justify-content-center"
+      className="container mt-5 d-flex justify-content-center h-auto"
       style={{ width: "36rem" }}
     >
       <div className="card mb-3">

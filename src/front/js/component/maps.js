@@ -16,7 +16,7 @@ function Map() {
   const [lat, setLat] = useState(40.4303759999059);
   const [lng, setLng] = useState(-3.7049425337888837);
   return (
-    <div className="row container-fluid h-auto w-auto ms-3 mt-5">
+    <div className="row container-fluid h-auto w-auto mt-5">
       <div className="col">
         <GoogleMap
           zoom={10}
@@ -24,7 +24,7 @@ function Map() {
           mapContainerClassName={{ width: "100%", height: "auto" }}
           mapContainerStyle={{
             height: "300px",
-            width: "500px",
+            width: "600px",
             marginBottom: "10px",
             marginLeft: "auto",
             marginRight: "auto",

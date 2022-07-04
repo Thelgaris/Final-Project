@@ -16,7 +16,7 @@ export const EventInfo = () => {
       <div className="row d-flex justfy-content-center">
         {store.events.map((event) => {
           return (
-            <div className="col-12 " key={event.id}>
+            <div className=" " key={event.id}>
               <button
                 type="button"
                 className="btn btn-link text-decoration-none text-dark d-grid  mx-auto d-flex"

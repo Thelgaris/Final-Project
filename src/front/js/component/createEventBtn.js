@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import Calendar from "react-calendar";
+// import { Calendar } from "../component/calendar";
 
 export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
+  const [date, setDate] = useState(new Date());
   const [showModal, setShowModal] = useState([]);
   const { store, actions } = useContext(Context);
-  let history = useHistory();
+
   useEffect(() => {
     actions.getSports();
     actions.getEvents();
@@ -136,13 +139,20 @@ export const CreateEventBtn = () => {
                   >
                     Fecha
                   </label>
+
+                  {/* <div class="modal-dialog modal-dialog-centered">
+                    <Calendar />
+                  </div> */}
+
                   <input
                     className="w-75 border-2 border border-light rounded ps-2 pe-2"
                     type="date"
+                    value={date}
+                    mindate={new Date()}
                     onChange={(e) => {
-                      setUserEvents({ ...userEvents, date: e.target.value });
+                      setDate({ ...date, date: e.target.value });
                     }}
-                  />
+                  ></input>
                 </div>
                 <div className="input-group mb-3">
                   <label

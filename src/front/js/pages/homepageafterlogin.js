@@ -18,18 +18,18 @@ export const Homepageafterlogin = () => {
           <ProfileComp />
         </div>
 
-        <div className="w-auto d-grid  h-auto d-flex justify-content-between mt-5 ms-3">
+        <div className="w-auto d-grid  h-auto d-flex justify-content-between mt-5">
           <Maps />
         </div>
         <div className="d-grid w-auto  text-center mt-5  ">
           <EventsComponent />
         </div>
       </div>
-      <div className="row d-flex container-fluid">
-        <div className=" d-inline w-auto justify-content-center text-center mt-5">
+      <div className="row d-flex flex-row container-fluid">
+        <div className=" d-inline col-3 w-auto justify-content-center text-center">
           <StravaData />
         </div>
-        <div className="w-auto  d-inline h-auto justify-content-center mt-5 ms-5">
+        <div className=" d-inline col-6 mt-5">
           <PistaYeventTab />
         </div>
       </div>

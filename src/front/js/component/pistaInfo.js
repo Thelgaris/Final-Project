@@ -13,13 +13,13 @@ export const PistaInfo = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row d-flex justfy-content-center">
+      <div className="row d-flex justify-content-center">
         {store.pistas.map((pista) => {
           return (
-            <div className="col-12 " key={pista.id}>
+            <div className="col-6 justify-content-center" key={pista.id}>
               <button
                 type="button"
-                className="btn btn-link text-decoration-none text-dark rounded "
+                className="btn btn-link text-decoration-none text-dark rounded w-100"
                 onClick={() => {
                   setShowModal(pista.id);
                 }}
@@ -35,10 +35,7 @@ export const PistaInfo = () => {
                     aria-labelledby="pistaLabel"
                     aria-hidden="true"
                   >
-                    <div
-                      className="modal-dialog"
-                      style={{ width: "50%", height: "500%" }}
-                    >
+                    <div className="modal-dialog">
                       <div className="modal-content">
                         <div className="modal-header bg-light bg-gradient ">
                           <h5 className="modal-title">{pista.name}</h5>

@@ -15,7 +15,7 @@ export const Followers = () => {
   }, []);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid justify-content-center">
       <ul className="nav nav-pills justify-content-center row" role="tablist">
         <li className="nav-item w-auto " role="presentation">
           <button
@@ -65,12 +65,12 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-          <div className="d-followers">
+          <div className="followers justify-content-center">
             {store.users.map((U) => {
               return (
                 <div
                   id="followersList"
-                  className="card ms-2 me-2 border-0 mt-5 mb-5"
+                  className="card ms-2 me-2 border-0 mt-5 mb-5 d-flex followers"
                   style={{ width: "10rem", height: "10rem" }}
                   key={U.id}
                 >
@@ -103,18 +103,22 @@ export const Followers = () => {
           </div>
         </div>
         <div
-          className="tab-pane fade"
+          className="tab-pane fade followers"
           id="followingList"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="d-followers">
-            {store.users.map((F) => {
+          <div className="followers justify-content-center">
+            {store.users.map((Y) => {
               return (
                 <div
-                  className="card ms-2 me-2 border-0 mt-5 "
-                  style={{ width: "10rem", height: "10rem" }}
-                  key={F.id}
+                  className="card ms-2 border-0 h-100 mt-5 mb-5 d-flex followers"
+                  style={{
+                    width: "10rem",
+                    height: "10rem",
+                    overflow: "scroll",
+                  }}
+                  key={Y.id}
                 >
                   <img
                     src="https://picsum.photos/300/200"
@@ -123,7 +127,7 @@ export const Followers = () => {
                   />
                   <div className="card-body">
                     <p className="card-title" style={{ height: "4rem" }}>
-                      {store.users.detail ? store.users.detail.name : "N/A"}
+                      {Y.email}
                     </p>
 
                     <button
@@ -139,18 +143,21 @@ export const Followers = () => {
           </div>
         </div>
         <div
-          className="tab-pane fade "
+          className="tab-pane fade followers"
           id="suggestionsList"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="d-followers">
-            {store.users.map((P) => {
+          <div className="followers justify-content-center">
+            {store.users.map((Z) => {
               return (
                 <div
-                  className="card ms-2 me-2 border-0  h-100 mt-5 mb-5 "
-                  style={{ width: "10rem", height: "10rem" }}
-                  key={P.id}
+                  className="card border-0 h-100 mt-5 mb-5 d-flex followers"
+                  style={{
+                    width: "10rem",
+                    height: "10rem",
+                  }}
+                  key={Z.id}
                 >
                   <img
                     src="https://picsum.photos/300/200"
@@ -159,7 +166,7 @@ export const Followers = () => {
                   />
                   <div className="card-body">
                     <p className="card-title" style={{ height: "4rem" }}>
-                      {P.email}
+                      {Z.email}
                     </p>
 
                     <button

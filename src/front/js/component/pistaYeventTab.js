@@ -6,12 +6,15 @@ import { PistaInfo } from "./pistaInfo";
 
 export const PistaYeventTab = () => {
   return (
-    <div className=" container-fluid">
+    <div className=" container-fluid row ">
       <ul
-        className="nav nav-pills  d-flex justify-content-center row "
+        className="nav nav-pills  d-flex justify-content-center col-6 "
         role="tablist"
       >
-        <li className="nav-item col-6 d-flex" role="presentation">
+        <li
+          className="nav-item col-3 justify-content-center d-flex"
+          role="presentation"
+        >
           <button
             className="nav-link btn  btn-bg-light  text-black "
             id="pistas"
@@ -26,7 +29,7 @@ export const PistaYeventTab = () => {
             Pistas
           </button>
         </li>
-        <li className="nav-item col-6 d-flex" role="presentation">
+        <li className="nav-item col-3 d-flex" role="presentation">
           <button
             type="button "
             className="nav-link btn btn-bg-light text-black "
@@ -42,9 +45,12 @@ export const PistaYeventTab = () => {
           </button>
         </li>
       </ul>
-      <div className="tab-content row " id="pills-tabContent">
+      <div
+        className="tab-content row d-flex justify-content-center"
+        id="pills-tabContent"
+      >
         <div
-          className="tab-pane fade show  "
+          className="tab-pane fade show col-6 justify-content-center"
           id="pistasList"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
@@ -52,7 +58,7 @@ export const PistaYeventTab = () => {
           <PistaInfo />
         </div>
         <div
-          className="tab-pane fade "
+          className="tab-pane fade col-6 justify-content-center"
           id="eventosList"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
