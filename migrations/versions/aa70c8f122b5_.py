@@ -31,7 +31,7 @@ def upgrade():
     sa.Column('birth', sa.String(length=80), nullable=True),
     sa.Column('gender', sa.String(length=80), nullable=True),
     sa.Column('city', sa.String(length=80), nullable=True),
-    sa.Column('profile_image_url', sa.String(length=255), nullable=True),
+    sa.Column('_url', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('pistas',
