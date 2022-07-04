@@ -22,15 +22,24 @@ export const ProfileComp = () => {
             {store.currentUser.detail ? store.currentUser.detail.city : "N/A"}
           </h5>
         </div>
-
-        <ul className="list-group list-group-flush d-flex flex-row border-0">
-          <li className="list-group-item  border-0">Siguiendo</li>
-          <li className="list-group-item  border-0">Seguidores</li>
-        </ul>
-        <ul className="list-group list-group-flush d-flex flex-row border-0">
-          <li className="list-group-item  border-0">15</li>
-          <li className="list-group-item  border-0 ">24</li>
-        </ul>
+        <div className="d-flex">
+          <ul className="list-group list-group-flushborder-0">
+            <li className="list-group-item  border-0">Siguiendo</li>
+            <li className="list-group-item  border-0">
+              {store.currentUser.following
+                ? store.currentUser.following.length
+                : "N/A"}
+            </li>
+          </ul>
+          <ul className="list-group list-group-flush border-0">
+            <li className="list-group-item  border-0">Seguidores</li>
+            <li className="list-group-item  border-0 ">
+              {store.currentUser.followers
+                ? store.currentUser.followers.length
+                : "N/A"}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

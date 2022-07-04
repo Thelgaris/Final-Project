@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       currentUser: {},
       followers: [],
       following: [],
-      url: "https://3001-thelgaris-finalproject-y51eme4hc67.ws-eu47.gitpod.io/api",
+      url: "https://3001-thelgaris-finalproject-mazoxel3g9q.ws-eu51.gitpod.io/api",
       stravaUrl: "https://www.strava.com/oauth/authorize",
       getUserSports: [],
       setUserSports: [],
@@ -140,7 +140,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       setUnJoinEvents: async (unjoin) => {
         const store = getStore();
         setStore({
-          userEvents: store.userEvents.filter((fav) => fav != unjoin),
+          userEvents: store.userEvents.filter((uetable) => uetable != unjoin),
         });
 
         const resp = await fetch(getStore().url + "/unjoinEvent", {
@@ -179,17 +179,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           return true;
         } else {
           return false;
-        }
-      },
-
-      setUserSports: async (item) => {
-        const store = getStore();
-        if (!store.userSports.includes(item)) {
-          setStore({ userSports: [...store.userSports, item] });
-        } else {
-          setStore({
-            userSports: store.userSports.filter((fav) => fav != item),
-          });
         }
       },
 
