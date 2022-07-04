@@ -29,7 +29,7 @@ function Map() {
         marginRight: "auto",
       }}
     >
-      <Marker position={{ lat: 44, lng: -80 }} />
+      <Marker position={{ lat, lng }} />
     </GoogleMap>
   );
 }

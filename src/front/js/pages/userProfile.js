@@ -19,23 +19,24 @@ export const UserProfile = () => {
     setError(null);
     user["sports"] = store.getUserSports;
     console.log(store.getUserSports);
-    let body = new FormData();
-    for (let key in user) {
-      body.append(key, user[key]);
-    }
-    const response = await fetch(store.url + "/userprofile", {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
-      },
-      body: body,
-    });
-    const data = await response.json();
-    console.log("@@@@@@@@@@@", data);
-    history.push("/homepageafterlogin");
+    try {
+      let body = new FormData();
+      for (let key in user) {
+        body.append(key, user[key]);
+      }
+      const response = await fetch(store.url + "/userprofile", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+        body: body,
+      });
+      const data = await response.json();
+      history.push("/homepageafterlogin");
+    } catch (e) {}
   };
 
-  const uploadImage = (evt) => {
+  /*   const uploadImage = (evt) => {
     evt.preventDefault();
     console.log("This are the files", files);
     let body = new FormData();
@@ -49,7 +50,7 @@ export const UserProfile = () => {
       .then((resp) => resp.json())
       .then((data) => console.log("Success!", data))
       .catch((error) => console.error("Error!", error));
-  };
+  }; */
 
   return (
     <div className="container mt-5 text-center">

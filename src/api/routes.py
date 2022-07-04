@@ -63,7 +63,7 @@ def update_details():
         print(body_birth, body_city, body_name, body_surname)
         if body_name and body_birth and body_surname and body_city and body_gender:
             print("@@@@@@@@@@@@@@@@4")
-            user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender)
+            user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender, profile_image_url=body_profile_image_url)
             db.session.add(user_details)
             db.session.commit()
             for sport_name in body_sports:
