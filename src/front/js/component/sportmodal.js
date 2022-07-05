@@ -6,10 +6,6 @@ export const Sportmodal = ({ setSport }) => {
   const { store, actions } = useContext(Context);
   const [usports, setUsports] = useState({});
 
-  // useEffect(() => {
-  //   actions.getUserSports();
-  // }, []);
-
   return (
     <div className="mx-auto">
       <button
@@ -61,7 +57,6 @@ export const Sportmodal = ({ setSport }) => {
                               ),
                             });
                           }
-                          // setUsports([...usports, e.target.value]);
                           console.log([usports]);
                         }}
                       />
@@ -76,7 +71,7 @@ export const Sportmodal = ({ setSport }) => {
                 className="btn modalbtn2 btn-secondary "
                 data-bs-dismiss="modal"
                 type="submit"
-                onClick={(usports) => {
+                onClick={(e) => {
                   actions.setUsports(usports);
                 }}
               >

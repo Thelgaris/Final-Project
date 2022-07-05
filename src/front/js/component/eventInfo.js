@@ -43,7 +43,7 @@ export const EventInfo = () => {
                           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button
                               type="button"
-                              className="btn btn-warning btn-sm"
+                              className="btn btn-warning btn-sm genbuttons"
                               onClick={async () => {
                                 await actions.setJoinEvents(event),
                                   setShowModal(null);
@@ -72,13 +72,13 @@ export const EventInfo = () => {
                             <div className="card-body text-center">
                               <ul className="list-group list-group-flush d-inline">
                                 <li className="list-group-item">
-                                  <i class="fas fa-globe-africa">
+                                  <i className="fas fa-globe-africa">
                                     {event.city}
                                   </i>
                                 </li>
 
                                 <li className="list-group-item border-0 ">
-                                  <i class="fas fa-map-marker-alt">
+                                  <i className="fas fa-map-marker-alt">
                                     {event.address}
                                   </i>
                                 </li>
@@ -96,7 +96,7 @@ export const EventInfo = () => {
                                 </li>
 
                                 <li className="list-group-item ">
-                                  <i class="fas fa-newspaper">
+                                  <i className="fas fa-newspaper">
                                     {event.description}
                                   </i>
                                 </li>

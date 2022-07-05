@@ -1,4 +1,10 @@
-.followers {
+.xscroll {
   overflow-x: scroll;
   display: flex;
+}
+
+.gradient {
+  background: linear-gradient(white, lightgrey, lightgrey, white);
+  /* background: linear-gradient(to left, white 15%, lightgrey 50%, white); */
+  border-top: 0;
 }

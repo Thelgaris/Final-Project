@@ -10,10 +10,6 @@ export const Followers = () => {
   const [showModal, setShowModal] = useState(null);
   const { id } = useParams();
 
-  useEffect(() => {
-    actions.getUsers();
-  }, []);
-
   return (
     <div className="container-fluid justify-content-center">
       <ul className="nav nav-pills justify-content-center row" role="tablist">
@@ -65,23 +61,26 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-          <div className="followers justify-content-center">
-            {store.users.map((U) => {
+          <div className="xscroll justify-content-center">
+            {store.users.map((X) => {
               return (
                 <div
                   id="followersList"
-                  className="card ms-2 me-2 border-0 mt-5 mb-5 d-flex followers"
-                  style={{ width: "10rem", height: "10rem" }}
-                  key={U.id}
+                  className="card border-0 h-100 ms-1 me-1 mt-5 mb-5 d-flex"
+                  style={{ width: "8rem", height: "8rem" }}
+                  key={X.id}
                 >
                   <img
                     src="https://picsum.photos/300/200"
-                    className="card-img-top rounded-circle "
+                    className="card-img-top rounded-circle p-2"
                     alt="..."
                   />
                   <div className="card-body">
-                    <p className="card-title" style={{ height: "4rem" }}>
-                      {U.email}
+                    <p
+                      className="card-title justify-content-center text-center"
+                      style={{ height: "2rem" }}
+                    >
+                      {X.email}
                     </p>
                     {store.currentUser.detail
                       ? store.currentUser.detail.name
@@ -108,25 +107,27 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="followers justify-content-center">
+          <div className="xscroll justify-content-center">
             {store.users.map((Y) => {
               return (
                 <div
-                  className="card ms-2 border-0 h-100 mt-5 mb-5 d-flex followers"
+                  className="card border-0 h-100 ms-1 me-1 mt-5 mb-5 d-flexfollowers"
                   style={{
-                    width: "10rem",
-                    height: "10rem",
-                    overflow: "scroll",
+                    width: "8rem",
+                    height: "8rem",
                   }}
                   key={Y.id}
                 >
                   <img
                     src="https://picsum.photos/300/200"
-                    className="card-img-top rounded-circle"
+                    className="card-img-top rounded-circle p-2"
                     alt="..."
                   />
                   <div className="card-body">
-                    <p className="card-title" style={{ height: "4rem" }}>
+                    <p
+                      className="card-title justify-content-center text-center"
+                      style={{ height: "2rem" }}
+                    >
                       {Y.email}
                     </p>
 
@@ -143,35 +144,41 @@ export const Followers = () => {
           </div>
         </div>
         <div
-          className="tab-pane fade followers"
+          className="tab-pane fade xscroll overflow-scroll"
           id="suggestionsList"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="followers justify-content-center">
+          <div className="xscroll justify-content-center overflow-scroll">
             {store.users.map((Z) => {
               return (
                 <div
-                  className="card border-0 h-100 mt-5 mb-5 d-flex followers"
+                  className="card border-0 h-100 ms-1 me-1 mt-5 mb-5 xscroll overflow-scroll"
                   style={{
-                    width: "10rem",
-                    height: "10rem",
+                    width: "8rem",
+                    height: "8rem",
                   }}
                   key={Z.id}
                 >
                   <img
                     src="https://picsum.photos/300/200"
-                    className="card-img-top rounded-circle"
+                    className="card-img-top rounded-circle p-2"
                     alt="..."
                   />
                   <div className="card-body">
-                    <p className="card-title" style={{ height: "4rem" }}>
+                    <p
+                      className="card-title justify-content-center text-center"
+                      style={{ height: "2rem" }}
+                    >
                       {Z.email}
                     </p>
 
                     <button
                       href="#"
                       className="btn btn-success genbuttons w-100"
+                      onClick={(e) => {
+                        actions.setFollowers(Z.id);
+                      }}
                     >
                       Follow
                     </button>

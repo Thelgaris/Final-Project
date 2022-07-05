@@ -27,7 +27,7 @@ def login_user():
 
 @api.route('/register', methods=['POST'])
 def register_user():
-    print ('@@@@@@@@@@@@@@@@@@@@@')
+    
     body_email = request.json.get("email")
     body_password = request.json.get("password")
     if body_email and body_password:
@@ -182,15 +182,28 @@ def join_Events():
 def unjoin_Events():
    
     user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-      
-    body_event_id = request.json.get("id")    
-    event = Events.remove(body_event_id)    
-    user_events = UserEvents(user=user, events=event)
-    db.session.add(user_events)
+    user = User.query.get(user_id)      
+    body_event_id = request.json.get("id")
+    event = Events.query.get(body_event_id)         
+    user_events = UserEvents.query.filter_by(user=user).filter_by(events=event).first()
+    db.session.delete(user_events)
     db.session.commit()
   
     return jsonify({"events": user_events.serialize(), "Unjoined_to_Event": True}), 200
+
+# @api.route('/followers', methods=['POST'])
+# @jwt_required()
+# def add_followers():
+   
+#     user_id = get_jwt_identity()
+#     user = User.query.get(user_id)     
+#     body_user_id = request.json.get("id")    
+#     user = User.query.get(body_user_id)    
+#     user_followers = User_following(user=user, user_followers=user)
+#     db.session.add(user_followers)
+#     db.session.commit()
+  
+#     return jsonify({"user_followers": user_followers.serialize(), "Follower added": True}), 200
 
 @api.route('/userSports', methods=['POST'])
 @jwt_required()
@@ -215,15 +228,15 @@ def update_user():
     user_id = get_jwt_identity()
     user = Details.query.get(user_id)
     if user:
-        print("@@@@@@@@@@@@@@@@@@2")
+       
         body_birth = request.json.get("birth")
         body_name = request.json.get("name")
         body_surname = request.json.get("surname")
         body_city =request.json.get("city")
         body_gender =request.json.get("gender")
-        print("@@@@@@@@@@@@@@@@@@3")
+       
         
-        print(body_birth, body_city, body_name, body_surname)
+        
 
         user.name=body_name
         user.birth=body_birth

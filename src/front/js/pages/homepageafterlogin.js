@@ -18,7 +18,7 @@ export const Homepageafterlogin = () => {
           <ProfileComp />
         </div>
 
-        <div className="w-auto d-grid  h-auto d-flex justify-content-between mt-5">
+        <div className="w-auto d-grid  h-auto d-flex justify-content-between mt-5 me-5">
           <Maps />
         </div>
         <div className="d-grid w-auto  text-center mt-5  ">

@@ -26,17 +26,15 @@ export const ProfileComp = () => {
           <ul className="list-group list-group-flushborder-0">
             <li className="list-group-item  border-0">Siguiendo</li>
             <li className="list-group-item  border-0">
-              {store.currentUser.following
-                ? store.currentUser.following.length
-                : "N/A"}
+              {store.currentUser.followings
+                ? store.currentUser.followings
+                : "0"}
             </li>
           </ul>
           <ul className="list-group list-group-flush border-0">
             <li className="list-group-item  border-0">Seguidores</li>
             <li className="list-group-item  border-0 ">
-              {store.currentUser.followers
-                ? store.currentUser.followers.length
-                : "N/A"}
+              {store.currentUser.followers ? store.currentUser.followers : "0"}
             </li>
           </ul>
         </div>

@@ -36,8 +36,8 @@ export const EventsComponent = () => {
                       {uevent.participants}
                     </i>
                     <i
-                      className="fas fa-trash-alt p-2 mb-0 border-0d-inline"
-                      onClick={() => {
+                      className="far fa-calendar-times p-2 mb-0 border-0d-inline"
+                      onClick={(e) => {
                         actions.setUnJoinEvents(uevent.id);
                       }}
                     ></i>
@@ -46,8 +46,8 @@ export const EventsComponent = () => {
               );
             })}
           </div>
-          <div className="card-footer justify-content-center d-inline-block">
-            <div href="#" className="card-link d-inline-block">
+          <div className="card-footer justify-content-center d-inline-block gradient">
+            <div href="#" className="card-link d-inline-block gradient">
               <CreateEventBtn />
             </div>
           </div>

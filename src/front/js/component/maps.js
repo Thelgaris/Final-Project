@@ -24,7 +24,7 @@ function Map() {
           mapContainerClassName={{ width: "100%", height: "auto" }}
           mapContainerStyle={{
             height: "300px",
-            width: "600px",
+            width: "550px",
             marginBottom: "10px",
             marginLeft: "auto",
             marginRight: "auto",

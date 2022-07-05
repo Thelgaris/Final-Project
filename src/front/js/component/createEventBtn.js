@@ -6,7 +6,9 @@ import Calendar from "react-calendar";
 
 export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(
+    new Date().toLocaleString("en-US").split(",")[0]
+  );
   const [showModal, setShowModal] = useState([]);
   const { store, actions } = useContext(Context);
 
@@ -19,7 +21,7 @@ export const CreateEventBtn = () => {
     <div>
       <button
         type="button"
-        className="btn genbuttons"
+        className="btn btn-success genbuttons"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
         onClick={() => {
@@ -147,11 +149,12 @@ export const CreateEventBtn = () => {
                   <input
                     className="w-75 border-2 border border-light rounded ps-2 pe-2"
                     type="date"
-                    // value={date}
-                    // mindate={new Date()}
+                    value={date}
+                    mindate={new Date().toLocaleString("en-US")}
                     onChange={(e) => {
-                      // setDate({ ...date, date: e.target.value });
-                      setUserEvents({ ...userEvents, date: e.target.value });
+                      setDate(e.target.value);
+                      console.log(date);
+                      // setUserEvents({ ...userEvents, date: e.target.value });
                     }}
                   ></input>
                 </div>
