@@ -182,17 +182,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      setUnJoin: async (item) => {
-        const store = getStore();
-        if (!store.userEvents.includes(item)) {
-          setStore({ userEvents: [...store.userEvents, item] });
-        } else {
-          setStore({
-            userEvents: store.userEvents.filter((fav) => fav != item),
-          });
-        }
-      },
-
       getFollowing: async () => {
         const resp = await fetch(getStore().url + "/userFollowing", {
           method: "GET",

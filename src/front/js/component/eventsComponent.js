@@ -29,7 +29,10 @@ export const EventsComponent = () => {
                     <p className=" p-2 mb-0 text-start w-75 d-inline col-6">
                       {uevent.name}
                     </p>
-                    <i className="fas fa-users p-2 mb-0 border-0 d-inline">
+                    <i
+                      className="fas fa-users p-2 mb-0 border-0 d-inline"
+                      style={{ color: "#014f5a" }}
+                    >
                       {uevent.participants}
                     </i>
                     <i

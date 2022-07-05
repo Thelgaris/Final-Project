@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 
 export const Sportmodal = ({ setSport }) => {
   const { store, actions } = useContext(Context);
+  const [usports, setUsports] = useState({});
 
   // useEffect(() => {
   //   actions.getUserSports();
@@ -49,9 +50,19 @@ export const Sportmodal = ({ setSport }) => {
                         type="checkbox"
                         value={sport.id}
                         placeholder={sport.name}
-                        id={sport.name}
+                        id={sport.id}
                         onClick={(e) => {
-                          actions.setUserSports(sport.id);
+                          if (!usports.includes(e)) {
+                            setUsports({ ...usports, sport: e });
+                          } else {
+                            setUsports({
+                              usports: usports.filter(
+                                (usState) => usState != e
+                              ),
+                            });
+                          }
+                          // setUsports([...usports, e.target.value]);
+                          console.log([usports]);
                         }}
                       />
                       <label className="form-check-label">{sport.name}</label>
@@ -65,6 +76,9 @@ export const Sportmodal = ({ setSport }) => {
                 className="btn modalbtn2 btn-secondary "
                 data-bs-dismiss="modal"
                 type="submit"
+                onClick={(usports) => {
+                  actions.setUsports(usports);
+                }}
               >
                 Guardar
               </button>

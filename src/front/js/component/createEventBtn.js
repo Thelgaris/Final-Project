@@ -19,7 +19,7 @@ export const CreateEventBtn = () => {
     <div>
       <button
         type="button"
-        className="btn btn-warning"
+        className="btn genbuttons"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
         onClick={() => {
@@ -30,7 +30,7 @@ export const CreateEventBtn = () => {
       </button>
 
       {showModal != null ? (
-        <div className="modal fade" id="exampleModal" tabIndex="-1">
+        <div className="modal " id="exampleModal" tabIndex="-1">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header  d-flex d-inline row">
@@ -147,10 +147,11 @@ export const CreateEventBtn = () => {
                   <input
                     className="w-75 border-2 border border-light rounded ps-2 pe-2"
                     type="date"
-                    value={date}
-                    mindate={new Date()}
+                    // value={date}
+                    // mindate={new Date()}
                     onChange={(e) => {
-                      setDate({ ...date, date: e.target.value });
+                      // setDate({ ...date, date: e.target.value });
+                      setUserEvents({ ...userEvents, date: e.target.value });
                     }}
                   ></input>
                 </div>
@@ -195,8 +196,8 @@ export const CreateEventBtn = () => {
                 <button
                   type="button"
                   className="btn btn-warning w-50 content-center"
-                  onClick={() => {
-                    actions.setEvents(userEvents);
+                  onClick={async () => {
+                    await actions.setEvents(userEvents);
                     setShowModal(null);
                   }}
                 >
