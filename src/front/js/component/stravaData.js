@@ -110,7 +110,10 @@ export const StravaData = () => {
         </div>
         <div className="d-grid col-6 mx-auto mb-2">
           <Link to="/profile">
-            <button type="button " className="genbuttons btn btn text-black">
+            <button
+              type="button "
+              className="genbuttons btn btn-warning text-black"
+            >
               + Info
             </button>
           </Link>

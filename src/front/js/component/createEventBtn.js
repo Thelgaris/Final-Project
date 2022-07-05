@@ -21,14 +21,14 @@ export const CreateEventBtn = () => {
     <div>
       <button
         type="button"
-        className="btn btn-success genbuttons"
+        className="btn btn-warning genbuttons text-white"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
         onClick={() => {
           setShowModal != null;
         }}
       >
-        Crear evento
+        <i class="fas fa-h1">Crear evento</i>
       </button>
 
       {showModal != null ? (

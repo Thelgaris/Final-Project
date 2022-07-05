@@ -18,8 +18,10 @@ export const EventsComponent = () => {
     >
       <div className="justify-content-center border-0 ">
         <div className="card row  border-0">
-          <div className="card-body col">
-            <h5 className="card-title ">Próximos Eventos</h5>
+          <div className="card-body col border-bottom">
+            <h2 className="card-title ">
+              <i className="fas fa-h1 ">Proximos eventos</i>
+            </h2>
           </div>
           <div>
             {store.userEvents.map((uevent) => {

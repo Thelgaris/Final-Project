@@ -8,7 +8,7 @@ export const PistaYeventTab = () => {
   return (
     <div className=" container-fluid row ">
       <ul
-        className="nav nav-pills  d-flex justify-content-center col-6 "
+        className="nav nav-pills  d-flex justify-content-center col-6 offset-3"
         role="tablist"
       >
         <li
@@ -16,7 +16,7 @@ export const PistaYeventTab = () => {
           role="presentation"
         >
           <button
-            className="nav-link btn  btn-bg-light  text-black "
+            className="nav-link btn  btn-warning  text-black genbuttons"
             id="pistas"
             data-bs-toggle="pill"
             data-bs-target="#pistasList"
@@ -26,13 +26,13 @@ export const PistaYeventTab = () => {
             aria-selected="true"
             onClick={() => {}}
           >
-            Pistas
+            <i class="fas fa-h1">Pistas</i>
           </button>
         </li>
         <li className="nav-item col-3 d-flex" role="presentation">
           <button
             type="button "
-            className="nav-link btn btn-bg-light text-black "
+            className="nav-link btn btn-warning text-black genbuttons"
             id="eventos"
             data-bs-toggle="pill"
             data-bs-target="#eventosList"
@@ -41,7 +41,7 @@ export const PistaYeventTab = () => {
             aria-selected="false"
             onClick={() => {}}
           >
-            Eventos
+            <i class="fas fa-h1">Eventos</i>
           </button>
         </li>
       </ul>

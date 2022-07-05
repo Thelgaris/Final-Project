@@ -4,7 +4,10 @@
 }
 
 .gradient {
-  background: linear-gradient(white, lightgrey, lightgrey, white);
+  background: linear-gradient(to left, white, lightgrey, white);
+  background: linear-gradient(to top, white, lightgrey, white);
+  /* background: linear-gradient(to right, lightgrey, white);
+  background: linear-gradient(to left, lightgrey, white); */
   /* background: linear-gradient(to left, white 15%, lightgrey 50%, white); */
   border-top: 0;
 }
