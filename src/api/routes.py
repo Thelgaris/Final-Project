@@ -55,6 +55,8 @@ def update_details():
         body_city =request.form.get("city")
         body_gender =request.form.get("gender")
         body_sports = request.form.get("sports")
+        body_sports = body_sports.split(",")
+        body_profile_image_url = ""
         if 'profile_image_url' in request.files:
             result = cloudinary.uploader.upload(request.files['profile_image_url'])
             body_profile_image_url = result['secure_url']

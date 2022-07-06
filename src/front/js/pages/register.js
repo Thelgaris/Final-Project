@@ -14,6 +14,7 @@ export const Register = () => {
     if (
       userData.email &&
       userData.password != null &&
+      userData.passwordvalidation == userData.password &&
       userData.email.trim() != "" &&
       userData.password.trim() != ""
     ) {
@@ -87,6 +88,12 @@ export const Register = () => {
               placeholder="Confirmar contraseña"
               aria-label="Confirm password"
               aria-describedby="basic-addon1"
+              onChange={(e) => {
+                setUserData({
+                  ...userData,
+                  passwordvalidation: e.target.value,
+                });
+              }}
             />
           </div>
           {error != null ? (

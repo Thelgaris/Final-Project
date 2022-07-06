@@ -17,7 +17,6 @@ export const UserProfile = () => {
 
   const sendUserInfo = async () => {
     setError(null);
-    user["sports"] = store.getUserSports;
     console.log(store.getUserSports);
     try {
       let body = new FormData();
