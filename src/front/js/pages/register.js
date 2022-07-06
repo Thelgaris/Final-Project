@@ -16,7 +16,8 @@ export const Register = () => {
       userData.password != null &&
       userData.passwordvalidation == userData.password &&
       userData.email.trim() != "" &&
-      userData.password.trim() != ""
+      userData.password.trim() != "" &&
+      userData.passwordvalidation.trim() != ""
     ) {
       setError(null);
       const response = await fetch(store.url + "/register", {
