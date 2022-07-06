@@ -7,7 +7,7 @@ export const Sportmodal = ({ setSport }) => {
   const { store, actions } = useContext(Context);
 
   // useEffect(() => {
-  //   actions.getSports();
+  //   actions.getUserSports();
   // }, []);
 
   return (
@@ -51,8 +51,8 @@ export const Sportmodal = ({ setSport }) => {
                         value={sport.id}
                         placeholder={sport.name}
                         id={sport.name}
-                        onClick={() => {
-                          setSport(sport.name);
+                        onClick={(e) => {
+                          actions.getUserSports(sport.name);
                         }}
                       />
                       <label className="form-check-label">{sport.name}</label>

@@ -4,11 +4,8 @@ import { Link, useHistory } from "react-router-dom";
 export const StravaData = () => {
   const history = useHistory();
   return (
-    <div className="container-sm">
-      <div
-        className="card bg-white
-      "
-      >
+    <div className="container-fluid mt-5">
+      <div className="card bg-white">
         <ul
           className="nav nav-pills mb-3 d-flex rounded"
           id="pills-tab"

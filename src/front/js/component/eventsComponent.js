@@ -12,9 +12,9 @@ export const EventsComponent = () => {
   }, []);
 
   return (
-    <div className="container-sm">
+    <div className="container-fluid h-auto w-auto">
       <div className="justify-content-center">
-        <div className="card row d-flex" style={{ width: "18rem" }}>
+        <div className="card row d-flex">
           <div className="card-body">
             <h5 className="card-title">Próximos Eventos</h5>
           </div>

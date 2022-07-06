@@ -6,7 +6,8 @@ import { Sportmodal } from "../component/sportmodal";
 
 export const UserProfile = () => {
   const history = useHistory();
-  const [user, setUser] = useState({ gender: "Hombre", sports: [] });
+  const [user, setUser] = useState({});
+  const [sport, setSport] = useState([]);
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
   const [files, setFiles] = useState(null);
@@ -112,11 +113,10 @@ export const UserProfile = () => {
             />
             <select
               className="text-center w-25 mx-auto"
-              defaultValue={"h"}
               onChange={(e) => setUser({ ...user, gender: e.target.value })}
             >
-              <option value={"Hombre"}>Hombre</option>
-              <option value={"Mujer"}>Mujer</option>
+              <option>Hombre</option>
+              <option>Mujer</option>
             </select>
             <input
               id="city"
@@ -130,15 +130,10 @@ export const UserProfile = () => {
             <div>
               <Sportmodal
                 setSport={(e) => {
-                  if (!user.sports.includes(e)) {
-                    console.log(e, "if");
-                    setUser({ ...user, sports: [...user.sports, e] });
+                  if (!sport.includes(e)) {
+                    setSport([...sport, e]);
                   } else {
-                    console.log("else");
-                    setUser({
-                      ...user,
-                      sports: user.sports.filter((i) => e != i),
-                    });
+                    setSport(sport.filter((i) => e != i));
                   }
                 }}
               />
