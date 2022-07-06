@@ -27,11 +27,11 @@ export const Login = () => {
       if (data.access_token) {
         localStorage.setItem("access_token", data.access_token);
         actions.verify();
-        history.push("/userprofile");
+        history.push("/homepageafterlogin");
         if (data.logged == false) {
           setError(data.msg);
         } else if (data.logged == true) {
-          history.push("/userprofile");
+          history.push("/homepageafterlogin");
         }
       } else {
         setError(data.msg);
