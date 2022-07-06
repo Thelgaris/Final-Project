@@ -1,6 +1,14 @@
 """empty message
 
+<<<<<<< HEAD
 <<<<<<< HEAD:migrations/versions/e8189f01d40a_.py
+=======
+<<<<<<< HEAD:migrations/versions/aa70c8f122b5_.py
+Revision ID: aa70c8f122b5
+Revises: 
+Create Date: 2022-07-01 18:49:41.937054
+=======
+>>>>>>> developTestJose
 <<<<<<< HEAD:migrations/versions/e8189f01d40a_.py
 Revision ID: e8189f01d40a
 Revises: 
@@ -10,11 +18,15 @@ Revision ID: 3948760b58c7
 Revises: 
 Create Date: 2022-06-26 12:16:04.478169
 >>>>>>> 355d1064565fc0d4600e46a9e32bdd145c9321d6:migrations/versions/3948760b58c7_.py
+<<<<<<< HEAD
 =======
 Revision ID: aa70c8f122b5
 Revises: 
 Create Date: 2022-07-01 18:49:41.937054
 >>>>>>> 497b27b2daf7b52aa579a9902ab216e29320b5b4:migrations/versions/aa70c8f122b5_.py
+=======
+>>>>>>> 333e3b6260ec9736f1541ae67f2df3a3eae315df:migrations/versions/e8189f01d40a_.py
+>>>>>>> developTestJose
 
 """
 from alembic import op
@@ -22,15 +34,25 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
+<<<<<<< HEAD
 <<<<<<< HEAD:migrations/versions/e8189f01d40a_.py
+=======
+<<<<<<< HEAD:migrations/versions/aa70c8f122b5_.py
+revision = 'aa70c8f122b5'
+=======
+>>>>>>> developTestJose
 <<<<<<< HEAD:migrations/versions/e8189f01d40a_.py
 revision = 'e8189f01d40a'
 =======
 revision = '3948760b58c7'
 >>>>>>> 355d1064565fc0d4600e46a9e32bdd145c9321d6:migrations/versions/3948760b58c7_.py
+<<<<<<< HEAD
 =======
 revision = 'aa70c8f122b5'
 >>>>>>> 497b27b2daf7b52aa579a9902ab216e29320b5b4:migrations/versions/aa70c8f122b5_.py
+=======
+>>>>>>> 333e3b6260ec9736f1541ae67f2df3a3eae315df:migrations/versions/e8189f01d40a_.py
+>>>>>>> developTestJose
 down_revision = None
 branch_labels = None
 depends_on = None
