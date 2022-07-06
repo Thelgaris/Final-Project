@@ -43,7 +43,7 @@ def register_user():
 @api.route('/userprofile', methods=['POST'])
 @jwt_required()
 def update_details():
-    print(request.json)
+    print(request.form)
     user_id = get_jwt_identity()
     print(user_id)
     user = User.query.get(user_id)
