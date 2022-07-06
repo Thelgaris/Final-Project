@@ -6,10 +6,20 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import Geocode from "react-geocode";
-/* import { formatRelative } from "date-fns"; */
 import { useState } from "react";
 import "../../styles/maps.css";
 import mapStyles from "./mapStyles";
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
+import {
+  Combobox,
+  ComboboxImput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOptions,
+} from "@reach/combobox";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -37,10 +47,7 @@ const Map = () => {
   const [lat, setLat] = useState(40.4303759999059);
   const [lng, setLng] = useState(-3.7049425337888837);
   const center = { lat, lng };
-  /*  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback(() => {
-    mapRef.current = map;
-  }, []); */
+  const [selected, setSelected] = useState(null);
 
   return (
     <div className="container">
@@ -49,8 +56,44 @@ const Map = () => {
         center={center}
         mapContainerStyle={mapContainerStyle}
         options={options}
-        /* onLoad={onMapLoad} */
-      ></GoogleMap>
+      >
+        <Marker></Marker>
+      </GoogleMap>
+      <Search />
+    </div>
+  );
+};
+
+const Search = () => {
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestions,
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      location: { lat: () => 40.4303759999059, lng: () => -3.7049425337888837 },
+      radius: 200 * 1000,
+    },
+  });
+
+  return (
+    <div>
+      <Combobox
+        onSelect={(adress) => {
+          console.log(adress);
+        }}
+      >
+        <Comboboximput
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          disable={!ready}
+          placeholder="Enter adress"
+        />
+      </Combobox>
     </div>
   );
 };
