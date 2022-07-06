@@ -36,6 +36,7 @@ class User(db.Model):
             "email": self.email,
             "detail": self.detail.serialize() if self.detail is not None else None,
             # "sports": list(map(lambda sport:sport.sports.serialize(), self.sports)) if self.sports is not None else [],
+            
             "events": list(map(lambda event:event.events.serialize(), self.events)) if self.events is not None else [],
             # "followings": len(self.following),
             # "followers": len(self.followers),  
@@ -44,18 +45,11 @@ class User(db.Model):
 
         }
 
-
-
 # class UserFollowers(db.Model):
 #    id=db.Column(db.Integer, primary_key=True) 
  
 #    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 #    follower_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-
-
-
-
 
 class Details(db.Model):
     id = db.Column(db.Integer, primary_key=True)   
