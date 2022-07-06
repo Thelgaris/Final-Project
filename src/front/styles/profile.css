@@ -1,0 +1,4 @@
+.followers {
+  overflow-x: scroll;
+  display: flex;
+}

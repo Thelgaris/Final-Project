@@ -28,7 +28,7 @@ def login_user():
 
 @api.route('/register', methods=['POST'])
 def register_user():
-    print ('@@@@@@@@@@@@@@@@@@@@@')
+    
     body_email = request.json.get("email")
     body_password = request.json.get("password")
     if body_email and body_password:
@@ -44,8 +44,8 @@ def register_user():
 @jwt_required()
 def update_details():
     print(request.form)
+    print(1)
     user_id = get_jwt_identity()
-    print(user_id)
     user = User.query.get(user_id)
     if user:
         print("@@@@@@@@@@@@@@@@@@2")
@@ -67,19 +67,21 @@ def update_details():
             print("@@@@@@@@@@@@@@@@4")
             user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender, profile_image_url=body_profile_image_url)
             db.session.add(user_details)
+            user.detail = user_details
+            user.detail_id=user_details.id
             db.session.commit()
-            for sport_name in body_sports:
-                sport = Sports.query.filter_by(name = sport_name).first()
-                user_sports = UserSports(user=user, sports=sport)
-                db.session.add(user_sports)
-            db.session.commit()
-            print("@@@@@@@@@@@@@@@@@5")
+            # body_event_id = request.json.get("id")    
+            # sport = Sports.query.get(body_sport_id)    
+            # user_sports = UserSports(user=user, sports=sport)
+            # db.session.add(user_sports)
+            # db.session.commit()
+         
             
             return jsonify({"details": user_details.serialize(), "Update": True}), 200
         else:
-            return jsonify({"Error": "Error en userprofile1"}), 400
+            return jsonify({"Error": "Error"}), 400
     else:
-        return jsonify({"Error": "Error en userprofile2"}), 400
+        return jsonify({"Error": "Error"}), 400
 
 
 @api.route('/sports', methods=['GET'])
@@ -101,6 +103,7 @@ def get_all_users():
     users_serialized = list(map(lambda x: x.serialize(), users))
     return jsonify({"response": users_serialized}), 200
 
+
 @api.route('/pistas', methods=['GET'])
 def get_all_pistas():
     pistas = Pistas.query.all()
@@ -113,13 +116,6 @@ def get_all_events():
     events_serialized = list(map(lambda x: x.serialize(), events))
     return jsonify({"response": events_serialized}), 200
 
-@api.route('/userEvents', methods=['GET'])
-@jwt_required()
-def get_userEvents():
-    user_id = get_jwt_identity()
-    userEvents = User.query.get(user_id).events
-    userEvents_serialized = list(map(lambda x: x.serialize(), userEvents))
-    return jsonify({"response": userEvents_serialized}), 200
 
 @api.route('/currentUser', methods=['GET'])
 @jwt_required()
@@ -185,6 +181,49 @@ def join_Events():
   
     return jsonify({"events": user_events.serialize(), "Joined_to_Event": True}), 200
 
+@api.route('/unjoinEvent', methods=['PUT'])
+@jwt_required()
+def unjoin_Events():
+   
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)      
+    body_event_id = request.json.get("id")
+    event = Events.query.get(body_event_id)         
+    user_events = UserEvents.query.filter_by(user=user).filter_by(events=event).first()
+    db.session.delete(user_events)
+    db.session.commit()
+  
+    return jsonify({"events": user_events.serialize(), "Unjoined_to_Event": True}), 200
+
+# @api.route('/followers', methods=['POST'])
+# @jwt_required()
+# def add_followers():
+   
+#     user_id = get_jwt_identity()
+#     user = User.query.get(user_id)     
+#     body_user_id = request.json.get("id")    
+#     user = User.query.get(body_user_id)    
+#     user_followers = User_following(user=user, user_followers=user)
+#     db.session.add(user_followers)
+#     db.session.commit()
+  
+#     return jsonify({"user_followers": user_followers.serialize(), "Follower added": True}), 200
+
+@api.route('/userSports', methods=['POST'])
+@jwt_required()
+def set_userSports():
+   
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+      
+    body_sport_id = request.json.get("id")    
+    sport = Sports.query.get(body_sport_id)    
+    user_sports = UserSports(user=user, sports=sport)
+    db.session.add(user_sports)
+    db.session.commit()
+  
+    return jsonify({"sports": user_sports.serialize(), "Sport added to user": True}), 200
+
 
 @api.route('/editprofile', methods=['PUT'])
 @jwt_required()
@@ -193,15 +232,15 @@ def update_user():
     user_id = get_jwt_identity()
     user = Details.query.get(user_id)
     if user:
-        print("@@@@@@@@@@@@@@@@@@2")
+       
         body_birth = request.json.get("birth")
         body_name = request.json.get("name")
         body_surname = request.json.get("surname")
         body_city =request.json.get("city")
         body_gender =request.json.get("gender")
-        print("@@@@@@@@@@@@@@@@@@3")
+       
         
-        print(body_birth, body_city, body_name, body_surname)
+        
 
         user.name=body_name
         user.birth=body_birth

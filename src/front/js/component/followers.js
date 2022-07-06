@@ -3,39 +3,35 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import "../../styles/followers.css";
 import { Context } from "../store/appContext";
+import "../../styles/followers.css";
 
 export const Followers = () => {
   const { store, actions } = useContext(Context);
   const [showModal, setShowModal] = useState(null);
   const { id } = useParams();
 
-  useEffect(() => {
-    actions.getUsers();
-  }, []);
-
   return (
-    <div className="row">
-      <ul
-        className="nav nav-pills justify-content-center d-flex"
-        role="tablist"
-      >
-        <li className="nav-item col-4" role="presentation">
+    <div className="container-fluid justify-content-center">
+      <ul className="nav nav-pills justify-content-center row" role="tablist">
+        <li className="nav-item w-auto " role="presentation">
           <button
-            className="nav-link btn btn-bg-light w-100 text-black"
+            type="button "
+            className="nav-link btn-sm btn-bg-light text-black genbuttons"
+            id="followers"
             data-bs-toggle="pill"
             data-bs-target="#followersList"
-            type="button"
             role="tab"
             aria-controls="pills-home"
+            aria-selected="true"
             onClick={() => {}}
           >
             Seguidores
           </button>
         </li>
-        <li className="nav-item col-4 " role="presentation">
+        <li className="nav-item w-auto" role="presentation">
           <button
             type="button "
-            className="nav-link btn btn-bg-light w-100 text-black"
+            className="nav-link btn-sm btn-bg-light btn-success  text-black genbuttons"
             data-bs-toggle="pill"
             data-bs-target="#followingList"
             role="tab"
@@ -45,9 +41,9 @@ export const Followers = () => {
             Siguiendo
           </button>
         </li>
-        <li className="nav-item col-4" role="presentation">
+        <li className="nav-item w-auto" role="presentation">
           <button
-            className="nav-link btn btn-bg-light w-100 text-black"
+            className="nav-link btn-sm btn-bg-light btn-success text-black genbuttons"
             data-bs-toggle="pill"
             data-bs-target="#suggestionsList"
             type="button"
@@ -65,34 +61,39 @@ export const Followers = () => {
           role="tabpanel"
           aria-labelledby="pills-home-tab"
         >
-          <div className="row mt-5 d-flex justify-content-center">
-            {store.users.map((U) => {
+          <div className="xscroll justify-content-center">
+            {store.users.map((X) => {
               return (
                 <div
-                  className="card ms-2 me-2 border-0"
-                  style={{ width: "14rem" }}
-                  key={U.id}
+                  id="followersList"
+                  className="card border-0 h-100 ms-1 me-1 mt-5 mb-5 d-flex"
+                  style={{ width: "8rem", height: "8rem" }}
+                  key={X.id}
                 >
                   <img
                     src="https://picsum.photos/300/200"
-                    className="card-img-top rounded-circle "
+                    className="card-img-top rounded-circle p-2"
                     alt="..."
                   />
                   <div className="card-body">
-                    <h4 className="card-title">{U.email}</h4>
+                    <p
+                      className="card-title justify-content-center text-center"
+                      style={{ height: "2rem" }}
+                    >
+                      {X.email}
+                    </p>
                     {store.currentUser.detail
                       ? store.currentUser.detail.name
                       : "N/A"}
-                    <h5 className="card-title"></h5>
 
                     <button
                       href="#"
-                      className="btn btn-warning w-100"
+                      className="btn btn-warning genbuttons w-100"
                       onClick={(e) => {
                         actions.setFollowers(e.id);
                       }}
                     >
-                      Seguir
+                      Follow
                     </button>
                   </div>
                 </div>
@@ -101,32 +102,40 @@ export const Followers = () => {
           </div>
         </div>
         <div
-          className="tab-pane fade"
+          className="tab-pane fade followers"
           id="followingList"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="row mt-5 d-flex justify-content-center ">
-            {store.users.map((F) => {
+          <div className="xscroll justify-content-center">
+            {store.userFollowing.map((Y) => {
               return (
                 <div
-                  className=" ms-2 me-2 border-0 card-group pt-2"
-                  style={{ width: "14rem" }}
-                  key={F.id}
+                  className="card border-0 h-100 ms-1 me-1 mt-5 mb-5 d-flexfollowers"
+                  style={{
+                    width: "8rem",
+                    height: "8rem",
+                  }}
+                  key={Y.id}
                 >
                   <img
                     src="https://picsum.photos/300/200"
-                    className="card-img-top rounded-circle"
+                    className="card-img-top rounded-circle p-2"
                     alt="..."
                   />
                   <div className="card-body">
-                    <h4 className="card-title">
-                      {store.users.detail ? store.users.detail.name : "N/A"}
-                    </h4>
-                    <h5 className="card-title"></h5>
+                    <p
+                      className="card-title justify-content-center text-center"
+                      style={{ height: "2rem" }}
+                    >
+                      {Y.name}
+                    </p>
 
-                    <button href="#" className="btn btn-warning w-100">
-                      Dejar de seguir
+                    <button
+                      href="#"
+                      className="btn btn-warning genbuttons w-100"
+                    >
+                      Unfollow
                     </button>
                   </div>
                 </div>
@@ -135,30 +144,43 @@ export const Followers = () => {
           </div>
         </div>
         <div
-          className="tab-pane fade "
+          className="tab-pane fade xscroll overflow-scroll"
           id="suggestionsList"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
         >
-          <div className="row mt-5 d-flex justify-content-center">
-            {store.users.map((P) => {
+          <div className="xscroll justify-content-center overflow-scroll">
+            {store.users.map((Z) => {
               return (
                 <div
-                  className="card ms-2 me-2 border-0"
-                  style={{ width: "14rem" }}
-                  key={P.id}
+                  className="card border-0 h-100 ms-1 me-1 mt-5 mb-5 xscroll overflow-scroll"
+                  style={{
+                    width: "8rem",
+                    height: "8rem",
+                  }}
+                  key={Z.id}
                 >
                   <img
                     src="https://picsum.photos/300/200"
-                    className="card-img-top rounded-circle"
+                    className="card-img-top rounded-circle p-2"
                     alt="..."
                   />
                   <div className="card-body">
-                    <h4 className="card-title">{P.email}</h4>
-                    <h5 className="card-title"></h5>
+                    <p
+                      className="card-title justify-content-center text-center"
+                      style={{ height: "2rem" }}
+                    >
+                      {Z.email}
+                    </p>
 
-                    <button href="#" className="btn btn-warning w-100">
-                      Seguir
+                    <button
+                      href="#"
+                      className="btn btn-warning genbuttons w-100"
+                      onClick={(e) => {
+                        actions.setFollowers(Z.id);
+                      }}
+                    >
+                      Follow
                     </button>
                   </div>
                 </div>

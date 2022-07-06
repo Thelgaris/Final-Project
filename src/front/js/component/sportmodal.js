@@ -5,10 +5,7 @@ import { Context } from "../store/appContext";
 
 export const Sportmodal = ({ setSport }) => {
   const { store, actions } = useContext(Context);
-
-  // useEffect(() => {
-  //   actions.getUserSports();
-  // }, []);
+  const [usports, setUsports] = useState({});
 
   return (
     <div className="mx-auto">
@@ -50,9 +47,18 @@ export const Sportmodal = ({ setSport }) => {
                         type="checkbox"
                         value={sport.id}
                         placeholder={sport.name}
-                        id={sport.name}
+                        id={sport.id}
                         onClick={(e) => {
-                          actions.getUserSports(sport.name);
+                          if (!usports.includes(e)) {
+                            setUsports({ ...usports, sport: e });
+                          } else {
+                            setUsports({
+                              usports: usports.filter(
+                                (usState) => usState != e
+                              ),
+                            });
+                          }
+                          console.log([usports]);
                         }}
                       />
                       <label className="form-check-label">{sport.name}</label>
@@ -66,67 +72,11 @@ export const Sportmodal = ({ setSport }) => {
                 className="btn modalbtn2 btn-secondary "
                 data-bs-dismiss="modal"
                 type="submit"
+                onClick={(e) => {
+                  actions.setUsports(usports);
+                }}
               >
                 Guardar
-              </button>
-              <button
-                className="btn modalbtn btn-primary"
-                data-bs-target="#exampleModalToggle22"
-                data-bs-toggle="modal"
-                data-bs-dismiss="modal"
-              >
-                Mis deportes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="modal fade "
-        id="exampleModalToggle22"
-        tabIndex="-1"
-        aria-labelledby="exampleModalToggleLabel22"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered ">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalToggleLabel22">
-                Deportes que practico
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              {store.getUserSports.map((sports, index) => {
-                return (
-                  <li key={index} style={{}}>
-                    {sports}
-                  </li>
-                );
-              })}
-            </div>
-
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn modalbtn2 btn-secondary "
-                data-bs-dismiss="modal"
-                onClick={() => {}}
-              >
-                Guardar
-              </button>
-              <button
-                type="button"
-                className="btn modalbtn btn-primary"
-                data-bs-target="#exampleModalToggle1"
-                data-bs-toggle="modal"
-              >
-                Deportes
               </button>
             </div>
           </div>

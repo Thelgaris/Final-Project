@@ -11,21 +11,22 @@ export const Profile = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container text-center mt-5 ">
-      <div className="row">
-        <div className="col-3 ">
+    <div className="justify-content-center">
+      <div className="row d-flex container-fluid w-100">
+        <div className="w-auto justify-content-center text-center ">
           <ProfileComp />
         </div>
-        <div className="col-6 mt-5 ">
-          <StravaData />
+        <div className=" d-inline w-auto justify-content-center text-center mt-5">
+          <HistoryCard />
         </div>
       </div>
-      <div className="col-6 mt-5 offset-3">
-        <Followers />
-      </div>
-      <div className="row">
-        <div className="col-6 offset-3">
-          <HistoryCard />
+      <div className="row d-flex container-fluid">
+        <div className="d-inline w-auto justify-content-center text-center">
+          <StravaData />
+        </div>
+
+        <div className="w-auto  d-inline h-auto justify-content-center mt-5 ms-5">
+          <Followers />
         </div>
       </div>
     </div>

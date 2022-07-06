@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:migrations/versions/e8189f01d40a_.py
-Revision ID: e8189f01d40a
+Revision ID: 7d334faf15e8
 Revises: 
-Create Date: 2022-06-22 19:24:05.149701
-=======
-Revision ID: 3948760b58c7
-Revises: 
-Create Date: 2022-06-26 12:16:04.478169
->>>>>>> 355d1064565fc0d4600e46a9e32bdd145c9321d6:migrations/versions/3948760b58c7_.py
+Create Date: 2022-07-05 11:04:07.900660
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/e8189f01d40a_.py
-revision = 'e8189f01d40a'
-=======
-revision = '3948760b58c7'
->>>>>>> 355d1064565fc0d4600e46a9e32bdd145c9321d6:migrations/versions/3948760b58c7_.py
+revision = '7d334faf15e8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -57,10 +47,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
-    op.create_table('users',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id')
-    )
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
@@ -84,21 +70,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('user_followers',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('followers_id', sa.Integer(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['followers_id'], ['users.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
-    sa.PrimaryKeyConstraint('id')
-    )
     op.create_table('user_following',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('following_id', sa.Integer(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['following_id'], ['users.id'], ),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('following_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['following_id'], ['user.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('user_id', 'following_id')
     )
     op.create_table('user_sports',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -124,10 +101,8 @@ def downgrade():
     op.drop_table('user_events')
     op.drop_table('user_sports')
     op.drop_table('user_following')
-    op.drop_table('user_followers')
     op.drop_table('events')
     op.drop_table('user')
-    op.drop_table('users')
     op.drop_table('sports')
     op.drop_table('pistas')
     op.drop_table('details')

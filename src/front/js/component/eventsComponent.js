@@ -12,31 +12,44 @@ export const EventsComponent = () => {
   }, []);
 
   return (
-    <div className="container-fluid h-auto w-auto">
-      <div className="justify-content-center">
-        <div className="card row d-flex">
-          <div className="card-body">
-            <h5 className="card-title">Próximos Eventos</h5>
+    <div
+      className="container-fluid d-inline-block h-auto mt-5"
+      style={{ width: "300px" }}
+    >
+      <div className="justify-content-center border-0 ">
+        <div className="card row  border-0">
+          <div className="card-body col border-bottom">
+            <h2 className="card-title ">
+              <i className="fas fa-h1 ">Proximos eventos</i>
+            </h2>
           </div>
           <div>
-            {store.userEvents.map((event) => {
+            {store.userEvents.map((uevent) => {
               return (
-                <div key={event.id} className=" ">
-                  <div className="d-flex flex-row ">
-                    <p className=" p-2 mb-0 text-start border-0 col-8">
-                      {event.name}
+                <div key={uevent.id} className=" ">
+                  <div className="d-flex ">
+                    <p className=" p-2 mb-0 text-start w-75 d-inline col-6">
+                      {uevent.name}
                     </p>
-
-                    <p className=" p-2 mb-0 border-0 col-1 offset-2">
-                      {event.participants}
-                    </p>
+                    <i
+                      className="fas fa-users p-2 mb-0 border-0 d-inline"
+                      style={{ color: "#014f5a" }}
+                    >
+                      {uevent.participants}
+                    </i>
+                    <i
+                      className="far fa-calendar-times p-2 mb-0 border-0d-inline"
+                      onClick={(e) => {
+                        actions.setUnJoinEvents(uevent.id);
+                      }}
+                    ></i>
                   </div>
                 </div>
               );
             })}
           </div>
-          <div className="card-footer justify-content-center">
-            <div href="#" className="card-link ">
+          <div className="card-footer justify-content-center d-inline-block gradient">
+            <div href="#" className="card-link d-inline-block gradient">
               <CreateEventBtn />
             </div>
           </div>

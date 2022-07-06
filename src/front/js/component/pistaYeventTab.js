@@ -6,14 +6,17 @@ import { PistaInfo } from "./pistaInfo";
 
 export const PistaYeventTab = () => {
   return (
-    <div className="row">
+    <div className=" container-fluid row ">
       <ul
-        className="nav nav-pills  d-flex justify-content-center "
+        className="nav nav-pills  d-flex justify-content-center col-6 offset-3"
         role="tablist"
       >
-        <li className="nav-item col-2" role="presentation">
+        <li
+          className="nav-item col-3 justify-content-center d-flex"
+          role="presentation"
+        >
           <button
-            className="nav-link btn  btn-bg-light w-100 text-black"
+            className="nav-link btn  btn-warning  text-black genbuttons"
             id="pistas"
             data-bs-toggle="pill"
             data-bs-target="#pistasList"
@@ -23,13 +26,13 @@ export const PistaYeventTab = () => {
             aria-selected="true"
             onClick={() => {}}
           >
-            Pistas
+            <i className="fas fa-h1 ">Pistas</i>
           </button>
         </li>
-        <li className="nav-item col-2 " role="presentation">
+        <li className="nav-item col-3 d-flex" role="presentation">
           <button
             type="button "
-            className="nav-link btn btn-bg-light w-100 text-black"
+            className="nav-link btn btn-warning text-black genbuttons"
             id="eventos"
             data-bs-toggle="pill"
             data-bs-target="#eventosList"
@@ -38,13 +41,16 @@ export const PistaYeventTab = () => {
             aria-selected="false"
             onClick={() => {}}
           >
-            Eventos
+            <i className="fas fa-h1 ">Eventos</i>
           </button>
         </li>
       </ul>
-      <div className="tab-content row " id="pills-tabContent">
+      <div
+        className="tab-content row d-flex justify-content-center"
+        id="pills-tabContent"
+      >
         <div
-          className="tab-pane fade show "
+          className="tab-pane fade show col-6 justify-content-center"
           id="pistasList"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
@@ -52,7 +58,7 @@ export const PistaYeventTab = () => {
           <PistaInfo />
         </div>
         <div
-          className="tab-pane fade "
+          className="tab-pane fade col-6 justify-content-center"
           id="eventosList"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"

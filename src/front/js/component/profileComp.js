@@ -5,11 +5,8 @@ import { Context } from "../store/appContext";
 export const ProfileComp = () => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="container-fluid h-auto w-auto ">
-      <div
-        className="card bg-white border-0
-      "
-      >
+    <div className="container-fluid h-auto ms-3" style={{ width: "300px" }}>
+      <div className="card bg-white border-0">
         <Link to="/userprofile">
           <img
             src="https://picsum.photos/seed/picsum/50/50"
@@ -25,15 +22,28 @@ export const ProfileComp = () => {
             {store.currentUser.detail ? store.currentUser.detail.city : "N/A"}
           </h5>
         </div>
-
-        <ul className="list-group list-group-flush d-flex flex-row border-0">
-          <li className="list-group-item  border-0">Siguiendo</li>
-          <li className="list-group-item  border-0">Seguidores</li>
-        </ul>
-        <ul className="list-group list-group-flush d-flex flex-row border-0">
-          <li className="list-group-item  border-0">15</li>
-          <li className="list-group-item  border-0 ">24</li>
-        </ul>
+        <div className="d-flex">
+          <ul className="list-group list-group-flushborder-0">
+            <li className="list-group-item  border-0">Siguiendo</li>
+            <li className="list-group-item  border-0">
+              <i className="fas fa-h1">
+                {store.currentUser.followings
+                  ? store.currentUser.followings.length
+                  : "0"}
+              </i>
+            </li>
+          </ul>
+          <ul className="list-group list-group-flush border-0">
+            <li className="list-group-item  border-0">Seguidores</li>
+            <li className="list-group-item  border-0 ">
+              <i className="fas fa-h1">
+                {store.currentUser.followers
+                  ? store.currentUser.followers.length
+                  : "0"}
+              </i>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
