@@ -26,11 +26,12 @@ export const Login = () => {
       const data = await response.json();
       if (data.access_token) {
         localStorage.setItem("access_token", data.access_token);
-        history.push("/homepageafterlogin");
+        actions.verify();
+        history.push("/userprofile");
         if (data.logged == false) {
           setError(data.msg);
         } else if (data.logged == true) {
-          history.push("/homepageafterlogin");
+          history.push("/userprofile");
         }
       } else {
         setError(data.msg);
