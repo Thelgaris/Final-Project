@@ -16,8 +16,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       userFollowing: [],
       url: "https://3001-thelgaris-finalproject-mazoxel3g9q.ws-eu51.gitpod.io/api",
       stravaUrl: "https://www.strava.com/oauth/authorize",
-      getUserSports: [],
-      setUserSports: [],
       user_id: null,
       logged: false,
     },
@@ -96,6 +94,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           userEvents: data.response.events,
           userSports: data.response.sports,
           userFollowing: data.response.followings,
+          userFollower: data.response.followers,
         });
       },
 
