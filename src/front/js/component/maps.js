@@ -14,7 +14,7 @@ import mapStyles from "./mapStyles";
 const libraries = ["places"];
 const mapContainerStyle = {
   height: "400px",
-  width: "400px",
+  width: "500px",
 };
 const options = {
   styles: mapStyles,
@@ -37,7 +37,10 @@ const Map = () => {
   const [lat, setLat] = useState(40.4303759999059);
   const [lng, setLng] = useState(-3.7049425337888837);
   const center = { lat, lng };
-  /*  const [markers, setMarkers] = useState([]); */
+  /*  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback(() => {
+    mapRef.current = map;
+  }, []); */
 
   return (
     <div className="container">
@@ -46,24 +49,8 @@ const Map = () => {
         center={center}
         mapContainerStyle={mapContainerStyle}
         options={options}
-        /*     onClick={(event) => {
-          setMarkers((current) => [
-            ...current,
-            {
-              lat: event.latLng.lat(),
-              lng: event.latLng.lng(),
-              time: new Date(),
-            },
-          ]);
-        }} */
-      >
-        {/* {markers.map((marker) => (
-          <Marker
-            key={marker.time.toISOString()}
-            position={{ lat: marker.lat, lng: marker.lng }}
-          />
-        ))} */}
-      </GoogleMap>
+        /* onLoad={onMapLoad} */
+      ></GoogleMap>
     </div>
   );
 };
