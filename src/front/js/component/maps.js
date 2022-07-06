@@ -1,5 +1,6 @@
 import React from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import Geocode from "react-geocode";
 import { useState } from "react";
 import "../../styles/maps.css";
 
@@ -28,7 +29,15 @@ function Map() {
         marginRight: "auto",
       }}
     >
-      <Marker position={{ lat: 44, lng: -80 }} />
+      <Marker position={{ lat, lng }} />
     </GoogleMap>
   );
 }
+
+Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
+Geocode.setLanguage("en");
+Geocode.setRegion("es");
+Geocode.setLocationType("ROOFTOP");
+Geocode.fromLatLng("48.8583701", "2.2922926").then((response) => {
+  const adress = response.results[0].formatted_adress;
+});

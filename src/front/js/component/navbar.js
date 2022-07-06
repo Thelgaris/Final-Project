@@ -67,6 +67,17 @@ export const Navbar = () => {
                   </span>
                 </li>
               </Link>
+              <Link to="/login" className="navbarlink  text-decoration-none">
+                <li className="nav-item">
+                  <span
+                    className="nav-link active"
+                    aria-current="page"
+                    href="#"
+                  >
+                    Login
+                  </span>
+                </li>
+              </Link>
               <Link to="/register" className="navbarlink  text-decoration-none">
                 <li className="nav-item">
                   <span className="nav-link" href="#">

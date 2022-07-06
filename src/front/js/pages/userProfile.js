@@ -10,27 +10,30 @@ export const UserProfile = () => {
   const [sport, setSport] = useState([]);
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
-  /* const [files, setFiles] = useState(null); */
-  /*hola uapa*/
+  const [files, setFiles] = useState(null);
+
   useEffect(() => {
     actions.getSports();
   }, []);
 
   const sendUserInfo = async () => {
     setError(null);
-    user["sports"] = store.getUserSports;
     console.log(store.getUserSports);
-    const response = await fetch(store.url + "/userprofile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
-      },
-      body: JSON.stringify(user),
-    });
-    const data = await response.json();
-    console.log("@@@@@@@@@@@", data);
-    history.push("/homepageafterlogin");
+    try {
+      let body = new FormData();
+      for (let key in user) {
+        body.append(key, user[key]);
+      }
+      const response = await fetch(store.url + "/userprofile", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+        body: body,
+      });
+      const data = await response.json();
+      history.push("/homepageafterlogin");
+    } catch (e) {}
   };
 
   /*   const uploadImage = (evt) => {
@@ -65,13 +68,18 @@ export const UserProfile = () => {
           src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt=""
         />
-        {/*         <form onSubmit={uploadImage}>
-          <input type="file" onChange={(e) => setFiles(e.target.files)} />
-          <button>
+        <form>
+          <input
+            type="file"
+            onChange={(e) =>
+              setUser({ ...user, profile_image_url: e.target.files[0] })
+            }
+          />
+          {/* <button>
             <i className="fas fa-camera fa-2x" style={{ fontsize: "50px" }}></i>
             Upload
-          </button>
-        </form> */}
+          </button> */}
+        </form>
       </div>
       <div className="container">
         <div className="row mx-auto">
