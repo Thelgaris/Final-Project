@@ -15,9 +15,7 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     detail_id= db.Column(db.Integer, db.ForeignKey("details.id"))
     detail = db.relationship('Details', backref="user", lazy=True)
-    sports = db.relationship('UserSports')
-    
-     
+    sports = db.relationship('UserSports') 
     events = db.relationship('UserEvents')
     following = db.relationship(
         'User', lambda: user_following,
@@ -31,18 +29,19 @@ class User(db.Model):
         return f'<User {self.email}>'
 
     def serialize(self):
-        print(self.events)
-        print(self.sports)
-        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+       
+       
         return {
             "id": self.id,
             "email": self.email,
             "detail": self.detail.serialize() if self.detail is not None else None,
             # "sports": list(map(lambda sport:sport.sports.serialize(), self.sports)) if self.sports is not None else [],
             "events": list(map(lambda event:event.events.serialize(), self.events)) if self.events is not None else [],
-            "followings": len(self.following),
-            "followers": len(self.followers)  
-            # "followings": list(map(lambda following:following.id, self.following)) if self.following is not None else [],
+            # "followings": len(self.following),
+            # "followers": len(self.followers),  
+            "followings": list(map(lambda following:following.id, self.following)) if self.following is not None else [],
+            "followers": list(map(lambda followers:followers.id, self.followers)) if self.followers is not None else [],
+
         }
 
 

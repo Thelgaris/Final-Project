@@ -26,7 +26,7 @@ export const PistaYeventTab = () => {
             aria-selected="true"
             onClick={() => {}}
           >
-            <i class="fas fa-h1">Pistas</i>
+            <i className="fas fa-h1 ">Pistas</i>
           </button>
         </li>
         <li className="nav-item col-3 d-flex" role="presentation">
@@ -41,7 +41,7 @@ export const PistaYeventTab = () => {
             aria-selected="false"
             onClick={() => {}}
           >
-            <i class="fas fa-h1">Eventos</i>
+            <i className="fas fa-h1 ">Eventos</i>
           </button>
         </li>
       </ul>

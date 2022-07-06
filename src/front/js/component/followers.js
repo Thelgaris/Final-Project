@@ -88,7 +88,7 @@ export const Followers = () => {
 
                     <button
                       href="#"
-                      className="btn btn-success genbuttons w-100"
+                      className="btn btn-warning genbuttons w-100"
                       onClick={(e) => {
                         actions.setFollowers(e.id);
                       }}
@@ -108,7 +108,7 @@ export const Followers = () => {
           aria-labelledby="pills-profile-tab"
         >
           <div className="xscroll justify-content-center">
-            {store.users.map((Y) => {
+            {store.userFollowing.map((Y) => {
               return (
                 <div
                   className="card border-0 h-100 ms-1 me-1 mt-5 mb-5 d-flexfollowers"
@@ -128,12 +128,12 @@ export const Followers = () => {
                       className="card-title justify-content-center text-center"
                       style={{ height: "2rem" }}
                     >
-                      {Y.email}
+                      {Y.name}
                     </p>
 
                     <button
                       href="#"
-                      className="btn btn-success genbuttons w-100"
+                      className="btn btn-warning genbuttons w-100"
                     >
                       Unfollow
                     </button>
@@ -175,7 +175,7 @@ export const Followers = () => {
 
                     <button
                       href="#"
-                      className="btn btn-success genbuttons w-100"
+                      className="btn btn-warning genbuttons w-100"
                       onClick={(e) => {
                         actions.setFollowers(Z.id);
                       }}

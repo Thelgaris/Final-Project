@@ -93,6 +93,7 @@ def get_all_users():
     users_serialized = list(map(lambda x: x.serialize(), users))
     return jsonify({"response": users_serialized}), 200
 
+
 @api.route('/pistas', methods=['GET'])
 def get_all_pistas():
     pistas = Pistas.query.all()
@@ -105,13 +106,6 @@ def get_all_events():
     events_serialized = list(map(lambda x: x.serialize(), events))
     return jsonify({"response": events_serialized}), 200
 
-@api.route('/userEvents', methods=['GET'])
-@jwt_required()
-def get_userEvents():
-    user_id = get_jwt_identity()
-    userEvents = User.query.get(user_id).events
-    userEvents_serialized = list(map(lambda x: x.serialize(), userEvents))
-    return jsonify({"response": userEvents_serialized}), 200
 
 @api.route('/currentUser', methods=['GET'])
 @jwt_required()

@@ -8,11 +8,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       pistas: [],
       strava: [],
       events: [],
+      province: [],
       userEvents: [],
       userSports: [],
       currentUser: {},
-      followers: [],
-      following: [],
+      userFollowers: [],
+      userFollowing: [],
       url: "https://3001-thelgaris-finalproject-mazoxel3g9q.ws-eu51.gitpod.io/api",
       stravaUrl: "https://www.strava.com/oauth/authorize",
       getUserSports: [],
@@ -29,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({ users: data.response });
       },
 
@@ -94,6 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           currentUser: data.response,
           userEvents: data.response.events,
           userSports: data.response.sports,
+          userFollowing: data.response.followings,
         });
       },
 
@@ -164,32 +166,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      setUsports: async (userSports) => {
-        const resp = await fetch(getStore().url + "/userSports", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("access_token"),
-          },
-          body: JSON.stringify(userSports),
-        });
-        const data = await resp.json();
-
-        if (resp.ok) {
-          getActions().getCurrentUser();
-
-          return true;
-        } else {
-          return false;
-        }
-      },
-
       setFollowers: async (user) => {
         const store = getStore();
-        if (!store.currentUser.followings.includes(user)) {
-          setStore([store.currentUser.followings, user]);
+        if (!store.currentUser.following.includes(user)) {
+          setStore([store.currentUser.following, user]);
         } else {
-          setStore([store.currentUser.followings.filter((all) => all != user)]);
+          setStore([store.currentUser.following.filter((all) => all != user)]);
         }
         const resp = await fetch(getStore().url + "/followers", {
           method: "POST",
@@ -215,7 +197,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (data.user_id) {
             setStore({ user_id: data.user_id });
           }
-          console.log(data);
+
           setStore({ logged: data.logged_in || false });
         } catch (e) {
           setStore({ logged: false });

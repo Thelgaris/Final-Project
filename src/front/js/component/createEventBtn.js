@@ -28,7 +28,7 @@ export const CreateEventBtn = () => {
           setShowModal != null;
         }}
       >
-        <i class="fas fa-h1">Crear evento</i>
+        <i className="fas fa-h1">Crear evento</i>
       </button>
 
       {showModal != null ? (
@@ -154,7 +154,7 @@ export const CreateEventBtn = () => {
                     onChange={(e) => {
                       setDate(e.target.value);
                       console.log(date);
-                      // setUserEvents({ ...userEvents, date: e.target.value });
+                      setUserEvents({ ...userEvents, date: e.target.value });
                     }}
                   ></input>
                 </div>

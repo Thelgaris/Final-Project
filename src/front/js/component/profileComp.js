@@ -26,15 +26,21 @@ export const ProfileComp = () => {
           <ul className="list-group list-group-flushborder-0">
             <li className="list-group-item  border-0">Siguiendo</li>
             <li className="list-group-item  border-0">
-              {store.currentUser.followings
-                ? store.currentUser.followings
-                : "0"}
+              <i className="fas fa-h1">
+                {store.currentUser.followings
+                  ? store.currentUser.followings.length
+                  : "0"}
+              </i>
             </li>
           </ul>
           <ul className="list-group list-group-flush border-0">
             <li className="list-group-item  border-0">Seguidores</li>
             <li className="list-group-item  border-0 ">
-              {store.currentUser.followers ? store.currentUser.followers : "0"}
+              <i className="fas fa-h1">
+                {store.currentUser.followers
+                  ? store.currentUser.followers.length
+                  : "0"}
+              </i>
             </li>
           </ul>
         </div>
