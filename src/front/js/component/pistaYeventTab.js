@@ -8,15 +8,15 @@ export const PistaYeventTab = () => {
   return (
     <div className=" container-fluid row ">
       <ul
-        className="nav nav-pills  d-flex justify-content-center col-6 offset-3"
+        className="nav nav-pills  d-flex justify-content-center col-6 offset-3 d-inline"
         role="tablist"
       >
         <li
-          className="nav-item col-3 justify-content-center d-flex"
+          className="nav-item col-3 w-50 justify-content-center d-flex "
           role="presentation"
         >
           <button
-            className="nav-link btn  btn-warning  text-black genbuttons"
+            className="nav-link btn  text-black genbuttons "
             id="pistas"
             data-bs-toggle="pill"
             data-bs-target="#pistasList"
@@ -29,10 +29,13 @@ export const PistaYeventTab = () => {
             <i className="fas fa-h1 ">Pistas</i>
           </button>
         </li>
-        <li className="nav-item col-3 d-flex" role="presentation">
+        <li
+          className="nav-item col-3 d-flex w-50 justify-content-center"
+          role="presentation"
+        >
           <button
             type="button "
-            className="nav-link btn btn-warning text-black genbuttons"
+            className="nav-link btn text-black genbuttons"
             id="eventos"
             data-bs-toggle="pill"
             data-bs-target="#eventosList"

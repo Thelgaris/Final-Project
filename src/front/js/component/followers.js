@@ -128,7 +128,7 @@ export const Followers = () => {
                       className="card-title justify-content-center text-center"
                       style={{ height: "2rem" }}
                     >
-                      {Y.name}
+                      {Y.id}
                     </p>
 
                     <button
@@ -170,14 +170,14 @@ export const Followers = () => {
                       className="card-title justify-content-center text-center"
                       style={{ height: "2rem" }}
                     >
-                      {Z.email}
+                      {Z.detail.name}
                     </p>
 
                     <button
                       href="#"
                       className="btn btn-warning genbuttons w-100"
                       onClick={(e) => {
-                        actions.setFollowers(Z.id);
+                        actions.setFollowers();
                       }}
                     >
                       Follow

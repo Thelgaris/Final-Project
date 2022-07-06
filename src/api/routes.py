@@ -60,11 +60,7 @@ def update_details():
             user.detail = user_details
             user.detail_id=user_details.id
             db.session.commit()
-            # body_event_id = request.json.get("id")    
-            # sport = Sports.query.get(body_sport_id)    
-            # user_sports = UserSports(user=user, sports=sport)
-            # db.session.add(user_sports)
-            # db.session.commit()
+            
          
             
             return jsonify({"details": user_details.serialize(), "Update": True}), 200
@@ -185,34 +181,19 @@ def unjoin_Events():
   
     return jsonify({"events": user_events.serialize(), "Unjoined_to_Event": True}), 200
 
-# @api.route('/followers', methods=['POST'])
-# @jwt_required()
-# def add_followers():
-   
-#     user_id = get_jwt_identity()
-#     user = User.query.get(user_id)     
-#     body_user_id = request.json.get("id")    
-#     user = User.query.get(body_user_id)    
-#     user_followers = User_following(user=user, user_followers=user)
-#     db.session.add(user_followers)
-#     db.session.commit()
-  
-#     return jsonify({"user_followers": user_followers.serialize(), "Follower added": True}), 200
-
-@api.route('/userSports', methods=['POST'])
+@api.route('/followers', methods=['POST'])
 @jwt_required()
-def set_userSports():
+def add_followers():
    
     user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-      
-    body_sport_id = request.json.get("id")    
-    sport = Sports.query.get(body_sport_id)    
-    user_sports = UserSports(user=user, sports=sport)
-    db.session.add(user_sports)
+    user = User.query.get(user_id)     
+    body_user_id = request.json.get("id")    
+    users = User.query.get(body_user_id)    
+    user_followers = User(user=user, user_followers=user)
+    db.session.add(user_followers)
     db.session.commit()
   
-    return jsonify({"sports": user_sports.serialize(), "Sport added to user": True}), 200
+    return jsonify({"user_followers": user_followers.serialize(), "Follower added": True}), 200
 
 
 @api.route('/editprofile', methods=['PUT'])

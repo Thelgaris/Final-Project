@@ -167,12 +167,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       setFollowers: async (user) => {
-        const store = getStore();
-        if (!store.currentUser.following.includes(user)) {
-          setStore([store.currentUser.following, user]);
-        } else {
-          setStore([store.currentUser.following.filter((all) => all != user)]);
-        }
+        // const store = getStore();
+        // if (!store.currentUser.following.includes(user)) {
+        //   setStore([store.currentUser.following, user]);
+        // } else {
+        //   setStore([store.currentUser.following.filter((all) => all != user)]);
+        // }
         const resp = await fetch(getStore().url + "/followers", {
           method: "POST",
           headers: {
