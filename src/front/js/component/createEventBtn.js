@@ -63,7 +63,7 @@ export const CreateEventBtn = () => {
                     className="input-group-text w-25"
                     htmlFor="inputGroupSelect01"
                   >
-                    Ciudad
+                    Provincia
                   </label>
                   <select
                     className="form-select "
@@ -72,10 +72,9 @@ export const CreateEventBtn = () => {
                       setUserEvents({ ...userEvents, city: e.target.value });
                     }}
                   >
-                    <option></option>
-                    <option>Barcelona</option>
-                    <option>Cadiz</option>
-                    <option>Granada</option>
+                    {store.provincias.map((Z) => {
+                      <option key={Z.id}>{Z}</option>;
+                    })}
                   </select>
                 </div>
 

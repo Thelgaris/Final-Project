@@ -41,7 +41,7 @@ class User(db.Model):
 
     def serialize(self):
        
-       
+        print(self.followers)
         return {
             "id": self.id,
             "email": self.email,
@@ -50,8 +50,8 @@ class User(db.Model):
             "events": list(map(lambda event:event.events.serialize(), self.events)) if self.events is not None else [],
             # "followings": len(self.following),
             # "followers": len(self.followers),  
-            "followings": list(map(lambda following:following.id, self.following)) if self.following is not None else [],
-            "followers": list(map(lambda followers:followers.id, self.followers)) if self.followers is not None else [],
+            "followings": list(map(lambda following:{"id": following.id, "name": following.detail.name}, self.following)) if self.following is not None else [],
+            "followers": list(map(lambda follower:{"id": follower.id, "name": follower.detail.name}, self.followers)) if self.followers is not None else [],
 
         }
 

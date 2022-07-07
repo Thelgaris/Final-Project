@@ -14,12 +14,64 @@ const getState = ({ getStore, getActions, setStore }) => {
       currentUser: {},
       userFollowers: [],
       userFollowing: [],
-      url: "https://3001-thelgaris-finalproject-mazoxel3g9q.ws-eu51.gitpod.io/api",
+      url: "https://3001-thelgaris-finalproject-wb69ezb9ho2.ws-eu51.gitpod.io/api",
       stravaUrl: "https://www.strava.com/oauth/authorize",
       getUserSports: [],
       setUserSports: [],
       user_id: null,
       logged: false,
+      provincias: [
+        "Álava",
+        "Albacete",
+        "Alicante",
+        "Almería",
+        "Asturias",
+        "Ávila",
+        "Badajoz",
+        "Barcelona",
+        "Burgos",
+        "Cáceres",
+        "Cádiz",
+        "Cantabria",
+        "Castellón",
+        "Ciudad Real",
+        "Córdoba",
+        "Cuenca",
+        "Gerona",
+        "Granada",
+        "Guadalajara",
+        "Guipúzcoa",
+        "Huelva",
+        "Huesca",
+        "Islas Baleares",
+        "Jaén",
+        "La Coruña",
+        "La Rioja",
+        "Las Palmas",
+        "León",
+        "Lérida",
+        "Lugo",
+        "Madrid",
+        "Málaga",
+        "Murcia",
+        "Navarra",
+        "Orense",
+        "Palencia",
+        "Pontevedra",
+        "Salamanca",
+        "Santa Cruz de Tenerife",
+        "Segovia",
+        "Sevilla",
+        "Soria",
+        "Tarragona",
+        "Teruel",
+        "Toledo",
+        "Valencia",
+        "Valladolid",
+        "Vizcaya",
+        "Zamora",
+        "Zaragoza",
+      ],
     },
     actions: {
       getUsers: async () => {
@@ -27,6 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
         });
         const data = await resp.json();
@@ -96,6 +149,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           userEvents: data.response.events,
           userSports: data.response.sports,
           userFollowing: data.response.followings,
+          userFollowers: data.response.followers,
         });
       },
 
@@ -166,7 +220,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      setFollowers: async (user) => {
+      setFollowers: async (id) => {
         // const store = getStore();
         // if (!store.currentUser.following.includes(user)) {
         //   setStore([store.currentUser.following, user]);
@@ -174,14 +228,22 @@ const getState = ({ getStore, getActions, setStore }) => {
         //   setStore([store.currentUser.following.filter((all) => all != user)]);
         // }
         const resp = await fetch(getStore().url + "/followers", {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
-          body: JSON.stringify(user),
+          body: JSON.stringify({ id: id }),
         });
         const data = await resp.json();
+        if (resp.ok) {
+          getActions().getUsers();
+          getActions().getCurrentUser();
+
+          return true;
+        } else {
+          return false;
+        }
       },
 
       verify: async () => {

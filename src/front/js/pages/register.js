@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/register.css";
+import { StravaButton } from "../component/stravaButton";
 
 export const Register = () => {
   const history = useHistory();
@@ -42,15 +43,6 @@ export const Register = () => {
       setError("Campos vacios");
     }
   };
-
-  const { REACT_APP_CLIENT_ID } = process.env;
-  const redirectUrl = "http://localhost:3000/redirect";
-  const scope = "read";
-
-  const handleLogin = () => {
-    window.location = `http://www.strava.com/oauth/authorize?  client_id=87841&response_type=code&redirect_uri=${redirectUrl}/exchange_token&approval_prompt=force&scope=${scope}`;
-  };
-  // const stravaAuthToken = cleanUpAuthToken(location.search);
 
   return (
     <div className="container">
@@ -125,21 +117,7 @@ export const Register = () => {
               Registrar
             </button>
             <div className="container-fluid text-center mt-3">
-              <button
-                className="btn btn-light w-75"
-                type="button"
-                onClick={handleLogin}
-              >
-                <img
-                  src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/323_Strava_logo-48.png"
-                  style={{
-                    width: "25px",
-                    height: "25px ",
-                    float: "left",
-                  }}
-                />
-                <span className="text-center">Registrar con Strava</span>
-              </button>
+              <StravaButton />
               <button className="btn btn-light w-75" type="button">
                 <img
                   src="https://cdn-icons-png.flaticon.com/128/300/300221.png"

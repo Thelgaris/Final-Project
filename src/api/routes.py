@@ -42,7 +42,7 @@ def register_user():
 @api.route('/userprofile', methods=['POST'])
 @jwt_required()
 def update_details():
-    print(1)
+  
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
     if user:
@@ -84,9 +84,20 @@ def get_details():
 
 
 @api.route('/user', methods=['GET'])
+@jwt_required()
 def get_all_users():
-    users = User.query.all()
-    users_serialized = list(map(lambda x: x.serialize(), users))
+    print("@@@@@@@@@@@@@@@@@@@@@")
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    users = User.query.filter(User.id != user_id).all()
+    suggested = []
+    print(user.following)
+    for u in users:
+        print(u)
+        if u not in user.following:
+            suggested.append(u)
+    users_serialized = list(map(lambda x: x.serialize(), suggested))
+    print(suggested)
     return jsonify({"response": users_serialized}), 200
 
 
@@ -181,25 +192,29 @@ def unjoin_Events():
   
     return jsonify({"events": user_events.serialize(), "Unjoined_to_Event": True}), 200
 
-@api.route('/followers', methods=['POST'])
+@api.route('/followers', methods=['PUT'])
 @jwt_required()
 def add_followers():
    
     user_id = get_jwt_identity()
     user = User.query.get(user_id)     
     body_user_id = request.json.get("id")    
-    users = User.query.get(body_user_id)    
-    user_followers = User(user=user, user_followers=user)
-    db.session.add(user_followers)
+    follower = User.query.get(body_user_id)
+    user.following.append(follower)
+    follower.followers.append(user)
     db.session.commit()
+    # print(user.following)
+    # print(follower.followers)
+    # db.session.add(user_followers)
+    # db.session.commit()
   
-    return jsonify({"user_followers": user_followers.serialize(), "Follower added": True}), 200
+    return jsonify({ "Follower added": True}), 200
 
 
 @api.route('/editprofile', methods=['PUT'])
 @jwt_required()
 def update_user():
-    print(request.json)
+  
     user_id = get_jwt_identity()
     user = Details.query.get(user_id)
     if user:

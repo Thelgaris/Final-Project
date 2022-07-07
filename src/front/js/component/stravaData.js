@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const StravaData = () => {
+  const { store, actions } = useContext(Context);
   const history = useHistory();
   return (
-    <div className="container-fluid border-0 w-auto ms-3 mt-5">
+    <div className="container-fluid border-0 w-auto ms-3 mt-5 justify-content-center">
       <div className="card bg-white border-0 ">
         <ul
           className="nav nav-pills rounded d-flex"
@@ -103,9 +105,14 @@ export const StravaData = () => {
             role="tabpanel"
             aria-labelledby="pills-profile-tab"
           >
-            <div>Esta semana</div>
-            <div>25 Eventos</div>
-            <div>14 Actividades</div>
+            <div></div>
+            <div>
+              {" "}
+              <i class="fas fa-h1">{store.userEvents.length} Eventos</i>
+            </div>
+            <div>
+              <i class="fas fa-h1">14 Actividades</i>
+            </div>
           </div>
         </div>
         <div className="d-grid col-6 mx-auto mb-2">
@@ -114,7 +121,7 @@ export const StravaData = () => {
               type="button "
               className="genbuttons btn btn-warning text-black"
             >
-              + Info
+              <i class="fas fa-h1">+ Info</i>
             </button>
           </Link>
         </div>
