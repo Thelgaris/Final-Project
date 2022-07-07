@@ -32,7 +32,7 @@ export const Followers = () => {
               setShowModalZ(false);
             }}
           >
-            Seguidores
+            <i class="fas fa-sm"> Seguidores</i>
           </button>
         </li>
         <li className="nav-item w-auto" role="presentation">
@@ -50,7 +50,7 @@ export const Followers = () => {
               setShowModalZ(false);
             }}
           >
-            Siguiendo
+            <i class="fas fa-sm"> Siguiendo</i>
           </button>
         </li>
         <li className="nav-item w-auto" role="presentation">
@@ -68,7 +68,7 @@ export const Followers = () => {
               setShowModalZ(!showModalZ);
             }}
           >
-            Sugeridos
+            <i class="fas fa-sm"> Sugeridos</i>
           </button>
         </li>
       </ul>
@@ -77,14 +77,14 @@ export const Followers = () => {
         {showModalX == true ? (
           <div className=" " role="tabpanel" aria-labelledby="pills-home-tab">
             <div
-              className="xscroll justify-content-center dropContainer border-1 rounded-pill"
+              className="xscroll  border-1 rounded-pill"
               style={{ width: "500px" }}
             >
               {store.userFollowers.map((X) => {
                 return (
                   <div
                     id={X.id}
-                    className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3"
+                    className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
                     style={{ width: "12rem", height: "8rem" }}
                     key={X.id}
                   >
@@ -109,7 +109,7 @@ export const Followers = () => {
                             actions.setFollowers(X.id);
                           }}
                         >
-                          Follow
+                          <i class="fas fa-sm"> Follow</i>
                         </button>
                       ) : (
                         <button
@@ -119,7 +119,7 @@ export const Followers = () => {
                             actions.setFollowers(X.id);
                           }}
                         >
-                          Unfollow
+                          <i class="fas fa"> Unfollow</i>
                         </button>
                       )}
                     </div>
@@ -132,14 +132,14 @@ export const Followers = () => {
         {showModalY == true ? (
           <div className="" role="tabpanel" aria-labelledby="pills-profile-tab">
             <div
-              className="xscroll justify-content-center dropContainer border-1 rounded-pill"
+              className="xscroll  border-1 rounded-pill"
               style={{ width: "500px" }}
             >
               {store.userFollowing.map((Y) => {
                 console.log(Y);
                 return (
                   <div
-                    className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3"
+                    className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
                     id={Y.id}
                     style={{
                       width: "12rem",
@@ -158,14 +158,15 @@ export const Followers = () => {
                         className="card-title justify-content-center text-center"
                         style={{ height: "2em" }}
                       >
-                        {Y.name}
+                        <i class="fas fa-sm">{Y.name}</i>
                       </p>
 
                       <button
                         href="#"
                         className="btn-sm btn-warning genbuttons w-100 rounded-3"
+                        onClick={() => {}}
                       >
-                        Unfollow
+                        <i class="fas fa-sm">Unfollow</i>
                       </button>
                     </div>
                   </div>
@@ -182,13 +183,13 @@ export const Followers = () => {
           >
             <div className="dropbody">
               <div
-                className="xscroll justify-content-center dropContainer border-1 rounded-pill"
+                className="xscroll  border-1 rounded-pill"
                 style={{ width: "500px" }}
               >
                 {store.users.map((Z) => {
                   return (
                     <div
-                      className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 ms-5"
+                      className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 ms-5 perfil"
                       id="suggestionsList"
                       key={Z.id}
                       style={{ width: "12rem", height: "6rem" }}
@@ -208,7 +209,7 @@ export const Followers = () => {
                             className="card-title justify-content-center text-center"
                             style={{ height: "2em" }}
                           >
-                            {Z.detail.name}
+                            <i class="fas fa-sm">{Z.detail.name}</i>
                           </p>
                           {/* { !store.users.map ((e)=> e.id).includes(Z.id) ? : */}
                           <button
@@ -218,7 +219,7 @@ export const Followers = () => {
                               actions.setFollowers(Z.id);
                             }}
                           >
-                            Follow
+                            <i class="fas fa-sm">Follow</i>
                           </button>
                         </div>
                       </div>
