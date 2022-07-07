@@ -6,12 +6,18 @@ user_following = db.Table(
     'user_following', 
     db.Column('user_id', db.Integer, db.ForeignKey("user.id"), primary_key=True),
     db.Column('following_id', db.Integer, db.ForeignKey("user.id"), primary_key=True)
- )
+)
 
-# followers = db.Table('followers',
-#     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
-#     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
-# )
+    # followers = db.Table('followers',
+    #     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+    #     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+    # )
+
+ # followed = db.relationship(
+    #     'User', secondary=followers,
+    #     primaryjoin=(followers.c.follower_id == id),
+    #     secondaryjoin=(followers.c.followed_id == id),
+    #     backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
    
 
 class User(db.Model):
@@ -28,13 +34,6 @@ class User(db.Model):
         secondaryjoin=lambda: User.id == user_following.c.following_id,
         backref='followers'
     )
-
-    # followed = db.relationship(
-    #     'User', secondary=followers,
-    #     primaryjoin=(followers.c.follower_id == id),
-    #     secondaryjoin=(followers.c.followed_id == id),
-    #     backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
-
     is_active = db.Column(db.Boolean(), unique=False, nullable=True)
     
     def __repr__(self):
@@ -54,9 +53,7 @@ class User(db.Model):
             "followings": list(map(lambda following:following.id, self.following)) if self.following is not None else [],
             "followers": list(map(lambda followers:followers.id, self.followers)) if self.followers is not None else [],
 
-
         }
-
 
 
 # class UserFollowers(db.Model):
