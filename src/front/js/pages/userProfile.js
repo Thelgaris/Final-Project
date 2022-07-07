@@ -9,8 +9,7 @@ export const UserProfile = () => {
   const [user, setUser] = useState({ gender: "Hombre", sports: [] });
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
-  /* const [files, setFiles] = useState(null); */
-  /*hola uapa*/
+
   useEffect(() => {
     actions.getSports();
   }, []);
@@ -32,22 +31,6 @@ export const UserProfile = () => {
     history.push("/homepageafterlogin");
   };
 
-  /*   const uploadImage = (evt) => {
-    evt.preventDefault();
-    console.log("This are the files", files);
-    let body = new FormData();
-    body.append("profile_image", files[0]);
-    const options = {
-      body,
-      method: "POST",
-    };
-    const currentUserId = localStorage.getItem("user_id");
-    fetch(process.env.BACKEND_URL + "/userprofile", options)
-      .then((resp) => resp.json())
-      .then((data) => console.log("Success!", data))
-      .catch((error) => console.error("Error!", error));
-  }; */
-
   return (
     <div className="container mt-5 text-center">
       <div className="row justify-content-center">
@@ -64,13 +47,6 @@ export const UserProfile = () => {
           src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt=""
         />
-        {/*         <form onSubmit={uploadImage}>
-          <input type="file" onChange={(e) => setFiles(e.target.files)} />
-          <button>
-            <i className="fas fa-camera fa-2x" style={{ fontsize: "50px" }}></i>
-            Upload
-          </button>
-        </form> */}
       </div>
       <div className="container">
         <div className="row mx-auto">
