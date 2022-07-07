@@ -5,7 +5,6 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-/* import Geocode from "react-geocode"; */
 import { useState } from "react";
 import "../../styles/maps.css";
 import mapStyles from "./mapStyles";
@@ -76,7 +75,9 @@ const SearchPlaces = () => {
 
   return (
     <div className="app">
-      <Marker position={coordinates} />
+      <p>lat {coordinates.lat}</p>
+      <p>lng {coordinates.lng}</p>
+      <p>adress {adress}</p>
       <PlacesAutocomplete
         value={adress}
         onChange={setAdress}
@@ -96,7 +97,6 @@ const SearchPlaces = () => {
                 const className = suggestion.active
                   ? "suggestion-item--active"
                   : "suggestion-item";
-                // inline style for demonstration purpose
                 const style = suggestion.active
                   ? { backgroundColor: "#fafafa", cursor: "pointer" }
                   : { backgroundColor: "#ffffff", cursor: "pointer" };
