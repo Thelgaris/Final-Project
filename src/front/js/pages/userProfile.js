@@ -16,19 +16,22 @@ export const UserProfile = () => {
 
   const sendUserInfo = async () => {
     setError(null);
-    user["sports"] = store.getUserSports;
     console.log(store.getUserSports);
-    const response = await fetch(store.url + "/userprofile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
-      },
-      body: JSON.stringify(user),
-    });
-    const data = await response.json();
-    console.log("@@@@@@@@@@@", data);
-    history.push("/homepageafterlogin");
+    try {
+      let body = new FormData();
+      for (let key in user) {
+        body.append(key, user[key]);
+      }
+      const response = await fetch(store.url + "/userprofile", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+        body: body,
+      });
+      const data = await response.json();
+      history.push("/homepageafterlogin");
+    } catch (e) {}
   };
 
   return (

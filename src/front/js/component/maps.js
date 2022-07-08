@@ -1,3 +1,4 @@
+
 import React, { useEffect, useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import {
@@ -127,3 +128,4 @@ export const SearchPlaces = ({ setLat, setLng, setCity }) => {
     </div>
   );
 };
+
