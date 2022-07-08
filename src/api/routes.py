@@ -68,6 +68,8 @@ def update_details():
             user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender, profile_image_url=body_profile_image_url)
             db.session.add(user_details)
             db.session.commit()
+            user.detail=user_details
+            db.session.commit()
             for sport_name in body_sports:
                 sport = Sports.query.filter_by(name = sport_name).first()
                 user_sports = UserSports(user=user, sports=sport)

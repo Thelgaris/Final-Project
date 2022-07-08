@@ -1,5 +1,9 @@
-/* .maps {
-  height: 400px;
-  width: 400px;
+.mapName {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: black;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
 }
- */

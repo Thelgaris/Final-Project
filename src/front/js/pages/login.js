@@ -26,6 +26,7 @@ export const Login = () => {
       const data = await response.json();
       if (data.access_token) {
         localStorage.setItem("access_token", data.access_token);
+        actions.verify();
         history.push("/homepageafterlogin");
         if (data.logged == false) {
           setError(data.msg);

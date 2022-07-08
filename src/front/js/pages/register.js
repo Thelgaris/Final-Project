@@ -32,6 +32,7 @@ export const Register = () => {
         if (data.registered == false) {
           setError(data.msg);
         } else if (data.registered == true) {
+          actions.verify();
           history.push("/userProfile");
         }
       } else {
