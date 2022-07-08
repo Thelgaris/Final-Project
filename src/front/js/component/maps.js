@@ -1,4 +1,3 @@
-
 import React, { useEffect, useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import {
@@ -40,8 +39,8 @@ export const Maps = () => {
 };
 
 const Map = () => {
-  const [lat, setLat] = useState(40.4303759999059);
-  const [lng, setLng] = useState(-3.7049425337888837);
+  const [lat, setLat] = useState(37.177338);
+  const [lng, setLng] = useState(-3.598557);
   const center = { lat, lng };
 
   return (
@@ -53,7 +52,17 @@ const Map = () => {
         mapContainerStyle={mapContainerStyle}
         options={options}
       >
-        <Marker position={{ lat, lng }} onClick={() => {}} />
+        <Marker
+          position={{ lat, lng }}
+          icon={{
+            path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+            scale: 4,
+            strokeColor: "#FF6347",
+            fillColor: "#FF6347",
+            fillOpacity: 1,
+            strokeWeight: 2,
+          }}
+        />
       </GoogleMap>
     </div>
   );
@@ -128,4 +137,3 @@ export const SearchPlaces = ({ setLat, setLng, setCity }) => {
     </div>
   );
 };
-
