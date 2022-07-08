@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { Context } from "../store/appContext";
 import {
   GoogleMap,
   useLoadScript,
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import { useState } from "react";
 import "../../styles/maps.css";
 import mapStyles from "./mapStyles";
 import PlacesAutocomplete from "react-places-autocomplete";
@@ -45,7 +45,7 @@ const Map = () => {
 
   return (
     <div className="container">
-      <SearchPlaces />
+      <SearchPlaces setLat={setLat} setLng={setLng} />
       <GoogleMap
         zoom={8}
         center={center}
@@ -58,26 +58,35 @@ const Map = () => {
   );
 };
 
-const SearchPlaces = () => {
+export const SearchPlaces = ({ setLat, setLng, setCity }) => {
+  const { store, actions } = useContext(Context);
   const [adress, setAdress] = useState("");
   const [coordinates, setCoordinates] = useState({
     lat: null,
     lng: null,
   });
 
+  useEffect(() => {
+    if (store.currentUser.detail) {
+      handleSelect(store.currentUser.detail.city);
+    }
+  }, [store.currentUser]);
+
   const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const ll = await getLatLng(results[0]);
     console.log(ll);
     setAdress(value);
+    if (setCity) {
+      setCity(value);
+    }
     setCoordinates(ll);
+    setLat(ll.lat);
+    setLng(ll.lng);
   };
 
   return (
     <div className="app">
-      <p>lat {coordinates.lat}</p>
-      <p>lng {coordinates.lng}</p>
-      <p>adress {adress}</p>
       <PlacesAutocomplete
         value={adress}
         onChange={setAdress}

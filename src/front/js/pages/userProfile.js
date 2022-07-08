@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 import { Sportmodal } from "../component/sportmodal";
-
+import { SearchPlaces } from "../component/maps";
 export const UserProfile = () => {
   const history = useHistory();
   const [user, setUser] = useState({ gender: "Hombre", sports: [] });
@@ -86,15 +86,7 @@ export const UserProfile = () => {
               <option value={"Hombre"}>Hombre</option>
               <option value={"Mujer"}>Mujer</option>
             </select>
-            <input
-              id="city"
-              type="text"
-              className="form-control text-center w-25 mx-auto"
-              onChange={(e) => setUser({ ...user, city: e.target.value })}
-              placeholder="Ciudad"
-              aria-label="City"
-              aria-describedby="basic-addon1"
-            />
+            <SearchPlaces setCity={(e) => setUser({ ...user, city: e })} />
             <div>
               <Sportmodal
                 setSport={(e) => {
