@@ -31,10 +31,36 @@ const markers = [
     name: "Playa de La Caleta",
     position: { lat: 36.529961107451825, lng: -6.305780270565639 },
   },
+
   {
-    id: 4,
-    name: "Polideportivo La Mirandilla, Campo del Sur",
-    position: { lat: 36.52763867174823, lng: -6.292638137754715 },
+    id: 5,
+    name: "Colegio Esclavas SCJ Cádiz",
+    position: { lat: 36.51931424934137, lng: -6.2842543819317624 },
+  },
+  {
+    id: 6,
+    name: "Playa de Santa María del Mar",
+    position: { lat: 36.51808561914489, lng: -6.28502678310053 },
+  },
+  {
+    id: 7,
+    name: "Playa de Santa María del Mar",
+    position: { lat: 36.499480773900835, lng: -6.273678958126187 },
+  },
+  {
+    id: 8,
+    name: "Complejo Deportivo Ciudad de Cádiz",
+    position: { lat: 36.498146073305236, lng: -6.270549028518058 },
+  },
+  {
+    id: 9,
+    name: "Campo Hondo",
+    position: { lat: 36.52547817728699, lng: -6.288277607071894 },
+  },
+  {
+    id: 10,
+    name: "Playa de la Cortadura",
+    position: { lat: 36.489876759076694, lng: -6.26844052005614 },
   },
 ];
 
