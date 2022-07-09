@@ -7,3 +7,9 @@
   margin: 0;
   padding: 0;
 }
+.searchBox {
+  background-color: aquamarine;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
