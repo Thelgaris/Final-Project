@@ -21,16 +21,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       logged: false,
     },
     actions: {
-      getLocations: async () => {
-        const resp = await fetch(getStore().url + "/user", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
-        setStore({ users: data.response });
+      getMarkers: async () => {
+        const response = await fetch(getStore().nexMarkers);
+        const dataMarkers = await response.json();
+        setStore({ nextMarkers: dataMarkers.next });
+        let arrayMarkers = [];
+        for (let i = 0; i < dataMarkers.results.length; i++) {
+          const prueba = await getActions().getMarkersInfo(
+            dataMarkers.results[i].id
+          );
+          arrayMarkers.push(prueba);
+        }
+        setStore({ markers: [...getStore().markers.concat(arrayMarkers)] });
       },
       getUsers: async () => {
         const resp = await fetch(getStore().url + "/user", {

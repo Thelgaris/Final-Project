@@ -88,11 +88,10 @@ export const Maps = () => {
 };
 
 const Map = () => {
-  const [lat, setLat] = useState(40.4303759999059);
-  const [lng, setLng] = useState(-3.7049425337888837);
+  const [lat, setLat] = useState(37.177338);
+  const [lng, setLng] = useState(-3.598557);
   const center = { lat, lng };
   const [activeMarker, setActiveMarker] = useState(null);
-
   const handleActiveMarker = (marker) => {
     if (marker === activeMarker) {
       return;
@@ -108,11 +107,9 @@ const Map = () => {
 
   return (
     <div className="container">
-      <div className="searchBox">
-        <SearchPlaces setLat={setLat} setLng={setLng} />
-      </div>
+      <SearchPlaces setLat={setLat} setLng={setLng} />
       <GoogleMap
-        zoom={10}
+        zoom={8}
         center={center}
         mapContainerStyle={mapContainerStyle}
         options={options}
@@ -122,11 +119,8 @@ const Map = () => {
         {markers.map(({ id, name, position }) => (
           <Marker
             key={id}
-            center={position}
             position={position}
-            onClick={() => {
-              handleActiveMarker(id);
-            }}
+            onClick={() => handleActiveMarker(id)}
             icon={{
               path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
               scale: 4,
