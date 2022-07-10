@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       users: [],
       sports: [],
+      locations: [],
       pistas: [],
       strava: [],
       events: [],
@@ -20,6 +21,17 @@ const getState = ({ getStore, getActions, setStore }) => {
       logged: false,
     },
     actions: {
+      getLocations: async () => {
+        const resp = await fetch(getStore().url + "/user", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@");
+        setStore({ users: data.response });
+      },
       getUsers: async () => {
         const resp = await fetch(getStore().url + "/user", {
           method: "GET",

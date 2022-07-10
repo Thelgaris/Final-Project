@@ -127,6 +127,14 @@ const Map = () => {
             onClick={() => {
               handleActiveMarker(id);
             }}
+            icon={{
+              path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+              scale: 4,
+              strokeColor: "#FF6347",
+              fillColor: "#FF6347",
+              fillOpacity: 1,
+              strokeWeight: 2,
+            }}
           >
             {activeMarker === id ? (
               <InfoWindow onCloseClick={() => setActiveMarker(null)}>
