@@ -35,7 +35,7 @@ export const Homepageafterlogin = () => {
         <div className="col-3 mt-4 d-grid">
           <StravaData />
         </div>
-        <div className="col-6 ">
+        <div className="col-6 mx-auto">
           <Maps />
         </div>
         <div className="col-2 mt-4">

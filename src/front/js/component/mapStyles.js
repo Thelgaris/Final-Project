@@ -1,16 +1,7 @@
 export default [
   {
-    featureType: "all",
-    elementType: "labels.text",
-    stylers: [
-      {
-        color: "#878787",
-      },
-    ],
-  },
-  {
-    featureType: "all",
-    elementType: "labels.text.stroke",
+    featureType: "administrative",
+    elementType: "labels",
     stylers: [
       {
         visibility: "off",
@@ -22,34 +13,88 @@ export default [
     elementType: "all",
     stylers: [
       {
-        color: "#f9f5ed",
+        visibility: "on",
       },
     ],
   },
   {
-    featureType: "road.highway",
+    featureType: "poi.attraction",
+    elementType: "labels",
+    stylers: [
+      {
+        visibility: "on",
+      },
+    ],
+  },
+  {
+    featureType: "poi.business",
     elementType: "all",
     stylers: [
       {
-        color: "#f5f5f5",
+        visibility: "on",
       },
     ],
   },
   {
-    featureType: "road.highway",
-    elementType: "geometry.stroke",
+    featureType: "poi.business",
+    elementType: "labels",
     stylers: [
       {
-        color: "#c9c9c9",
+        visibility: "on",
       },
     ],
   },
   {
-    featureType: "water",
+    featureType: "poi.business",
+    elementType: "labels.icon",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "poi.government",
+    elementType: "labels",
+    stylers: [
+      {
+        visibility: "on",
+      },
+    ],
+  },
+  {
+    featureType: "poi.school",
     elementType: "all",
     stylers: [
       {
-        color: "#aee0f4",
+        visibility: "on",
+      },
+    ],
+  },
+  {
+    featureType: "poi.school",
+    elementType: "labels",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
+  {
+    featureType: "road",
+    elementType: "all",
+    stylers: [
+      {
+        visibility: "on",
+      },
+    ],
+  },
+  {
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      {
+        visibility: "off",
       },
     ],
   },

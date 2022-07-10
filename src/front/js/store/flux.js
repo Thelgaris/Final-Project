@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       users: [],
       sports: [],
+      locations: [],
       pistas: [],
       strava: [],
       events: [],
@@ -12,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       currentUser: {},
       followers: [],
       following: [],
-      url: "https://3001-thelgaris-finalproject-xgsiog3kl72.ws-eu51.gitpod.io/api",
+      url: "https://3001-thelgaris-finalproject-tsgzgna9mz2.ws-eu53.gitpod.io/api",
       stravaUrl: "https://www.strava.com/oauth/authorize",
       getUserSports: [],
       setUserSports: [],
@@ -20,6 +21,19 @@ const getState = ({ getStore, getActions, setStore }) => {
       logged: false,
     },
     actions: {
+      getMarkers: async () => {
+        const response = await fetch(getStore().nexMarkers);
+        const dataMarkers = await response.json();
+        setStore({ nextMarkers: dataMarkers.next });
+        let arrayMarkers = [];
+        for (let i = 0; i < dataMarkers.results.length; i++) {
+          const prueba = await getActions().getMarkersInfo(
+            dataMarkers.results[i].id
+          );
+          arrayMarkers.push(prueba);
+        }
+        setStore({ markers: [...getStore().markers.concat(arrayMarkers)] });
+      },
       getUsers: async () => {
         const resp = await fetch(getStore().url + "/user", {
           method: "GET",
