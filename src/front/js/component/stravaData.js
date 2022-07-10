@@ -108,10 +108,10 @@ export const StravaData = () => {
             <div></div>
             <div>
               {" "}
-              <i class="fas fa-h1">{store.userEvents.length} Eventos</i>
+              <i className="fas fa-h1">{store.userEvents.length} Eventos</i>
             </div>
             <div>
-              <i class="fas fa-h1">14 Actividades</i>
+              <i className="fas fa-h1">14 Actividades</i>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ export const StravaData = () => {
               type="button "
               className="genbuttons btn btn-warning text-black"
             >
-              <i class="fas fa-h1">+ Info</i>
+              <i className="fas fa-h1">+ Info</i>
             </button>
           </Link>
         </div>

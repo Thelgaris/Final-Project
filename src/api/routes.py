@@ -85,7 +85,7 @@ def get_details():
 
 @api.route('/user', methods=['GET'])
 @jwt_required()
-def get_all_users():
+def get_users():
     print("@@@@@@@@@@@@@@@@@@@@@")
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
@@ -99,6 +99,8 @@ def get_all_users():
     users_serialized = list(map(lambda x: x.serialize(), suggested))
     print(suggested)
     return jsonify({"response": users_serialized}), 200
+
+
 
 
 @api.route('/pistas', methods=['GET'])
@@ -209,6 +211,19 @@ def add_followers():
     # db.session.commit()
   
     return jsonify({ "Follower added": True}), 200
+
+@api.route('/unFollow', methods=['PUT'])
+@jwt_required()
+def setUnfollow():
+   
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)      
+    body_user_id = request.json.get("id")
+    following = User.query.get(body_user_id)         
+    user.following.remove(following)
+    db.session.commit()
+  
+    return jsonify({"User unfollowed": True}), 200
 
 
 @api.route('/editprofile', methods=['PUT'])

@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       currentUser: {},
       userFollowers: [],
       userFollowing: [],
-      url: "https://3001-thelgaris-finalproject-wb69ezb9ho2.ws-eu51.gitpod.io/api",
+      url: "https://3001-thelgaris-finalproject-1brlwez3cza.ws-eu53.gitpod.io/api",
       stravaUrl: "https://www.strava.com/oauth/authorize",
       getUserSports: [],
       setUserSports: [],
@@ -221,13 +221,27 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       setFollowers: async (id) => {
-        // const store = getStore();
-        // if (!store.currentUser.following.includes(user)) {
-        //   setStore([store.currentUser.following, user]);
-        // } else {
-        //   setStore([store.currentUser.following.filter((all) => all != user)]);
-        // }
         const resp = await fetch(getStore().url + "/followers", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+          body: JSON.stringify({ id: id }),
+        });
+        const data = await resp.json();
+        if (resp.ok) {
+          getActions().getUsers();
+          getActions().getCurrentUser();
+
+          return true;
+        } else {
+          return false;
+        }
+      },
+
+      setUnFollow: async (id) => {
+        const resp = await fetch(getStore().url + "/unFollow", {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

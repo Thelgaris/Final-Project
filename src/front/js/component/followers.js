@@ -32,7 +32,7 @@ export const Followers = () => {
               setShowModalZ(false);
             }}
           >
-            <i class="fas fa-sm"> Seguidores</i>
+            <i className="fas fa-sm"> Seguidores</i>
           </button>
         </li>
         <li className="nav-item w-auto" role="presentation">
@@ -50,7 +50,7 @@ export const Followers = () => {
               setShowModalZ(false);
             }}
           >
-            <i class="fas fa-sm"> Siguiendo</i>
+            <i className="fas fa-sm"> Siguiendo</i>
           </button>
         </li>
         <li className="nav-item w-auto" role="presentation">
@@ -68,7 +68,7 @@ export const Followers = () => {
               setShowModalZ(!showModalZ);
             }}
           >
-            <i class="fas fa-sm"> Sugeridos</i>
+            <i className="fas fa-sm"> Sugeridos</i>
           </button>
         </li>
       </ul>
@@ -85,7 +85,7 @@ export const Followers = () => {
                   <div
                     id={X.id}
                     className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
-                    style={{ width: "12rem", height: "8rem" }}
+                    style={{ width: "14rem", height: "8rem" }}
                     key={X.id}
                   >
                     <img
@@ -109,17 +109,17 @@ export const Followers = () => {
                             actions.setFollowers(X.id);
                           }}
                         >
-                          <i class="fas fa-sm"> Follow</i>
+                          <i className="fas fa-sm"> Follow</i>
                         </button>
                       ) : (
                         <button
                           href="#"
                           className="btn-sm btn-warning genbuttons w-100 rounded-3"
                           onClick={(e) => {
-                            actions.setFollowers(X.id);
+                            actions.setUnFollow(X.id);
                           }}
                         >
-                          <i class="fas fa"> Unfollow</i>
+                          <i className="fas fa"> Unfollow</i>
                         </button>
                       )}
                     </div>
@@ -142,7 +142,7 @@ export const Followers = () => {
                     className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
                     id={Y.id}
                     style={{
-                      width: "12rem",
+                      width: "14rem",
                       height: "8rem",
                     }}
                     key={Y.id}
@@ -158,15 +158,17 @@ export const Followers = () => {
                         className="card-title justify-content-center text-center"
                         style={{ height: "2em" }}
                       >
-                        <i class="fas fa-sm">{Y.name}</i>
+                        <i className="fas fa-sm">{Y.name}</i>
                       </p>
 
                       <button
                         href="#"
                         className="btn-sm btn-warning genbuttons w-100 rounded-3"
-                        onClick={() => {}}
+                        onClick={() => {
+                          actions.setUnFollow(Y.id);
+                        }}
                       >
-                        <i class="fas fa-sm">Unfollow</i>
+                        <i className="fas fa-sm">Unfollow</i>
                       </button>
                     </div>
                   </div>
@@ -192,7 +194,7 @@ export const Followers = () => {
                       className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 ms-5 perfil"
                       id="suggestionsList"
                       key={Z.id}
-                      style={{ width: "12rem", height: "6rem" }}
+                      style={{ width: "14rem", height: "6rem" }}
                     >
                       <img
                         src="https://picsum.photos/300/200"
@@ -209,7 +211,7 @@ export const Followers = () => {
                             className="card-title justify-content-center text-center"
                             style={{ height: "2em" }}
                           >
-                            <i class="fas fa-sm">{Z.detail.name}</i>
+                            <i className="fas fa-sm">{Z.detail.name}</i>
                           </p>
                           {/* { !store.users.map ((e)=> e.id).includes(Z.id) ? : */}
                           <button
@@ -219,7 +221,7 @@ export const Followers = () => {
                               actions.setFollowers(Z.id);
                             }}
                           >
-                            <i class="fas fa-sm">Follow</i>
+                            <i className="fas fa-sm">Follow</i>
                           </button>
                         </div>
                       </div>
