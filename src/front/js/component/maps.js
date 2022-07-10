@@ -33,34 +33,89 @@ const markers = [
   },
 
   {
-    id: 5,
+    id: 4,
     name: "Colegio Esclavas SCJ Cádiz",
     position: { lat: 36.51931424934137, lng: -6.2842543819317624 },
   },
   {
-    id: 6,
+    id: 5,
     name: "Playa de Santa María del Mar",
     position: { lat: 36.51808561914489, lng: -6.28502678310053 },
   },
   {
-    id: 7,
+    id: 6,
     name: "Playa de Santa María del Mar",
     position: { lat: 36.499480773900835, lng: -6.273678958126187 },
   },
   {
-    id: 8,
+    id: 7,
     name: "Complejo Deportivo Ciudad de Cádiz",
     position: { lat: 36.498146073305236, lng: -6.270549028518058 },
   },
   {
-    id: 9,
+    id: 8,
     name: "Campo Hondo",
     position: { lat: 36.52547817728699, lng: -6.288277607071894 },
   },
   {
-    id: 10,
+    id: 9,
     name: "Playa de la Cortadura",
     position: { lat: 36.489876759076694, lng: -6.26844052005614 },
+  },
+  {
+    id: 10,
+    name: "Complejo Deportivo Nuñez Blanca Zaidín",
+    position: { lat: 37.15959750553048, lng: -3.5942230944367113 },
+  },
+  {
+    id: 11,
+    name: "	Pistas Polideportivas La Argentinita",
+    position: { lat: 37.20068181271543, lng: -3.6145395065821893 },
+  },
+  {
+    id: 12,
+    name: "Complejo Deportivo Chana",
+    position: { lat: 37.196554187256446, lng: -3.628433313457702 },
+  },
+  {
+    id: 13,
+    name: "Centro de Actividades Deportivas UGR (Paseillos)",
+    position: { lat: 37.183330915636084, lng: -3.608608402739702 },
+  },
+  {
+    id: 14,
+    name: "Pista deportiv Bola de Oro",
+    position: { lat: 37.16539492606441, lng: -3.5833971026469036 },
+  },
+  {
+    id: 15,
+    name: "Pistas deportivas Cruz de Lagos",
+    position: { lat: 37.159869181656994, lng: -3.602617886750501 },
+  },
+  {
+    id: 16,
+    name: "Roller Club",
+    position: { lat: 37.159512465768856, lng: -3.582737040065961 },
+  },
+  {
+    id: 17,
+    name: "Estadio de la Juventud",
+    position: { lat: 37.1855646922307, lng: -3.6170081800619895 },
+  },
+  {
+    id: 18,
+    name: "Pistas de Baloncesto 1",
+    position: { lat: 37.196808333432, lng: -3.6115372192286257 },
+  },
+  {
+    id: 19,
+    name: "Pistas de Baloncesto 2",
+    position: { lat: 37.200691615328516, lng: -3.6191748720317434 },
+  },
+  {
+    id: 20,
+    name: "Pistas de Baloncesto 3",
+    position: { lat: 37.18994348372912, lng: -3.5982516924027173 },
   },
 ];
 
@@ -109,7 +164,7 @@ const Map = () => {
     <div className="container">
       <SearchPlaces setLat={setLat} setLng={setLng} />
       <GoogleMap
-        zoom={8}
+        zoom={10}
         center={center}
         mapContainerStyle={mapContainerStyle}
         options={options}
