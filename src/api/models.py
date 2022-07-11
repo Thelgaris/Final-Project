@@ -162,6 +162,7 @@ class Events(db.Model):
             "time": self.time,
             "description": self.description,
             "participants": len(self.user_events), #lista de userevents que nos trae los usuarios y con el len los contamos
+            
             "photo": self.photo,
         }
 
@@ -174,7 +175,8 @@ class UserEvents(db.Model):
     
     def serialize(self):
         return {
-            "id": self.id,                
+            "id": self.id,
+                            
         }
 
 

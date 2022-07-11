@@ -110,9 +110,7 @@ def get_strava():
     user = User.query.get(user_id)
    
   
-#     # users_serialized = list(map(lambda x: x.serialize(), suggested))
-   
-#     # return jsonify({"response": users_serialized}), 200
+
 
 
 
@@ -146,6 +144,19 @@ def get_userCity():
     city = Details.query.filter_by(city=user.detail.city)
     city_serialized = list(map(lambda x: x.serialize(), city))
     return jsonify({"response": city_serialized}), 200
+
+@api.route('/participants', methods=['GET'])
+@jwt_required()
+def get_Eventsparticipants():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    
+   
+    users = UserEvents.query.get(users=user.detail.name).all()
+    print("11111111111111@@@@@@@@@@@@@@@@@")
+    print(users)
+    users_serialized = list(map(lambda x: x.serialize(), users))
+    return jsonify({"response": user_serialized}), 200
 
 @api.route('/events', methods=['POST'])
 @jwt_required()
