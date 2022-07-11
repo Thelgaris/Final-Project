@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { StravaConnect } from "./stravaConnect";
 
 export const StravaData = () => {
   const { store, actions } = useContext(Context);
@@ -124,6 +125,7 @@ export const StravaData = () => {
               <i className="fas fa-h1">+ Info</i>
             </button>
           </Link>
+          <StravaConnect />
         </div>
       </div>
     </div>

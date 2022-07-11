@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       users: [],
       sports: [],
       pistas: [],
-      strava: [],
+      strava: {},
       events: [],
       province: [],
       userEvents: [],
@@ -15,7 +15,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       userFollowers: [],
       userFollowing: [],
       url: "https://3001-thelgaris-finalproject-1brlwez3cza.ws-eu53.gitpod.io/api",
-      stravaUrl: "https://www.strava.com/oauth/authorize",
+      stravaAuth: "https://www.strava.com/oauth/authorize",
+      stravaAthlete: "https://www.strava.com/api/v3/athlete",
       getUserSports: [],
       setUserSports: [],
       user_id: null,
@@ -258,6 +259,36 @@ const getState = ({ getStore, getActions, setStore }) => {
         } else {
           return false;
         }
+      },
+
+      // getStrava: async () => {
+      //   const resp = await fetch(getStore().stravaAthlete + "/strava", {
+      //     method: "GET",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: "Bearer " + localStorage.getItem("access_token"),
+      //     },
+      //   });
+      //   const data = await resp.json();
+
+      //   setStore({
+      //     strava: data.response,
+      //   });
+      // },
+
+      getStrava1: async () => {
+        const resp = await fetch(getStore().stravaAuth + "/strava", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+        });
+        const data = await resp.json();
+
+        setStore({
+          strava: data.response,
+        });
       },
 
       verify: async () => {

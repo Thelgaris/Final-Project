@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Sports, Details, Pistas, Events, UserEvents, UserSports
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+
 """ import cloudinary
 import cloudinary.uploader """
 
@@ -86,7 +87,7 @@ def get_details():
 @api.route('/user', methods=['GET'])
 @jwt_required()
 def get_users():
-    print("@@@@@@@@@@@@@@@@@@@@@")
+    
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
     users = User.query.filter(User.id != user_id).all()
@@ -97,8 +98,21 @@ def get_users():
         if u not in user.following:
             suggested.append(u)
     users_serialized = list(map(lambda x: x.serialize(), suggested))
-    print(suggested)
+  
     return jsonify({"response": users_serialized}), 200
+
+
+@api.route('/strava', methods=['GET'])
+@jwt_required()
+def get_strava():
+    print("@@@@@@@@@@@@@@@@@@@@@")
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+   
+  
+#     # users_serialized = list(map(lambda x: x.serialize(), suggested))
+   
+#     # return jsonify({"response": users_serialized}), 200
 
 
 

@@ -48,7 +48,7 @@ export const EventInfo = () => {
                     <div className="modal-dialog border-0">
                       <div className="modal-content border-0">
                         <div className="modal-header border-0 d-flex gradient">
-                          <i class="fas fa-h1 ms-2">{event.name}</i>
+                          <i className="fas fa-h1 ms-2">{event.name}</i>
                           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             {!store.userEvents
                               .map((e) => e.id)
@@ -61,7 +61,7 @@ export const EventInfo = () => {
                                     setShowModal(null);
                                 }}
                               >
-                                <i class="fas fa-h1">Join</i>
+                                <i className="fas fa-h1">Join</i>
                               </button>
                             ) : (
                               <button
@@ -72,7 +72,7 @@ export const EventInfo = () => {
                                     setShowModal(null);
                                 }}
                               >
-                                <i class="fas fa-h1">Unjoin Event</i>
+                                <i className="fas fa-h1">Unjoin</i>
                               </button>
                             )}
                             <button
@@ -82,7 +82,7 @@ export const EventInfo = () => {
                                 setShowModal(null);
                               }}
                             >
-                              <i class="fas fa-h1">X</i>
+                              <i className="fas fa-h1">X</i>
                             </button>
                           </div>
                         </div>

@@ -6,6 +6,8 @@ import { Homepageafterlogin } from "./pages/homepageafterlogin";
 import { Profile } from "./pages/profile";
 import { Login } from "./pages/login";
 import { Register } from "./pages/register";
+import { YourDistance } from "./pages/yourDistance";
+// import { StravaRedirect } from "./pages/stravaRedirect";
 import { UserProfile } from "./pages/userProfile";
 import { NuestraWeb } from "./pages/nuestraWeb";
 import injectContext from "./store/appContext";
@@ -38,6 +40,12 @@ const Layout = () => {
           <Route exact path="/homepageafterlogin">
             <Homepageafterlogin />
           </Route>
+          <Route exact path="/yourDistance">
+            <YourDistance />
+          </Route>
+          {/* <Route exact path="/stravaRedirect">
+            <StravaRedirect />
+          </Route> */}
           <Route exact path="/userProfile">
             <UserProfile />
           </Route>

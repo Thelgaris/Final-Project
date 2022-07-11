@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const YourDistance = ({ user, returnTokens }) => {
+export const YourDistance = ({ user, returnTokens }) => {
   return (
     <div>
       <h1>Hi, {returnTokens.athlete.firstname}!</h1>
