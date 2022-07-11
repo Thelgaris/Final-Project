@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       sports: [],
       locations: [],
       pistas: [],
+      cityPistas: [],
       strava: [],
       events: [],
       userEvents: [],
@@ -21,19 +22,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       logged: false,
     },
     actions: {
-      getMarkers: async () => {
-        const response = await fetch(getStore().nexMarkers);
-        const dataMarkers = await response.json();
-        setStore({ nextMarkers: dataMarkers.next });
-        let arrayMarkers = [];
-        for (let i = 0; i < dataMarkers.results.length; i++) {
-          const prueba = await getActions().getMarkersInfo(
-            dataMarkers.results[i].id
-          );
-          arrayMarkers.push(prueba);
-        }
-        setStore({ markers: [...getStore().markers.concat(arrayMarkers)] });
-      },
       getUsers: async () => {
         const resp = await fetch(getStore().url + "/user", {
           method: "GET",
@@ -78,6 +66,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@");
         setStore({ pistas: data.response });
+      },
+
+      getCityPistas: async () => {
+        const resp = await fetch(getStore().url + "/userCityPistas", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@PISTAS@@@@@@");
+        setStore({ cityPistas: data.response });
       },
 
       getEvents: async () => {

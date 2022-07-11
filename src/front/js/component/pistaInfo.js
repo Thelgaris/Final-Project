@@ -8,13 +8,13 @@ export const PistaInfo = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    actions.getPistas();
+    actions.getCityPistas();
   }, []);
 
   return (
     <div className="container">
       <div className="row d-flex justfy-content-center">
-        {store.pistas.map((pista) => {
+        {store.cityPistas.map((pista) => {
           return (
             <div className="col-12 " key={pista.id}>
               <button

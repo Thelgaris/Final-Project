@@ -109,6 +109,15 @@ def get_all_pistas():
     pistas_serialized = list(map(lambda x: x.serialize(), pistas))
     return jsonify({"response": pistas_serialized}), 200
 
+@api.route('/userCityPistas', methods=['GET'])
+@jwt_required()
+def get_userCityPistas():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    details_city = Pistas.query.filter_by(city=user.detail.city)
+    city_serialized = list(map(lambda x: x.serialize(), details_city))
+    return jsonify({"response": city_serialized}), 200
+
 @api.route('/events', methods=['GET'])
 def get_all_events():
     events = Events.query.all()
