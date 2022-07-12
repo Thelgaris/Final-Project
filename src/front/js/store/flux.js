@@ -12,6 +12,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       userParticipants: [],
       userSports: [],
       currentUser: {},
+      followers: [],
+      following: [],
       userFollowers: [],
       userFollowing: [],
       url: "https://3001-thelgaris-finalproject-1brlwez3cza.ws-eu53.gitpod.io/api",
