@@ -3,13 +3,12 @@ import { Link, useHistory } from "react-router-dom";
 import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 import { Sportmodal } from "../component/sportmodal";
-
+import { SearchPlaces } from "../component/maps";
 export const UserProfile = () => {
   const history = useHistory();
   const [user, setUser] = useState({ gender: "Hombre", sports: [] });
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
-  const [files, setFiles] = useState(null);
 
   useEffect(() => {
     actions.getSports();
@@ -116,6 +115,7 @@ export const UserProfile = () => {
               aria-label="City"
               aria-describedby="basic-addon1"
             />
+            <SearchPlaces setCity={(e) => setUser({ ...user, city: e })} />
             <div>
               <Sportmodal
                 setSport={(e) => {

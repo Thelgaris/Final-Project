@@ -11,84 +11,75 @@ export const Navbar = () => {
   const sendToLoginPage = async () => {
     if (store.logged) {
       localStorage.removeItem("access_token");
+      actions.verify();
       history.push("/login");
     }
   };
 
   return (
-    <nav className="navbar navbar-expand-lg sticky-top navbar-light ">
-      <div className="container-fluid ">
-        <Link to="/" className="navbarlink text-decoration-none">
-          <div>
-            {" "}
-            <img
-              src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_register_design/docs/assets/logo2.png?raw=true"
-              style={{ height: "80px", width: "80px" }}
-            />
-          </div>
-
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+    <nav className="navbar navbar-expand-sm sticky-top navbar-light bg-light">
+      <div className="container-fluid">
+        <Link to="/" className="navbarlink">
+          <h1 className="navbar-brand " href="#">
+            PICKATEAM
+          </h1>
         </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
         <form className="d-flex">
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Buscar ciudad"
-              aria-label="Search"
-            />
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <Link to="/login" className="navbarlink  text-decoration-none">
-                <li className="nav-item">
-                  <span
-                    className="nav-link active"
-                    aria-current="page"
-                    href="#"
+              {store.logged ? (
+                <Link to="/login" className="navbarlink  text-decoration-none">
+                  <li className="nav-item">
+                    <span
+                      className="nav-link active"
+                      aria-current="page"
+                      href="#"
+                      onClick={() => sendToLoginPage()}
+                    >
+                      Logout
+                    </span>
+                  </li>
+                </Link>
+              ) : (
+                <div>
+                  <Link
+                    to="/login"
+                    className="navbarlink  text-decoration-none"
                   >
-                    Login
-                  </span>
-                </li>
-              </Link>
-              <Link to="/login" className="navbarlink  text-decoration-none">
-                <li className="nav-item">
-                  <span
-                    className="nav-link active"
-                    aria-current="page"
-                    href="#"
-                    onClick={() => sendToLoginPage()}
+                    <li className="nav-item">
+                      <span
+                        className="nav-link active"
+                        aria-current="page"
+                        href="#"
+                      >
+                        Login
+                      </span>
+                    </li>
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="navbarlink  text-decoration-none"
                   >
-                    Logout
-                  </span>
-                </li>
-              </Link>
-              <Link to="/login" className="navbarlink  text-decoration-none">
-                <li className="nav-item">
-                  <span
-                    className="nav-link active"
-                    aria-current="page"
-                    href="#"
-                  >
-                    Login
-                  </span>
-                </li>
-              </Link>
-              <Link to="/register" className="navbarlink  text-decoration-none">
-                <li className="nav-item">
-                  <span className="nav-link" href="#">
-                    Registrate
-                  </span>
-                </li>
-              </Link>
+                    <li className="nav-item">
+                      <span className="nav-link" href="#">
+                        Registrate
+                      </span>
+                    </li>
+                  </Link>
+                </div>
+              )}
             </ul>
           </div>
         </form>

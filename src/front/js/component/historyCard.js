@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 
 export const HistoryCard = () => {
   return (
-    <div className="container mt-5 d-flex justify-content-center">
+    <div
+      className="container mt-5 d-flex justify-content-center h-auto"
+      style={{ width: "36rem" }}
+    >
       <div className="card mb-3">
         <img
           src="https://picsum.photos/seed/picsum/600/300"

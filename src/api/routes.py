@@ -68,6 +68,8 @@ def update_details():
             user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender, profile_image_url=body_profile_image_url)
             db.session.add(user_details)
             db.session.commit()
+            user.detail=user_details
+            db.session.commit()
             for sport_name in body_sports:
                 sport = Sports.query.filter_by(name = sport_name).first()
                 user_sports = UserSports(user=user, sports=sport)
@@ -106,6 +108,15 @@ def get_all_pistas():
     pistas = Pistas.query.all()
     pistas_serialized = list(map(lambda x: x.serialize(), pistas))
     return jsonify({"response": pistas_serialized}), 200
+
+@api.route('/userCityPistas', methods=['GET'])
+@jwt_required()
+def get_userCityPistas():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    details_city = Pistas.query.filter_by(city=user.detail.city)
+    city_serialized = list(map(lambda x: x.serialize(), details_city))
+    return jsonify({"response": city_serialized}), 200
 
 @api.route('/events', methods=['GET'])
 def get_all_events():
