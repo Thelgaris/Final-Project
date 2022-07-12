@@ -44,20 +44,37 @@ export const UserProfile = () => {
           </div>
         </div>
       </div>
-      <div className="button-container">
+      <div className="container card d-block mx-auto border-0">
         <img
           className="avatar mt-4 mb-4"
           src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt=""
         />
+        <div className="card-img-overlay ">
+          <form>
+            <div
+              className="row align-items-end uploadImage mb-3 "
+              id="src-file"
+            >
+              <input
+                className=" mb-2"
+                name="src-file"
+                type="file"
+                onChange={(e) =>
+                  setUser({ ...user, profile_image_url: e.target.files[0] })
+                }
+              />
+            </div>
+          </form>
+        </div>
       </div>
       <div className="container">
-        <div className="row mx-auto">
-          <div className="d-grid gap-4 col-lg-12 col-sm align-self-center mb-3">
+        <div className="col-auto mx-auto">
+          <div className="d-grid col-auto gap-4 mx-auto mb-3">
             <input
               id="name"
               type="text"
-              className="form-control text-center w-25 mx-auto"
+              className="form-control inputWidth text-center  mx-auto"
               onChange={(e) => setUser({ ...user, name: e.target.value })}
               placeholder="Nombre"
               aria-label="Name"
@@ -66,7 +83,7 @@ export const UserProfile = () => {
             <input
               id="surname"
               type="select"
-              className="form-control text-center w-25 mx-auto"
+              className="form-control inputWidth text-center mx-auto"
               onChange={(e) => setUser({ ...user, surname: e.target.value })}
               placeholder="Apellidos"
               aria-label="surname"
@@ -75,20 +92,29 @@ export const UserProfile = () => {
             <input
               id="birth"
               type="date"
-              className="birth form-control text-center w-25 mx-auto"
+              className="birth form-control inputWidth text-center mx-auto"
               onChange={(e) => setUser({ ...user, birth: e.target.value })}
               placeholder="Birth"
               aria-label="Birth"
               aria-describedby="basic-addon1"
             />
             <select
-              className="text-center w-25 mx-auto"
+              className="text-center inputWidth mx-auto"
               defaultValue={"h"}
               onChange={(e) => setUser({ ...user, gender: e.target.value })}
             >
               <option value={"Hombre"}>Hombre</option>
               <option value={"Mujer"}>Mujer</option>
             </select>
+            <input
+              id="city"
+              type="text"
+              className="form-control inputWidth text-center mx-auto"
+              onChange={(e) => setUser({ ...user, city: e.target.value })}
+              placeholder="Ciudad"
+              aria-label="City"
+              aria-describedby="basic-addon1"
+            />
             <SearchPlaces setCity={(e) => setUser({ ...user, city: e })} />
             <div>
               <Sportmodal
@@ -108,7 +134,7 @@ export const UserProfile = () => {
             </div>
             <button
               type="button"
-              className="btn save-btn text-white mt-2 w-25 mx-auto"
+              className="btn save-btn text-white mt-2 mx-auto"
               onClick={() => sendUserInfo()}
             >
               Guardar

@@ -4,9 +4,14 @@ import { Context } from "../store/appContext";
 
 export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
+  const [date, setDate] = useState(
+    new Date().toLocaleString("en-US").split(",")[0]
+  );
   const [showModal, setShowModal] = useState([]);
   const { store, actions } = useContext(Context);
-  let history = useHistory();
+
+  const today = new Date();
+
   useEffect(() => {
     actions.getSports();
     actions.getEvents();
@@ -16,18 +21,18 @@ export const CreateEventBtn = () => {
     <div>
       <button
         type="button"
-        className="btn btn-warning"
+        className="btn btn-warning genbuttons text-white"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
         onClick={() => {
           setShowModal != null;
         }}
       >
-        Crear evento
+        <i className="fas fa-h1">Crear evento</i>
       </button>
 
       {showModal != null ? (
-        <div className="modal fade" id="exampleModal" tabIndex="-1">
+        <div className="modal " id="exampleModal" tabIndex="-1">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header  d-flex d-inline row">
@@ -67,10 +72,8 @@ export const CreateEventBtn = () => {
                       setUserEvents({ ...userEvents, city: e.target.value });
                     }}
                   >
-                    <option></option>
-                    <option>Barcelona</option>
-                    <option>Cadiz</option>
-                    <option>Granada</option>
+                    <option></option>;<option>Barcelona</option>;
+                    <option>Cadiz</option>;
                   </select>
                 </div>
 
@@ -136,13 +139,22 @@ export const CreateEventBtn = () => {
                   >
                     Fecha
                   </label>
+
+                  {/* <div class="modal-dialog modal-dialog-centered">
+                    <Calendar />
+                  </div> */}
+
                   <input
                     className="w-75 border-2 border border-light rounded ps-2 pe-2"
                     type="date"
+                    value={date}
+                    mindate={today}
                     onChange={(e) => {
+                      setDate(e.target.value);
+                      console.log(date);
                       setUserEvents({ ...userEvents, date: e.target.value });
                     }}
-                  />
+                  ></input>
                 </div>
                 <div className="input-group mb-3">
                   <label
@@ -185,8 +197,8 @@ export const CreateEventBtn = () => {
                 <button
                   type="button"
                   className="btn btn-warning w-50 content-center"
-                  onClick={() => {
-                    actions.setEvents(userEvents);
+                  onClick={async () => {
+                    await actions.setEvents(userEvents);
                     setShowModal(null);
                   }}
                 >

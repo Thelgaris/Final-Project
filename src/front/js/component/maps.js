@@ -161,7 +161,7 @@ const Map = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container map1">
       <SearchPlaces setLat={setLat} setLng={setLng} />
       <GoogleMap
         zoom={10}
@@ -192,6 +192,17 @@ const Map = () => {
             ) : null}
           </Marker>
         ))}
+        <Marker
+          position={{ lat, lng }}
+          icon={{
+            path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+            scale: 4,
+            strokeColor: "#FF6347",
+            fillColor: "#FF6347",
+            fillOpacity: 1,
+            strokeWeight: 2,
+          }}
+        />
       </GoogleMap>
     </div>
   );
