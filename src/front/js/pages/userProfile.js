@@ -128,21 +128,13 @@ export const UserProfile = () => {
               aria-describedby="basic-addon1"
             />
             <div>
-              <Sportmodal
-                setSport={(e) => {
-                  if (!sport.includes(e)) {
-                    setSport([...sport, e]);
-                  } else {
-                    setSport(sport.filter((i) => e != i));
-                  }
-                }}
-              />
+              <Sportmodal />
             </div>
             <button
               type="button"
               className="btn save-btn text-white mt-2 w-25 mx-auto"
-              onClick={(user, Usport) => {
-                sendUserInfo(user), actions.setUserSports(Usport);
+              onClick={() => {
+                sendUserInfo();
               }}
             >
               Guardar

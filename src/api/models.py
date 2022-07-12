@@ -7,6 +7,17 @@ user_following = db.Table(
     db.Column('user_id', db.Integer, db.ForeignKey("user.id"), primary_key=True),
     db.Column('following_id', db.Integer, db.ForeignKey("user.id"), primary_key=True)
 )
+
+    # followers = db.Table('followers',
+    #     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+    #     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+    # )
+
+ # followed = db.relationship(
+    #     'User', secondary=followers,
+    #     primaryjoin=(followers.c.follower_id == id),
+    #     secondaryjoin=(followers.c.followed_id == id),
+    #     backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
    
 
 class User(db.Model):
@@ -30,7 +41,7 @@ class User(db.Model):
 
     def serialize(self):
        
-       
+        print(self.followers)
         return {
             "id": self.id,
             "email": self.email,
@@ -40,10 +51,11 @@ class User(db.Model):
             "events": list(map(lambda event:event.events.serialize(), self.events)) if self.events is not None else [],
             # "followings": len(self.following),
             # "followers": len(self.followers),  
-            "followings": list(map(lambda following:following.id, self.following)) if self.following is not None else [],
-            "followers": list(map(lambda followers:followers.id, self.followers)) if self.followers is not None else [],
+            "followings": list(map(lambda following:{"id": following.id, "name": following.detail.name}, self.following)) if self.following is not None else [],
+            "followers": list(map(lambda follower:{"id": follower.id, "name": follower.detail.name}, self.followers)) if self.followers is not None else [],
 
         }
+
 
 # class UserFollowers(db.Model):
 #    id=db.Column(db.Integer, primary_key=True) 
@@ -148,6 +160,7 @@ class Events(db.Model):
             "time": self.time,
             "description": self.description,
             "participants": len(self.user_events), #lista de userevents que nos trae los usuarios y con el len los contamos
+            
             "photo": self.photo,
         }
 
@@ -160,7 +173,8 @@ class UserEvents(db.Model):
     
     def serialize(self):
         return {
-            "id": self.id,                
+            "id": self.id,
+                            
         }
 
 

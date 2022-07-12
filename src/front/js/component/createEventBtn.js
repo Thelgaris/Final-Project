@@ -12,6 +12,8 @@ export const CreateEventBtn = () => {
   const [showModal, setShowModal] = useState([]);
   const { store, actions } = useContext(Context);
 
+  const today = new Date();
+
   useEffect(() => {
     actions.getSports();
     actions.getEvents();
@@ -72,10 +74,8 @@ export const CreateEventBtn = () => {
                       setUserEvents({ ...userEvents, city: e.target.value });
                     }}
                   >
-                    <option></option>
-                    <option>Barcelona</option>
-                    <option>Cadiz</option>
-                    <option>Granada</option>
+                    <option></option>;<option>Barcelona</option>;
+                    <option>Cadiz</option>;
                   </select>
                 </div>
 
@@ -150,7 +150,7 @@ export const CreateEventBtn = () => {
                     className="w-75 border-2 border border-light rounded ps-2 pe-2"
                     type="date"
                     value={date}
-                    mindate={new Date().toLocaleString("en-US")}
+                    mindate={today}
                     onChange={(e) => {
                       setDate(e.target.value);
                       console.log(date);

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { CreateEventBtn } from "./createEventBtn";
+import "../../styles/profile.css";
 
 export const EventsComponent = () => {
   const { store, actions } = useContext(Context);
@@ -18,7 +19,7 @@ export const EventsComponent = () => {
     >
       <div className="justify-content-center border-0 ">
         <div className="card row  border-0">
-          <div className="card-body col border-bottom">
+          <div className="card-body col border-bottom w-100 eventsTitle rounded-3">
             <h2 className="card-title ">
               <i className="fas fa-h1 ">Proximos eventos</i>
             </h2>
