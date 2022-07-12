@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       currentUser: {},
       userFollowers: [],
       userFollowing: [],
-      url: "https://3001-thelgaris-finalproject-1brlwez3cza.ws-eu53.gitpod.io/api",
+      url: "https://3001-thelgaris-finalproject-97poza1hmzc.ws-eu53.gitpod.io/api",
       stravaAuth: "https://www.strava.com/oauth/authorize",
       stravaAthlete: "https://www.strava.com/api/v3/athlete",
       getUserSports: [],
