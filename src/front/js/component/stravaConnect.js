@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Auth0Provider } from "@auth0/auth0-react";
+/* import { Auth0Provider } from "@auth0/auth0-react"; */
 
 export const StravaConnect = () => {
   const { REACT_APP_CLIENT_ID } = process.env;

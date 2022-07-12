@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
-import Calendar from "react-calendar";
-// import { Calendar } from "../component/calendar";
 
 export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});

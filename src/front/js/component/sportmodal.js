@@ -47,7 +47,9 @@ export const Sportmodal = ({ setSport }) => {
                         value={sport.id}
                         placeholder={sport.name}
                         id={sport.id}
-                        onClick={(e) => {}}
+                        onClick={() => {
+                          setSport(sport.name);
+                        }}
                       />
                       <label className="form-check-label">{sport.name}</label>
                     </div>
@@ -60,7 +62,6 @@ export const Sportmodal = ({ setSport }) => {
                 className="btn modalbtn2 btn-secondary "
                 data-bs-dismiss="modal"
                 type="submit"
-                onClick={(e) => {}}
               >
                 Guardar
               </button>

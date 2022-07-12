@@ -17,9 +17,7 @@ export const Participants = () => {
         onClick={() => {
           setShowModal(!showModal);
         }}
-      >
-        {E.participants}
-      </i>
+      ></i>
 
       {showModal == true ? (
         <div>

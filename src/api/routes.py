@@ -8,6 +8,7 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 import cloudinary
 import cloudinary.uploader 
 
+
 api = Blueprint('api', __name__)
 
 @api.route('/login',methods=['POST'])
@@ -27,7 +28,7 @@ def login_user():
 
 @api.route('/register', methods=['POST'])
 def register_user():
-    
+    print ('@@@@@@@@@@@@@@@@@@@@@')
     body_email = request.json.get("email")
     body_password = request.json.get("password")
     if body_email and body_password:
@@ -43,8 +44,8 @@ def register_user():
 @jwt_required()
 def update_details():
     print(request.form)
-    print(1)
     user_id = get_jwt_identity()
+    print(user_id)
     user = User.query.get(user_id)
     if user:
         print("@@@@@@@@@@@@@@@@@@2")
@@ -66,8 +67,6 @@ def update_details():
             print("@@@@@@@@@@@@@@@@4")
             user_details = Details(name=body_name, birth=body_birth, surname=body_surname, city=body_city, gender=body_gender, profile_image_url=body_profile_image_url)
             db.session.add(user_details)
-            user.detail = user_details
-            user.detail_id=user_details.id
             db.session.commit()
             user.detail=user_details
             db.session.commit()
@@ -76,12 +75,13 @@ def update_details():
                 user_sports = UserSports(user=user, sports=sport)
                 db.session.add(user_sports)
             db.session.commit()
-            print("@@@@@@@@@@@@@@@@@5")    
+            print("@@@@@@@@@@@@@@@@@5")
+            
             return jsonify({"details": user_details.serialize(), "Update": True}), 200
         else:
-            return jsonify({"Error": "Error"}), 400
+            return jsonify({"Error": "Error en userprofile1"}), 400
     else:
-        return jsonify({"Error": "Error"}), 400
+        return jsonify({"Error": "Error en userprofile2"}), 400
 
 
 @api.route('/sports', methods=['GET'])
@@ -98,29 +98,10 @@ def get_details():
 
 
 @api.route('/user', methods=['GET'])
-@jwt_required()
-def get_users():
-    
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    users = User.query.filter(User.id != user_id).all()
-    suggested = []
-    print(user.following)
-    for u in users:
-        print(u)
-        if u not in user.following:
-            suggested.append(u)
-    users_serialized = list(map(lambda x: x.serialize(), suggested))
-  
+def get_all_users():
+    users = User.query.all()
+    users_serialized = list(map(lambda x: x.serialize(), users))
     return jsonify({"response": users_serialized}), 200
-
-
-@api.route('/strava', methods=['GET'])
-@jwt_required()
-def get_strava():
-    print("@@@@@@@@@@@@@@@@@@@@@")
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
 
 @api.route('/pistas', methods=['GET'])
 def get_all_pistas():
@@ -128,12 +109,28 @@ def get_all_pistas():
     pistas_serialized = list(map(lambda x: x.serialize(), pistas))
     return jsonify({"response": pistas_serialized}), 200
 
+@api.route('/userCityPistas', methods=['GET'])
+@jwt_required()
+def get_userCityPistas():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    details_city = Pistas.query.filter_by(city=user.detail.city)
+    city_serialized = list(map(lambda x: x.serialize(), details_city))
+    return jsonify({"response": city_serialized}), 200
+
 @api.route('/events', methods=['GET'])
 def get_all_events():
     events = Events.query.all()
     events_serialized = list(map(lambda x: x.serialize(), events))
     return jsonify({"response": events_serialized}), 200
 
+@api.route('/userEvents', methods=['GET'])
+@jwt_required()
+def get_userEvents():
+    user_id = get_jwt_identity()
+    userEvents = User.query.get(user_id).events
+    userEvents_serialized = list(map(lambda x: x.serialize(), userEvents))
+    return jsonify({"response": userEvents_serialized}), 200
 
 @api.route('/currentUser', methods=['GET'])
 @jwt_required()
@@ -151,19 +148,6 @@ def get_userCity():
     city = Details.query.filter_by(city=user.detail.city)
     city_serialized = list(map(lambda x: x.serialize(), city))
     return jsonify({"response": city_serialized}), 200
-
-@api.route('/participants', methods=['GET'])
-@jwt_required()
-def get_Eventsparticipants():
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    
-   
-    users = UserEvents.query.get(users=user.detail.name).all()
-    print("11111111111111@@@@@@@@@@@@@@@@@")
-    print(users)
-    users_serialized = list(map(lambda x: x.serialize(), users))
-    return jsonify({"response": user_serialized}), 200
 
 @api.route('/events', methods=['POST'])
 @jwt_required()
@@ -212,68 +196,23 @@ def join_Events():
   
     return jsonify({"events": user_events.serialize(), "Joined_to_Event": True}), 200
 
-@api.route('/unjoinEvent', methods=['PUT'])
-@jwt_required()
-def unjoin_Events():
-   
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)      
-    body_event_id = request.json.get("id")
-    event = Events.query.get(body_event_id)         
-    user_events = UserEvents.query.filter_by(user=user).filter_by(events=event).first()
-    db.session.delete(user_events)
-    db.session.commit()
-  
-    return jsonify({"events": user_events.serialize(), "Unjoined_to_Event": True}), 200
-
-@api.route('/followers', methods=['PUT'])
-@jwt_required()
-def add_followers():
-   
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)     
-    body_user_id = request.json.get("id")    
-    follower = User.query.get(body_user_id)
-    user.following.append(follower)
-    follower.followers.append(user)
-    db.session.commit()
-    # print(user.following)
-    # print(follower.followers)
-    # db.session.add(user_followers)
-    # db.session.commit()
-  
-    return jsonify({ "Follower added": True}), 200
-
-@api.route('/unFollow', methods=['PUT'])
-@jwt_required()
-def setUnfollow():
-   
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)      
-    body_user_id = request.json.get("id")
-    following = User.query.get(body_user_id)         
-    user.following.remove(following)
-    db.session.commit()
-  
-    return jsonify({"User unfollowed": True}), 200
-
 
 @api.route('/editprofile', methods=['PUT'])
 @jwt_required()
 def update_user():
-  
+    print(request.json)
     user_id = get_jwt_identity()
     user = Details.query.get(user_id)
     if user:
-       
+        print("@@@@@@@@@@@@@@@@@@2")
         body_birth = request.json.get("birth")
         body_name = request.json.get("name")
         body_surname = request.json.get("surname")
         body_city =request.json.get("city")
         body_gender =request.json.get("gender")
-       
+        print("@@@@@@@@@@@@@@@@@@3")
         
-        
+        print(body_birth, body_city, body_name, body_surname)
 
         user.name=body_name
         user.birth=body_birth

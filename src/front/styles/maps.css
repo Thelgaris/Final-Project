@@ -1,4 +1,4 @@
-
+/* 
 .mapName {
   position: absolute;
   top: 1rem;
@@ -11,4 +11,9 @@
 .maps {
   height: 400px;
   width: 400px;
+}
+ */
+.map1 {
+  max-width: 100%;
+  height: auto;
 }

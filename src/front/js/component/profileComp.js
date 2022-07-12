@@ -21,15 +21,11 @@ export const ProfileComp = () => {
         </Link>
         <div className="card-body rounded ">
           <h4 className="card-title">
-            <i className="fas fa">
-              {store.currentUser.detail ? store.currentUser.detail.name : "N/A"}
-            </i>
+            {store.currentUser.detail ? store.currentUser.detail.name : "N/A"}
           </h4>
 
           <h5 className="card-text">
-            <i className="fas fa">
-              {store.currentUser.detail ? store.currentUser.detail.city : "N/A"}
-            </i>
+            {store.currentUser.detail ? store.currentUser.detail.city : "N/A"}
           </h5>
         </div>
         <div className="d-flex">

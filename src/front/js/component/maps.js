@@ -44,7 +44,7 @@ const Map = () => {
   const center = { lat, lng };
 
   return (
-    <div className="container">
+    <div className="container map1">
       <SearchPlaces setLat={setLat} setLng={setLng} />
       <GoogleMap
         zoom={8}
