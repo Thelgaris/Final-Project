@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
-
+import Calendar from "react-calendar";
+import "../../styles/index.css";
 
 export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
@@ -33,14 +34,14 @@ export const CreateEventBtn = () => {
       </button>
 
       {showModal != null ? (
-        <div className="modal " id="exampleModal" tabIndex="-1"
-        >
-          <div className="modal-dialog"
-          style={{width: "400px"}}>
-            <div className="modal-content">
-              <div className="modal-header  d-grid gap-2 d-md-flex"
-              style={{height: "50px"}}>
-                <p className="d-flex mt-2">
+        <div className="modal " id="exampleModal" tabIndex="-1">
+          <div className="modal-dialog">
+            <div className="modal-content" style={{ width: "400px" }}>
+              <div
+                className="modal-header  d-flex border-0 d-grid gap-2 d-md-flex "
+                style={{ height: "70px" }}
+              >
+                <h4 className="d-flex mt-2">
                   <input
                     type="form-control"
                     aria-label="Nombre"
@@ -50,148 +51,164 @@ export const CreateEventBtn = () => {
                       setUserEvents({ ...userEvents, name: e.target.value });
                     }}
                   />
-                </p>
+                </h4>
+
                 <button
                   type="button"
-                  className="btn-sm btn-secondary genbuttons btn-sm"
+                  className="btn btn-secondary genbuttons btn-sm"
                   data-bs-dismiss="modal"
-                  aria-label="Close">
-                    <i className="fas fa-h1">X</i>
+                  aria-label="Close"
+                >
+                  X
                 </button>
-               
               </div>
-              <div className="modal-body ">
-                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
-                style={{height: "50px"}}>
-                  <label
-                    className="input-group-text d-flex text-center align-content-center"
-                    htmlFor="inputGroupSelect01"
-                  >
-                    Ciudad
-                  </label>
-                  <select
-                    className="form-select "
-                    id="Ciudad"
-                    onChange={(e) => {
-                      setUserEvents({ ...userEvents, city: e.target.value });
-                    }}
-                  >
-                    <option></option>;
-                    <option>Barcelona</option>;
-                    <option>Cadiz</option>;
-                  </select>
+              <div className="modal-body border-top">
+                <div className="card-fluid mb-1" style={{ maxwidth: "400px" }}>
+                  <div className="row g-0 ">
+                    <div className="col-md-4 border-0 rounded">
+                      <img
+                        src="https://picsum.photos/seed/picsum/250/150"
+                        className="card-img-top img-fluid rounded mb-3 p-2"
+                        style={{ width: "250px", height: "150px" }}
+                        alt="..."
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body ">
+                        <div className="input-group mb-1">
+                          <label
+                            className="input-group-text col-4 fontSize"
+                            htmlFor="inputGroupSelect01"
+                          >
+                            <strong> Ciudad</strong>
+                          </label>
+                          <select
+                            className="form-select fontSize"
+                            id="Ciudad"
+                            onChange={(e) => {
+                              setUserEvents({
+                                ...userEvents,
+                                city: e.target.value,
+                              });
+                            }}
+                          >
+                            <option></option>;<option>Barcelona</option>;
+                            <option>Cadiz</option>;
+                          </select>
+                        </div>
+                        <div className="input-group mb-1">
+                          <label
+                            className="input-group-text col-4 fontSize"
+                            htmlFor="inputGroupSelect01"
+                          >
+                            <strong>Pistas</strong>
+                          </label>
+
+                          <select
+                            className="form-select fontSize"
+                            onChange={(e) => {
+                              setUserEvents({
+                                ...userEvents,
+                                pista: e.target.value,
+                              });
+                            }}
+                          >
+                            <option></option>;
+                            {store.pistas.map((pista) => {
+                              return (
+                                <option key={pista.id}>{pista.name}</option>
+                              );
+                            })}
+                          </select>
+                        </div>
+                        <div className="input-group mb-1">
+                          <label
+                            className="input-group-text col-4 fontSize"
+                            htmlFor="inputGroupSelect01"
+                          >
+                            <strong>Deporte</strong>
+                          </label>
+                          <select
+                            className="form-select fontSize"
+                            onChange={(e) => {
+                              setUserEvents({
+                                ...userEvents,
+                                sport: e.target.value,
+                              });
+                            }}
+                          >
+                            <option></option>;
+                            {store.sports.map((sport) => {
+                              return (
+                                <option key={sport.id}>{sport.name}</option>
+                              );
+                            })}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
-                style={{height: "50px"}}>
+                <div className="input-group mb-1">
                   <label
-                    className="input-group-text "
+                    className="input-group-text col-3 border-3 border-light fontSize"
                     htmlFor="inputGroupSelect01"
                   >
-                    Dirección
+                    <strong>Dirección</strong>
                   </label>
                   <input
-                    className=" border-3 border-light rounded ps-2 pe-2"
+                    className="w-75 border-3 border-light rounded ps-2 pe-2 fontSize"
                     type="address"
                     onChange={(e) => {
                       setUserEvents({ ...userEvents, address: e.target.value });
                     }}
                   />
                 </div>
-
-                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
-                style={{height: "50px"}}>
+                <div className="input-group mb-1">
                   <label
-                    className="input-group-text"
+                    className="input-group-text col-3 border-2 border-light fontSize"
                     htmlFor="inputGroupSelect01"
                   >
-                    Pistas
+                    <strong>Fecha</strong>
                   </label>
 
-                  <select
-                    className="form-select"
-                    onChange={(e) => {
-                      setUserEvents({ ...userEvents, pista: e.target.value });
-                    }}
-                  >
-                    <option></option>;
-                    {store.pistas.map((pista) => {
-                      return <option key={pista.id}>{pista.name}</option>;
-                    })}
-                  </select>
-                </div>
+                  {/* <div className="modal-dialog modal-dialog-centered">
+                    <Calendar />
+                  </div> */}
 
-                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
-                style={{height: "50px"}}>
-                  <label
-                    className="input-group-text col-4"
-                    htmlFor="inputGroupSelect01"
-                  >
-                    Deporte
-                  </label>
-                  <select
-                    className="form-select"
-                    onChange={(e) => {
-                      setUserEvents({ ...userEvents, sport: e.target.value });
-                    }}
-                  >
-                    <option></option>;
-                    {store.sports.map((sport) => {
-                      return <option key={sport.id}>{sport.name}</option>;
-                    })}
-                  </select>
-                </div>
-                
-                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
-                style={{height: "50px"}}>
-                  <label
-                    className="input-group-text  "
-                    style={{width: "100px"}}
-                    htmlFor="inputGroupSelect01"
-                  >
-                    Fecha
-                  </label>
                   <input
-                    className="rounded ps-2 pe-2"
+                    className="w-75 border-2 border border-light rounded ps-2 pe-2 fontSize"
                     type="date"
                     value={date}
                     mindate={today}
-                    startdate={today}
                     onChange={(e) => {
                       setDate(e.target.value);
                       console.log(date);
                       setUserEvents({ ...userEvents, date: e.target.value });
                     }}
-                  ></input>
+                  />
                 </div>
-                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
-                style={{height: "50px"}}>
+                <div className="input-group mb-1">
                   <label
-                    className="input-group-text  border-2 border-light col-4"
+                    className="input-group-text col-3 border-2 border-light fontSize"
                     htmlFor="inputGroupSelect01 time"
                   >
-                    Hora
+                    <strong>Hora</strong>
                   </label>
 
                   <input
-                    className=" border-2 border border-light rounded ps-2 pe-2"
+                    className="w-75 border-2 border border-light rounded ps-2 pe-2 fontSize"
                     type="time"
                     onChange={(e) => {
                       setUserEvents({ ...userEvents, time: e.target.value });
                     }}
                   />
                 </div>
-                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
-                style={{height: "50px"}}>
-                  <input
-                    type="file"
-                    className="form-control"
-                    id="inputGroupFile01"
-                  />
-                </div>
-                <div className="">
+
+                <div className="m">
                   <textarea
-                    className="form-control"
+                    className="form-control fontSize"
                     rows="2"
                     placeholder="Describe tu evento"
                     onChange={(e) => {
@@ -203,18 +220,16 @@ export const CreateEventBtn = () => {
                   ></textarea>
                 </div>
               </div>
-              <div className="modal-footer d-grid gap-2 col-6 mx-auto"
-              style={{height: "50px"}}>
+              <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-warning genbuttons"
-                  
+                  className="btn btn-warning w-50 content-center genbuttons text-white"
                   onClick={async () => {
                     await actions.setEvents(userEvents);
                     setShowModal(null);
                   }}
                 >
-                  Crear
+                  <i className="fas fa-h1">Crear</i>
                 </button>
               </div>
             </div>

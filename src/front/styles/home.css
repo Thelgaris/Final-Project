@@ -6,11 +6,11 @@ body {
   margin: 0;
   margin-bottom: 80px;
 }
+
 .cardOne {
   height: 146px;
   width: 146px;
 }
-
 
 .imgcard2 {
   height: 146px;
@@ -19,5 +19,3 @@ body {
 .btnhome {
   background-color: #0295a9;
 }
-
-
