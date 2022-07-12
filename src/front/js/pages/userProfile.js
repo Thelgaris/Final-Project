@@ -6,7 +6,8 @@ import { Sportmodal } from "../component/sportmodal";
 import { SearchPlaces } from "../component/maps";
 export const UserProfile = () => {
   const history = useHistory();
-  const [user, setUser] = useState({ gender: "Hombre", sports: [] });
+  const [user, setUser] = useState({});
+  const [sport, setSport] = useState([]);
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
 
@@ -83,33 +84,21 @@ export const UserProfile = () => {
             />
             <select
               className="text-center w-25 mx-auto"
-              defaultValue={"h"}
               onChange={(e) => setUser({ ...user, gender: e.target.value })}
             >
-              <option value={"Hombre"}>Hombre</option>
-              <option value={"Mujer"}>Mujer</option>
+              <option>Hombre</option>
+              <option>Mujer</option>
             </select>
             <SearchPlaces setCity={(e) => setUser({ ...user, city: e })} />
             <div>
-              <Sportmodal
-                setSport={(e) => {
-                  if (!user.sports.includes(e)) {
-                    console.log(e, "if");
-                    setUser({ ...user, sports: [...user.sports, e] });
-                  } else {
-                    console.log("else");
-                    setUser({
-                      ...user,
-                      sports: user.sports.filter((i) => e != i),
-                    });
-                  }
-                }}
-              />
+              <Sportmodal />
             </div>
             <button
               type="button"
               className="btn save-btn text-white mt-2 w-25 mx-auto"
-              onClick={() => sendUserInfo()}
+              onClick={() => {
+                sendUserInfo();
+              }}
             >
               Guardar
             </button>

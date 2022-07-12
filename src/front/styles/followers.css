@@ -1,4 +1,59 @@
-.grupo {
+.xscroll {
   overflow-x: scroll;
   display: flex;
 }
+
+.gradient {
+  background: linear-gradient(to left, white, lightgrey, white);
+  background: linear-gradient(to top, white, lightgrey, white);
+  /* background: linear-gradient(to right, lightgrey, white);
+  background: linear-gradient(to left, lightgrey, white); */
+  /* background: linear-gradient(to left, white 15%, lightgrey 50%, white); */
+  border-top: 0;
+}
+
+/* .dropContainer {
+  background-color: rgb (32, 32, 32);
+  background: #17141a;
+  padding: 60px;
+  border-radius: 0.5em;
+  box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, 0.27);
+  display: grid;
+  gap: 1em;
+} */
+
+.dropCard {
+  padding: 10px, 50px;
+
+  justify-content: space-between;
+  background: #292829;
+  border-radius: 3em;
+}
+
+/* .dropImg {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin-left: -2.5em;
+}
+
+.about {
+  line-height: 0.7em;
+  letter-spacing: 1px;
+  margin: -10px 0 0 20px;
+}
+
+.username {
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.dropbody {
+  font-family: monospace;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: 20px;
+  color: white;
+}  */

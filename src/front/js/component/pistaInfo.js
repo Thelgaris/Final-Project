@@ -12,62 +12,69 @@ export const PistaInfo = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row d-flex justfy-content-center">
+    <div className="container-fluid">
+      <div className="row d-flex justify-content-center">
         {store.pistas.map((pista) => {
           return (
-            <div className="col-12 " key={pista.id}>
+            <div className="col-6 justify-content-center" key={pista.id}>
               <button
                 type="button"
-                className="btn btn-link text-decoration-none text-dark rounded"
+                className="btn btn-link text-decoration-none text-dark d-grid  mx-auto d-flex row d-inline"
                 onClick={() => {
                   setShowModal(pista.id);
                 }}
               >
-                {pista.name}
+                <i className="fas fa-h1 d-inline">{pista.name}</i>
               </button>
 
               {showModal == pista.id ? (
                 <div className="row">
                   <div
-                    className="position-absolute top-100 start-50 translate-middle mt-5 align-middle"
+                    className="position-absolute top-50 start-50 translate-middle mt-5 mb-5 align-middle"
+                    style={{ width: "27rem", height: "30em" }}
                     tabIndex="-1"
                     aria-labelledby="pistaLabel"
                     aria-hidden="true"
                   >
-                    <div
-                      className="modal-dialog"
-                      style={{ width: "50%", height: "500%" }}
-                    >
-                      <div className="modal-content">
-                        <div className="modal-header bg-light bg-gradient ">
-                          <h5 className="modal-title">{pista.name}</h5>
+                    <div className="modal-dialog border-0">
+                      <div className="modal-content border-0">
+                        <div className="modal-header border-0 d-flex gradient">
+                          <h5 className="modal-title">
+                            <i className="fas fa-h1 ms-2">{pista.name}</i>
+                          </h5>
                           <button
                             type="button"
-                            className="btn-close btn-sm"
+                            className="btn btn-secondary genbuttons btn-sm"
                             onClick={() => {
                               setShowModal(null);
                             }}
-                            aria-label="Close"
-                          ></button>
+                          >
+                            <i class="fas fa-h1">X</i>
+                          </button>
                         </div>
                         <div className="modal-body">
-                          <div className="card w-100">
+                          <div className="card w-100 border-0 rounded">
                             <img
                               src="https://picsum.photos/seed/picsum/300/200"
-                              className="card-img-top"
+                              className="card-img-top p-2 rounded-3"
                               alt="ImagenPista"
                             />
                             <div className="card-body text-center">
                               <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Ciudad</li>
-
-                                <li className="list-group-item">
-                                  {pista.address}
+                                <li className="list-group-item border-top gradient rounded-3">
+                                  Ciudad
                                 </li>
 
-                                <li className="list-group-item">
-                                  {pista.description}
+                                <li className="list-group-item gradient rounded-3">
+                                  <i className="fas fa-h1 d-inline">
+                                    {pista.address}
+                                  </i>
+                                </li>
+
+                                <li className="list-group-item gradient rounded-3">
+                                  <i className="fas fa-h1 d-inline">
+                                    {pista.description}
+                                  </i>
                                 </li>
                               </ul>
                             </div>

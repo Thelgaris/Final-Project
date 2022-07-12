@@ -2,59 +2,66 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+user_following = db.Table(
+    'user_following', 
+    db.Column('user_id', db.Integer, db.ForeignKey("user.id"), primary_key=True),
+    db.Column('following_id', db.Integer, db.ForeignKey("user.id"), primary_key=True)
+)
+
+    # followers = db.Table('followers',
+    #     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+    #     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+    # )
+
+ # followed = db.relationship(
+    #     'User', secondary=followers,
+    #     primaryjoin=(followers.c.follower_id == id),
+    #     secondaryjoin=(followers.c.followed_id == id),
+    #     backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
+   
+
 class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     detail_id= db.Column(db.Integer, db.ForeignKey("details.id"))
     detail = db.relationship('Details', backref="user", lazy=True)
-    sports = db.relationship('UserSports')
-    followers = db.relationship('UserFollowers')
-    following = db.relationship('UserFollowing')
+    sports = db.relationship('UserSports') 
     events = db.relationship('UserEvents')
+    following = db.relationship(
+        'User', lambda: user_following,
+        primaryjoin=lambda: User.id == user_following.c.user_id,
+        secondaryjoin=lambda: User.id == user_following.c.following_id,
+        backref='followers'
+    )
     is_active = db.Column(db.Boolean(), unique=False, nullable=True)
     
     def __repr__(self):
         return f'<User {self.email}>'
 
     def serialize(self):
-        print(self.events)
-        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+       
+        print(self.followers)
         return {
             "id": self.id,
             "email": self.email,
             "detail": self.detail.serialize() if self.detail is not None else None,
-            "sports": list(map(lambda sport:sport.sports.serialize(), self.sports)) if self.sports is not None else [],
+            # "sports": list(map(lambda sport:sport.sports.serialize(), self.sports)) if self.sports is not None else [],
+            
             "events": list(map(lambda event:event.events.serialize(), self.events)) if self.events is not None else [],
+            # "followings": len(self.following),
+            # "followers": len(self.followers),  
+            "followings": list(map(lambda following:{"id": following.id, "name": following.detail.name}, self.following)) if self.following is not None else [],
+            "followers": list(map(lambda follower:{"id": follower.id, "name": follower.detail.name}, self.followers)) if self.followers is not None else [],
+
         }
 
-class Users(db.Model):
-    id = db.Column(db.Integer, primary_key=True)  
-    user_followers = db.relationship('UserFollowers')
-    user_following = db.relationship('UserFollowing')
 
-    def __repr__(self):
-        return f'<Users {self.user_followers}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-           
-        }
-
-class UserFollowers(db.Model):
-   id=db.Column(db.Integer, primary_key=True) 
-   followers_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-   followers = db.relationship('Users')
-   user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-   user = db.relationship('User')
-
-class UserFollowing(db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    following_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    following = db.relationship('Users')
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User')
+# class UserFollowers(db.Model):
+#    id=db.Column(db.Integer, primary_key=True) 
+ 
+#    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+#    follower_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class Details(db.Model):
     id = db.Column(db.Integer, primary_key=True)   
@@ -153,6 +160,7 @@ class Events(db.Model):
             "time": self.time,
             "description": self.description,
             "participants": len(self.user_events), #lista de userevents que nos trae los usuarios y con el len los contamos
+            
             "photo": self.photo,
         }
 
@@ -165,7 +173,8 @@ class UserEvents(db.Model):
     
     def serialize(self):
         return {
-            "id": self.id,                
+            "id": self.id,
+                            
         }
 
 
