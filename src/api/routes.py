@@ -211,9 +211,7 @@ def update_user():
         body_city =request.json.get("city")
         body_gender =request.json.get("gender")
         print("@@@@@@@@@@@@@@@@@@3")
-        
         print(body_birth, body_city, body_name, body_surname)
-
         user.name=body_name
         user.birth=body_birth
         user.surname=body_surname
