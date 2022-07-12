@@ -28,7 +28,7 @@ export const Home = () => {
             >
               <div className="imgCard">
                 <img
-                  className="card-img-top imgcard2 img-fluid rounded-circle"
+                  className="card-img-top cardOne imgcard2 img-fluid rounded-circle"
                   src="https://static.vecteezy.com/system/resources/previews/000/265/199/non_2x/vector-magnifying-glass-on-world-map.jpg"
                   alt="This is an image"
                 />

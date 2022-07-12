@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+
 export const CreateEventBtn = () => {
   const [userEvents, setUserEvents] = useState({});
   const [date, setDate] = useState(
@@ -10,7 +11,7 @@ export const CreateEventBtn = () => {
   const [showModal, setShowModal] = useState([]);
   const { store, actions } = useContext(Context);
 
-
+  const today = new Date();
 
   useEffect(() => {
     actions.getSports();
@@ -32,35 +33,38 @@ export const CreateEventBtn = () => {
       </button>
 
       {showModal != null ? (
-        <div className="modal " id="exampleModal" tabIndex="-1">
-          <div className="modal-dialog">
+        <div className="modal " id="exampleModal" tabIndex="-1"
+        >
+          <div className="modal-dialog"
+          style={{width: "400px"}}>
             <div className="modal-content">
-              <div className="modal-header  d-flex d-inline row">
-                <h3 className="d-flex col-10">
+              <div className="modal-header  d-grid gap-2 d-md-flex"
+              style={{height: "50px"}}>
+                <p className="d-flex mt-2">
                   <input
                     type="form-control"
                     aria-label="Nombre"
                     placeholder="Nombre del Evento"
-                    className=" border-0"
+                    className=" border-0 mt-2"
                     onChange={(e) => {
                       setUserEvents({ ...userEvents, name: e.target.value });
                     }}
                   />
-                </h3>
-
+                </p>
                 <button
                   type="button"
-                  className="btn btn-light btn-sm col-1"
+                  className="btn-sm btn-secondary genbuttons btn-sm"
                   data-bs-dismiss="modal"
-                  aria-label="Close"
-                >
-                  X
+                  aria-label="Close">
+                    <i className="fas fa-h1">X</i>
                 </button>
+               
               </div>
-              <div className="modal-body">
-                <div className="input-group mb-3">
+              <div className="modal-body ">
+                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
+                style={{height: "50px"}}>
                   <label
-                    className="input-group-text w-25"
+                    className="input-group-text d-flex text-center align-content-center"
                     htmlFor="inputGroupSelect01"
                   >
                     Ciudad
@@ -72,14 +76,33 @@ export const CreateEventBtn = () => {
                       setUserEvents({ ...userEvents, city: e.target.value });
                     }}
                   >
-                    <option></option>;<option>Barcelona</option>;
+                    <option></option>;
+                    <option>Barcelona</option>;
                     <option>Cadiz</option>;
                   </select>
                 </div>
 
-                <div className="input-group mb-3">
+                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
+                style={{height: "50px"}}>
                   <label
-                    className="input-group-text w-25"
+                    className="input-group-text "
+                    htmlFor="inputGroupSelect01"
+                  >
+                    Dirección
+                  </label>
+                  <input
+                    className=" border-3 border-light rounded ps-2 pe-2"
+                    type="address"
+                    onChange={(e) => {
+                      setUserEvents({ ...userEvents, address: e.target.value });
+                    }}
+                  />
+                </div>
+
+                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
+                style={{height: "50px"}}>
+                  <label
+                    className="input-group-text"
                     htmlFor="inputGroupSelect01"
                   >
                     Pistas
@@ -98,9 +121,10 @@ export const CreateEventBtn = () => {
                   </select>
                 </div>
 
-                <div className="input-group mb-3">
+                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
+                style={{height: "50px"}}>
                   <label
-                    className="input-group-text w-25"
+                    className="input-group-text col-4"
                     htmlFor="inputGroupSelect01"
                   >
                     Deporte
@@ -117,33 +141,22 @@ export const CreateEventBtn = () => {
                     })}
                   </select>
                 </div>
-                <div className="input-group mb-3">
+                
+                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
+                style={{height: "50px"}}>
                   <label
-                    className="input-group-text w-25 border-3 border-light"
-                    htmlFor="inputGroupSelect01"
-                  >
-                    Dirección
-                  </label>
-                  <input
-                    className="w-75 border-3 border-light rounded ps-2 pe-2"
-                    type="address"
-                    onChange={(e) => {
-                      setUserEvents({ ...userEvents, address: e.target.value });
-                    }}
-                  />
-                </div>
-                <div className="input-group mb-3">
-                  <label
-                    className="input-group-text w-25 border-2 border-light"
+                    className="input-group-text  "
+                    style={{width: "100px"}}
                     htmlFor="inputGroupSelect01"
                   >
                     Fecha
                   </label>
                   <input
-                    className="w-75 border-2 border border-light rounded ps-2 pe-2"
+                    className="rounded ps-2 pe-2"
                     type="date"
                     value={date}
-                    mindate={date}
+                    mindate={today}
+                    startdate={today}
                     onChange={(e) => {
                       setDate(e.target.value);
                       console.log(date);
@@ -151,33 +164,35 @@ export const CreateEventBtn = () => {
                     }}
                   ></input>
                 </div>
-                <div className="input-group mb-3">
+                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
+                style={{height: "50px"}}>
                   <label
-                    className="input-group-text w-25 border-2 border-light"
+                    className="input-group-text  border-2 border-light col-4"
                     htmlFor="inputGroupSelect01 time"
                   >
                     Hora
                   </label>
 
                   <input
-                    className="w-75 border-2 border border-light rounded ps-2 pe-2"
+                    className=" border-2 border border-light rounded ps-2 pe-2"
                     type="time"
                     onChange={(e) => {
                       setUserEvents({ ...userEvents, time: e.target.value });
                     }}
                   />
                 </div>
-                <div className="input-group mb-3">
+                <div className="input-group mb-1 text-center align-content-center d-grid gap-2 d-md-flex"
+                style={{height: "50px"}}>
                   <input
                     type="file"
-                    className="form-control w-25"
+                    className="form-control"
                     id="inputGroupFile01"
                   />
                 </div>
-                <div className="mb-3">
+                <div className="">
                   <textarea
                     className="form-control"
-                    rows="3"
+                    rows="2"
                     placeholder="Describe tu evento"
                     onChange={(e) => {
                       setUserEvents({
@@ -188,10 +203,12 @@ export const CreateEventBtn = () => {
                   ></textarea>
                 </div>
               </div>
-              <div className="modal-footer">
+              <div className="modal-footer d-grid gap-2 col-6 mx-auto"
+              style={{height: "50px"}}>
                 <button
                   type="button"
-                  className="btn btn-warning w-50 content-center"
+                  className="btn btn-warning genbuttons"
+                  
                   onClick={async () => {
                     await actions.setEvents(userEvents);
                     setShowModal(null);
