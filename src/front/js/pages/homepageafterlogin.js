@@ -29,7 +29,7 @@ export const Homepageafterlogin = () => {
       <div className="row d-flex flex-row container-fluid">
         <div className=" w-auto justify-content-center text-center">
           <StravaData />
-          <Participants />
+         
         </div>
         <div className=" d-inline col-6 mt-5 ms-5">
           <PistaYeventTab />

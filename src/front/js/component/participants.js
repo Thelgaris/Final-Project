@@ -18,7 +18,7 @@ export const Participants = () => {
           setShowModal(!showModal);
         }}
       >
-        {E.participants}
+        
       </i>
 
       {showModal == true ? (
