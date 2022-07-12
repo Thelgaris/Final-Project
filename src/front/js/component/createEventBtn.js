@@ -38,7 +38,7 @@ export const CreateEventBtn = () => {
           <div className="modal-dialog">
             <div className="modal-content" style={{ width: "400px" }}>
               <div
-                className="modal-header  d-flex border-0 d-grid gap-2 d-md-flex "
+                className="modal-header  d-flex border-0 d-grid gap-2 d-md-flex justify-content-center "
                 style={{ height: "70px" }}
               >
                 <h4 className="d-flex mt-2">
@@ -46,41 +46,32 @@ export const CreateEventBtn = () => {
                     type="form-control"
                     aria-label="Nombre"
                     placeholder="Nombre del Evento"
-                    className=" border-0 mt-2"
+                    className=" border-0 mt-1 text-center"
                     onChange={(e) => {
                       setUserEvents({ ...userEvents, name: e.target.value });
                     }}
                   />
                 </h4>
-
-                <button
-                  type="button"
-                  className="btn btn-secondary genbuttons btn-sm"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                >
-                  X
-                </button>
               </div>
               <div className="modal-body border-top">
-                <div className="card-fluid mb-1" style={{ maxwidth: "400px" }}>
-                  <div className="row g-0 ">
-                    <div className="col-md-4 border-0 rounded">
-                      <img
-                        src="https://picsum.photos/seed/picsum/250/150"
-                        className="card-img-top img-fluid rounded mb-3 p-2"
-                        style={{ width: "250px", height: "150px" }}
-                        alt="..."
-                      />
+                <div
+                  className="card mb-1 border-0"
+                  style={{ maxwidth: "400px" }}
+                >
+                  <div className="row g-0 border-0">
+                    <div className="col-md-3 border-0 rounded justify-content-center align-middle pt-3">
+                      <i className="fas fa-camera fa-4x pt-4 ps-3 pe-3 justify-content-center"></i>
                     </div>
-                    <div className="col-md-8">
+                    <div className="col-md-9">
                       <div className="card-body ">
                         <div className="input-group mb-1">
                           <label
-                            className="input-group-text col-4 fontSize"
+                            className="input-group-text col-2 fontSize"
                             htmlFor="inputGroupSelect01"
                           >
-                            <strong> Ciudad</strong>
+                            <strong>
+                              <i class="fas fa-city"></i>
+                            </strong>
                           </label>
                           <select
                             className="form-select fontSize"
@@ -98,10 +89,12 @@ export const CreateEventBtn = () => {
                         </div>
                         <div className="input-group mb-1">
                           <label
-                            className="input-group-text col-4 fontSize"
+                            className="input-group-text col-2 fontSize"
                             htmlFor="inputGroupSelect01"
                           >
-                            <strong>Pistas</strong>
+                            <strong>
+                              <i class="fas fa-monument"></i>
+                            </strong>
                           </label>
 
                           <select
@@ -123,10 +116,12 @@ export const CreateEventBtn = () => {
                         </div>
                         <div className="input-group mb-1">
                           <label
-                            className="input-group-text col-4 fontSize"
+                            className="input-group-text col-2 fontSize"
                             htmlFor="inputGroupSelect01"
                           >
-                            <strong>Deporte</strong>
+                            <strong>
+                              <i class="fas fa-volleyball-ball"></i>
+                            </strong>
                           </label>
                           <select
                             className="form-select fontSize"
@@ -150,12 +145,14 @@ export const CreateEventBtn = () => {
                   </div>
                 </div>
 
-                <div className="input-group mb-1">
+                <div className="input-group mb-1 gap-3">
                   <label
-                    className="input-group-text col-3 border-3 border-light fontSize"
+                    className="input-group-text col-2 border-3 border-light fontSize justify-content-center ms-1"
                     htmlFor="inputGroupSelect01"
                   >
-                    <strong>Dirección</strong>
+                    <strong>
+                      <i class="fas fa-map-marker-alt"></i>
+                    </strong>
                   </label>
                   <input
                     className="w-75 border-3 border-light rounded ps-2 pe-2 fontSize"
@@ -165,12 +162,14 @@ export const CreateEventBtn = () => {
                     }}
                   />
                 </div>
-                <div className="input-group mb-1">
+                <div className="input-group mb-1 gap-3">
                   <label
-                    className="input-group-text col-3 border-2 border-light fontSize"
+                    className="input-group-text col-2 border-2 border-light fontSize justify-content-center ms-1"
                     htmlFor="inputGroupSelect01"
                   >
-                    <strong>Fecha</strong>
+                    <strong>
+                      <i class="fas fa-calendar-day"></i>
+                    </strong>
                   </label>
 
                   {/* <div className="modal-dialog modal-dialog-centered">
@@ -189,12 +188,14 @@ export const CreateEventBtn = () => {
                     }}
                   />
                 </div>
-                <div className="input-group mb-1">
+                <div className="input-group mb-1 gap-3">
                   <label
-                    className="input-group-text col-3 border-2 border-light fontSize"
+                    className="input-group-text col-2 border-2 border-light fontSize justify-content-center ms-1"
                     htmlFor="inputGroupSelect01 time"
                   >
-                    <strong>Hora</strong>
+                    <strong>
+                      <i class="far fa-clock"></i>
+                    </strong>
                   </label>
 
                   <input
@@ -206,9 +207,9 @@ export const CreateEventBtn = () => {
                   />
                 </div>
 
-                <div className="m">
+                <div className="ps-2 pe-2">
                   <textarea
-                    className="form-control fontSize"
+                    className="form-control fontSize "
                     rows="2"
                     placeholder="Describe tu evento"
                     onChange={(e) => {
@@ -230,6 +231,14 @@ export const CreateEventBtn = () => {
                   }}
                 >
                   <i className="fas fa-h1">Crear</i>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-secondary genbuttons btn"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  X
                 </button>
               </div>
             </div>

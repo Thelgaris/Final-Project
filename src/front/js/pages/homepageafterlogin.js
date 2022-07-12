@@ -17,6 +17,7 @@ export const Homepageafterlogin = () => {
       <div className="row d-flex container-fluid w-100 position-relative">
         <div className=" w-auto justify-content-center text-center">
           <ProfileComp />
+          <Participants />
         </div>
 
         <div className="w-auto d-grid  h-auto d-flex justify-content-between mt-5 ms-5 me-5">

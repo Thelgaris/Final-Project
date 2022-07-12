@@ -62,7 +62,7 @@ export const PistaInfo = () => {
                             <div className="card-body text-center">
                               <ul className="list-group list-group-flush">
                                 <li className="list-group-item border-top gradient rounded-3">
-                                  Ciudad
+                                  {pista.city}
                                 </li>
 
                                 <li className="list-group-item gradient rounded-3">

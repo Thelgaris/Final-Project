@@ -20,3 +20,7 @@
 .fontSize {
   font-size: small;
 }
+
+.cameraEffect:hover {
+  background-color: #0295a9;
+}

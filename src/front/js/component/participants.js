@@ -17,15 +17,13 @@ export const Participants = () => {
         onClick={() => {
           setShowModal(!showModal);
         }}
-      >
-        
-      </i>
+      ></i>
 
       {showModal == true ? (
-        <div>
-          {store.userEvents.map((E) => {
+        <div className="position-absolute top-50 start-50 translate-middle mt-5 mb-5 align-middle">
+          {store.participants.map((E) => {
             return (
-              <div className="">
+              <div className="" tabIndex="-1">
                 <div
                   className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 ms-5 perfil"
                   id="suggestionsList"
@@ -38,25 +36,35 @@ export const Participants = () => {
                     alt="..."
                     style={{ width: "6rem", height: "6rem" }}
                   />
-                  <div
-                    className="d-flex justify-content-center "
-                    // style={{ width: "6rem", height: "2rem" }}
-                  >
+                  <div className="d-flex justify-content-center ">
                     <div className="card-body me-2">
                       <p
                         className="card-title justify-content-center text-center"
                         style={{ height: "2em" }}
                       >
-                        <i className="fas fa-sm">{E.name}</i>
+                        <i className="fas fa-sm">{E.detail.name}</i>
                       </p>
-                      {/* { !store.users.map ((e)=> e.id).includes(Z.id) ? : */}
-                      <button
-                        href="#"
-                        className="btn-sm btn-warning genbuttons w-100 rounded-3"
-                        onClick={(e) => {}}
-                      >
-                        <i className="fas fa-sm">Follow</i>
-                      </button>
+                      {!store.userFollowing.map((e) => e.id).includes(E.id) ? (
+                        <button
+                          href="#"
+                          className="btn-sm btn-warning genbuttons w-100 rounded-3"
+                          onClick={(e) => {
+                            actions.setFollowers(E.id);
+                          }}
+                        >
+                          <i className="fas fa-sm"> Follow</i>
+                        </button>
+                      ) : (
+                        <button
+                          href="#"
+                          className="btn-sm btn-warning genbuttons w-100 rounded-3"
+                          onClick={(e) => {
+                            actions.setUnFollow(E.id);
+                          }}
+                        >
+                          <i className="fas fa-sm"> Unfollow</i>
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
