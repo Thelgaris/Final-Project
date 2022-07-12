@@ -110,8 +110,6 @@ class Pistas(db.Model):
     photo = db.Column(db.String(140), unique=False, nullable=True)
     # events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
     # cities_id = db.Column(db.Integer, db.ForeignKey('cities.id'))
-   
-    
 
     def __repr__(self):
         return f'<Pistas {self.name}>'
@@ -168,8 +166,6 @@ class UserEvents(db.Model):
             "id": self.id,                
         }
 
-
-
 class Cities(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
@@ -184,48 +180,3 @@ class Cities(db.Model):
             "id": self.id,
             "name": self.name,
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# One to many
-#   class Parent(Base):
-#     __tablename__ = "parent"
-#     id = Column(Integer, primary_key=True)
-#     children = relationship("Child")
-
-
-# class Child(Base):
-#     __tablename__ = "child"
-#     id = Column(Integer, primary_key=True)
-#     parent_id = Column(Integer, ForeignKey("parent.id"))
-
-# One to many bidirectional
-# class Parent(Base):
-#     __tablename__ = "parent"
-#     id = Column(Integer, primary_key=True)
-#     children = relationship("Child", back_populates="parent")
-
-
-# class Child(Base):
-#     __tablename__ = "child"
-#     id = Column(Integer, primary_key=True)
-#     parent_id = Column(Integer, ForeignKey("parent.id"))
-#     parent = relationship("Parent", back_populates="children")
-
-# class Userdata(db.Model):
-#     id=db.Column(db.Integer, primary_key=True)
-#     details_id =db.Column(db.Integer, db.ForeignKey('details.id'))
-#     details = db.relationship('Details')
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-#     user = db.relationship('User')

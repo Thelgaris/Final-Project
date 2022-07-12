@@ -76,3 +76,31 @@ select {
   background: rgba(0, 116, 217, 0.2);
   border-radius: 2px;
 }
+* .uploadImage {
+  position: relative;
+  display: inline-block;
+}
+.uploadImage::before {
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: xx-large;
+  cursor: pointer;
+}
+.uploadImage input[type="file"] {
+  opacity: 0;
+  width: 200px;
+  height: 32px;
+  display: inline-block;
+}
