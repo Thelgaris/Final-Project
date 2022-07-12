@@ -5,7 +5,7 @@ export const Home = () => {
   return (
     <div className="container text-center mt-5">
       <div className="row justify-content-center">
-        <div className="jumbotron jumbotron-fluid w-auto">
+        <div className="jumbotron jumbotron-fluid">
           <div className="container-fluid">
             <h1 className="display-4">PICKATEAM</h1>
             <h2 className="" style={{ color: "gray" }}>
