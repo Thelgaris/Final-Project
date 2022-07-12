@@ -6,14 +6,19 @@ const getState = ({ getStore, getActions, setStore }) => {
       users: [],
       sports: [],
       pistas: [],
-      strava: [],
+      strava: {},
       events: [],
       userEvents: [],
+      userParticipants: [],
+      userSports: [],
       currentUser: {},
       followers: [],
       following: [],
-      url: "https://3001-thelgaris-finalproject-tsgzgna9mz2.ws-eu53.gitpod.io/api",
-      stravaUrl: "https://www.strava.com/oauth/authorize",
+      userFollowers: [],
+      userFollowing: [],
+      url: "https://3001-thelgaris-finalproject-1brlwez3cza.ws-eu53.gitpod.io/api",
+      stravaAuth: "https://www.strava.com/oauth/authorize",
+      stravaAthlete: "https://www.strava.com/api/v3/athlete",
       getUserSports: [],
       setUserSports: [],
       user_id: null,
@@ -25,11 +30,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({ users: data.response });
+      },
+
+      getUserParticipants: async (up) => {
+        const resp = await fetch(getStore().url + "/participants", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+        });
+        const data = await resp.json(up);
+        console.log("222222222222@@@@@@@@@@@@");
+        console.log(data);
+        setStore({ userParticipants: data.response });
       },
 
       getDetails: async (id) => {
@@ -40,9 +60,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({ details: data.response });
       },
+
       getSports: async () => {
         const resp = await fetch(getStore().url + "/sports", {
           method: "GET",
@@ -51,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({ sports: data.response });
       },
       getPistas: async () => {
@@ -62,7 +83,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-        console.log(data, " @@@@@@@@@@");
+
         setStore({ pistas: data.response });
       },
 
@@ -91,19 +112,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({
           currentUser: data.response,
           userEvents: data.response.events,
+          userSports: data.response.sports,
+          userFollowing: data.response.followings,
+          userFollowers: data.response.followers,
         });
-      },
-
-      getFollowers: async (id) => {
-        const resp = await fetch(getStore().url + "/followers", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await resp.json();
-
-        setStore({ followers: data.response });
       },
 
       setEvents: async (event) => {
@@ -140,65 +152,107 @@ const getState = ({ getStore, getActions, setStore }) => {
         if (resp.ok) {
           getActions().getCurrentUser();
           getActions().getEvents();
+
           return true;
         } else {
           return false;
         }
       },
 
-      getFollowing: async () => {
-        const resp = await fetch(getStore().url + "/userFollowing", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await resp.json();
-
-        setStore({ following: data.response });
-      },
-
-      getFollowers: async () => {
-        const resp = await fetch(getStore().url + "/userFollowers", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await resp.json();
-
-        setStore({ followers: data.response });
-      },
-
-      setFollowing: async (user) => {
+      setUnJoinEvents: async (unjoin) => {
         const store = getStore();
-        if (!store.following.includes(user)) {
-          setStore({ following: [...store.following, user] });
-        } else {
-          setStore({
-            following: store.following.filter((all) => all != user),
-          });
-        }
-        const resp = await fetch(getStore().url + "/users", {
-          method: "POST",
+        setStore({
+          userEvents: store.userEvents.filter((uetable) => uetable != unjoin),
+        });
+
+        const resp = await fetch(getStore().url + "/unjoinEvent", {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + localStorage.getItem("access_token"),
           },
-          body: JSON.stringify(user),
+          body: JSON.stringify({ id: unjoin }),
         });
         const data = await resp.json();
+
+        if (resp.ok) {
+          getActions().getCurrentUser();
+          getActions().getEvents();
+
+          return true;
+        } else {
+          return false;
+        }
       },
 
-      getUserSports: (a) => {
-        const store = getStore();
-        if (!store.getUserSports.includes(a)) {
-          setStore({ getUserSports: [...store.getUserSports, a] });
+      setFollowers: async (id) => {
+        const resp = await fetch(getStore().url + "/followers", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+          body: JSON.stringify({ id: id }),
+        });
+        const data = await resp.json();
+        if (resp.ok) {
+          getActions().getUsers();
+          getActions().getCurrentUser();
+
+          return true;
         } else {
-          setStore({
-            getUserSports: store.getUserSports.filter((b) => b != a),
-          });
+          return false;
         }
+      },
+
+      setUnFollow: async (id) => {
+        const resp = await fetch(getStore().url + "/unFollow", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+          body: JSON.stringify({ id: id }),
+        });
+        const data = await resp.json();
+        if (resp.ok) {
+          getActions().getUsers();
+          getActions().getCurrentUser();
+
+          return true;
+        } else {
+          return false;
+        }
+      },
+
+      // getStrava: async () => {
+      //   const resp = await fetch(getStore().stravaAthlete + "/strava", {
+      //     method: "GET",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: "Bearer " + localStorage.getItem("access_token"),
+      //     },
+      //   });
+      //   const data = await resp.json();
+
+      //   setStore({
+      //     strava: data.response,
+      //   });
+      // },
+
+      getStrava1: async () => {
+        const resp = await fetch(getStore().stravaAuth + "/strava", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+        });
+        const data = await resp.json();
+
+        setStore({
+          strava: data.response,
+        });
       },
 
       verify: async () => {
@@ -214,7 +268,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (data.user_id) {
             setStore({ user_id: data.user_id });
           }
-          console.log(data);
+
           setStore({ logged: data.logged_in || false });
         } catch (e) {
           setStore({ logged: false });

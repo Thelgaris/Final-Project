@@ -1,3 +1,4 @@
+
 .mapName {
   position: absolute;
   top: 1rem;
@@ -6,4 +7,8 @@
   z-index: 10;
   margin: 0;
   padding: 0;
+
+.maps {
+  height: 400px;
+  width: 400px;
 }

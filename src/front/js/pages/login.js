@@ -27,6 +27,7 @@ export const Login = () => {
       if (data.access_token) {
         localStorage.setItem("access_token", data.access_token);
         actions.verify();
+        await actions.getUsers();
         history.push("/homepageafterlogin");
         if (data.logged == false) {
           setError(data.msg);
@@ -65,7 +66,7 @@ export const Login = () => {
       <div className="container login mb-3" style={{ marginTop: "-18px" }}>
         <div className="container-fluid">
           <div className="input-group mb-3">
-            <label for="email" className="form-label"></label>
+            <label htmlFor="email" className="form-label"></label>
             <input
               id="email"
               type="text"
