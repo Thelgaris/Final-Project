@@ -69,9 +69,14 @@ def update_details():
             user.detail = user_details
             user.detail_id=user_details.id
             db.session.commit()
-            
-         
-            
+            user.detail=user_details
+            db.session.commit()
+            for sport_name in body_sports:
+                sport = Sports.query.filter_by(name = sport_name).first()
+                user_sports = UserSports(user=user, sports=sport)
+                db.session.add(user_sports)
+            db.session.commit()
+            print("@@@@@@@@@@@@@@@@@5")    
             return jsonify({"details": user_details.serialize(), "Update": True}), 200
         else:
             return jsonify({"Error": "Error"}), 400
@@ -116,12 +121,6 @@ def get_strava():
     print("@@@@@@@@@@@@@@@@@@@@@")
     user_id = get_jwt_identity()
     user = User.query.get(user_id)
-   
-  
-
-
-
-
 
 @api.route('/pistas', methods=['GET'])
 def get_all_pistas():
