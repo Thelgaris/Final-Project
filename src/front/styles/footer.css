@@ -1,0 +1,16 @@
+.copyright {
+  background: linear-gradient(to top, rgb(218, 218, 219), white);
+}
+footer {
+  background: linear-gradient(to bottom, rgb(218, 218, 219), white);
+  height: 55px;
+}
+.data {
+  margin-left: 190px;
+}
+.linkfooter {
+  text-decoration: none;
+  color: black;
+  padding-top: 60px;
+  height: 30px;
+}

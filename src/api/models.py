@@ -62,7 +62,8 @@ class Details(db.Model):
     surname = db.Column(db.String(80), unique=False, nullable=True)
     birth = db.Column(db.String(80), unique=False, nullable=True)
     gender = db.Column(db.String(80), unique=False, nullable=True)
-    city = db.Column(db.String(80), unique=False, nullable=True)   
+    city = db.Column(db.String(80), unique=False, nullable=True)  
+    profile_image_url = db.Column(db.String(255), unique=False, nullable=True) 
  
     def __rper__(self):
         return f'<Details {self.id}>'
@@ -75,6 +76,7 @@ class Details(db.Model):
             "birth": self.birth,
             "gender": self.gender,
             "city": self.city,
+            "profile_image_url": self.profile_image_url,
         }
 
 
@@ -227,7 +229,3 @@ class Cities(db.Model):
 #     details = db.relationship('Details')
 #     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 #     user = db.relationship('User')
-
-
-
-    

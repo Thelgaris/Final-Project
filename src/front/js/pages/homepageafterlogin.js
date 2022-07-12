@@ -4,6 +4,7 @@ import "../../styles/homepageafterlogin.css";
 import { EventsComponent } from "../component/eventsComponent";
 import { ProfileComp } from "../component/profileComp";
 import { StravaData } from "../component/stravaData";
+import { Maps } from "../component/maps";
 
 import { EventInfo } from "../component/eventInfo";
 import { PistaInfo } from "../component/pistaInfo";
@@ -13,23 +14,21 @@ export const Homepageafterlogin = () => {
   return (
     <div className="text-center mt-5">
       <div className="row justify-content-center">
-        <div className="jumbotron jumbotron-fluid">
-          <div className="container-fluid row">
-            <div className="col-3 d-inline">
-              <ProfileComp />
-            </div>
-            <div className="col-6">
-              <h1 className="">PICKATEAM</h1>
-              <div className="d-flex mt-5">
-                <h2 style={{ color: "gray" }}>
-                  En Pickateam queremos crear una comunidad de deportistas, a
-                  través de la cual ayudarte a encontrar nuevas personas, nuevos
-                  jugadores y, por qué no, nuevos equipos.
-                </h2>
-              </div>
-            </div>
-            <div className="col-3 mt-4"></div>
+        <div className="container-fluid row">
+          <div className="col-3 d-inline">
+            <ProfileComp />
           </div>
+          <div className="col-6">
+            <h1 className="">PICKATEAM</h1>
+            <div className="d-flex mt-5">
+              <h2 style={{ color: "gray" }}>
+                En Pickateam queremos crear una comunidad de deportistas, a
+                través de la cual ayudarte a encontrar nuevas personas, nuevos
+                jugadores y, por qué no, nuevos equipos.
+              </h2>
+            </div>
+          </div>
+          <div className="col-3 mt-4"></div>
         </div>
       </div>
       <div className="button-container container-fluid row d-flex">
@@ -37,11 +36,7 @@ export const Homepageafterlogin = () => {
           <StravaData />
         </div>
         <div className="col-6 ">
-          <img
-            className=" mt-4 mb-4 w-100 rounded"
-            src="https://placebeard.it/640x360"
-            alt=""
-          />
+          <Maps />
         </div>
         <div className="col-2 mt-4">
           <EventsComponent />

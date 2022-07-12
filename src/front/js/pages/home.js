@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
-    <div className="text-center mt-5">
+    <div className="container text-center mt-5">
       <div className="row justify-content-center">
-        <div className="jumbotron jumbotron-fluid w-50">
+        <div className="jumbotron jumbotron-fluid">
           <div className="container-fluid">
             <h1 className="display-4">PICKATEAM</h1>
-            <h2 style={{ color: "gray" }}>
+            <h2 className="" style={{ color: "gray" }}>
               En Pickateam queremos crear una comunidad de deportistas, a través
               de la cual ayudarte a encontrar nuevas personas, nuevos jugadores
               y, por qué no, nuevos equipos.
@@ -16,23 +16,28 @@ export const Home = () => {
           </div>
         </div>
       </div>
-      <div className="container-fluid d-flex justify-content-center mt-4">
+      <div className="container-fluid d-flex justify-content-center mt-5">
         <div className="row">
           <div className="col">
             <div
               className="card"
-              style={{ width: "300px", marginBottom: "10px" }}
+              style={{
+                marginBottom: "10px",
+                border: "none",
+              }}
             >
-              <img
-                className="card-img-top"
-                src="https://placebeard.it/640x360"
-                alt="This is an image"
-              />
+              <div className="imgCard">
+                <img
+                  className="card-img-top imgcard2 img-fluid rounded-circle"
+                  src="https://static.vecteezy.com/system/resources/previews/000/265/199/non_2x/vector-magnifying-glass-on-world-map.jpg"
+                  alt="This is an image"
+                />
+              </div>
               <div className="card-body">
                 <h5 className="card-title">BUSCA TU CIUDAD</h5>
                 <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  ¿Dónde quieres practicar deporte? Entérate de qué eventos
+                  deportivos se van a celebrar allá donde te quieras mover.
                 </p>
               </div>
             </div>
@@ -40,18 +45,24 @@ export const Home = () => {
           <div className="col">
             <div
               className="card"
-              style={{ width: "300px", marginBottom: "10px" }}
+              style={{
+                marginBottom: "10px",
+                border: "none",
+              }}
             >
-              <img
-                className="card-img-top"
-                src="https://placebeard.it/640x360"
-                alt="This is an image"
-              />
+              <div className="imgCard">
+                <img
+                  className="card-img-top img-fluid rounded-circle"
+                  src="https://play-lh.googleusercontent.com/Kf8WTct65hFJxBUDm5E-EpYsiDoLQiGGbnuyP6HBNax43YShXti9THPon1YKB6zPYpA"
+                  alt="This is an image"
+                />
+              </div>
+
               <div className="card-body">
                 <h5 className="card-title">ENCUENTRA TU LUGAR</h5>
                 <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Recorre la ciudad en busca de instalaciones y zonas donde
+                  quieras practicar deporte y visualiza los eventos que existen.
                 </p>
               </div>
             </div>
@@ -59,18 +70,24 @@ export const Home = () => {
           <div className="col">
             <div
               className="card"
-              style={{ width: "300px", marginBottom: "10px" }}
+              style={{
+                marginBottom: "10px",
+                border: "none",
+              }}
             >
-              <img
-                className="card-img-top"
-                src="https://placebeard.it/640x360"
-                alt="This is an image"
-              />
+              <div className="imgCard">
+                <img
+                  className="card-img-top imgcard2 img-fluid rounded-circle"
+                  src="http://alcalalarealesdeporte.com/wp-content/uploads/2014/09/valores-1.jpg"
+                  alt="This is an image"
+                />
+              </div>
+
               <div className="card-body">
                 <h5 className="card-title">CREA TU EVENTO</h5>
                 <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  ¡También podrás crear el tuyo! Crea tu evento si buscas gente
+                  con la que practicar deporte y no hay aun nada creado.
                 </p>
               </div>
             </div>
@@ -78,37 +95,42 @@ export const Home = () => {
           <div className="col">
             <div
               className="card"
-              style={{ width: "300px", marginBottom: "10px" }}
+              style={{
+                marginBottom: "10px",
+                border: "none",
+              }}
             >
-              <img
-                className="card-img-top"
-                src="https://placebeard.it/640x360"
-                alt="This is an image"
-              />
+              <div className="imgCard">
+                <img
+                  className="card-img-top imgcard2 img-fluid rounded-circle"
+                  src="https://www.imdsg.es/wp-content/uploads/fondo.jpg"
+                  alt="This is an image"
+                />
+              </div>
+
               <div className="card-body">
                 <h5 className="card-title">EMPIEZA A JUGAR</h5>
                 <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Asiste a los eventos y conoce gente nueva, descubre nuevos
+                  deportes y crea comunidad.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div>
-        <div className="d-grid gap-2 col-6-sm mx-auto mt-5 mb-5">
-          <Link to="/register">
-            <button className="btn btn-warning btn-sm text-white" type="button">
-              REGISTRATE
-            </button>
-          </Link>
-          <Link to="/login">
-            <button className="btn btn-warning btn-sm text-white" type="button">
-              LOGIN
-            </button>
-          </Link>
-        </div>
+
+      <div className="d-grid gap-2 col-6-sm mx-auto mt-5 mb-5">
+        <Link to="/register">
+          <button className="btn btnhome btn-sm text-white w-25" type="button">
+            REGISTRATE
+          </button>
+        </Link>
+        <Link to="/login">
+          <button className="btn btnhome btn-sm text-white w-25" type="button">
+            LOGIN
+          </button>
+        </Link>
       </div>
     </div>
   );

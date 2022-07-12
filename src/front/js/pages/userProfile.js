@@ -3,26 +3,35 @@ import { Link, useHistory } from "react-router-dom";
 import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
 import { Sportmodal } from "../component/sportmodal";
-
+import { SearchPlaces } from "../component/maps";
 export const UserProfile = () => {
   const history = useHistory();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({ gender: "Hombre", sports: [] });
   const [error, setError] = useState(null);
   const { store, actions } = useContext(Context);
 
+  useEffect(() => {
+    actions.getSports();
+  }, []);
+
   const sendUserInfo = async () => {
     setError(null);
-    const response = await fetch(store.url + "/userprofile", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
-      },
-      body: JSON.stringify(user),
-    });
-    const data = await response.json();
-    console.log("@@@@@@@@@@@", data);
-    history.push("/homepageafterlogin");
+    console.log(store.getUserSports);
+    try {
+      let body = new FormData();
+      for (let key in user) {
+        body.append(key, user[key]);
+      }
+      const response = await fetch(store.url + "/userprofile", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("access_token"),
+        },
+        body: body,
+      });
+      const data = await response.json();
+      history.push("/homepageafterlogin");
+    } catch (e) {}
   };
 
   return (
@@ -41,83 +50,70 @@ export const UserProfile = () => {
           src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt=""
         />
-        <Link to="/home">
-          <i className="fas fa-camera fa-2x" style={{ fontsize: "50px" }}></i>
-        </Link>
       </div>
-      <div className="input-group mx-auto mb-3 w-25">
-        <div>
-          <input
-            id="name"
-            type="text"
-            className="form-control text-center"
-            onChange={(e) => setUser({ ...user, name: e.target.value })}
-            placeholder="Nombre"
-            aria-label="Name"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-
-        <div className="input-group mx-auto mb-3 w-25">
-          <input
-            id="surname"
-            type="select"
-            className="form-control text-center"
-            onChange={(e) => setUser({ ...user, surname: e.target.value })}
-            placeholder="Apellidos"
-            aria-label="surname"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-
-        <div className="input-group mx-auto mb-3 w-25">
-          <input
-            id="birth"
-            type="date"
-            className="birth form-control text-center"
-            onChange={(e) => setUser({ ...user, birth: e.target.value })}
-            placeholder="Birth"
-            aria-label="Birth"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-
-        <div className="input-group mx-auto mb-3 w-25">
-          <select className="text-center">
-            <option value>Hombre</option>
-            <option value>Mujer</option>
-          </select>
-        </div>
-
-        <div className="input-group mx-auto mb-3 w-25">
-          <input
-            id="city"
-            type="text"
-            className="form-control text-center"
-            onChange={(e) => setUser({ ...user, city: e.target.value })}
-            placeholder="Ciudad"
-            aria-label="City"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-
-        {/* <div>
-          <Sportmodal
-            user={user}
-            setUser={(e) => {
-              setUser({ ...user, sports: e });
-            }}
-          />
-        </div> */}
-
-        <div>
-          <button
-            type="button"
-            className="btn save-btn btn-warning text-white mx-auto mt-2"
-            onClick={() => sendUserInfo()}
-          >
-            Guardar
-          </button>
+      <div className="container">
+        <div className="row mx-auto">
+          <div className="d-grid gap-4 col-lg-12 col-sm align-self-center mb-3">
+            <input
+              id="name"
+              type="text"
+              className="form-control text-center w-25 mx-auto"
+              onChange={(e) => setUser({ ...user, name: e.target.value })}
+              placeholder="Nombre"
+              aria-label="Name"
+              aria-describedby="basic-addon1"
+            />
+            <input
+              id="surname"
+              type="select"
+              className="form-control text-center w-25 mx-auto"
+              onChange={(e) => setUser({ ...user, surname: e.target.value })}
+              placeholder="Apellidos"
+              aria-label="surname"
+              aria-describedby="basic-addon1"
+            />
+            <input
+              id="birth"
+              type="date"
+              className="birth form-control text-center w-25 mx-auto"
+              onChange={(e) => setUser({ ...user, birth: e.target.value })}
+              placeholder="Birth"
+              aria-label="Birth"
+              aria-describedby="basic-addon1"
+            />
+            <select
+              className="text-center w-25 mx-auto"
+              defaultValue={"h"}
+              onChange={(e) => setUser({ ...user, gender: e.target.value })}
+            >
+              <option value={"Hombre"}>Hombre</option>
+              <option value={"Mujer"}>Mujer</option>
+            </select>
+            <SearchPlaces setCity={(e) => setUser({ ...user, city: e })} />
+            <div>
+              <Sportmodal
+                setSport={(e) => {
+                  if (!user.sports.includes(e)) {
+                    console.log(e, "if");
+                    setUser({ ...user, sports: [...user.sports, e] });
+                  } else {
+                    console.log("else");
+                    setUser({
+                      ...user,
+                      sports: user.sports.filter((i) => e != i),
+                    });
+                  }
+                }}
+              />
+            </div>
+            <button
+              type="button"
+              className="btn save-btn text-white mt-2 w-25 mx-auto"
+              onClick={() => sendUserInfo()}
+            >
+              Guardar
+            </button>
+          </div>
         </div>
       </div>
     </div>

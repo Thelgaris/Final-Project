@@ -22,10 +22,10 @@ const injectContext = (PassedComponent) => {
     );
 
     useEffect(() => {
-      // state.actions.verify();
       state.actions.getDetails();
       state.actions.getSports();
       state.actions.getUsers();
+      state.actions.verify();
     }, []);
 
     return (
