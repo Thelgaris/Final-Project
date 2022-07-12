@@ -18,8 +18,12 @@ export const Homepageafterlogin = () => {
         <div className=" w-auto justify-content-center text-center">
           <ProfileComp />
         </div>
-
-        <div className="w-auto d-grid  h-auto d-flex justify-content-between mt-5 ms-5 me-5">
+      </div>
+      <div className="button-container container-fluid row d-flex">
+        <div className="col-3 mt-4 d-grid">
+          <StravaData />
+        </div>
+        <div className="col-6 mx-auto">
           <Maps />
         </div>
         <div className="d-grid w-auto  text-center mt-5  ">

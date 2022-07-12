@@ -112,6 +112,7 @@ class UserSports(db.Model):
 class Pistas(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=False, nullable=True)
+    city = db.Column(db.String(80), unique=False, nullable=True)
     address = db.Column(db.String(80), unique=False, nullable=True)
     description = db.Column(db.String(240), unique=False, nullable=True)
     photo = db.Column(db.String(140), unique=False, nullable=True)
@@ -125,6 +126,7 @@ class Pistas(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "city": self.city,
             "address": self.address,
             "description": self.description,
             "photo": self.photo,
