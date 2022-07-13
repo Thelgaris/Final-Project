@@ -5,8 +5,10 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       users: [],
       sports: [],
+      locations: [],
       pistas: [],
-      strava: {},
+      cityPistas: [],
+      strava: [],
       events: [],
       userEvents: [],
       participants: [],
@@ -15,6 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       userFollowers: [],
       userFollowing: [],
       url: "https://3001-thelgaris-finalproject-97poza1hmzc.ws-eu53.gitpod.io/api",
+
       stravaAuth: "https://www.strava.com/oauth/authorize",
       stravaAthlete: "https://www.strava.com/api/v3/athlete",
       getUserSports: [],
@@ -82,6 +85,19 @@ const getState = ({ getStore, getActions, setStore }) => {
         const data = await resp.json();
 
         setStore({ pistas: data.response });
+      },
+
+      getCityPistas: async () => {
+        const resp = await fetch(getStore().url + "/userCityPistas", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+        });
+        const data = await resp.json();
+        console.log(data, " @@@@@@@@@@PISTAS@@@@@@");
+        setStore({ cityPistas: data.response });
       },
 
       getEvents: async () => {

@@ -8,13 +8,13 @@ export const PistaInfo = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    actions.getPistas();
+    actions.getCityPistas();
   }, []);
 
   return (
-    <div className="container-fluid">
-      <div className="row d-flex justify-content-center">
-        {store.pistas.map((pista) => {
+    <div className="container">
+      <div className="row d-flex justfy-content-center">
+        {store.cityPistas.map((pista) => {
           return (
             <div className="col-6 justify-content-center" key={pista.id}>
               <button
@@ -61,10 +61,11 @@ export const PistaInfo = () => {
                             />
                             <div className="card-body text-center">
                               <ul className="list-group list-group-flush">
+
                                 <li className="list-group-item border-top gradient rounded-3">
+
                                   {pista.city}
                                 </li>
-
                                 <li className="list-group-item gradient rounded-3">
                                   <i className="fas fa-h1 d-inline">
                                     {pista.address}

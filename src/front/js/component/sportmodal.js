@@ -1,21 +1,23 @@
 import React, { useState, useContext, useEffect } from "react";
 import "../../styles/userprofile.css";
 import { Context } from "../store/appContext";
-/*hola uapa*/
 
 export const Sportmodal = ({ setSport }) => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="mx-auto">
-      <button
-        type="button"
-        className="btn deportesbtn btn-white mx-auto w-25"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModalToggle1"
-      >
-        Deportes
-      </button>
+      <div className="container">
+        <button
+          type="button"
+          className="btn deportesbtn btn-white mx-auto"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModalToggle1"
+        >
+          Deportes
+        </button>
+      </div>
+
       <div
         className="modal fade "
         id="exampleModalToggle1"
@@ -47,7 +49,9 @@ export const Sportmodal = ({ setSport }) => {
                         value={sport.id}
                         placeholder={sport.name}
                         id={sport.id}
-                        onClick={(e) => {}}
+                        onClick={() => {
+                          setSport(sport.name);
+                        }}
                       />
                       <label className="form-check-label">{sport.name}</label>
                     </div>
@@ -60,7 +64,6 @@ export const Sportmodal = ({ setSport }) => {
                 className="btn modalbtn2 btn-secondary "
                 data-bs-dismiss="modal"
                 type="submit"
-                onClick={(e) => {}}
               >
                 Guardar
               </button>
