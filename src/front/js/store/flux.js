@@ -36,18 +36,18 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ users: data.response });
       },
 
-      getAllUsers: async () => {
-        const resp = await fetch(getStore().url + "/allusers", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("access_token"),
-          },
-        });
-        const data = await resp.json();
+      // getAllUsers: async () => {
+      //   const resp = await fetch(getStore().url + "/allusers", {
+      //     method: "GET",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: "Bearer " + localStorage.getItem("access_token"),
+      //     },
+      //   });
+      //   const data = await resp.json();
 
-        setStore({ participants: data.response });
-      },
+      //   setStore({ participants: data.response });
+      // },
 
       getDetails: async (id) => {
         const resp = await fetch(getStore().url + "/details", {

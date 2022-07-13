@@ -24,7 +24,6 @@ const injectContext = (PassedComponent) => {
     useEffect(() => {
       state.actions.getDetails();
       state.actions.getSports();
-      state.actions.getAllUsers();
 
       state.actions.verify();
     }, []);

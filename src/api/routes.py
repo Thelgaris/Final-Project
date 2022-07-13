@@ -115,14 +115,14 @@ def get_users():
     return jsonify({"response": users_serialized}), 200
 
 
-@api.route('/allusers', methods=['GET'])
-@jwt_required()
-def get_all_():
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    users = User.query.filter(User.id != user_id).all()
-    users_serialized = list(map(lambda x: x.serialize(), users))
-    return jsonify({"response": users_serialized}), 200
+# @api.route('/allusers', methods=['GET'])
+# @jwt_required()
+# def get_all_():
+#     user_id = get_jwt_identity()
+#     user = User.query.get(user_id)
+#     users = User.query.filter(User.id != user_id).all()
+#     users_serialized = list(map(lambda x: x.serialize(), users))
+#     return jsonify({"response": users_serialized}), 200
 
 @api.route('/strava', methods=['GET'])
 @jwt_required()
