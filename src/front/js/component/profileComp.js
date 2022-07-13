@@ -13,7 +13,11 @@ export const ProfileComp = () => {
       <div className="card border-0 perfil">
         <Link to="/userprofile">
           <img
-            src="https://picsum.photos/seed/picsum/50/50"
+            src={
+              store.currentUser.detail
+                ? store.currentUser.detail.profile_image_url
+                : ""
+            }
             className="card-img-top  rounded-circle perfilImg "
             style={{ padding: "5%" }}
             alt="Foto Perfil"
