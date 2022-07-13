@@ -39,7 +39,7 @@ export const EventInfo = () => {
               {showModal == event.id ? (
                 <div className="row">
                   <div
-                    className="position-absolute top-50 start-50 translate-middle mt-5 mb-5 align-middle"
+                    className="position-absolute top-100 start-50 translate-middle mb-5 align-middle"
                     style={{ width: "27rem", height: "30em" }}
                     tabIndex="-1"
                     aria-labelledby="eventLabel"
@@ -90,7 +90,7 @@ export const EventInfo = () => {
                           <div className="card w-100 border-0 rounded">
                             <img
                               src="https://picsum.photos/seed/picsum/300/200"
-                              className="card-img-top p-2 rounded-3"
+                              className="card-img-top p-2 rounded"
                               alt="Imagenevent"
                             />
                             <div className="card-body text-center">
@@ -108,14 +108,14 @@ export const EventInfo = () => {
                                 </li>
 
                                 <li className="list-group-item gradient rounded-3">
-                                  <i className="fas fa-calendar-alt me-2 col-4 text-start ">
+                                  <i className="fas fa-calendar-alt col-4  w-100">
                                     {event.date}
                                   </i>
-                                  <i className="fas fa-clock me-2 col-3 text-center">
+                                  <i className="fas fa-clock col-4 ">
                                     {event.time}
                                   </i>
                                   <i
-                                    className="fas fa-users p-2 col-3 text-end"
+                                    className="fas fa-users  col-4"
                                     style={{ color: "#014f5a" }}
                                   >
                                     {event.participants}

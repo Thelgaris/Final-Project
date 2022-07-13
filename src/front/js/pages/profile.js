@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 
 import "../../styles/home.css";
@@ -9,6 +9,10 @@ import { HistoryCard } from "../component/historyCard";
 
 export const Profile = () => {
   const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    actions.getUsers();
+  }, []);
 
   return (
     <div className="justify-content-center">

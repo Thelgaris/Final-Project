@@ -17,6 +17,7 @@ export const Homepageafterlogin = () => {
       <div className="row d-flex container-fluid w-100 position-relative">
         <div className=" w-auto justify-content-center text-center">
           <ProfileComp />
+          <Participants />
         </div>
       </div>
       <div className="button-container container-fluid row d-flex">
@@ -33,7 +34,6 @@ export const Homepageafterlogin = () => {
       <div className="row d-flex flex-row container-fluid">
         <div className=" w-auto justify-content-center text-center">
           <StravaData />
-          <Participants />
         </div>
         <div className=" d-inline col-6 mt-5 ms-5">
           <PistaYeventTab />

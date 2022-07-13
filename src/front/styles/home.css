@@ -6,6 +6,7 @@ body {
   margin: 0;
   margin-bottom: 80px;
 }
+
 .cardOne {
   height: 146px;
   width: 146px;
@@ -16,9 +17,5 @@ body {
   width: 250px;
 }
 .btnhome {
-  background-color: #0295a9;
-}
-
-.genbuttons {
   background-color: #0295a9;
 }
