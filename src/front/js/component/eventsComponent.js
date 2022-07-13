@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { CreateEventBtn } from "./createEventBtn";
 import "../../styles/profile.css";
+import { Participants } from "./participants";
 
 export const EventsComponent = () => {
   const { store, actions } = useContext(Context);
@@ -20,7 +21,7 @@ export const EventsComponent = () => {
       <div className="justify-content-center border-0 ">
         <div className="card row  border-0">
           <div className="card-body col border-bottom w-100 eventsTitle rounded-3">
-            <h2 className="card-title ">
+            <h2 className="card-title " style={{ height: "60px" }}>
               <i className="fas fa-h1 ">Proximos eventos</i>
             </h2>
           </div>
@@ -29,17 +30,17 @@ export const EventsComponent = () => {
               return (
                 <div key={uevent.id} className=" ">
                   <div className="d-flex ">
-                    <p className=" p-2 mb-0 text-start w-75 d-inline col-6">
+                    <p className=" mb-1 mt-1 text-start d-inline col-8">
                       {uevent.name}
                     </p>
                     <i
-                      className="fas fa-users p-2 mb-0 border-0 d-inline"
+                      className="fas fa-users mb-1 mt-1 border-0 d-inline col-3"
                       style={{ color: "#014f5a" }}
                     >
                       {uevent.participants}
                     </i>
                     <i
-                      className="far fa-calendar-times p-2 mb-0 border-0d-inline"
+                      className="far fa-calendar-times mb-1 mt-1 border-0d-inline col-1"
                       onClick={(e) => {
                         actions.setUnJoinEvents(uevent.id);
                       }}

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import "../../styles/home.css";
 
 export const Home = () => {
   return (
@@ -26,9 +27,11 @@ export const Home = () => {
                 border: "none",
               }}
             >
-              <div className="imgCard">
+              <div className="imgCard ">
                 <img
+
                   className="card-img-top cardOne imgcard2 img-fluid rounded-circle"
+
                   src="https://static.vecteezy.com/system/resources/previews/000/265/199/non_2x/vector-magnifying-glass-on-world-map.jpg"
                   alt="This is an image"
                 />
