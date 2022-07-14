@@ -12,40 +12,73 @@ export const EventInfo = () => {
   }, []);
 
   return (
-    <div className="container-fluid">
-      <div className="row d-flex justfy-content-center">
+    <div className="col-10 offset-1">
+      <div
+        className="xscroll  border-1 rounded-pill"
+        // style={{ width: "600px" }}
+      >
         {store.events.map((event) => {
           return (
-            <div className=" " key={event.id}>
+            <div
+              className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
+              key={event.id}
+              style={{
+                width: "14rem",
+                height: "8rem",
+              }}
+            >
               <button
                 type="button"
-                className="btn btn-link text-decoration-none text-dark d-grid  mx-auto d-flex row d-inline"
+                className="btn btn-link text-decoration-none text-dark  mx-auto d-flex"
                 onClick={() => {
                   setShowModal(event.id);
                 }}
               >
-                <div className=" col-12 d-inline">
-                  <i className="fas fa-h1 col-9 w-100 d-inline">{event.name}</i>
-
-                  <i
-                    className="fas fa-users p-2 mb-0 border-0 d-inline "
-                    style={{ color: "#014f5a" }}
+                <img
+                  src={
+                    store.events
+                      ? store.events.photo
+                      : "https://picsum.photos/seed/picsum/300/200"
+                  }
+                  className="p-2 justify-content-center rounded-circle"
+                  alt="..."
+                  style={{ width: "6rem", height: "6rem" }}
+                />
+                <div className="card-body me-2">
+                  <p
+                    className="card-title justify-content-center text-center"
+                    style={{ height: "2em" }}
                   >
-                    {event.participants}
-                  </i>
+                    <i className="fas fa-sm" style={{ height: "1em" }}>
+                      {event.name}
+                    </i>
+                    <i className="fas fa-sm">
+                      <small>{event.city}</small>
+                    </i>
+                    <i
+                      className="fas fa-users p-2 mb-0 border-0 d-inline "
+                      style={{ color: "#014f5a" }}
+                    >
+                      {event.participants}
+                    </i>
+                  </p>
                 </div>
               </button>
 
               {showModal == event.id ? (
                 <div className="row">
                   <div
-                    className="position-absolute top-100 start-50 translate-middle mb-5 align-middle"
+                    className="position-absolute top-50 start-50 translate-middle mb-5 align-middle"
+                    // <!-- Vertically centered scrollable modal -->
+                    // <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    //   ...
+                    // </div>
                     style={{ width: "27rem", height: "30em" }}
                     tabIndex="-1"
                     aria-labelledby="eventLabel"
                     aria-hidden="true"
                   >
-                    <div className="modal-dialog border-0">
+                    <div className="modal-dialog modal-dialog modal-dialog-centered border-0">
                       <div className="modal-content border-0">
                         <div className="modal-header border-0 d-flex gradient">
                           <i className="fas fa-h1 ms-2">{event.name}</i>

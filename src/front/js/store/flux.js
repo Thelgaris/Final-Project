@@ -23,6 +23,58 @@ const getState = ({ getStore, getActions, setStore }) => {
       setUserSports: [],
       user_id: null,
       logged: false,
+      provincias: [
+        "Álava",
+        "Albacete",
+        "Alicante",
+        "Almería",
+        "Asturias",
+        "Ávila",
+        "Badajoz",
+        "Barcelona",
+        "Burgos",
+        "Cáceres",
+        "Cádiz",
+        "Cantabria",
+        "Castellón",
+        "Ciudad Real",
+        "Córdoba",
+        "Cuenca",
+        "Gerona",
+        "Granada",
+        "Guadalajara",
+        "Guipúzcoa",
+        "Huelva",
+        "Huesca",
+        "Islas Baleares",
+        "Jaén",
+        "La Coruña",
+        "La Rioja",
+        "Las Palmas",
+        "León",
+        "Lérida",
+        "Lugo",
+        "Madrid",
+        "Málaga",
+        "Murcia",
+        "Navarra",
+        "Orense",
+        "Palencia",
+        "Pontevedra",
+        "Salamanca",
+        "Santa Cruz de Tenerife",
+        "Segovia",
+        "Sevilla",
+        "Soria",
+        "Tarragona",
+        "Teruel",
+        "Toledo",
+        "Valencia",
+        "Valladolid",
+        "Vizcaya",
+        "Zamora",
+        "Zaragoza",
+      ],
     },
     actions: {
       getUsers: async () => {
@@ -34,22 +86,21 @@ const getState = ({ getStore, getActions, setStore }) => {
           },
         });
         const data = await resp.json();
-
         setStore({ users: data.response });
       },
 
-      // getAllUsers: async () => {
-      //   const resp = await fetch(getStore().url + "/allusers", {
-      //     method: "GET",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       Authorization: "Bearer " + localStorage.getItem("access_token"),
-      //     },
-      //   });
-      //   const data = await resp.json();
+      getParticipants: async () => {
+        const resp = await fetch(getStore().url + "/allusers", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
+        });
+        const data = await resp.json();
 
-      //   setStore({ participants: data.response });
-      // },
+        setStore({ participants: data.response });
+      },
 
       getDetails: async (id) => {
         const resp = await fetch(getStore().url + "/details", {
@@ -96,7 +147,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
         const data = await resp.json();
         console.log(data, " @@@@@@@@@@PISTAS@@@@@@");
-        setStore({ cityPistas: data.response });
+        if (resp.ok && data.response) {
+          setStore({ cityPistas: data.response });
+        }
       },
 
       getEvents: async () => {

@@ -24,3 +24,8 @@
 .cameraEffect:hover {
   background-color: #0295a9;
 }
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #0295a9;
+}

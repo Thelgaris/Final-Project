@@ -13,13 +13,17 @@ export const Followers = () => {
   const [showModalZ, setShowModalZ] = useState(null);
   const { id } = useParams();
 
+  useEffect(() => {
+    actions.getUsers();
+  }, []);
+
   return (
     <div className="container-fluid justify-content-center">
       <ul className="nav nav-pills justify-content-center row" role="tablist">
         <li className="nav-item w-auto " role="presentation">
           <button
             type="button "
-            className="nav-link btn-sm btn text-black genbuttons"
+            className="nav-link btn-sm btn text-black btn1"
             id="followersList"
             data-bs-toggle="pill"
             data-bs-target="#followersList"
@@ -38,7 +42,7 @@ export const Followers = () => {
         <li className="nav-item w-auto" role="presentation">
           <button
             type="button "
-            className="nav-link btn-sm btn  text-black genbuttons"
+            className="nav-link btn-sm btn  text-black btn1"
             id="followingList"
             data-bs-toggle="pill"
             data-bs-target="#followingList"
@@ -56,7 +60,7 @@ export const Followers = () => {
         <li className="nav-item w-auto" role="presentation">
           <button
             type="button"
-            className="nav-link btn-sm btn text-black genbuttons"
+            className="nav-link btn-sm btn text-black btn1"
             id="suggestionsList"
             data-bs-toggle="pill"
             data-bs-target="#suggestionsList"
@@ -75,40 +79,48 @@ export const Followers = () => {
 
       <div className="tab-content row">
         {showModalX == true ? (
-          <div className=" " role="tabpanel" aria-labelledby="pills-home-tab">
+          <div
+            className="col-10 offset-1 "
+            role="tabpanel"
+            aria-labelledby="pills-home-tab"
+          >
             <div
-              className="xscroll  border-1 rounded-pill"
-              style={{ width: "500px" }}
+              className="xscroll  border-1 rounded-pill "
+              // style={{ width: "600px" }}
             >
               {store.userFollowers.map((X) => {
                 return (
                   <div
-                  className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
-                  id={X.id}
-                  style={{
-                    width: "14rem",
-                    height: "8rem",
-                  }}
-                  key={X.id}
-                >
-                  <img
-                    src="https://picsum.photos/300/200"
-                    className="p-2 justify-content-center rounded-circle"
-                    alt="..."
-                    style={{ width: "6rem", height: "6rem" }}
-                  />
-                  <div className="card-body me-2">
-                    <p
-                      className="card-title justify-content-center text-center"
-                      style={{ height: "2em" }}
-                    >
-                      <i className="fas fa-sm">{X.name}</i>
-                    </p>
+                    className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
+                    id={X.id}
+                    style={{
+                      width: "14rem",
+                      height: "8rem",
+                    }}
+                    key={X.id}
+                  >
+                    <img
+                      src={
+                        store.userFollowers.detail
+                          ? store.userFollowers.detail.profile_image_url
+                          : ""
+                      }
+                      className="p-2 justify-content-center rounded-circle"
+                      alt="..."
+                      style={{ width: "6rem", height: "6rem" }}
+                    />
+                    <div className="card-body me-2">
+                      <p
+                        className="card-title justify-content-center text-center"
+                        style={{ height: "2em" }}
+                      >
+                        <i className="fas fa-sm">{X.name}</i>
+                      </p>
 
-                    {!store.userFollowing.map((e) => e.id).includes(X.id) ? (
+                      {!store.userFollowing.map((e) => e.id).includes(X.id) ? (
                         <button
                           href="#"
-                          className="btn-sm btn-warning genbuttons w-100 rounded-3"
+                          className="btn-sm btn-warning  w-100 rounded-3 genbuttons"
                           onClick={(e) => {
                             actions.setFollowers(X.id);
                           }}
@@ -118,7 +130,7 @@ export const Followers = () => {
                       ) : (
                         <button
                           href="#"
-                          className="btn-sm btn-warning genbuttons w-100 rounded-3"
+                          className="btn-sm btn-warning  w-100 rounded-3 genbuttons"
                           onClick={(e) => {
                             actions.setUnFollow(X.id);
                           }}
@@ -126,22 +138,24 @@ export const Followers = () => {
                           <i className="fas fa-sm"> Unfollow</i>
                         </button>
                       )}
-
+                    </div>
                   </div>
-                </div>
                 );
               })}
             </div>
           </div>
         ) : null}
         {showModalY == true ? (
-          <div className="" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <div
+            className="col-10 offset-1"
+            role="tabpanel"
+            aria-labelledby="pills-profile-tab"
+          >
             <div
               className="xscroll  border-1 rounded-pill"
-              style={{ width: "500px" }}
+              // style={{ width: "500px" }}
             >
               {store.userFollowing.map((Y) => {
-               
                 return (
                   <div
                     className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
@@ -153,7 +167,11 @@ export const Followers = () => {
                     key={Y.id}
                   >
                     <img
-                      src="https://picsum.photos/300/200"
+                      src={
+                        store.userFollowing.detail
+                          ? store.userFollowing.detail.profile_image_url
+                          : ""
+                      }
                       className="p-2 justify-content-center rounded-circle"
                       alt="..."
                       style={{ width: "6rem", height: "6rem" }}
@@ -168,7 +186,7 @@ export const Followers = () => {
 
                       <button
                         href="#"
-                        className="btn-sm btn-warning genbuttons w-100 rounded-3"
+                        className="btn-sm btn-warning  w-100 rounded-3 genbuttons"
                         onClick={() => {
                           actions.setUnFollow(Y.id);
                         }}
@@ -184,14 +202,14 @@ export const Followers = () => {
         ) : null}
         {showModalZ == true ? (
           <div
-            className=" "
+            className="col-10 offset-1 "
             role="tabpanel"
             aria-labelledby="pills-profile-tab"
           >
             <div className="dropbody">
               <div
                 className="xscroll  border-1 rounded-pill"
-                style={{ width: "500px" }}
+                // style={{ width: "500px" }}
               >
                 {store.users.map((Z) => {
                   return (
@@ -202,7 +220,11 @@ export const Followers = () => {
                       style={{ width: "14rem", height: "6rem" }}
                     >
                       <img
-                        src="https://picsum.photos/300/200"
+                        src={
+                          store.users.detail
+                            ? store.users.detail.profile_image_url
+                            : "N/A"
+                        }
                         className="p-2 justify-content-center rounded-circle"
                         alt="..."
                         style={{ width: "6rem", height: "6rem" }}
@@ -221,7 +243,7 @@ export const Followers = () => {
                           {/* { !store.users.map ((e)=> e.id).includes(Z.id) ? : */}
                           <button
                             href="#"
-                            className="btn-sm btn-warning genbuttons w-100 rounded-3"
+                            className="btn-sm btn-warning  w-100 rounded-3 genbuttons"
                             onClick={(e) => {
                               actions.setFollowers(Z.id);
                             }}

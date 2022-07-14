@@ -121,7 +121,7 @@ const markers = [
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "400px",
+  height: "300px",
   width: "500px",
 };
 const options = {

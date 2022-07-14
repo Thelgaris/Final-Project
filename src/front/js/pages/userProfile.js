@@ -51,7 +51,7 @@ export const UserProfile = () => {
           alt=""
         />
         <div className="card-img-overlay ">
-          <form>
+          <form className="formCloud">
             <div
               className="row align-items-end uploadImage mb-3 "
               id="src-file"

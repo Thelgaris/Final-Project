@@ -18,7 +18,9 @@ export const ProfileComp = () => {
                 ? store.currentUser.detail.profile_image_url
                 : ""
             }
-            className="card-img-top  rounded-circle perfilImg "
+
+            className="card-img-top  cardProfile rounded-circle perfilImg "
+
             style={{ padding: "5%" }}
             alt="Foto Perfil"
           />
