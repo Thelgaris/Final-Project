@@ -12,10 +12,10 @@ export const EventInfo = () => {
   }, []);
 
   return (
-    <div className="col-10">
+    <div className="col-10 offset-1">
       <div
         className="xscroll  border-1 rounded-pill"
-        style={{ width: "600px" }}
+        // style={{ width: "600px" }}
       >
         {store.events.map((event) => {
           return (

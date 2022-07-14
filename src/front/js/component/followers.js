@@ -100,7 +100,11 @@ export const Followers = () => {
                     key={X.id}
                   >
                     <img
-                      src="https://picsum.photos/300/200"
+                      src={
+                        store.userFollowers.detail
+                          ? store.userFollowers.detail.profile_image_url
+                          : ""
+                      }
                       className="p-2 justify-content-center rounded-circle"
                       alt="..."
                       style={{ width: "6rem", height: "6rem" }}
@@ -163,7 +167,11 @@ export const Followers = () => {
                     key={Y.id}
                   >
                     <img
-                      src="https://picsum.photos/300/200"
+                      src={
+                        store.userFollowing.detail
+                          ? store.userFollowing.detail.profile_image_url
+                          : ""
+                      }
                       className="p-2 justify-content-center rounded-circle"
                       alt="..."
                       style={{ width: "6rem", height: "6rem" }}
@@ -212,7 +220,11 @@ export const Followers = () => {
                       style={{ width: "14rem", height: "6rem" }}
                     >
                       <img
-                        src="https://picsum.photos/300/200"
+                        src={
+                          store.users.detail
+                            ? store.users.detail.profile_image_url
+                            : "N/A"
+                        }
                         className="p-2 justify-content-center rounded-circle"
                         alt="..."
                         style={{ width: "6rem", height: "6rem" }}

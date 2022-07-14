@@ -10,7 +10,6 @@ import { PistaYeventTab } from "../component/pistaYeventTab";
 import { PistaInfo } from "../component/pistaInfo";
 import { Followers } from "../component/followers";
 import { Participants } from "../component/participants";
-import { PistasYevents } from "../component/pistasYevents";
 
 export const Homepageafterlogin = () => {
   return (

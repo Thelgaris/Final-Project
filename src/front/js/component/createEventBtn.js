@@ -74,6 +74,7 @@ export const CreateEventBtn = () => {
                         <select
                           className="form-select fontSize"
                           id="Ciudad"
+                          placeholder="Ciudad"
                           onChange={(e) => {
                             setUserEvents({
                               ...userEvents,
@@ -81,8 +82,10 @@ export const CreateEventBtn = () => {
                             });
                           }}
                         >
-                          <option></option>;<option>Barcelona</option>;
-                          <option>Cadiz</option>;
+                          <option></option>;
+                          {store.provincias.map((p) => {
+                            return <option key={p}>{p}</option>;
+                          })}
                         </select>
                       </div>
                       <div className="input-group mb-1">

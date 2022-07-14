@@ -48,12 +48,9 @@ export const PistaYeventTab = () => {
           </button>
         </li>
       </ul>
-      <div
-        className="tab-content row d-flex justify-content-center"
-        id="pills-tabContent"
-      >
+      <div className="tab-content row" id="pills-tabContent">
         <div
-          className="tab-pane fade show col-6 justify-content-center"
+          className="tab-pane fade show justify-content-center"
           id="pistasList"
           role="tabpanel"
           aria-labelledby="pills-home-tab"
@@ -61,7 +58,7 @@ export const PistaYeventTab = () => {
           <PistaInfo />
         </div>
         <div
-          className="tab-pane fade col-6 justify-content-center"
+          className="tab-pane fade  justify-content-center"
           id="eventosList"
           role="tabpanel"
           aria-labelledby="pills-profile-tab"
