@@ -20,9 +20,13 @@ export const Navbar = () => {
     <nav className="navbar navbar-expand-sm sticky-top navbar-light bg-light">
       <div className="container-fluid">
         <Link to="/" className="navbarlink">
-          <h1 className="navbar-brand " href="#">
-            PICKATEAM
-          </h1>
+          <img
+            className="d-flex justify-content-center mx-auto"
+            src="https://res.cloudinary.com/josema91/image/upload/v1657709640/mhvuimr22mcjcacqsgto.png
+            "
+            alt="Logo web"
+            style={{ height: "210px", width: "210px" }}
+          />
         </Link>
         <button
           className="navbar-toggler"

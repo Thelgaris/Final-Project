@@ -56,7 +56,8 @@ export const Login = () => {
         <Link to="/" className="pickateamlink">
           <img
             className="d-flex justify-content-center mx-auto"
-            src="https://github.com/Thelgaris/Final-Project/blob/develop_Jrev1_register_design/docs/assets/logo2.png?raw=true"
+            src="https://res.cloudinary.com/josema91/image/upload/v1657709640/mhvuimr22mcjcacqsgto.png
+            "
             alt="Logo web"
             style={{ height: "210px", width: "210px" }}
           />
