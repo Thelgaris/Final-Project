@@ -106,7 +106,7 @@ export const UserProfile = () => {
               <option value={"Hombre"}>Hombre</option>
               <option value={"Mujer"}>Mujer</option>
             </select>
-            <input
+            {/*       <input
               id="city"
               type="text"
               className="form-control inputWidth text-center mx-auto"
@@ -114,7 +114,7 @@ export const UserProfile = () => {
               placeholder="Ciudad"
               aria-label="City"
               aria-describedby="basic-addon1"
-            />
+            /> */}
             <SearchPlaces setCity={(e) => setUser({ ...user, city: e })} />
             <div>
               <Sportmodal

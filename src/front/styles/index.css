@@ -3,15 +3,7 @@
 */
 
 .eventsTitle {
-  background: linear-gradient(
-    to bottom,
-    white,
-    rgb(218, 218, 219),
-    rgb(218, 218, 219),
-    white,
-    white,
-    white
-  );
+  background: linear-gradient(to bottom, rgb(218, 218, 219), white);
 }
 
 .genbuttons {

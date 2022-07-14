@@ -20,10 +20,10 @@ export const EventInfo = () => {
         {store.events.map((event) => {
           return (
             <div
-              className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
+              className="h-100 ms-1 me-1 mt-2 mb-5 d-flex  rounded-3"
               key={event.id}
               style={{
-                width: "14rem",
+                /* width: "14rem", */
                 height: "8rem",
               }}
             >
@@ -34,7 +34,7 @@ export const EventInfo = () => {
                   setShowModal(event.id);
                 }}
               >
-                <img
+                {/* <img
                   src={
                     store.events
                       ? store.events.photo
@@ -43,18 +43,16 @@ export const EventInfo = () => {
                   className="p-2 justify-content-center rounded-circle"
                   alt="..."
                   style={{ width: "6rem", height: "6rem" }}
-                />
+                /> */}
                 <div className="card-body me-2">
                   <p
                     className="card-title justify-content-center text-center"
                     style={{ height: "2em" }}
                   >
-                    <i className="fas fa-sm" style={{ height: "1em" }}>
-                      {event.name}
-                    </i>
-                    <i className="fas fa-sm">
-                      <small>{event.city}</small>
-                    </i>
+                    <div>{event.name}</div>
+
+                    <h6>{event.city}</h6>
+
                     <i
                       className="fas fa-users p-2 mb-0 border-0 d-inline "
                       style={{ color: "#014f5a" }}
@@ -79,8 +77,8 @@ export const EventInfo = () => {
                     aria-hidden="true"
                   >
                     <div className="modal-dialog modal-dialog modal-dialog-centered border-0">
-                      <div className="modal-content border-0">
-                        <div className="modal-header border-0 d-flex gradient">
+                      <div className="modal-content border-2">
+                        <div className="modal-header border-0 d-flex ">
                           <i className="fas fa-h1 ms-2">{event.name}</i>
                           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                             {!store.userEvents
@@ -121,26 +119,26 @@ export const EventInfo = () => {
                         </div>
                         <div className="modal-body">
                           <div className="card w-100 border-0 rounded">
-                            <img
+                            {/*  <img
                               src="https://picsum.photos/seed/picsum/300/200"
                               className="card-img-top p-2 rounded"
                               alt="Imagenevent"
-                            />
+                            /> */}
                             <div className="card-body text-center">
                               <ul className="list-group list-group-flush d-inline">
-                                <li className="list-group-item border-top gradient rounded-3">
+                                <li className="list-group-item border-top  rounded-3">
                                   <i className="fas fa-globe-africa ">
                                     {event.city}
                                   </i>
                                 </li>
 
-                                <li className="list-group-item gradient rounded-3">
+                                <li className="list-group-item  rounded-3">
                                   <i className="fas fa-map-marker-alt ">
                                     {event.address}
                                   </i>
                                 </li>
 
-                                <li className="list-group-item gradient rounded-3">
+                                <li className="list-group-item  rounded-3">
                                   <i className="fas fa-calendar-alt col-4  w-100">
                                     {event.date}
                                   </i>
@@ -155,7 +153,7 @@ export const EventInfo = () => {
                                   </i>
                                 </li>
 
-                                <li className="list-group-item gradient rounded-3">
+                                <li className="list-group-item  rounded-3">
                                   <i className="fas fa-newspaper">
                                     {event.description}
                                   </i>

@@ -36,7 +36,7 @@ export const Followers = () => {
               setShowModalZ(false);
             }}
           >
-            <i className="fas fa-sm"> Seguidores</i>
+            <h6> Seguidores</h6>
           </button>
         </li>
         <li className="nav-item w-auto" role="presentation">
@@ -54,7 +54,7 @@ export const Followers = () => {
               setShowModalZ(false);
             }}
           >
-            <i className="fas fa-sm"> Siguiendo</i>
+            <h6> Siguiendo</h6>
           </button>
         </li>
         <li className="nav-item w-auto" role="presentation">
@@ -72,7 +72,7 @@ export const Followers = () => {
               setShowModalZ(!showModalZ);
             }}
           >
-            <i className="fas fa-sm"> Sugeridos</i>
+            <h6> Sugeridos</h6>
           </button>
         </li>
       </ul>
@@ -100,11 +100,7 @@ export const Followers = () => {
                     key={X.id}
                   >
                     <img
-                      src={
-                        store.userFollowers.detail
-                          ? store.userFollowers.detail.profile_image_url
-                          : ""
-                      }
+                      src={X.profile_image_url}
                       className="p-2 justify-content-center rounded-circle"
                       alt="..."
                       style={{ width: "6rem", height: "6rem" }}
@@ -114,7 +110,7 @@ export const Followers = () => {
                         className="card-title justify-content-center text-center"
                         style={{ height: "2em" }}
                       >
-                        <i className="fas fa-sm">{X.name}</i>
+                        <h6>{X.name}</h6>
                       </p>
 
                       {!store.userFollowing.map((e) => e.id).includes(X.id) ? (
@@ -125,7 +121,7 @@ export const Followers = () => {
                             actions.setFollowers(X.id);
                           }}
                         >
-                          <i className="fas fa-sm"> Follow</i>
+                          <h6> Follow</h6>
                         </button>
                       ) : (
                         <button
@@ -135,7 +131,7 @@ export const Followers = () => {
                             actions.setUnFollow(X.id);
                           }}
                         >
-                          <i className="fas fa-sm"> Unfollow</i>
+                          <h6> Unfollow</h6>
                         </button>
                       )}
                     </div>
@@ -167,11 +163,7 @@ export const Followers = () => {
                     key={Y.id}
                   >
                     <img
-                      src={
-                        store.userFollowing.detail
-                          ? store.userFollowing.detail.profile_image_url
-                          : ""
-                      }
+                      src={Y.profile_image_url}
                       className="p-2 justify-content-center rounded-circle"
                       alt="..."
                       style={{ width: "6rem", height: "6rem" }}
@@ -181,7 +173,7 @@ export const Followers = () => {
                         className="card-title justify-content-center text-center"
                         style={{ height: "2em" }}
                       >
-                        <i className="fas fa-sm">{Y.name}</i>
+                        <h6>{Y.name}</h6>
                       </p>
 
                       <button
@@ -191,7 +183,7 @@ export const Followers = () => {
                           actions.setUnFollow(Y.id);
                         }}
                       >
-                        <i className="fas fa-sm">Unfollow</i>
+                        <h6>Unfollow</h6>
                       </button>
                     </div>
                   </div>
@@ -220,11 +212,7 @@ export const Followers = () => {
                       style={{ width: "14rem", height: "6rem" }}
                     >
                       <img
-                        src={
-                          store.users.detail
-                            ? store.users.detail.profile_image_url
-                            : "N/A"
-                        }
+                        src={Z.detail.profile_image_url}
                         className="p-2 justify-content-center rounded-circle"
                         alt="..."
                         style={{ width: "6rem", height: "6rem" }}
@@ -238,7 +226,7 @@ export const Followers = () => {
                             className="card-title justify-content-center text-center"
                             style={{ height: "2em" }}
                           >
-                            <i className="fas fa-sm">{Z.detail.name}</i>
+                            <h6>{Z.detail.name}</h6>
                           </p>
                           {/* { !store.users.map ((e)=> e.id).includes(Z.id) ? : */}
                           <button
@@ -248,7 +236,7 @@ export const Followers = () => {
                               actions.setFollowers(Z.id);
                             }}
                           >
-                            <i className="fas fa-sm">Follow</i>
+                            <h6>Follow</h6>
                           </button>
                         </div>
                       </div>

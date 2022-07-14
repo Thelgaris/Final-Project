@@ -18,54 +18,54 @@ import {
 const markers = [
   {
     id: 1,
-    name: "Pabellón Centro Histórico Cádiz",
-    position: { lat: 36.5354136382845, lng: -6.303692724427368 },
+    name: "Campo Hondo",
+    position: { lat: 36.5252245, lng: -6.2889815 },
   },
   {
     id: 2,
-    name: "El Náutico",
-    position: { lat: 36.53697371987197, lng: -6.291498488605275 },
+    name: "Pabellón Centro Histórico Cádiz",
+    position: { lat: 36.5336516, lng: -6.3059255 },
   },
   {
     id: 3,
-    name: "Playa de La Caleta",
-    position: { lat: 36.529961107451825, lng: -6.305780270565639 },
+    name: "El Nautico",
+    position: { lat: 36.5366981, lng: -6.2919274 },
   },
 
   {
     id: 4,
-    name: "Colegio Esclavas SCJ Cádiz",
+    name: "Parque Cemento",
     position: { lat: 36.51931424934137, lng: -6.2842543819317624 },
   },
   {
     id: 5,
-    name: "Playa de Santa María del Mar",
-    position: { lat: 36.51808561914489, lng: -6.28502678310053 },
+    name: "Complejo Deportivo Nuñez Blanca Zaidín",
+    position: { lat: 37.1574745, lng: -3.5932758 },
   },
   {
     id: 6,
-    name: "Playa de Santa María del Mar",
-    position: { lat: 36.499480773900835, lng: -6.273678958126187 },
+    name: "Complejo Deportivo Bola de Oro",
+    position: { lat: 37.1643673, lng: -3.5835333 },
   },
   {
     id: 7,
-    name: "Complejo Deportivo Ciudad de Cádiz",
-    position: { lat: 36.498146073305236, lng: -6.270549028518058 },
+    name: "Pistas Polideportivas Cruz de Lagos",
+    position: { lat: 37.15, lng: -3.6 },
   },
   {
     id: 8,
-    name: "Campo Hondo",
-    position: { lat: 36.52547817728699, lng: -6.288277607071894 },
+    name: "	Centro Deportivo Aydanamar",
+    position: { lat: 37.18817, lng: -3.60667 },
   },
   {
     id: 9,
-    name: "Playa de la Cortadura",
-    position: { lat: 36.489876759076694, lng: -6.26844052005614 },
+    name: "Complejo Deporivo la Chana",
+    position: { lat: 37.1912569, lng: -3.6293006 },
   },
   {
     id: 10,
-    name: "Complejo Deportivo Nuñez Blanca Zaidín",
-    position: { lat: 37.15959750553048, lng: -3.5942230944367113 },
+    name: "Pista de baloncesto libre",
+    position: { lat: 41.40474968396527, lng: 2.1796130213623806 },
   },
   {
     id: 11,
@@ -74,8 +74,8 @@ const markers = [
   },
   {
     id: 12,
-    name: "Complejo Deportivo Chana",
-    position: { lat: 37.196554187256446, lng: -3.628433313457702 },
+    name: "Pistas Polideportivas Municipales Parque de la Maquinista",
+    position: { lat: 41.383013792631736, lng: 2.1921790824873746 },
   },
   {
     id: 13,
@@ -84,13 +84,13 @@ const markers = [
   },
   {
     id: 14,
-    name: "Pista deportiv Bola de Oro",
-    position: { lat: 37.16539492606441, lng: -3.5833971026469036 },
+    name: "Pista de Valldonzella SkatePark",
+    position: { lat: 41.38455540830767, lng: 2.1658147795497715 },
   },
   {
     id: 15,
-    name: "Pistas deportivas Cruz de Lagos",
-    position: { lat: 37.159869181656994, lng: -3.602617886750501 },
+    name: "Complejo Deportivo Municipal La Mar Bella",
+    position: { lat: 41.400598481123566, lng: 2.211544479509211 },
   },
   {
     id: 16,
@@ -117,12 +117,27 @@ const markers = [
     name: "Pistas de Baloncesto 3",
     position: { lat: 37.18994348372912, lng: -3.5982516924027173 },
   },
+  {
+    id: 21,
+    name: "Pistas de Baloncesto 3",
+    position: { lat: 37.18994348372912, lng: -3.5982516924027173 },
+  },
+  {
+    id: 22,
+    name: "Pistes Polideportives Municipals Antoni Gelabert",
+    position: { lat: 41.44689585279384, lng: 2.1710037214666884 },
+  },
+  {
+    id: 23,
+    name: "Pistas de Baloncesto 3",
+    position: { lat: 37.18994348372912, lng: -3.5982516924027173 },
+  },
 ];
 
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "300px",
-  width: "500px",
+  height: "250px",
+  width: "450px",
 };
 const options = {
   styles: mapStyles,
@@ -162,20 +177,38 @@ const Map = () => {
 
   return (
     <div className="container map1">
-      <SearchPlaces setLat={setLat} setLng={setLng} />
-      <GoogleMap
-        zoom={10}
-        center={center}
-        mapContainerStyle={mapContainerStyle}
-        options={options}
-        onLoad={handleOnLoad}
-        onClick={() => setActiveMarker(null)}
-      >
-        {markers.map(({ id, name, position }) => (
+      <div className="mt-5">
+        <GoogleMap
+          zoom={10}
+          center={center}
+          mapContainerStyle={mapContainerStyle}
+          options={options}
+          onLoad={handleOnLoad}
+          onClick={() => setActiveMarker(null)}
+        >
+          {markers.map(({ id, name, position }) => (
+            <Marker
+              key={id}
+              position={position}
+              onClick={() => handleActiveMarker(id)}
+              icon={{
+                path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                scale: 4,
+                strokeColor: "#FF6347",
+                fillColor: "#FF6347",
+                fillOpacity: 1,
+                strokeWeight: 2,
+              }}
+            >
+              {activeMarker === id ? (
+                <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                  <div>{name}</div>
+                </InfoWindow>
+              ) : null}
+            </Marker>
+          ))}
           <Marker
-            key={id}
-            position={position}
-            onClick={() => handleActiveMarker(id)}
+            position={{ lat, lng }}
             icon={{
               path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
               scale: 4,
@@ -184,26 +217,12 @@ const Map = () => {
               fillOpacity: 1,
               strokeWeight: 2,
             }}
-          >
-            {activeMarker === id ? (
-              <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                <div>{name}</div>
-              </InfoWindow>
-            ) : null}
-          </Marker>
-        ))}
-        <Marker
-          position={{ lat, lng }}
-          icon={{
-            path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-            scale: 4,
-            strokeColor: "#FF6347",
-            fillColor: "#FF6347",
-            fillOpacity: 1,
-            strokeWeight: 2,
-          }}
-        />
-      </GoogleMap>
+          />
+        </GoogleMap>
+      </div>
+      <div className="d-flex mx-auto mt-4 justify-content-center">
+        <SearchPlaces setLat={setLat} setLng={setLng} />
+      </div>
     </div>
   );
 };

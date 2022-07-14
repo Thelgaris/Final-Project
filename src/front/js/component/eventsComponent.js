@@ -22,7 +22,7 @@ export const EventsComponent = () => {
         <div className="card row  border-0">
           <div className="card-body col border-bottom w-100 eventsTitle rounded-3">
             <h2 className="card-title " style={{ height: "60px" }}>
-              <i className="fas fa-h1 ">Proximos eventos</i>
+              Próximos eventos
             </h2>
           </div>
           <div>

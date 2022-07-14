@@ -119,7 +119,7 @@ export const Login = () => {
             Login
           </button>
         </div>
-        <div className="container-fluid text-center mt-3">
+        {/*       <div className="container-fluid text-center mt-3">
           <span
             className="sp1 btn"
             type="button"
@@ -128,8 +128,8 @@ export const Login = () => {
           >
             ¿Olvidó su contraseña?
           </span>
-        </div>
-        <div
+        </div> */}
+        {/*        <div
           className="modal fade"
           id="exampleModal"
           tabIndex="-1"
@@ -161,13 +161,13 @@ export const Login = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="container-fluid text-center mt-3">
+        </div> */}
+        {/*   <div className="container-fluid text-center mt-3">
           <span className="sp1">
             Al iniciar sesión, aceptas la Politica de privacidad y los Términos
             de uso de PICKATEAM
           </span>
-        </div>
+        </div> */}
         <div className="container-fluid text-center mt-3">
           <span className="sp2">
             ¿Nuevo usuario?{" "}

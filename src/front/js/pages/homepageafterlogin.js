@@ -30,7 +30,7 @@ export const Homepageafterlogin = () => {
         {/* <div className=" w-auto justify-content-center text-center">
           <StravaData />
         </div> */}
-        <div className="offset-2  col-8 mt-5">
+        <div className="offset-2  col-8 mt-4">
           <PistaYeventTab />
         </div>
       </div>

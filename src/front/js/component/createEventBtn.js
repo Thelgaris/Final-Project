@@ -31,7 +31,7 @@ export const CreateEventBtn = () => {
         //   setShowModal != null;
         // }}
       >
-        <i className="fas fa-h1">Crear evento</i>
+        Crear evento
       </button>
 
       {/* {showModal != null ? ( */}
@@ -224,7 +224,7 @@ export const CreateEventBtn = () => {
                   // setShowModal(null);
                 }}
               >
-                <i className="fas fa-h1">Crear</i>
+                Crear
               </button>
               <button
                 type="button"

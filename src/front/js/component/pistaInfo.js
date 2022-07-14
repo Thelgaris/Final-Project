@@ -21,7 +21,7 @@ export const PistaInfo = () => {
           ? store.cityPistas.map((pista) => {
               return (
                 <div
-                  className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
+                  className=" h-100 ms-1 me-1 mt-2 mb-2 d-flex rounded-3"
                   key={pista.id}
                   style={{
                     width: "14rem",
@@ -35,7 +35,9 @@ export const PistaInfo = () => {
                       setShowModal(pista.id);
                     }}
                   >
-                    <i className="fas fa-h1 d-inline">{pista.name}</i>
+                    <div className="card-body me-2">
+                      <h6>{pista.name}</h6>
+                    </div>
                   </button>
 
                   {showModal == pista.id ? (
@@ -48,11 +50,9 @@ export const PistaInfo = () => {
                         aria-hidden="true"
                       >
                         <div className="modal-dialog border-0">
-                          <div className="modal-content border-0">
-                            <div className="modal-header border-0 d-flex gradient">
-                              <h5 className="modal-title">
-                                <i className="fas fa-h1 ms-2">{pista.name}</i>
-                              </h5>
+                          <div className="modal-content border-2">
+                            <div className="modal-header border-0 d-flex ">
+                              <h5 className="modal-title">{pista.name}</h5>
                               <button
                                 type="button"
                                 className="btn btn-secondary genbuttons btn-sm"
@@ -60,31 +60,27 @@ export const PistaInfo = () => {
                                   setShowModal(null);
                                 }}
                               >
-                                <i className="fas fa-h1">X</i>
+                                X
                               </button>
                             </div>
                             <div className="modal-body">
                               <div className="card w-100 border-0 rounded">
-                                <img
+                                {/*                               <img
                                   src="https://picsum.photos/seed/picsum/300/200"
                                   className="card-img-top p-2 rounded-3"
                                   alt="ImagenPista"
-                                />
+                                /> */}
                                 <div className="card-body text-center">
                                   <ul className="list-group list-group-flush">
-                                    <li className="list-group-item border-top gradient rounded-3">
+                                    <li className="list-group-item border-top  rounded-3">
                                       {pista.city}
                                     </li>
-                                    <li className="list-group-item gradient rounded-3">
-                                      <i className="fas fa-h1 d-inline">
-                                        {pista.address}
-                                      </i>
+                                    <li className="list-group-item  rounded-3">
+                                      {pista.address}
                                     </li>
 
-                                    <li className="list-group-item gradient rounded-3">
-                                      <i className="fas fa-h1 d-inline">
-                                        {pista.description}
-                                      </i>
+                                    <li className="list-group-item  rounded-3">
+                                      {pista.description}
                                     </li>
                                   </ul>
                                 </div>

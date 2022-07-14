@@ -25,7 +25,7 @@ export const Navbar = () => {
             src="https://res.cloudinary.com/josema91/image/upload/v1657709640/mhvuimr22mcjcacqsgto.png
             "
             alt="Logo web"
-            style={{ height: "210px", width: "210px" }}
+            style={{ height: "100px", width: "100px" }}
           />
         </Link>
         <button
