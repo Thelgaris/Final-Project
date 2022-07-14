@@ -12,14 +12,24 @@ export const PistaInfo = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row d-flex justfy-content-center">
+    <div className="col-10 offset-1">
+      <div
+        className="xscroll  border-1 rounded-pill"
+        // style={{ width: "600px" }}
+      >
         {store.cityPistas.map((pista) => {
           return (
-            <div className="col-6 justify-content-center" key={pista.id}>
+            <div
+              className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 perfil"
+              key={pista.id}
+              style={{
+                width: "14rem",
+                height: "8rem",
+              }}
+            >
               <button
                 type="button"
-                className="btn btn-link text-decoration-none text-dark d-grid  mx-auto d-flex row d-inline"
+                className="btn btn-link text-decoration-none text-dark  mx-auto d-flex"
                 onClick={() => {
                   setShowModal(pista.id);
                 }}
@@ -49,7 +59,7 @@ export const PistaInfo = () => {
                               setShowModal(null);
                             }}
                           >
-                            <i class="fas fa-h1">X</i>
+                            <i className="fas fa-h1">X</i>
                           </button>
                         </div>
                         <div className="modal-body">
@@ -61,9 +71,7 @@ export const PistaInfo = () => {
                             />
                             <div className="card-body text-center">
                               <ul className="list-group list-group-flush">
-
                                 <li className="list-group-item border-top gradient rounded-3">
-
                                   {pista.city}
                                 </li>
                                 <li className="list-group-item gradient rounded-3">

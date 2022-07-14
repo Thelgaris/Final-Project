@@ -6,7 +6,7 @@ import { PistaInfo } from "./pistaInfo";
 
 export const PistaYeventTab = () => {
   return (
-    <div className=" container-fluid row ">
+    <div className=" container-fluid justify-content-center">
       <ul
         className="nav nav-pills  d-flex justify-content-center col-6 offset-3 d-inline"
         role="tablist"
@@ -16,7 +16,7 @@ export const PistaYeventTab = () => {
           role="presentation"
         >
           <button
-            className="nav-link btn  text-black genbuttons "
+            className="nav-link btn  text-black genbuttons btn1"
             id="pistas"
             data-bs-toggle="pill"
             data-bs-target="#pistasList"
@@ -35,7 +35,7 @@ export const PistaYeventTab = () => {
         >
           <button
             type="button "
-            className="nav-link btn text-black genbuttons"
+            className="nav-link btn text-black genbuttons btn1"
             id="eventos"
             data-bs-toggle="pill"
             data-bs-target="#eventosList"

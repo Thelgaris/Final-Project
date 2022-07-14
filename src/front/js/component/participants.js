@@ -6,6 +6,21 @@ import "../../styles/profile.css";
 export const Participants = () => {
   const { store, actions } = useContext(Context);
   const [showModal, setShowModal] = useState(null);
+  const [eventsParticipants, setEventsParticipants] = useState([]);
+
+  useEffect(() => {
+    actions.getParticipants();
+    pa();
+  }, []);
+
+  const pa = () => {
+    store.participants.filter(function newParticipants(event) {
+      return setEventsParticipants(
+        store.participants.events.id == store.events.id
+      );
+    });
+  };
+
   return (
     <div
       className="container-fluid h-auto ms-3 mt-5"
@@ -23,7 +38,7 @@ export const Participants = () => {
         <div className="position-absolute top-50 start-50 translate-middle mt-5 mb-5 align-middle">
           {store.participants.map((E) => {
             return (
-              <div className="" tabIndex="-1">
+              <div className="" tabIndex="-1" key={E.id}>
                 <div
                   className="dropcard h-100 ms-1 me-1 mt-5 mb-5 d-flex bg-light rounded-3 ms-5 perfil"
                   id="suggestionsList"

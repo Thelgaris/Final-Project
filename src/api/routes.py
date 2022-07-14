@@ -98,19 +98,41 @@ def get_details():
 
 
 @api.route('/user', methods=['GET'])
-def get_all_users():
-    users = User.query.all()
-    users_serialized = list(map(lambda x: x.serialize(), users))
+@jwt_required()
+def get_users():
+    
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    users = User.query.filter(User.id != user_id).all()
+    suggested = []
+    print(user.following)
+    for u in users:
+        print(u)
+        if u not in user.following:
+            suggested.append(u)
+    users_serialized = list(map(lambda x: x.serialize(), suggested))
+  
     return jsonify({"response": users_serialized}), 200
 
 
+@api.route('/allusers', methods=['GET'])
+@jwt_required()
+def get_all_():
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)
+    users = User.query.filter(User.id != user_id).all()
+    users_serialized = list(map(lambda x: x.serialize(), users))
+    return jsonify({"response": users_serialized}), 200
 
-# @api.route('/allusers', methods=['GET'])
+# @api.route('/par/<int:uevents>' , methods=['GET'])
 # @jwt_required()
-# def get_all_():
+# def get_par(uevents):
 #     user_id = get_jwt_identity()
 #     user = User.query.get(user_id)
-#     users = User.query.filter(User.id != user_id).all()
+#     users = User.query.filter(User.id != user_id).filter(User.events.event.events.id == uevents).all()
+#     print("111111111111111111111@@@@@@@@@@@@@@@@@")
+#     print(users)
+#     # events = User.query.filter(users.events.id == uevents)
 #     users_serialized = list(map(lambda x: x.serialize(), users))
 #     return jsonify({"response": users_serialized}), 200
 
@@ -214,6 +236,52 @@ def join_Events():
     db.session.commit()
   
     return jsonify({"events": user_events.serialize(), "Joined_to_Event": True}), 200
+
+
+@api.route('/unjoinEvent', methods=['PUT'])
+@jwt_required()
+def unjoin_Events():
+   
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)      
+    body_event_id = request.json.get("id")
+    event = Events.query.get(body_event_id)         
+    user_events = UserEvents.query.filter_by(user=user).filter_by(events=event).first()
+    db.session.delete(user_events)
+    db.session.commit()
+  
+    return jsonify({"events": user_events.serialize(), "Unjoined_to_Event": True}), 200
+
+@api.route('/followers', methods=['PUT'])
+@jwt_required()
+def add_followers():
+   
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)     
+    body_user_id = request.json.get("id")    
+    follower = User.query.get(body_user_id)
+    user.following.append(follower)
+    follower.followers.append(user)
+    db.session.commit()
+    # print(user.following)
+    # print(follower.followers)
+    # db.session.add(user_followers)
+    # db.session.commit()
+  
+    return jsonify({ "Follower added": True}), 200
+
+@api.route('/unFollow', methods=['PUT'])
+@jwt_required()
+def setUnfollow():
+   
+    user_id = get_jwt_identity()
+    user = User.query.get(user_id)      
+    body_user_id = request.json.get("id")
+    following = User.query.get(body_user_id)         
+    user.following.remove(following)
+    db.session.commit()
+  
+    return jsonify({"User unfollowed": True}), 200
 
 
 @api.route('/editprofile', methods=['PUT'])

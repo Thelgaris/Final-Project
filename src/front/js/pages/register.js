@@ -125,21 +125,9 @@ export const Register = () => {
             >
               Registrar
             </button>
-            <div className="container-fluid text-center mt-3">
+            {/* <div className="container-fluid text-center mt-3">
               <StravaButton />
-              <button className="btn btn-light w-75" type="button">
-                <img
-                  src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
-                  style={{
-                    width: "20px",
-                    height: "20px ",
-                    float: "left",
-                    marginLeft: "3px",
-                  }}
-                />
-                <span className="text-center">Registrar con Google</span>
-              </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

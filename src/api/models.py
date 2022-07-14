@@ -46,8 +46,7 @@ class User(db.Model):
             "id": self.id,
             "email": self.email,
             "detail": self.detail.serialize() if self.detail is not None else None,
-            # "sports": list(map(lambda sport:sport.sports.serialize(), self.sports)) if self.sports is not None else [],
-            
+            # "sports": list(map(lambda sport:sport.sports.serialize(), self.sports)) if self.sports is not None else [],           
             "events": list(map(lambda event:event.events.serialize(), self.events)) if self.events is not None else [],
             # "followings": len(self.following),
             # "followers": len(self.followers),  
@@ -55,7 +54,6 @@ class User(db.Model):
             "followers": list(map(lambda follower:{"id": follower.id, "name": follower.detail.name}, self.followers)) if self.followers is not None else [],
 
         }
-
 
 # class UserFollowers(db.Model):
 #    id=db.Column(db.Integer, primary_key=True) 
